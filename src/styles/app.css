@@ -10,8 +10,8 @@
   --artifact-bg: #eff8f1;
   --artifact-border: #7db58b;
   --focus-border: #111827;
-  --edge-input: #687385;
-  --edge-output: #2563eb;
+  --edge-input: #2563eb;
+  --edge-output: #687385;
   --edge-update: #d28b28;
   --accent: #a9571b;
   --shadow: 0 14px 34px rgba(21, 31, 47, 0.08);
@@ -64,7 +64,7 @@ button {
   align-items: center;
   display: grid;
   gap: 14px;
-  grid-template-columns: minmax(0, 1fr) minmax(300px, 520px);
+  grid-template-columns: minmax(0, 1fr) minmax(620px, 680px);
   margin: 0 auto;
   max-width: 1760px;
   width: 100%;
@@ -79,14 +79,17 @@ button {
 }
 
 .app-header h1 {
-  font-size: clamp(1.85rem, 3.6vw, 3.45rem);
+  font-size: clamp(1.85rem, 3.3vw, 3.1rem);
   line-height: 1;
 }
 
 .app-header__summary {
   color: var(--text-muted);
+  font-size: 0.9rem;
   line-height: 1.5;
   margin: 0;
+  text-align: right;
+  white-space: nowrap;
 }
 
 .app-header__side {
@@ -795,6 +798,11 @@ button {
     grid-template-columns: 1fr;
   }
 
+  .app-header__summary {
+    text-align: left;
+    white-space: normal;
+  }
+
   .top-panel {
     align-items: stretch;
   }
@@ -839,7 +847,7 @@ button {
 
 @keyframes legend-flow {
   to {
-    transform: translateX(-12px);
+    transform: translateX(12px);
   }
 }
 
