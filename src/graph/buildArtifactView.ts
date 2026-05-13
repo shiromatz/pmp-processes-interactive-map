@@ -50,7 +50,7 @@ export function buildArtifactView(
 function toFlowEdge(
   source: string,
   target: string,
-  relation: "input_to" | "outputs" | "updates"
+  relation: "input_to" | "outputs" | "updates" | "uses"
 ): IttoFlowEdge {
   return {
     id: `${source}-${target}-${relation}`,
@@ -64,6 +64,8 @@ function toFlowEdge(
         ? "flow-edge--outputs"
         : relation === "updates"
           ? "flow-edge--updates"
-          : "flow-edge--input"
+          : relation === "uses"
+            ? "flow-edge--uses"
+            : "flow-edge--input"
   };
 }

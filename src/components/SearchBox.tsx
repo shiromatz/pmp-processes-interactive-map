@@ -46,7 +46,7 @@ export function SearchBox({ graph, filters, onSelectNode }: SearchBoxProps) {
         }}
         onFocus={() => setIsOpen(true)}
         onKeyDown={handleKeyDown}
-        placeholder="Process, artifact, KA, or group"
+        placeholder="Process, artifact, T&T, KA, or group"
         autoComplete="off"
       />
       {isOpen && results.length > 0 ? (
@@ -54,11 +54,23 @@ export function SearchBox({ graph, filters, onSelectNode }: SearchBoxProps) {
           {results.map((node) => (
             <button key={node.id} type="button" onMouseDown={() => selectNode(node)}>
               <span>{node.label}</span>
-              <small>{node.type === "process" ? `${node.processGroup} / ${node.knowledgeArea}` : "Artifact"}</small>
+              <small>{getNodeSummary(node)}</small>
             </button>
           ))}
         </div>
       ) : null}
     </div>
   );
+}
+
+function getNodeSummary(node: IttoNode): string {
+  if (node.type === "process") {
+    return `${node.processGroup} / ${node.knowledgeArea}`;
+  }
+
+  if (node.type === "technique") {
+    return node.category ? `T&T / ${node.category}` : "T&T";
+  }
+
+  return "Artifact";
 }

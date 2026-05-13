@@ -11,6 +11,7 @@ import {
 import "@xyflow/react/dist/style.css";
 import { buildArtifactView } from "../graph/buildArtifactView";
 import { buildProcessView } from "../graph/buildProcessView";
+import { buildTechniqueView } from "../graph/buildTechniqueView";
 import { getNodeById } from "../graph/selectors";
 import type { GraphFilters, IttoFlowEdge, IttoFlowNode, IttoGraph } from "../types/graph";
 
@@ -23,7 +24,8 @@ type GraphViewProps = {
 
 const nodeTypes = {
   processNode: IttoNode,
-  artifactNode: IttoNode
+  artifactNode: IttoNode,
+  techniqueNode: IttoNode
 };
 
 export function GraphView({ graph, selectedNodeId, filters, onSelectNode }: GraphViewProps) {
@@ -35,9 +37,15 @@ export function GraphView({ graph, selectedNodeId, filters, onSelectNode }: Grap
       return { nodes: [], edges: [] };
     }
 
-    return selectedNode.type === "process"
-      ? buildProcessView(graph, selectedNode.id, filters)
-      : buildArtifactView(graph, selectedNode.id, filters);
+    if (selectedNode.type === "process") {
+      return buildProcessView(graph, selectedNode.id, filters);
+    }
+
+    if (selectedNode.type === "artifact") {
+      return buildArtifactView(graph, selectedNode.id, filters);
+    }
+
+    return buildTechniqueView(graph, selectedNode.id, filters);
   }, [filters, graph, selectedNode]);
   const viewNodeIds = useMemo(() => view.nodes.map((node) => node.id).join("|"), [view.nodes]);
 
@@ -70,7 +78,8 @@ export function GraphView({ graph, selectedNodeId, filters, onSelectNode }: Grap
     filters.downstreamDepth,
     filters.knowledgeArea,
     filters.nodeType,
-    filters.processGroup
+    filters.processGroup,
+    filters.showTechniques
   ]);
 
   return (
@@ -84,6 +93,7 @@ export function GraphView({ graph, selectedNodeId, filters, onSelectNode }: Grap
           <span className="legend-item legend-item--process">Process</span>
           <span className="legend-item legend-item--artifact">Artifact</span>
           <span className="legend-item legend-item--update">Update</span>
+          <span className="legend-item legend-item--technique">T&amp;T</span>
         </div>
       </div>
       <div className={`graph-canvas${isTransitioning ? " is-transitioning" : ""}`}>
@@ -113,7 +123,11 @@ export function GraphView({ graph, selectedNodeId, filters, onSelectNode }: Grap
 function IttoNode({ data }: NodeProps<IttoFlowNode>) {
   const className = [
     "itto-node",
-    data.nodeType === "process" ? "itto-node--process" : "itto-node--artifact",
+    data.nodeType === "process"
+      ? "itto-node--process"
+      : data.nodeType === "technique"
+        ? "itto-node--technique"
+        : "itto-node--artifact",
     data.isFocus ? "itto-node--focus" : "",
     data.muted ? "itto-node--muted" : ""
   ]
@@ -123,12 +137,20 @@ function IttoNode({ data }: NodeProps<IttoFlowNode>) {
   return (
     <div className={className}>
       <Handle type="target" position={Position.Left} />
-      <div className="itto-node__kind">{data.nodeType === "process" ? "Process" : "Artifact"}</div>
+      <div className="itto-node__kind">
+        {data.nodeType === "process"
+          ? "Process"
+          : data.nodeType === "technique"
+            ? "Tools & Techniques"
+            : "Artifact"}
+      </div>
       <div className="itto-node__label">{data.label}</div>
       {data.nodeType === "process" ? (
         <div className="itto-node__meta">
           {data.processGroup} / {data.knowledgeArea?.replace("Project ", "").replace(" Management", "")}
         </div>
+      ) : data.nodeType === "technique" ? (
+        <div className="itto-node__meta">{data.category}</div>
       ) : null}
       <Handle type="source" position={Position.Right} />
     </div>

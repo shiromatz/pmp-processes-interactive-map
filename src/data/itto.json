@@ -742,6 +742,822 @@
       "id": "closed_procurements",
       "label": "Closed Procurements",
       "type": "artifact"
+    },
+    {
+      "id": "tt_active_listening",
+      "label": "Active Listening",
+      "type": "technique",
+      "category": "Interpersonal and Team Skills"
+    },
+    {
+      "id": "tt_advertising",
+      "label": "Advertising",
+      "type": "technique",
+      "category": "General"
+    },
+    {
+      "id": "tt_affinity_diagrams",
+      "label": "Affinity Diagrams",
+      "type": "technique",
+      "category": "Data Representation"
+    },
+    {
+      "id": "tt_agile_release_planning",
+      "label": "Agile Release Planning",
+      "type": "technique",
+      "category": "General"
+    },
+    {
+      "id": "tt_alternatives_analysis",
+      "label": "Alternatives Analysis",
+      "type": "technique",
+      "category": "Data Analysis"
+    },
+    {
+      "id": "tt_analogous_estimating",
+      "label": "Analogous Estimating",
+      "type": "technique",
+      "category": "General"
+    },
+    {
+      "id": "tt_assessment_of_other_risk_parameters",
+      "label": "Assessment of Other Risk Parameters",
+      "type": "technique",
+      "category": "Data Analysis"
+    },
+    {
+      "id": "tt_assumption_and_constraint_analysis",
+      "label": "Assumption and Constraint Analysis",
+      "type": "technique",
+      "category": "Data Analysis"
+    },
+    {
+      "id": "tt_audits",
+      "label": "Audits",
+      "type": "technique",
+      "category": "General"
+    },
+    {
+      "id": "tt_autocratic_decision_making",
+      "label": "Autocratic Decision Making",
+      "type": "technique",
+      "category": "Decision Making"
+    },
+    {
+      "id": "tt_benchmarking",
+      "label": "Benchmarking",
+      "type": "technique",
+      "category": "Data Gathering"
+    },
+    {
+      "id": "tt_bidder_conferences",
+      "label": "Bidder Conferences",
+      "type": "technique",
+      "category": "General"
+    },
+    {
+      "id": "tt_bottom_up_estimating",
+      "label": "Bottom-Up Estimating",
+      "type": "technique",
+      "category": "General"
+    },
+    {
+      "id": "tt_brainstorming",
+      "label": "Brainstorming",
+      "type": "technique",
+      "category": "Data Gathering"
+    },
+    {
+      "id": "tt_cause_and_effect_diagrams",
+      "label": "Cause-and-Effect Diagrams",
+      "type": "technique",
+      "category": "Data Representation"
+    },
+    {
+      "id": "tt_change_control_tools",
+      "label": "Change Control Tools",
+      "type": "technique",
+      "category": "General"
+    },
+    {
+      "id": "tt_check_sheets",
+      "label": "Check Sheets",
+      "type": "technique",
+      "category": "Data Gathering"
+    },
+    {
+      "id": "tt_checklists",
+      "label": "Checklists",
+      "type": "technique",
+      "category": "Data Gathering"
+    },
+    {
+      "id": "tt_claims_administration",
+      "label": "Claims Administration",
+      "type": "technique",
+      "category": "General"
+    },
+    {
+      "id": "tt_colocation",
+      "label": "Colocation",
+      "type": "technique",
+      "category": "General"
+    },
+    {
+      "id": "tt_communication_competence",
+      "label": "Communication Competence",
+      "type": "technique",
+      "category": "Communication Skills"
+    },
+    {
+      "id": "tt_communication_methods",
+      "label": "Communication Methods",
+      "type": "technique",
+      "category": "General"
+    },
+    {
+      "id": "tt_communication_models",
+      "label": "Communication Models",
+      "type": "technique",
+      "category": "General"
+    },
+    {
+      "id": "tt_communication_requirements_analysis",
+      "label": "Communication Requirements Analysis",
+      "type": "technique",
+      "category": "General"
+    },
+    {
+      "id": "tt_communication_styles_assessment",
+      "label": "Communication Styles Assessment",
+      "type": "technique",
+      "category": "Interpersonal and Team Skills"
+    },
+    {
+      "id": "tt_communication_technology",
+      "label": "Communication Technology",
+      "type": "technique",
+      "category": "General"
+    },
+    {
+      "id": "tt_conflict_management",
+      "label": "Conflict Management",
+      "type": "technique",
+      "category": "Interpersonal and Team Skills"
+    },
+    {
+      "id": "tt_context_diagram",
+      "label": "Context Diagram",
+      "type": "technique",
+      "category": "General"
+    },
+    {
+      "id": "tt_contingent_response_strategies",
+      "label": "Contingent Response Strategies",
+      "type": "technique",
+      "category": "General"
+    },
+    {
+      "id": "tt_control_charts",
+      "label": "Control Charts",
+      "type": "technique",
+      "category": "Data Representation"
+    },
+    {
+      "id": "tt_cost_aggregation",
+      "label": "Cost Aggregation",
+      "type": "technique",
+      "category": "General"
+    },
+    {
+      "id": "tt_cost_of_quality",
+      "label": "Cost of Quality",
+      "type": "technique",
+      "category": "Data Analysis"
+    },
+    {
+      "id": "tt_cost_benefit_analysis",
+      "label": "Cost-Benefit Analysis",
+      "type": "technique",
+      "category": "Data Analysis"
+    },
+    {
+      "id": "tt_critical_path_method",
+      "label": "Critical Path Method",
+      "type": "technique",
+      "category": "General"
+    },
+    {
+      "id": "tt_cultural_awareness",
+      "label": "Cultural Awareness",
+      "type": "technique",
+      "category": "Interpersonal and Team Skills"
+    },
+    {
+      "id": "tt_data_analysis",
+      "label": "Data Analysis",
+      "type": "technique",
+      "category": "General"
+    },
+    {
+      "id": "tt_decision_making",
+      "label": "Decision Making",
+      "type": "technique",
+      "category": "General"
+    },
+    {
+      "id": "tt_decision_tree_analysis",
+      "label": "Decision Tree Analysis",
+      "type": "technique",
+      "category": "Data Analysis"
+    },
+    {
+      "id": "tt_decomposition",
+      "label": "Decomposition",
+      "type": "technique",
+      "category": "General"
+    },
+    {
+      "id": "tt_dependency_determination_and_integration",
+      "label": "Dependency Determination and Integration",
+      "type": "technique",
+      "category": "General"
+    },
+    {
+      "id": "tt_design_for_x",
+      "label": "Design for X",
+      "type": "technique",
+      "category": "General"
+    },
+    {
+      "id": "tt_document_analysis",
+      "label": "Document Analysis",
+      "type": "technique",
+      "category": "Data Analysis"
+    },
+    {
+      "id": "tt_earned_value_analysis",
+      "label": "Earned Value Analysis",
+      "type": "technique",
+      "category": "Data Analysis"
+    },
+    {
+      "id": "tt_emotional_intelligence",
+      "label": "Emotional Intelligence",
+      "type": "technique",
+      "category": "Interpersonal and Team Skills"
+    },
+    {
+      "id": "tt_expert_judgment",
+      "label": "Expert Judgment",
+      "type": "technique",
+      "category": "General"
+    },
+    {
+      "id": "tt_facilitation",
+      "label": "Facilitation",
+      "type": "technique",
+      "category": "Interpersonal and Team Skills"
+    },
+    {
+      "id": "tt_feedback",
+      "label": "Feedback",
+      "type": "technique",
+      "category": "Communication Skills"
+    },
+    {
+      "id": "tt_financing",
+      "label": "Financing",
+      "type": "technique",
+      "category": "General"
+    },
+    {
+      "id": "tt_flowcharts",
+      "label": "Flowcharts",
+      "type": "technique",
+      "category": "Data Representation"
+    },
+    {
+      "id": "tt_focus_groups",
+      "label": "Focus Groups",
+      "type": "technique",
+      "category": "Data Gathering"
+    },
+    {
+      "id": "tt_funding_limit_reconciliation",
+      "label": "Funding Limit Reconciliation",
+      "type": "technique",
+      "category": "General"
+    },
+    {
+      "id": "tt_ground_rules",
+      "label": "Ground Rules",
+      "type": "technique",
+      "category": "General"
+    },
+    {
+      "id": "tt_hierarchical_charts",
+      "label": "Hierarchical Charts",
+      "type": "technique",
+      "category": "Data Representation"
+    },
+    {
+      "id": "tt_histograms",
+      "label": "Histograms",
+      "type": "technique",
+      "category": "Data Representation"
+    },
+    {
+      "id": "tt_historical_information_review",
+      "label": "Historical Information Review",
+      "type": "technique",
+      "category": "General"
+    },
+    {
+      "id": "tt_individual_and_team_assessments",
+      "label": "Individual and Team Assessments",
+      "type": "technique",
+      "category": "General"
+    },
+    {
+      "id": "tt_influence_diagrams",
+      "label": "Influence Diagrams",
+      "type": "technique",
+      "category": "Data Analysis"
+    },
+    {
+      "id": "tt_influencing",
+      "label": "Influencing",
+      "type": "technique",
+      "category": "Interpersonal and Team Skills"
+    },
+    {
+      "id": "tt_information_management",
+      "label": "Information Management",
+      "type": "technique",
+      "category": "General"
+    },
+    {
+      "id": "tt_inspection",
+      "label": "Inspection",
+      "type": "technique",
+      "category": "General"
+    },
+    {
+      "id": "tt_interviews",
+      "label": "Interviews",
+      "type": "technique",
+      "category": "Data Gathering"
+    },
+    {
+      "id": "tt_iteration_burndown_chart",
+      "label": "Iteration Burndown Chart",
+      "type": "technique",
+      "category": "Data Analysis"
+    },
+    {
+      "id": "tt_knowledge_management",
+      "label": "Knowledge Management",
+      "type": "technique",
+      "category": "General"
+    },
+    {
+      "id": "tt_leadership",
+      "label": "Leadership",
+      "type": "technique",
+      "category": "Interpersonal and Team Skills"
+    },
+    {
+      "id": "tt_leads_and_lags",
+      "label": "Leads and Lags",
+      "type": "technique",
+      "category": "General"
+    },
+    {
+      "id": "tt_logical_data_model",
+      "label": "Logical Data Model",
+      "type": "technique",
+      "category": "Data Representation"
+    },
+    {
+      "id": "tt_make_or_buy_analysis",
+      "label": "Make-or-Buy Analysis",
+      "type": "technique",
+      "category": "Data Analysis"
+    },
+    {
+      "id": "tt_market_research",
+      "label": "Market Research",
+      "type": "technique",
+      "category": "Data Gathering"
+    },
+    {
+      "id": "tt_matrix_diagrams",
+      "label": "Matrix Diagrams",
+      "type": "technique",
+      "category": "Data Representation"
+    },
+    {
+      "id": "tt_meeting_management",
+      "label": "Meeting Management",
+      "type": "technique",
+      "category": "Interpersonal and Team Skills"
+    },
+    {
+      "id": "tt_meetings",
+      "label": "Meetings",
+      "type": "technique",
+      "category": "General"
+    },
+    {
+      "id": "tt_mind_mapping",
+      "label": "Mind Mapping",
+      "type": "technique",
+      "category": "Data Representation"
+    },
+    {
+      "id": "tt_motivation",
+      "label": "Motivation",
+      "type": "technique",
+      "category": "Interpersonal and Team Skills"
+    },
+    {
+      "id": "tt_multicriteria_decision_analysis",
+      "label": "Multicriteria Decision Analysis",
+      "type": "technique",
+      "category": "Decision Making"
+    },
+    {
+      "id": "tt_negotiation",
+      "label": "Negotiation",
+      "type": "technique",
+      "category": "Interpersonal and Team Skills"
+    },
+    {
+      "id": "tt_networking",
+      "label": "Networking",
+      "type": "technique",
+      "category": "Interpersonal and Team Skills"
+    },
+    {
+      "id": "tt_nominal_group_technique",
+      "label": "Nominal Group Technique",
+      "type": "technique",
+      "category": "Interpersonal and Team Skills"
+    },
+    {
+      "id": "tt_nonverbal",
+      "label": "Nonverbal",
+      "type": "technique",
+      "category": "Communication Skills"
+    },
+    {
+      "id": "tt_observation_conversation",
+      "label": "Observation/Conversation",
+      "type": "technique",
+      "category": "Interpersonal and Team Skills"
+    },
+    {
+      "id": "tt_organizational_theory",
+      "label": "Organizational Theory",
+      "type": "technique",
+      "category": "General"
+    },
+    {
+      "id": "tt_parametric_estimating",
+      "label": "Parametric Estimating",
+      "type": "technique",
+      "category": "General"
+    },
+    {
+      "id": "tt_performance_reviews",
+      "label": "Performance Reviews",
+      "type": "technique",
+      "category": "Data Analysis"
+    },
+    {
+      "id": "tt_political_awareness",
+      "label": "Political Awareness",
+      "type": "technique",
+      "category": "Interpersonal and Team Skills"
+    },
+    {
+      "id": "tt_pre_assignment",
+      "label": "Pre-Assignment",
+      "type": "technique",
+      "category": "General"
+    },
+    {
+      "id": "tt_precedence_diagramming_method",
+      "label": "Precedence Diagramming Method",
+      "type": "technique",
+      "category": "General"
+    },
+    {
+      "id": "tt_presentations",
+      "label": "Presentations",
+      "type": "technique",
+      "category": "Communication Skills"
+    },
+    {
+      "id": "tt_prioritization_ranking",
+      "label": "Prioritization/Ranking",
+      "type": "technique",
+      "category": "Decision Making"
+    },
+    {
+      "id": "tt_probability_and_impact_matrix",
+      "label": "Probability and Impact Matrix",
+      "type": "technique",
+      "category": "Data Representation"
+    },
+    {
+      "id": "tt_problem_solving",
+      "label": "Problem Solving",
+      "type": "technique",
+      "category": "General"
+    },
+    {
+      "id": "tt_process_analysis",
+      "label": "Process Analysis",
+      "type": "technique",
+      "category": "Data Analysis"
+    },
+    {
+      "id": "tt_product_analysis",
+      "label": "Product Analysis",
+      "type": "technique",
+      "category": "General"
+    },
+    {
+      "id": "tt_project_management_information_system",
+      "label": "Project Management Information System",
+      "type": "technique",
+      "category": "General"
+    },
+    {
+      "id": "tt_project_reporting",
+      "label": "Project Reporting",
+      "type": "technique",
+      "category": "General"
+    },
+    {
+      "id": "tt_prompt_lists",
+      "label": "Prompt Lists",
+      "type": "technique",
+      "category": "General"
+    },
+    {
+      "id": "tt_proposal_evaluation",
+      "label": "Proposal Evaluation",
+      "type": "technique",
+      "category": "Data Analysis"
+    },
+    {
+      "id": "tt_prototypes",
+      "label": "Prototypes",
+      "type": "technique",
+      "category": "General"
+    },
+    {
+      "id": "tt_quality_improvement_methods",
+      "label": "Quality Improvement Methods",
+      "type": "technique",
+      "category": "General"
+    },
+    {
+      "id": "tt_questionnaires_and_surveys",
+      "label": "Questionnaires and Surveys",
+      "type": "technique",
+      "category": "Data Gathering"
+    },
+    {
+      "id": "tt_recognition_and_rewards",
+      "label": "Recognition and Rewards",
+      "type": "technique",
+      "category": "General"
+    },
+    {
+      "id": "tt_regression_analysis",
+      "label": "Regression Analysis",
+      "type": "technique",
+      "category": "Data Analysis"
+    },
+    {
+      "id": "tt_representations_of_uncertainty",
+      "label": "Representations of Uncertainty",
+      "type": "technique",
+      "category": "General"
+    },
+    {
+      "id": "tt_reserve_analysis",
+      "label": "Reserve Analysis",
+      "type": "technique",
+      "category": "Data Analysis"
+    },
+    {
+      "id": "tt_resource_optimization",
+      "label": "Resource Optimization",
+      "type": "technique",
+      "category": "General"
+    },
+    {
+      "id": "tt_responsibility_assignment_matrix",
+      "label": "Responsibility Assignment Matrix",
+      "type": "technique",
+      "category": "Data Representation"
+    },
+    {
+      "id": "tt_risk_categorization",
+      "label": "Risk Categorization",
+      "type": "technique",
+      "category": "General"
+    },
+    {
+      "id": "tt_risk_data_quality_assessment",
+      "label": "Risk Data Quality Assessment",
+      "type": "technique",
+      "category": "Data Analysis"
+    },
+    {
+      "id": "tt_risk_probability_and_impact_assessment",
+      "label": "Risk Probability and Impact Assessment",
+      "type": "technique",
+      "category": "Data Analysis"
+    },
+    {
+      "id": "tt_rolling_wave_planning",
+      "label": "Rolling Wave Planning",
+      "type": "technique",
+      "category": "General"
+    },
+    {
+      "id": "tt_root_cause_analysis",
+      "label": "Root Cause Analysis",
+      "type": "technique",
+      "category": "Data Analysis"
+    },
+    {
+      "id": "tt_scatter_diagrams",
+      "label": "Scatter Diagrams",
+      "type": "technique",
+      "category": "Data Representation"
+    },
+    {
+      "id": "tt_schedule_compression",
+      "label": "Schedule Compression",
+      "type": "technique",
+      "category": "General"
+    },
+    {
+      "id": "tt_schedule_network_analysis",
+      "label": "Schedule Network Analysis",
+      "type": "technique",
+      "category": "General"
+    },
+    {
+      "id": "tt_sensitivity_analysis",
+      "label": "Sensitivity Analysis",
+      "type": "technique",
+      "category": "Data Analysis"
+    },
+    {
+      "id": "tt_simulation",
+      "label": "Simulation",
+      "type": "technique",
+      "category": "Data Analysis"
+    },
+    {
+      "id": "tt_source_selection_analysis",
+      "label": "Source Selection Analysis",
+      "type": "technique",
+      "category": "General"
+    },
+    {
+      "id": "tt_stakeholder_analysis",
+      "label": "Stakeholder Analysis",
+      "type": "technique",
+      "category": "Data Analysis"
+    },
+    {
+      "id": "tt_stakeholder_engagement_assessment_matrix",
+      "label": "Stakeholder Engagement Assessment Matrix",
+      "type": "technique",
+      "category": "Data Representation"
+    },
+    {
+      "id": "tt_stakeholder_mapping_representation",
+      "label": "Stakeholder Mapping/Representation",
+      "type": "technique",
+      "category": "Data Representation"
+    },
+    {
+      "id": "tt_statistical_sampling",
+      "label": "Statistical Sampling",
+      "type": "technique",
+      "category": "Data Gathering"
+    },
+    {
+      "id": "tt_strategies_for_opportunities",
+      "label": "Strategies for Opportunities",
+      "type": "technique",
+      "category": "General"
+    },
+    {
+      "id": "tt_strategies_for_overall_project_risk",
+      "label": "Strategies for Overall Project Risk",
+      "type": "technique",
+      "category": "General"
+    },
+    {
+      "id": "tt_strategies_for_threats",
+      "label": "Strategies for Threats",
+      "type": "technique",
+      "category": "General"
+    },
+    {
+      "id": "tt_swot_analysis",
+      "label": "SWOT Analysis",
+      "type": "technique",
+      "category": "Data Analysis"
+    },
+    {
+      "id": "tt_team_building",
+      "label": "Team Building",
+      "type": "technique",
+      "category": "Interpersonal and Team Skills"
+    },
+    {
+      "id": "tt_technical_performance_analysis",
+      "label": "Technical Performance Analysis",
+      "type": "technique",
+      "category": "Data Analysis"
+    },
+    {
+      "id": "tt_test_and_inspection_planning",
+      "label": "Test and Inspection Planning",
+      "type": "technique",
+      "category": "General"
+    },
+    {
+      "id": "tt_testing_product_evaluations",
+      "label": "Testing/Product Evaluations",
+      "type": "technique",
+      "category": "General"
+    },
+    {
+      "id": "tt_text_oriented_formats",
+      "label": "Text-Oriented Formats",
+      "type": "technique",
+      "category": "Data Representation"
+    },
+    {
+      "id": "tt_three_point_estimating",
+      "label": "Three-Point Estimating",
+      "type": "technique",
+      "category": "General"
+    },
+    {
+      "id": "tt_to_complete_performance_index",
+      "label": "To-Complete Performance Index",
+      "type": "technique",
+      "category": "General"
+    },
+    {
+      "id": "tt_training",
+      "label": "Training",
+      "type": "technique",
+      "category": "General"
+    },
+    {
+      "id": "tt_trend_analysis",
+      "label": "Trend Analysis",
+      "type": "technique",
+      "category": "Data Analysis"
+    },
+    {
+      "id": "tt_variance_analysis",
+      "label": "Variance Analysis",
+      "type": "technique",
+      "category": "Data Analysis"
+    },
+    {
+      "id": "tt_virtual_teams",
+      "label": "Virtual Teams",
+      "type": "technique",
+      "category": "General"
+    },
+    {
+      "id": "tt_voting",
+      "label": "Voting",
+      "type": "technique",
+      "category": "Decision Making"
+    },
+    {
+      "id": "tt_what_if_scenario_analysis",
+      "label": "What-if Scenario Analysis",
+      "type": "technique",
+      "category": "Data Analysis"
     }
   ],
   "edges": [
@@ -4709,6 +5525,1836 @@
       "source": "monitor_stakeholder_engagement",
       "target": "stakeholder_register",
       "relation": "updates"
+    },
+    {
+      "source": "develop_project_charter",
+      "target": "tt_expert_judgment",
+      "relation": "uses"
+    },
+    {
+      "source": "develop_project_charter",
+      "target": "tt_brainstorming",
+      "relation": "uses"
+    },
+    {
+      "source": "develop_project_charter",
+      "target": "tt_focus_groups",
+      "relation": "uses"
+    },
+    {
+      "source": "develop_project_charter",
+      "target": "tt_interviews",
+      "relation": "uses"
+    },
+    {
+      "source": "develop_project_charter",
+      "target": "tt_conflict_management",
+      "relation": "uses"
+    },
+    {
+      "source": "develop_project_charter",
+      "target": "tt_facilitation",
+      "relation": "uses"
+    },
+    {
+      "source": "develop_project_charter",
+      "target": "tt_meeting_management",
+      "relation": "uses"
+    },
+    {
+      "source": "develop_project_charter",
+      "target": "tt_meetings",
+      "relation": "uses"
+    },
+    {
+      "source": "develop_project_management_plan",
+      "target": "tt_expert_judgment",
+      "relation": "uses"
+    },
+    {
+      "source": "develop_project_management_plan",
+      "target": "tt_brainstorming",
+      "relation": "uses"
+    },
+    {
+      "source": "develop_project_management_plan",
+      "target": "tt_checklists",
+      "relation": "uses"
+    },
+    {
+      "source": "develop_project_management_plan",
+      "target": "tt_focus_groups",
+      "relation": "uses"
+    },
+    {
+      "source": "develop_project_management_plan",
+      "target": "tt_interviews",
+      "relation": "uses"
+    },
+    {
+      "source": "develop_project_management_plan",
+      "target": "tt_conflict_management",
+      "relation": "uses"
+    },
+    {
+      "source": "develop_project_management_plan",
+      "target": "tt_facilitation",
+      "relation": "uses"
+    },
+    {
+      "source": "develop_project_management_plan",
+      "target": "tt_meeting_management",
+      "relation": "uses"
+    },
+    {
+      "source": "develop_project_management_plan",
+      "target": "tt_meetings",
+      "relation": "uses"
+    },
+    {
+      "source": "direct_and_manage_project_work",
+      "target": "tt_expert_judgment",
+      "relation": "uses"
+    },
+    {
+      "source": "direct_and_manage_project_work",
+      "target": "tt_project_management_information_system",
+      "relation": "uses"
+    },
+    {
+      "source": "direct_and_manage_project_work",
+      "target": "tt_meetings",
+      "relation": "uses"
+    },
+    {
+      "source": "manage_project_knowledge",
+      "target": "tt_expert_judgment",
+      "relation": "uses"
+    },
+    {
+      "source": "manage_project_knowledge",
+      "target": "tt_knowledge_management",
+      "relation": "uses"
+    },
+    {
+      "source": "manage_project_knowledge",
+      "target": "tt_information_management",
+      "relation": "uses"
+    },
+    {
+      "source": "manage_project_knowledge",
+      "target": "tt_active_listening",
+      "relation": "uses"
+    },
+    {
+      "source": "manage_project_knowledge",
+      "target": "tt_facilitation",
+      "relation": "uses"
+    },
+    {
+      "source": "manage_project_knowledge",
+      "target": "tt_leadership",
+      "relation": "uses"
+    },
+    {
+      "source": "manage_project_knowledge",
+      "target": "tt_networking",
+      "relation": "uses"
+    },
+    {
+      "source": "manage_project_knowledge",
+      "target": "tt_political_awareness",
+      "relation": "uses"
+    },
+    {
+      "source": "monitor_and_control_project_work",
+      "target": "tt_expert_judgment",
+      "relation": "uses"
+    },
+    {
+      "source": "monitor_and_control_project_work",
+      "target": "tt_alternatives_analysis",
+      "relation": "uses"
+    },
+    {
+      "source": "monitor_and_control_project_work",
+      "target": "tt_cost_benefit_analysis",
+      "relation": "uses"
+    },
+    {
+      "source": "monitor_and_control_project_work",
+      "target": "tt_earned_value_analysis",
+      "relation": "uses"
+    },
+    {
+      "source": "monitor_and_control_project_work",
+      "target": "tt_root_cause_analysis",
+      "relation": "uses"
+    },
+    {
+      "source": "monitor_and_control_project_work",
+      "target": "tt_trend_analysis",
+      "relation": "uses"
+    },
+    {
+      "source": "monitor_and_control_project_work",
+      "target": "tt_variance_analysis",
+      "relation": "uses"
+    },
+    {
+      "source": "monitor_and_control_project_work",
+      "target": "tt_decision_making",
+      "relation": "uses"
+    },
+    {
+      "source": "monitor_and_control_project_work",
+      "target": "tt_meetings",
+      "relation": "uses"
+    },
+    {
+      "source": "perform_integrated_change_control",
+      "target": "tt_expert_judgment",
+      "relation": "uses"
+    },
+    {
+      "source": "perform_integrated_change_control",
+      "target": "tt_change_control_tools",
+      "relation": "uses"
+    },
+    {
+      "source": "perform_integrated_change_control",
+      "target": "tt_alternatives_analysis",
+      "relation": "uses"
+    },
+    {
+      "source": "perform_integrated_change_control",
+      "target": "tt_cost_benefit_analysis",
+      "relation": "uses"
+    },
+    {
+      "source": "perform_integrated_change_control",
+      "target": "tt_voting",
+      "relation": "uses"
+    },
+    {
+      "source": "perform_integrated_change_control",
+      "target": "tt_autocratic_decision_making",
+      "relation": "uses"
+    },
+    {
+      "source": "perform_integrated_change_control",
+      "target": "tt_multicriteria_decision_analysis",
+      "relation": "uses"
+    },
+    {
+      "source": "perform_integrated_change_control",
+      "target": "tt_meetings",
+      "relation": "uses"
+    },
+    {
+      "source": "close_project_or_phase",
+      "target": "tt_expert_judgment",
+      "relation": "uses"
+    },
+    {
+      "source": "close_project_or_phase",
+      "target": "tt_document_analysis",
+      "relation": "uses"
+    },
+    {
+      "source": "close_project_or_phase",
+      "target": "tt_regression_analysis",
+      "relation": "uses"
+    },
+    {
+      "source": "close_project_or_phase",
+      "target": "tt_trend_analysis",
+      "relation": "uses"
+    },
+    {
+      "source": "close_project_or_phase",
+      "target": "tt_variance_analysis",
+      "relation": "uses"
+    },
+    {
+      "source": "close_project_or_phase",
+      "target": "tt_meetings",
+      "relation": "uses"
+    },
+    {
+      "source": "plan_scope_management",
+      "target": "tt_expert_judgment",
+      "relation": "uses"
+    },
+    {
+      "source": "plan_scope_management",
+      "target": "tt_alternatives_analysis",
+      "relation": "uses"
+    },
+    {
+      "source": "plan_scope_management",
+      "target": "tt_meetings",
+      "relation": "uses"
+    },
+    {
+      "source": "collect_requirements",
+      "target": "tt_expert_judgment",
+      "relation": "uses"
+    },
+    {
+      "source": "collect_requirements",
+      "target": "tt_brainstorming",
+      "relation": "uses"
+    },
+    {
+      "source": "collect_requirements",
+      "target": "tt_interviews",
+      "relation": "uses"
+    },
+    {
+      "source": "collect_requirements",
+      "target": "tt_focus_groups",
+      "relation": "uses"
+    },
+    {
+      "source": "collect_requirements",
+      "target": "tt_questionnaires_and_surveys",
+      "relation": "uses"
+    },
+    {
+      "source": "collect_requirements",
+      "target": "tt_benchmarking",
+      "relation": "uses"
+    },
+    {
+      "source": "collect_requirements",
+      "target": "tt_document_analysis",
+      "relation": "uses"
+    },
+    {
+      "source": "collect_requirements",
+      "target": "tt_voting",
+      "relation": "uses"
+    },
+    {
+      "source": "collect_requirements",
+      "target": "tt_multicriteria_decision_analysis",
+      "relation": "uses"
+    },
+    {
+      "source": "collect_requirements",
+      "target": "tt_affinity_diagrams",
+      "relation": "uses"
+    },
+    {
+      "source": "collect_requirements",
+      "target": "tt_mind_mapping",
+      "relation": "uses"
+    },
+    {
+      "source": "collect_requirements",
+      "target": "tt_nominal_group_technique",
+      "relation": "uses"
+    },
+    {
+      "source": "collect_requirements",
+      "target": "tt_observation_conversation",
+      "relation": "uses"
+    },
+    {
+      "source": "collect_requirements",
+      "target": "tt_facilitation",
+      "relation": "uses"
+    },
+    {
+      "source": "collect_requirements",
+      "target": "tt_context_diagram",
+      "relation": "uses"
+    },
+    {
+      "source": "collect_requirements",
+      "target": "tt_prototypes",
+      "relation": "uses"
+    },
+    {
+      "source": "define_scope",
+      "target": "tt_expert_judgment",
+      "relation": "uses"
+    },
+    {
+      "source": "define_scope",
+      "target": "tt_alternatives_analysis",
+      "relation": "uses"
+    },
+    {
+      "source": "define_scope",
+      "target": "tt_multicriteria_decision_analysis",
+      "relation": "uses"
+    },
+    {
+      "source": "define_scope",
+      "target": "tt_facilitation",
+      "relation": "uses"
+    },
+    {
+      "source": "define_scope",
+      "target": "tt_product_analysis",
+      "relation": "uses"
+    },
+    {
+      "source": "create_wbs",
+      "target": "tt_expert_judgment",
+      "relation": "uses"
+    },
+    {
+      "source": "create_wbs",
+      "target": "tt_decomposition",
+      "relation": "uses"
+    },
+    {
+      "source": "validate_scope",
+      "target": "tt_inspection",
+      "relation": "uses"
+    },
+    {
+      "source": "validate_scope",
+      "target": "tt_voting",
+      "relation": "uses"
+    },
+    {
+      "source": "control_scope",
+      "target": "tt_variance_analysis",
+      "relation": "uses"
+    },
+    {
+      "source": "control_scope",
+      "target": "tt_trend_analysis",
+      "relation": "uses"
+    },
+    {
+      "source": "plan_schedule_management",
+      "target": "tt_expert_judgment",
+      "relation": "uses"
+    },
+    {
+      "source": "plan_schedule_management",
+      "target": "tt_data_analysis",
+      "relation": "uses"
+    },
+    {
+      "source": "plan_schedule_management",
+      "target": "tt_meetings",
+      "relation": "uses"
+    },
+    {
+      "source": "define_activities",
+      "target": "tt_decomposition",
+      "relation": "uses"
+    },
+    {
+      "source": "define_activities",
+      "target": "tt_rolling_wave_planning",
+      "relation": "uses"
+    },
+    {
+      "source": "define_activities",
+      "target": "tt_expert_judgment",
+      "relation": "uses"
+    },
+    {
+      "source": "define_activities",
+      "target": "tt_meetings",
+      "relation": "uses"
+    },
+    {
+      "source": "sequence_activities",
+      "target": "tt_precedence_diagramming_method",
+      "relation": "uses"
+    },
+    {
+      "source": "sequence_activities",
+      "target": "tt_dependency_determination_and_integration",
+      "relation": "uses"
+    },
+    {
+      "source": "sequence_activities",
+      "target": "tt_leads_and_lags",
+      "relation": "uses"
+    },
+    {
+      "source": "sequence_activities",
+      "target": "tt_project_management_information_system",
+      "relation": "uses"
+    },
+    {
+      "source": "estimate_activity_durations",
+      "target": "tt_expert_judgment",
+      "relation": "uses"
+    },
+    {
+      "source": "estimate_activity_durations",
+      "target": "tt_analogous_estimating",
+      "relation": "uses"
+    },
+    {
+      "source": "estimate_activity_durations",
+      "target": "tt_parametric_estimating",
+      "relation": "uses"
+    },
+    {
+      "source": "estimate_activity_durations",
+      "target": "tt_three_point_estimating",
+      "relation": "uses"
+    },
+    {
+      "source": "estimate_activity_durations",
+      "target": "tt_bottom_up_estimating",
+      "relation": "uses"
+    },
+    {
+      "source": "estimate_activity_durations",
+      "target": "tt_alternatives_analysis",
+      "relation": "uses"
+    },
+    {
+      "source": "estimate_activity_durations",
+      "target": "tt_reserve_analysis",
+      "relation": "uses"
+    },
+    {
+      "source": "estimate_activity_durations",
+      "target": "tt_decision_making",
+      "relation": "uses"
+    },
+    {
+      "source": "estimate_activity_durations",
+      "target": "tt_meetings",
+      "relation": "uses"
+    },
+    {
+      "source": "develop_schedule",
+      "target": "tt_schedule_network_analysis",
+      "relation": "uses"
+    },
+    {
+      "source": "develop_schedule",
+      "target": "tt_critical_path_method",
+      "relation": "uses"
+    },
+    {
+      "source": "develop_schedule",
+      "target": "tt_resource_optimization",
+      "relation": "uses"
+    },
+    {
+      "source": "develop_schedule",
+      "target": "tt_what_if_scenario_analysis",
+      "relation": "uses"
+    },
+    {
+      "source": "develop_schedule",
+      "target": "tt_simulation",
+      "relation": "uses"
+    },
+    {
+      "source": "develop_schedule",
+      "target": "tt_leads_and_lags",
+      "relation": "uses"
+    },
+    {
+      "source": "develop_schedule",
+      "target": "tt_schedule_compression",
+      "relation": "uses"
+    },
+    {
+      "source": "develop_schedule",
+      "target": "tt_project_management_information_system",
+      "relation": "uses"
+    },
+    {
+      "source": "develop_schedule",
+      "target": "tt_agile_release_planning",
+      "relation": "uses"
+    },
+    {
+      "source": "control_schedule",
+      "target": "tt_earned_value_analysis",
+      "relation": "uses"
+    },
+    {
+      "source": "control_schedule",
+      "target": "tt_iteration_burndown_chart",
+      "relation": "uses"
+    },
+    {
+      "source": "control_schedule",
+      "target": "tt_performance_reviews",
+      "relation": "uses"
+    },
+    {
+      "source": "control_schedule",
+      "target": "tt_trend_analysis",
+      "relation": "uses"
+    },
+    {
+      "source": "control_schedule",
+      "target": "tt_variance_analysis",
+      "relation": "uses"
+    },
+    {
+      "source": "control_schedule",
+      "target": "tt_what_if_scenario_analysis",
+      "relation": "uses"
+    },
+    {
+      "source": "control_schedule",
+      "target": "tt_critical_path_method",
+      "relation": "uses"
+    },
+    {
+      "source": "control_schedule",
+      "target": "tt_project_management_information_system",
+      "relation": "uses"
+    },
+    {
+      "source": "control_schedule",
+      "target": "tt_resource_optimization",
+      "relation": "uses"
+    },
+    {
+      "source": "control_schedule",
+      "target": "tt_leads_and_lags",
+      "relation": "uses"
+    },
+    {
+      "source": "control_schedule",
+      "target": "tt_schedule_compression",
+      "relation": "uses"
+    },
+    {
+      "source": "plan_cost_management",
+      "target": "tt_expert_judgment",
+      "relation": "uses"
+    },
+    {
+      "source": "plan_cost_management",
+      "target": "tt_data_analysis",
+      "relation": "uses"
+    },
+    {
+      "source": "plan_cost_management",
+      "target": "tt_meetings",
+      "relation": "uses"
+    },
+    {
+      "source": "estimate_costs",
+      "target": "tt_expert_judgment",
+      "relation": "uses"
+    },
+    {
+      "source": "estimate_costs",
+      "target": "tt_analogous_estimating",
+      "relation": "uses"
+    },
+    {
+      "source": "estimate_costs",
+      "target": "tt_parametric_estimating",
+      "relation": "uses"
+    },
+    {
+      "source": "estimate_costs",
+      "target": "tt_bottom_up_estimating",
+      "relation": "uses"
+    },
+    {
+      "source": "estimate_costs",
+      "target": "tt_three_point_estimating",
+      "relation": "uses"
+    },
+    {
+      "source": "estimate_costs",
+      "target": "tt_alternatives_analysis",
+      "relation": "uses"
+    },
+    {
+      "source": "estimate_costs",
+      "target": "tt_reserve_analysis",
+      "relation": "uses"
+    },
+    {
+      "source": "estimate_costs",
+      "target": "tt_cost_of_quality",
+      "relation": "uses"
+    },
+    {
+      "source": "estimate_costs",
+      "target": "tt_project_management_information_system",
+      "relation": "uses"
+    },
+    {
+      "source": "estimate_costs",
+      "target": "tt_voting",
+      "relation": "uses"
+    },
+    {
+      "source": "determine_budget",
+      "target": "tt_expert_judgment",
+      "relation": "uses"
+    },
+    {
+      "source": "determine_budget",
+      "target": "tt_cost_aggregation",
+      "relation": "uses"
+    },
+    {
+      "source": "determine_budget",
+      "target": "tt_reserve_analysis",
+      "relation": "uses"
+    },
+    {
+      "source": "determine_budget",
+      "target": "tt_historical_information_review",
+      "relation": "uses"
+    },
+    {
+      "source": "determine_budget",
+      "target": "tt_funding_limit_reconciliation",
+      "relation": "uses"
+    },
+    {
+      "source": "determine_budget",
+      "target": "tt_financing",
+      "relation": "uses"
+    },
+    {
+      "source": "control_costs",
+      "target": "tt_expert_judgment",
+      "relation": "uses"
+    },
+    {
+      "source": "control_costs",
+      "target": "tt_earned_value_analysis",
+      "relation": "uses"
+    },
+    {
+      "source": "control_costs",
+      "target": "tt_variance_analysis",
+      "relation": "uses"
+    },
+    {
+      "source": "control_costs",
+      "target": "tt_trend_analysis",
+      "relation": "uses"
+    },
+    {
+      "source": "control_costs",
+      "target": "tt_reserve_analysis",
+      "relation": "uses"
+    },
+    {
+      "source": "control_costs",
+      "target": "tt_to_complete_performance_index",
+      "relation": "uses"
+    },
+    {
+      "source": "control_costs",
+      "target": "tt_project_management_information_system",
+      "relation": "uses"
+    },
+    {
+      "source": "plan_quality_management",
+      "target": "tt_expert_judgment",
+      "relation": "uses"
+    },
+    {
+      "source": "plan_quality_management",
+      "target": "tt_benchmarking",
+      "relation": "uses"
+    },
+    {
+      "source": "plan_quality_management",
+      "target": "tt_brainstorming",
+      "relation": "uses"
+    },
+    {
+      "source": "plan_quality_management",
+      "target": "tt_interviews",
+      "relation": "uses"
+    },
+    {
+      "source": "plan_quality_management",
+      "target": "tt_cost_benefit_analysis",
+      "relation": "uses"
+    },
+    {
+      "source": "plan_quality_management",
+      "target": "tt_cost_of_quality",
+      "relation": "uses"
+    },
+    {
+      "source": "plan_quality_management",
+      "target": "tt_multicriteria_decision_analysis",
+      "relation": "uses"
+    },
+    {
+      "source": "plan_quality_management",
+      "target": "tt_flowcharts",
+      "relation": "uses"
+    },
+    {
+      "source": "plan_quality_management",
+      "target": "tt_logical_data_model",
+      "relation": "uses"
+    },
+    {
+      "source": "plan_quality_management",
+      "target": "tt_matrix_diagrams",
+      "relation": "uses"
+    },
+    {
+      "source": "plan_quality_management",
+      "target": "tt_mind_mapping",
+      "relation": "uses"
+    },
+    {
+      "source": "plan_quality_management",
+      "target": "tt_test_and_inspection_planning",
+      "relation": "uses"
+    },
+    {
+      "source": "plan_quality_management",
+      "target": "tt_meetings",
+      "relation": "uses"
+    },
+    {
+      "source": "manage_quality",
+      "target": "tt_checklists",
+      "relation": "uses"
+    },
+    {
+      "source": "manage_quality",
+      "target": "tt_alternatives_analysis",
+      "relation": "uses"
+    },
+    {
+      "source": "manage_quality",
+      "target": "tt_document_analysis",
+      "relation": "uses"
+    },
+    {
+      "source": "manage_quality",
+      "target": "tt_process_analysis",
+      "relation": "uses"
+    },
+    {
+      "source": "manage_quality",
+      "target": "tt_root_cause_analysis",
+      "relation": "uses"
+    },
+    {
+      "source": "manage_quality",
+      "target": "tt_multicriteria_decision_analysis",
+      "relation": "uses"
+    },
+    {
+      "source": "manage_quality",
+      "target": "tt_affinity_diagrams",
+      "relation": "uses"
+    },
+    {
+      "source": "manage_quality",
+      "target": "tt_cause_and_effect_diagrams",
+      "relation": "uses"
+    },
+    {
+      "source": "manage_quality",
+      "target": "tt_flowcharts",
+      "relation": "uses"
+    },
+    {
+      "source": "manage_quality",
+      "target": "tt_histograms",
+      "relation": "uses"
+    },
+    {
+      "source": "manage_quality",
+      "target": "tt_matrix_diagrams",
+      "relation": "uses"
+    },
+    {
+      "source": "manage_quality",
+      "target": "tt_scatter_diagrams",
+      "relation": "uses"
+    },
+    {
+      "source": "manage_quality",
+      "target": "tt_audits",
+      "relation": "uses"
+    },
+    {
+      "source": "manage_quality",
+      "target": "tt_design_for_x",
+      "relation": "uses"
+    },
+    {
+      "source": "manage_quality",
+      "target": "tt_problem_solving",
+      "relation": "uses"
+    },
+    {
+      "source": "manage_quality",
+      "target": "tt_quality_improvement_methods",
+      "relation": "uses"
+    },
+    {
+      "source": "control_quality",
+      "target": "tt_checklists",
+      "relation": "uses"
+    },
+    {
+      "source": "control_quality",
+      "target": "tt_check_sheets",
+      "relation": "uses"
+    },
+    {
+      "source": "control_quality",
+      "target": "tt_statistical_sampling",
+      "relation": "uses"
+    },
+    {
+      "source": "control_quality",
+      "target": "tt_questionnaires_and_surveys",
+      "relation": "uses"
+    },
+    {
+      "source": "control_quality",
+      "target": "tt_performance_reviews",
+      "relation": "uses"
+    },
+    {
+      "source": "control_quality",
+      "target": "tt_root_cause_analysis",
+      "relation": "uses"
+    },
+    {
+      "source": "control_quality",
+      "target": "tt_inspection",
+      "relation": "uses"
+    },
+    {
+      "source": "control_quality",
+      "target": "tt_testing_product_evaluations",
+      "relation": "uses"
+    },
+    {
+      "source": "control_quality",
+      "target": "tt_cause_and_effect_diagrams",
+      "relation": "uses"
+    },
+    {
+      "source": "control_quality",
+      "target": "tt_control_charts",
+      "relation": "uses"
+    },
+    {
+      "source": "control_quality",
+      "target": "tt_histograms",
+      "relation": "uses"
+    },
+    {
+      "source": "control_quality",
+      "target": "tt_scatter_diagrams",
+      "relation": "uses"
+    },
+    {
+      "source": "control_quality",
+      "target": "tt_meetings",
+      "relation": "uses"
+    },
+    {
+      "source": "plan_resource_management",
+      "target": "tt_expert_judgment",
+      "relation": "uses"
+    },
+    {
+      "source": "plan_resource_management",
+      "target": "tt_hierarchical_charts",
+      "relation": "uses"
+    },
+    {
+      "source": "plan_resource_management",
+      "target": "tt_responsibility_assignment_matrix",
+      "relation": "uses"
+    },
+    {
+      "source": "plan_resource_management",
+      "target": "tt_text_oriented_formats",
+      "relation": "uses"
+    },
+    {
+      "source": "plan_resource_management",
+      "target": "tt_organizational_theory",
+      "relation": "uses"
+    },
+    {
+      "source": "plan_resource_management",
+      "target": "tt_meetings",
+      "relation": "uses"
+    },
+    {
+      "source": "estimate_activity_resources",
+      "target": "tt_expert_judgment",
+      "relation": "uses"
+    },
+    {
+      "source": "estimate_activity_resources",
+      "target": "tt_bottom_up_estimating",
+      "relation": "uses"
+    },
+    {
+      "source": "estimate_activity_resources",
+      "target": "tt_analogous_estimating",
+      "relation": "uses"
+    },
+    {
+      "source": "estimate_activity_resources",
+      "target": "tt_parametric_estimating",
+      "relation": "uses"
+    },
+    {
+      "source": "estimate_activity_resources",
+      "target": "tt_alternatives_analysis",
+      "relation": "uses"
+    },
+    {
+      "source": "estimate_activity_resources",
+      "target": "tt_project_management_information_system",
+      "relation": "uses"
+    },
+    {
+      "source": "estimate_activity_resources",
+      "target": "tt_meetings",
+      "relation": "uses"
+    },
+    {
+      "source": "acquire_resources",
+      "target": "tt_multicriteria_decision_analysis",
+      "relation": "uses"
+    },
+    {
+      "source": "acquire_resources",
+      "target": "tt_negotiation",
+      "relation": "uses"
+    },
+    {
+      "source": "acquire_resources",
+      "target": "tt_pre_assignment",
+      "relation": "uses"
+    },
+    {
+      "source": "acquire_resources",
+      "target": "tt_virtual_teams",
+      "relation": "uses"
+    },
+    {
+      "source": "develop_team",
+      "target": "tt_colocation",
+      "relation": "uses"
+    },
+    {
+      "source": "develop_team",
+      "target": "tt_virtual_teams",
+      "relation": "uses"
+    },
+    {
+      "source": "develop_team",
+      "target": "tt_communication_technology",
+      "relation": "uses"
+    },
+    {
+      "source": "develop_team",
+      "target": "tt_conflict_management",
+      "relation": "uses"
+    },
+    {
+      "source": "develop_team",
+      "target": "tt_influencing",
+      "relation": "uses"
+    },
+    {
+      "source": "develop_team",
+      "target": "tt_motivation",
+      "relation": "uses"
+    },
+    {
+      "source": "develop_team",
+      "target": "tt_negotiation",
+      "relation": "uses"
+    },
+    {
+      "source": "develop_team",
+      "target": "tt_team_building",
+      "relation": "uses"
+    },
+    {
+      "source": "develop_team",
+      "target": "tt_recognition_and_rewards",
+      "relation": "uses"
+    },
+    {
+      "source": "develop_team",
+      "target": "tt_training",
+      "relation": "uses"
+    },
+    {
+      "source": "develop_team",
+      "target": "tt_individual_and_team_assessments",
+      "relation": "uses"
+    },
+    {
+      "source": "develop_team",
+      "target": "tt_meetings",
+      "relation": "uses"
+    },
+    {
+      "source": "manage_team",
+      "target": "tt_conflict_management",
+      "relation": "uses"
+    },
+    {
+      "source": "manage_team",
+      "target": "tt_decision_making",
+      "relation": "uses"
+    },
+    {
+      "source": "manage_team",
+      "target": "tt_emotional_intelligence",
+      "relation": "uses"
+    },
+    {
+      "source": "manage_team",
+      "target": "tt_influencing",
+      "relation": "uses"
+    },
+    {
+      "source": "manage_team",
+      "target": "tt_leadership",
+      "relation": "uses"
+    },
+    {
+      "source": "manage_team",
+      "target": "tt_project_management_information_system",
+      "relation": "uses"
+    },
+    {
+      "source": "control_resources",
+      "target": "tt_alternatives_analysis",
+      "relation": "uses"
+    },
+    {
+      "source": "control_resources",
+      "target": "tt_cost_benefit_analysis",
+      "relation": "uses"
+    },
+    {
+      "source": "control_resources",
+      "target": "tt_performance_reviews",
+      "relation": "uses"
+    },
+    {
+      "source": "control_resources",
+      "target": "tt_trend_analysis",
+      "relation": "uses"
+    },
+    {
+      "source": "control_resources",
+      "target": "tt_problem_solving",
+      "relation": "uses"
+    },
+    {
+      "source": "control_resources",
+      "target": "tt_negotiation",
+      "relation": "uses"
+    },
+    {
+      "source": "control_resources",
+      "target": "tt_influencing",
+      "relation": "uses"
+    },
+    {
+      "source": "control_resources",
+      "target": "tt_project_management_information_system",
+      "relation": "uses"
+    },
+    {
+      "source": "plan_communications_management",
+      "target": "tt_expert_judgment",
+      "relation": "uses"
+    },
+    {
+      "source": "plan_communications_management",
+      "target": "tt_communication_requirements_analysis",
+      "relation": "uses"
+    },
+    {
+      "source": "plan_communications_management",
+      "target": "tt_communication_technology",
+      "relation": "uses"
+    },
+    {
+      "source": "plan_communications_management",
+      "target": "tt_communication_models",
+      "relation": "uses"
+    },
+    {
+      "source": "plan_communications_management",
+      "target": "tt_communication_methods",
+      "relation": "uses"
+    },
+    {
+      "source": "plan_communications_management",
+      "target": "tt_communication_styles_assessment",
+      "relation": "uses"
+    },
+    {
+      "source": "plan_communications_management",
+      "target": "tt_political_awareness",
+      "relation": "uses"
+    },
+    {
+      "source": "plan_communications_management",
+      "target": "tt_cultural_awareness",
+      "relation": "uses"
+    },
+    {
+      "source": "plan_communications_management",
+      "target": "tt_stakeholder_engagement_assessment_matrix",
+      "relation": "uses"
+    },
+    {
+      "source": "plan_communications_management",
+      "target": "tt_meetings",
+      "relation": "uses"
+    },
+    {
+      "source": "manage_communications",
+      "target": "tt_communication_technology",
+      "relation": "uses"
+    },
+    {
+      "source": "manage_communications",
+      "target": "tt_communication_methods",
+      "relation": "uses"
+    },
+    {
+      "source": "manage_communications",
+      "target": "tt_communication_competence",
+      "relation": "uses"
+    },
+    {
+      "source": "manage_communications",
+      "target": "tt_feedback",
+      "relation": "uses"
+    },
+    {
+      "source": "manage_communications",
+      "target": "tt_nonverbal",
+      "relation": "uses"
+    },
+    {
+      "source": "manage_communications",
+      "target": "tt_presentations",
+      "relation": "uses"
+    },
+    {
+      "source": "manage_communications",
+      "target": "tt_project_management_information_system",
+      "relation": "uses"
+    },
+    {
+      "source": "manage_communications",
+      "target": "tt_project_reporting",
+      "relation": "uses"
+    },
+    {
+      "source": "manage_communications",
+      "target": "tt_active_listening",
+      "relation": "uses"
+    },
+    {
+      "source": "manage_communications",
+      "target": "tt_conflict_management",
+      "relation": "uses"
+    },
+    {
+      "source": "manage_communications",
+      "target": "tt_cultural_awareness",
+      "relation": "uses"
+    },
+    {
+      "source": "manage_communications",
+      "target": "tt_meeting_management",
+      "relation": "uses"
+    },
+    {
+      "source": "manage_communications",
+      "target": "tt_networking",
+      "relation": "uses"
+    },
+    {
+      "source": "manage_communications",
+      "target": "tt_political_awareness",
+      "relation": "uses"
+    },
+    {
+      "source": "manage_communications",
+      "target": "tt_meetings",
+      "relation": "uses"
+    },
+    {
+      "source": "monitor_communications",
+      "target": "tt_expert_judgment",
+      "relation": "uses"
+    },
+    {
+      "source": "monitor_communications",
+      "target": "tt_project_management_information_system",
+      "relation": "uses"
+    },
+    {
+      "source": "monitor_communications",
+      "target": "tt_stakeholder_engagement_assessment_matrix",
+      "relation": "uses"
+    },
+    {
+      "source": "monitor_communications",
+      "target": "tt_observation_conversation",
+      "relation": "uses"
+    },
+    {
+      "source": "monitor_communications",
+      "target": "tt_meetings",
+      "relation": "uses"
+    },
+    {
+      "source": "plan_risk_management",
+      "target": "tt_expert_judgment",
+      "relation": "uses"
+    },
+    {
+      "source": "plan_risk_management",
+      "target": "tt_stakeholder_analysis",
+      "relation": "uses"
+    },
+    {
+      "source": "plan_risk_management",
+      "target": "tt_meetings",
+      "relation": "uses"
+    },
+    {
+      "source": "identify_risks",
+      "target": "tt_expert_judgment",
+      "relation": "uses"
+    },
+    {
+      "source": "identify_risks",
+      "target": "tt_brainstorming",
+      "relation": "uses"
+    },
+    {
+      "source": "identify_risks",
+      "target": "tt_checklists",
+      "relation": "uses"
+    },
+    {
+      "source": "identify_risks",
+      "target": "tt_interviews",
+      "relation": "uses"
+    },
+    {
+      "source": "identify_risks",
+      "target": "tt_root_cause_analysis",
+      "relation": "uses"
+    },
+    {
+      "source": "identify_risks",
+      "target": "tt_assumption_and_constraint_analysis",
+      "relation": "uses"
+    },
+    {
+      "source": "identify_risks",
+      "target": "tt_swot_analysis",
+      "relation": "uses"
+    },
+    {
+      "source": "identify_risks",
+      "target": "tt_document_analysis",
+      "relation": "uses"
+    },
+    {
+      "source": "identify_risks",
+      "target": "tt_facilitation",
+      "relation": "uses"
+    },
+    {
+      "source": "identify_risks",
+      "target": "tt_prompt_lists",
+      "relation": "uses"
+    },
+    {
+      "source": "identify_risks",
+      "target": "tt_meetings",
+      "relation": "uses"
+    },
+    {
+      "source": "perform_qualitative_risk_analysis",
+      "target": "tt_expert_judgment",
+      "relation": "uses"
+    },
+    {
+      "source": "perform_qualitative_risk_analysis",
+      "target": "tt_interviews",
+      "relation": "uses"
+    },
+    {
+      "source": "perform_qualitative_risk_analysis",
+      "target": "tt_risk_data_quality_assessment",
+      "relation": "uses"
+    },
+    {
+      "source": "perform_qualitative_risk_analysis",
+      "target": "tt_risk_probability_and_impact_assessment",
+      "relation": "uses"
+    },
+    {
+      "source": "perform_qualitative_risk_analysis",
+      "target": "tt_assessment_of_other_risk_parameters",
+      "relation": "uses"
+    },
+    {
+      "source": "perform_qualitative_risk_analysis",
+      "target": "tt_facilitation",
+      "relation": "uses"
+    },
+    {
+      "source": "perform_qualitative_risk_analysis",
+      "target": "tt_risk_categorization",
+      "relation": "uses"
+    },
+    {
+      "source": "perform_qualitative_risk_analysis",
+      "target": "tt_probability_and_impact_matrix",
+      "relation": "uses"
+    },
+    {
+      "source": "perform_qualitative_risk_analysis",
+      "target": "tt_hierarchical_charts",
+      "relation": "uses"
+    },
+    {
+      "source": "perform_qualitative_risk_analysis",
+      "target": "tt_meetings",
+      "relation": "uses"
+    },
+    {
+      "source": "perform_quantitative_risk_analysis",
+      "target": "tt_expert_judgment",
+      "relation": "uses"
+    },
+    {
+      "source": "perform_quantitative_risk_analysis",
+      "target": "tt_interviews",
+      "relation": "uses"
+    },
+    {
+      "source": "perform_quantitative_risk_analysis",
+      "target": "tt_facilitation",
+      "relation": "uses"
+    },
+    {
+      "source": "perform_quantitative_risk_analysis",
+      "target": "tt_representations_of_uncertainty",
+      "relation": "uses"
+    },
+    {
+      "source": "perform_quantitative_risk_analysis",
+      "target": "tt_simulation",
+      "relation": "uses"
+    },
+    {
+      "source": "perform_quantitative_risk_analysis",
+      "target": "tt_sensitivity_analysis",
+      "relation": "uses"
+    },
+    {
+      "source": "perform_quantitative_risk_analysis",
+      "target": "tt_decision_tree_analysis",
+      "relation": "uses"
+    },
+    {
+      "source": "perform_quantitative_risk_analysis",
+      "target": "tt_influence_diagrams",
+      "relation": "uses"
+    },
+    {
+      "source": "plan_risk_responses",
+      "target": "tt_expert_judgment",
+      "relation": "uses"
+    },
+    {
+      "source": "plan_risk_responses",
+      "target": "tt_interviews",
+      "relation": "uses"
+    },
+    {
+      "source": "plan_risk_responses",
+      "target": "tt_facilitation",
+      "relation": "uses"
+    },
+    {
+      "source": "plan_risk_responses",
+      "target": "tt_strategies_for_threats",
+      "relation": "uses"
+    },
+    {
+      "source": "plan_risk_responses",
+      "target": "tt_strategies_for_opportunities",
+      "relation": "uses"
+    },
+    {
+      "source": "plan_risk_responses",
+      "target": "tt_contingent_response_strategies",
+      "relation": "uses"
+    },
+    {
+      "source": "plan_risk_responses",
+      "target": "tt_strategies_for_overall_project_risk",
+      "relation": "uses"
+    },
+    {
+      "source": "plan_risk_responses",
+      "target": "tt_alternatives_analysis",
+      "relation": "uses"
+    },
+    {
+      "source": "plan_risk_responses",
+      "target": "tt_cost_benefit_analysis",
+      "relation": "uses"
+    },
+    {
+      "source": "plan_risk_responses",
+      "target": "tt_multicriteria_decision_analysis",
+      "relation": "uses"
+    },
+    {
+      "source": "implement_risk_responses",
+      "target": "tt_expert_judgment",
+      "relation": "uses"
+    },
+    {
+      "source": "implement_risk_responses",
+      "target": "tt_influencing",
+      "relation": "uses"
+    },
+    {
+      "source": "implement_risk_responses",
+      "target": "tt_project_management_information_system",
+      "relation": "uses"
+    },
+    {
+      "source": "monitor_risks",
+      "target": "tt_technical_performance_analysis",
+      "relation": "uses"
+    },
+    {
+      "source": "monitor_risks",
+      "target": "tt_reserve_analysis",
+      "relation": "uses"
+    },
+    {
+      "source": "monitor_risks",
+      "target": "tt_audits",
+      "relation": "uses"
+    },
+    {
+      "source": "monitor_risks",
+      "target": "tt_meetings",
+      "relation": "uses"
+    },
+    {
+      "source": "plan_procurement_management",
+      "target": "tt_expert_judgment",
+      "relation": "uses"
+    },
+    {
+      "source": "plan_procurement_management",
+      "target": "tt_market_research",
+      "relation": "uses"
+    },
+    {
+      "source": "plan_procurement_management",
+      "target": "tt_make_or_buy_analysis",
+      "relation": "uses"
+    },
+    {
+      "source": "plan_procurement_management",
+      "target": "tt_source_selection_analysis",
+      "relation": "uses"
+    },
+    {
+      "source": "plan_procurement_management",
+      "target": "tt_meetings",
+      "relation": "uses"
+    },
+    {
+      "source": "conduct_procurements",
+      "target": "tt_expert_judgment",
+      "relation": "uses"
+    },
+    {
+      "source": "conduct_procurements",
+      "target": "tt_advertising",
+      "relation": "uses"
+    },
+    {
+      "source": "conduct_procurements",
+      "target": "tt_bidder_conferences",
+      "relation": "uses"
+    },
+    {
+      "source": "conduct_procurements",
+      "target": "tt_proposal_evaluation",
+      "relation": "uses"
+    },
+    {
+      "source": "conduct_procurements",
+      "target": "tt_negotiation",
+      "relation": "uses"
+    },
+    {
+      "source": "control_procurements",
+      "target": "tt_expert_judgment",
+      "relation": "uses"
+    },
+    {
+      "source": "control_procurements",
+      "target": "tt_claims_administration",
+      "relation": "uses"
+    },
+    {
+      "source": "control_procurements",
+      "target": "tt_performance_reviews",
+      "relation": "uses"
+    },
+    {
+      "source": "control_procurements",
+      "target": "tt_earned_value_analysis",
+      "relation": "uses"
+    },
+    {
+      "source": "control_procurements",
+      "target": "tt_trend_analysis",
+      "relation": "uses"
+    },
+    {
+      "source": "control_procurements",
+      "target": "tt_inspection",
+      "relation": "uses"
+    },
+    {
+      "source": "control_procurements",
+      "target": "tt_audits",
+      "relation": "uses"
+    },
+    {
+      "source": "identify_stakeholders",
+      "target": "tt_expert_judgment",
+      "relation": "uses"
+    },
+    {
+      "source": "identify_stakeholders",
+      "target": "tt_questionnaires_and_surveys",
+      "relation": "uses"
+    },
+    {
+      "source": "identify_stakeholders",
+      "target": "tt_brainstorming",
+      "relation": "uses"
+    },
+    {
+      "source": "identify_stakeholders",
+      "target": "tt_stakeholder_analysis",
+      "relation": "uses"
+    },
+    {
+      "source": "identify_stakeholders",
+      "target": "tt_document_analysis",
+      "relation": "uses"
+    },
+    {
+      "source": "identify_stakeholders",
+      "target": "tt_stakeholder_mapping_representation",
+      "relation": "uses"
+    },
+    {
+      "source": "identify_stakeholders",
+      "target": "tt_meetings",
+      "relation": "uses"
+    },
+    {
+      "source": "plan_stakeholder_engagement",
+      "target": "tt_expert_judgment",
+      "relation": "uses"
+    },
+    {
+      "source": "plan_stakeholder_engagement",
+      "target": "tt_benchmarking",
+      "relation": "uses"
+    },
+    {
+      "source": "plan_stakeholder_engagement",
+      "target": "tt_assumption_and_constraint_analysis",
+      "relation": "uses"
+    },
+    {
+      "source": "plan_stakeholder_engagement",
+      "target": "tt_root_cause_analysis",
+      "relation": "uses"
+    },
+    {
+      "source": "plan_stakeholder_engagement",
+      "target": "tt_prioritization_ranking",
+      "relation": "uses"
+    },
+    {
+      "source": "plan_stakeholder_engagement",
+      "target": "tt_mind_mapping",
+      "relation": "uses"
+    },
+    {
+      "source": "plan_stakeholder_engagement",
+      "target": "tt_stakeholder_engagement_assessment_matrix",
+      "relation": "uses"
+    },
+    {
+      "source": "plan_stakeholder_engagement",
+      "target": "tt_meetings",
+      "relation": "uses"
+    },
+    {
+      "source": "manage_stakeholder_engagement",
+      "target": "tt_expert_judgment",
+      "relation": "uses"
+    },
+    {
+      "source": "manage_stakeholder_engagement",
+      "target": "tt_feedback",
+      "relation": "uses"
+    },
+    {
+      "source": "manage_stakeholder_engagement",
+      "target": "tt_conflict_management",
+      "relation": "uses"
+    },
+    {
+      "source": "manage_stakeholder_engagement",
+      "target": "tt_cultural_awareness",
+      "relation": "uses"
+    },
+    {
+      "source": "manage_stakeholder_engagement",
+      "target": "tt_negotiation",
+      "relation": "uses"
+    },
+    {
+      "source": "manage_stakeholder_engagement",
+      "target": "tt_observation_conversation",
+      "relation": "uses"
+    },
+    {
+      "source": "manage_stakeholder_engagement",
+      "target": "tt_political_awareness",
+      "relation": "uses"
+    },
+    {
+      "source": "manage_stakeholder_engagement",
+      "target": "tt_ground_rules",
+      "relation": "uses"
+    },
+    {
+      "source": "manage_stakeholder_engagement",
+      "target": "tt_meetings",
+      "relation": "uses"
+    },
+    {
+      "source": "monitor_stakeholder_engagement",
+      "target": "tt_alternatives_analysis",
+      "relation": "uses"
+    },
+    {
+      "source": "monitor_stakeholder_engagement",
+      "target": "tt_root_cause_analysis",
+      "relation": "uses"
+    },
+    {
+      "source": "monitor_stakeholder_engagement",
+      "target": "tt_stakeholder_analysis",
+      "relation": "uses"
+    },
+    {
+      "source": "monitor_stakeholder_engagement",
+      "target": "tt_multicriteria_decision_analysis",
+      "relation": "uses"
+    },
+    {
+      "source": "monitor_stakeholder_engagement",
+      "target": "tt_voting",
+      "relation": "uses"
+    },
+    {
+      "source": "monitor_stakeholder_engagement",
+      "target": "tt_stakeholder_engagement_assessment_matrix",
+      "relation": "uses"
+    },
+    {
+      "source": "monitor_stakeholder_engagement",
+      "target": "tt_feedback",
+      "relation": "uses"
+    },
+    {
+      "source": "monitor_stakeholder_engagement",
+      "target": "tt_presentations",
+      "relation": "uses"
+    },
+    {
+      "source": "monitor_stakeholder_engagement",
+      "target": "tt_active_listening",
+      "relation": "uses"
+    },
+    {
+      "source": "monitor_stakeholder_engagement",
+      "target": "tt_cultural_awareness",
+      "relation": "uses"
+    },
+    {
+      "source": "monitor_stakeholder_engagement",
+      "target": "tt_leadership",
+      "relation": "uses"
+    },
+    {
+      "source": "monitor_stakeholder_engagement",
+      "target": "tt_networking",
+      "relation": "uses"
+    },
+    {
+      "source": "monitor_stakeholder_engagement",
+      "target": "tt_political_awareness",
+      "relation": "uses"
+    },
+    {
+      "source": "monitor_stakeholder_engagement",
+      "target": "tt_meetings",
+      "relation": "uses"
     }
   ]
 }

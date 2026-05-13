@@ -15,7 +15,8 @@ const defaultFilters: GraphFilters = {
   processGroup: "all",
   knowledgeArea: "all",
   nodeType: "all",
-  downstreamDepth: 2
+  downstreamDepth: 2,
+  showTechniques: false
 };
 
 export default function App() {

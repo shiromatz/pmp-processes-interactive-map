@@ -20,6 +20,10 @@ export function getArtifactNodes(graph: IttoGraph): IttoNode[] {
   return graph.nodes.filter((node) => node.type === "artifact");
 }
 
+export function getTechniqueNodes(graph: IttoGraph): IttoNode[] {
+  return graph.nodes.filter((node) => node.type === "technique");
+}
+
 export function getInputsForProcess(graph: IttoGraph, processId: string): IttoNode[] {
   return graph.edges
     .filter((edge) => edge.target === processId && edge.relation === "input_to")
@@ -59,6 +63,20 @@ export function getConsumersForArtifact(graph: IttoGraph, artifactId: string): I
   return graph.edges
     .filter((edge) => edge.source === artifactId && edge.relation === "input_to")
     .map((edge) => getNodeById(graph, edge.target))
+    .filter(isNode);
+}
+
+export function getTechniquesForProcess(graph: IttoGraph, processId: string): IttoNode[] {
+  return graph.edges
+    .filter((edge) => edge.source === processId && edge.relation === "uses")
+    .map((edge) => getNodeById(graph, edge.target))
+    .filter(isNode);
+}
+
+export function getProcessesUsingTechnique(graph: IttoGraph, techniqueId: string): IttoNode[] {
+  return graph.edges
+    .filter((edge) => edge.target === techniqueId && edge.relation === "uses")
+    .map((edge) => getNodeById(graph, edge.source))
     .filter(isNode);
 }
 
@@ -110,7 +128,7 @@ export function nodeMatchesFilters(node: IttoNode, filters: GraphFilters): boole
     }
   }
 
-  if (node.type === "artifact") {
+  if (node.type === "artifact" || node.type === "technique") {
     return filters.processGroup === "all" && filters.knowledgeArea === "all";
   }
 
@@ -144,6 +162,7 @@ export function searchNodes(
       const text = [
         node.label,
         node.type,
+        node.category ?? "",
         node.knowledgeArea ?? "",
         node.processGroup ?? ""
       ]

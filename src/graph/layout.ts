@@ -4,7 +4,8 @@ export const PROCESS_COLUMN_X = {
   inputs: 0,
   focus: 360,
   outputs: 720,
-  consumers: 1080
+  consumers: 1080,
+  techniques: 0
 };
 
 export const ARTIFACT_COLUMN_X = {
@@ -39,21 +40,44 @@ export function layoutCenteredColumn(
   return layoutVerticalColumn(items, x, startY, gap, dataForNode);
 }
 
+export function layoutGrid(
+  items: IttoNode[],
+  startX: number,
+  startY: number,
+  columns = 4,
+  xGap = 260,
+  yGap = 96,
+  dataForNode?: (node: IttoNode) => Partial<FlowNodeData>
+): IttoFlowNode[] {
+  return items.map((item, index) =>
+    toFlowNode(
+      item,
+      startX + (index % columns) * xGap,
+      startY + Math.floor(index / columns) * yGap,
+      dataForNode?.(item)
+    )
+  );
+}
+
 export function toFlowNode(
   node: IttoNode,
   x: number,
   y: number,
   data?: Partial<FlowNodeData>
 ): IttoFlowNode {
+  const nodeType =
+    node.type === "process" ? "processNode" : node.type === "technique" ? "techniqueNode" : "artifactNode";
+
   return {
     id: node.id,
-    type: node.type === "process" ? "processNode" : "artifactNode",
+    type: nodeType,
     position: { x, y },
     data: {
       label: node.label,
       nodeType: node.type,
       knowledgeArea: node.knowledgeArea,
       processGroup: node.processGroup,
+      category: node.category,
       ...data
     }
   };

@@ -16,12 +16,19 @@ const requiredEdges = [
   ["assumption_log", "sequence_activities", "input_to"],
   ["assumption_log", "identify_risks", "input_to"],
   ["conduct_procurements", "agreements", "outputs"],
-  ["control_procurements", "procurement_documentation", "updates"]
+  ["control_procurements", "procurement_documentation", "updates"],
+  ["develop_project_charter", "tt_brainstorming", "uses"],
+  ["create_wbs", "tt_decomposition", "uses"],
+  ["identify_stakeholders", "tt_stakeholder_mapping_representation", "uses"],
+  ["monitor_stakeholder_engagement", "tt_stakeholder_engagement_assessment_matrix", "uses"]
 ];
 
 const errors = [];
 const nodeIds = new Set(graph.nodes.map((node) => node.id));
+const nodesById = new Map(graph.nodes.map((node) => [node.id, node]));
 const processCount = graph.nodes.filter((node) => node.type === "process").length;
+const processIds = graph.nodes.filter((node) => node.type === "process").map((node) => node.id);
+const techniqueIds = graph.nodes.filter((node) => node.type === "technique").map((node) => node.id);
 
 if (processCount !== REQUIRED_PROCESS_COUNT) {
   errors.push(`Expected ${REQUIRED_PROCESS_COUNT} process nodes, found ${processCount}.`);
@@ -48,12 +55,37 @@ for (const edge of graph.edges) {
     errors.push(`Duplicate edge: ${key}.`);
   }
   seenEdges.add(key);
+
+  if (edge.relation === "uses") {
+    const source = nodesById.get(edge.source);
+    const target = nodesById.get(edge.target);
+
+    if (source?.type !== "process") {
+      errors.push(`Tools and techniques edge must start from a process: ${key}.`);
+    }
+
+    if (target?.type !== "technique") {
+      errors.push(`Tools and techniques edge must target a technique: ${key}.`);
+    }
+  }
 }
 
 for (const [source, target, relation] of requiredEdges) {
   const key = `${source}->${target}:${relation}`;
   if (!seenEdges.has(key)) {
     errors.push(`Required edge is missing: ${key}.`);
+  }
+}
+
+for (const processId of processIds) {
+  if (!graph.edges.some((edge) => edge.source === processId && edge.relation === "uses")) {
+    errors.push(`Process has no tools and techniques mapped: ${processId}.`);
+  }
+}
+
+for (const techniqueId of techniqueIds) {
+  if (!graph.edges.some((edge) => edge.target === techniqueId && edge.relation === "uses")) {
+    errors.push(`Technique is not mapped to any process: ${techniqueId}.`);
   }
 }
 

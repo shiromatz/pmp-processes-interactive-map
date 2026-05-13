@@ -4,7 +4,9 @@ import {
   getInputsForProcess,
   getNodeById,
   getOutputsForProcess,
+  getProcessesUsingTechnique,
   getProducersForArtifact,
+  getTechniquesForProcess,
   getUpdatesForProcess,
   getUpdatersForArtifact
 } from "../graph/selectors";
@@ -28,8 +30,10 @@ export function DetailPanel({ graph, selectedNodeId, onSelectNode }: DetailPanel
       {selectedNode ? (
         selectedNode.type === "process" ? (
           <ProcessDetails graph={graph} node={selectedNode} onSelectNode={onSelectNode} />
-        ) : (
+        ) : selectedNode.type === "artifact" ? (
           <ArtifactDetails graph={graph} node={selectedNode} onSelectNode={onSelectNode} />
+        ) : (
+          <TechniqueDetails graph={graph} node={selectedNode} onSelectNode={onSelectNode} />
         )
       ) : (
         <p className="empty-text">Choose a process or artifact to inspect relationships.</p>
@@ -50,6 +54,7 @@ function ProcessDetails({
   const inputs = getInputsForProcess(graph, node.id);
   const outputs = getOutputsForProcess(graph, node.id);
   const updates = getUpdatesForProcess(graph, node.id);
+  const techniques = getTechniquesForProcess(graph, node.id);
   const downstream = getDownstreamUsage(graph, node.id);
 
   return (
@@ -59,6 +64,7 @@ function ProcessDetails({
         <span>{node.knowledgeArea}</span>
       </div>
       <NodeList title="Inputs" nodes={inputs} onSelectNode={onSelectNode} />
+      <TechniqueList nodes={techniques} onSelectNode={onSelectNode} />
       <NodeList title="Outputs" nodes={outputs} onSelectNode={onSelectNode} />
       <NodeList title="Updates" nodes={updates} onSelectNode={onSelectNode} />
       <section className="detail-section">
@@ -114,6 +120,69 @@ function ArtifactDetails({
       <NodeList title="Updated By" nodes={updaters} onSelectNode={onSelectNode} />
       <NodeList title="Used As Input By" nodes={consumers} onSelectNode={onSelectNode} />
     </div>
+  );
+}
+
+function TechniqueDetails({
+  graph,
+  node,
+  onSelectNode
+}: {
+  graph: IttoGraph;
+  node: IttoNode;
+  onSelectNode: (nodeId: string) => void;
+}) {
+  const processes = getProcessesUsingTechnique(graph, node.id);
+
+  return (
+    <div className="details-stack">
+      <div className="detail-meta">
+        <span>Tools & Techniques</span>
+        {node.category ? <span>{node.category}</span> : null}
+      </div>
+      <NodeList title="Used By" nodes={processes} onSelectNode={onSelectNode} />
+    </div>
+  );
+}
+
+function TechniqueList({
+  nodes,
+  onSelectNode
+}: {
+  nodes: IttoNode[];
+  onSelectNode: (nodeId: string) => void;
+}) {
+  const groups = nodes.reduce<Record<string, IttoNode[]>>((grouped, node) => {
+    const key = node.category ?? "Other";
+    grouped[key] = [...(grouped[key] ?? []), node];
+    return grouped;
+  }, {});
+
+  return (
+    <section className="detail-section">
+      <h3>Tools & Techniques</h3>
+      {nodes.length > 0 ? (
+        <div className="technique-groups">
+          {Object.entries(groups).map(([category, items]) => (
+            <div className="technique-group" key={category}>
+              <h4>{category}</h4>
+              <ul className="node-list">
+                {items.map((node) => (
+                  <li key={node.id}>
+                    <button type="button" onClick={() => onSelectNode(node.id)}>
+                      <span>{node.label}</span>
+                      <small>{node.category ?? "T&T"}</small>
+                    </button>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+      ) : (
+        <p className="empty-text">No mapped tools or techniques.</p>
+      )}
+    </section>
   );
 }
 

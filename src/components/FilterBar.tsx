@@ -54,6 +54,7 @@ export function FilterBar({ filters, onChange }: FilterBarProps) {
           <option value="all">All nodes</option>
           <option value="process">Processes only</option>
           <option value="artifact">Artifacts only</option>
+          <option value="technique">T&amp;T only</option>
         </select>
       </label>
 
@@ -73,6 +74,26 @@ export function FilterBar({ filters, onChange }: FilterBarProps) {
             onClick={() => onChange({ ...filters, downstreamDepth: 2 })}
           >
             2
+          </button>
+        </div>
+      </div>
+
+      <div className="depth-control" aria-label="Tools and techniques graph visibility">
+        <span>T&amp;T in graph</span>
+        <div className="segmented-control">
+          <button
+            type="button"
+            className={!filters.showTechniques ? "is-active" : ""}
+            onClick={() => onChange({ ...filters, showTechniques: false })}
+          >
+            Off
+          </button>
+          <button
+            type="button"
+            className={filters.showTechniques ? "is-active" : ""}
+            onClick={() => onChange({ ...filters, showTechniques: true })}
+          >
+            On
           </button>
         </div>
       </div>

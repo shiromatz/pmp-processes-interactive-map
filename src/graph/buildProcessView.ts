@@ -1,6 +1,6 @@
 import type { BuiltView, GraphFilters, IttoFlowEdge, IttoGraph } from "../types/graph";
-import { getConsumersForArtifact, getInputsForProcess, getNodeById, getOutputsForProcess, getUpdatesForProcess, nodeMatchesFilters, uniqueNodes } from "./selectors";
-import { getFocusY, layoutCenteredColumn, PROCESS_COLUMN_X, toFlowNode } from "./layout";
+import { getConsumersForArtifact, getInputsForProcess, getNodeById, getOutputsForProcess, getTechniquesForProcess, getUpdatesForProcess, nodeMatchesFilters, uniqueNodes } from "./selectors";
+import { getFocusY, layoutCenteredColumn, layoutGrid, PROCESS_COLUMN_X, toFlowNode } from "./layout";
 
 export function buildProcessView(
   graph: IttoGraph,
@@ -22,6 +22,9 @@ export function buildProcessView(
     filters.downstreamDepth === 2
       ? uniqueNodes(outputs.flatMap((output) => getConsumersForArtifact(graph, output.id)))
       : [];
+  const techniques = filters.showTechniques || filters.nodeType === "technique"
+    ? uniqueNodes(getTechniquesForProcess(graph, selectedProcessId))
+    : [];
 
   const muted = (nodeId: string) => {
     const node = getNodeById(graph, nodeId);
@@ -29,6 +32,9 @@ export function buildProcessView(
   };
 
   const focusY = getFocusY([inputs.length, outputs.length, consumers.length]);
+  const relationshipBottomY =
+    focusY + ((Math.max(inputs.length, outputs.length, consumers.length, 1) - 1) * 100) / 2;
+  const techniqueStartY = relationshipBottomY + 170;
   const nodes = [
     ...layoutCenteredColumn(inputs, PROCESS_COLUMN_X.inputs, focusY, 100, (node) => ({
       muted: muted(node.id)
@@ -41,6 +47,9 @@ export function buildProcessView(
       muted: muted(node.id)
     })),
     ...layoutCenteredColumn(consumers, PROCESS_COLUMN_X.consumers, focusY, 100, (node) => ({
+      muted: muted(node.id)
+    })),
+    ...layoutGrid(techniques, PROCESS_COLUMN_X.techniques, techniqueStartY, 4, 260, 96, (node) => ({
       muted: muted(node.id)
     }))
   ];
@@ -62,30 +71,35 @@ export function buildProcessView(
           )
         )
       : [];
+  const techniqueEdges = techniques.length > 0
+    ? techniques.map((technique) => toFlowEdge(focus.id, technique.id, "uses"))
+    : [];
 
   return {
     nodes,
-    edges: [...inputEdges, ...outputEdges, ...downstreamEdges]
+    edges: [...inputEdges, ...outputEdges, ...downstreamEdges, ...techniqueEdges]
   };
 }
 
 function toFlowEdge(
   source: string,
   target: string,
-  relation: "input_to" | "outputs" | "updates"
+  relation: "input_to" | "outputs" | "updates" | "uses"
 ): IttoFlowEdge {
   return {
     id: `${source}-${target}-${relation}`,
     source,
     target,
     type: "smoothstep",
-    animated: relation === "outputs" || relation === "updates",
+    animated: relation === "outputs" || relation === "updates" || relation === "uses",
     data: { relation },
     className:
       relation === "outputs"
         ? "flow-edge--outputs"
         : relation === "updates"
           ? "flow-edge--updates"
-          : "flow-edge--input"
+          : relation === "uses"
+            ? "flow-edge--uses"
+            : "flow-edge--input"
   };
 }
