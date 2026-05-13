@@ -26,7 +26,9 @@ type GraphViewProps = {
 
 export function GraphView({ graph, selectedNodeId, filters, messages, onSelectNode }: GraphViewProps) {
   const flowInstanceRef = useRef<ReactFlowInstance<IttoFlowNode, IttoFlowEdge> | null>(null);
+  const canvasRef = useRef<HTMLDivElement | null>(null);
   const [isTransitioning, setIsTransitioning] = useState(false);
+  const [readableMinZoom, setReadableMinZoom] = useState(0.62);
   const selectedNode = getNodeById(graph, selectedNodeId);
   const nodeTypes = useMemo(
     () => ({
@@ -52,26 +54,45 @@ export function GraphView({ graph, selectedNodeId, filters, messages, onSelectNo
     return buildTechniqueView(graph, selectedNode.id, filters);
   }, [filters, graph, selectedNode]);
   const viewNodeIds = useMemo(() => view.nodes.map((node) => node.id).join("|"), [view.nodes]);
+  const viewEdgeIds = useMemo(() => view.edges.map((edge) => edge.id).join("|"), [view.edges]);
+
+  useEffect(() => {
+    if (!canvasRef.current) {
+      return;
+    }
+
+    const updateReadableMinZoom = () => {
+      const width = canvasRef.current?.clientWidth ?? 0;
+      setReadableMinZoom(width < 480 ? 0.46 : 0.62);
+    };
+
+    updateReadableMinZoom();
+    const observer = new ResizeObserver(updateReadableMinZoom);
+    observer.observe(canvasRef.current);
+    return () => observer.disconnect();
+  }, []);
 
   useEffect(() => {
     if (!flowInstanceRef.current || view.nodes.length === 0) {
       return;
     }
 
-    setIsTransitioning(true);
+    setIsTransitioning(false);
 
+    const restartTimer = window.setTimeout(() => setIsTransitioning(true), 20);
     const fitTimer = window.setTimeout(() => {
       void flowInstanceRef.current?.fitView({
         padding: 0.18,
-        duration: 650,
-        minZoom: 0.18,
+        duration: 720,
+        minZoom: readableMinZoom,
         maxZoom: 1.05,
         interpolate: "smooth"
       });
-    }, 40);
-    const transitionTimer = window.setTimeout(() => setIsTransitioning(false), 820);
+    }, 70);
+    const transitionTimer = window.setTimeout(() => setIsTransitioning(false), 980);
 
     return () => {
+      window.clearTimeout(restartTimer);
       window.clearTimeout(fitTimer);
       window.clearTimeout(transitionTimer);
     };
@@ -79,11 +100,12 @@ export function GraphView({ graph, selectedNodeId, filters, messages, onSelectNo
     selectedNodeId,
     view.nodes.length,
     viewNodeIds,
+    viewEdgeIds,
     filters.downstreamDepth,
     filters.knowledgeArea,
     filters.nodeType,
     filters.processGroup,
-    filters.showTechniques
+    readableMinZoom
   ]);
 
   return (
@@ -100,7 +122,7 @@ export function GraphView({ graph, selectedNodeId, filters, messages, onSelectNo
           <span className="legend-item legend-item--technique">{messages.toolsAndTechniques}</span>
         </div>
       </div>
-      <div className={`graph-canvas${isTransitioning ? " is-transitioning" : ""}`}>
+      <div ref={canvasRef} className={`graph-canvas${isTransitioning ? " is-transitioning" : ""}`}>
         <ReactFlow
           nodes={view.nodes}
           edges={view.edges}
@@ -111,7 +133,7 @@ export function GraphView({ graph, selectedNodeId, filters, messages, onSelectNo
           onNodeClick={(_, node) => onSelectNode(node.id)}
           fitView
           fitViewOptions={{ padding: 0.18 }}
-          minZoom={0.18}
+          minZoom={readableMinZoom}
           maxZoom={1.3}
           nodesDraggable={false}
           proOptions={{ hideAttribution: true }}
@@ -133,6 +155,7 @@ function IttoNode({ data, messages }: NodeProps<IttoFlowNode> & { messages: Mess
         ? "itto-node--technique"
         : "itto-node--artifact",
     data.isFocus ? "itto-node--focus" : "",
+    data.isRecent ? "itto-node--recent" : "",
     data.muted ? "itto-node--muted" : ""
   ]
     .filter(Boolean)
@@ -140,7 +163,8 @@ function IttoNode({ data, messages }: NodeProps<IttoFlowNode> & { messages: Mess
 
   return (
     <div className={className}>
-      <Handle type="target" position={Position.Left} />
+      <Handle id="target-left" type="target" position={Position.Left} />
+      <Handle id="source-left" type="source" position={Position.Left} />
       <div className="itto-node__kind">{messages.nodeTypes[data.nodeType]}</div>
       <div className="itto-node__label">{data.label}</div>
       {data.nodeType === "process" ? (
@@ -150,7 +174,8 @@ function IttoNode({ data, messages }: NodeProps<IttoFlowNode> & { messages: Mess
       ) : data.nodeType === "technique" ? (
         <div className="itto-node__meta">{data.category}</div>
       ) : null}
-      <Handle type="source" position={Position.Right} />
+      <Handle id="target-right" type="target" position={Position.Right} />
+      <Handle id="source-right" type="source" position={Position.Right} />
     </div>
   );
 }

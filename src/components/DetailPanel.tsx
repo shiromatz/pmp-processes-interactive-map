@@ -1,3 +1,4 @@
+import { useEffect, useMemo, useState, type ReactNode } from "react";
 import {
   getConsumersForArtifact,
   getDownstreamUsage,
@@ -12,6 +13,13 @@ import {
 } from "../graph/selectors";
 import { getNodeTypeLabel, type Locale, type Messages } from "../i18n";
 import type { IttoGraph, IttoNode } from "../types/graph";
+
+type DetailTab = {
+  id: string;
+  title: string;
+  count: number;
+  content: ReactNode;
+};
 
 type DetailPanelProps = {
   graph: IttoGraph;
@@ -63,6 +71,38 @@ function ProcessDetails({
   const updates = getUpdatesForProcess(graph, node.id);
   const techniques = getTechniquesForProcess(graph, node.id);
   const downstream = getDownstreamUsage(graph, node.id);
+  const sections: DetailTab[] = [
+    {
+      id: "inputs",
+      title: messages.inputs,
+      count: inputs.length,
+      content: <NodeList title={messages.inputs} nodes={inputs} messages={messages} locale={locale} onSelectNode={onSelectNode} />
+    },
+    {
+      id: "techniques",
+      title: messages.toolsAndTechniques,
+      count: techniques.length,
+      content: <TechniqueList nodes={techniques} messages={messages} onSelectNode={onSelectNode} />
+    },
+    {
+      id: "outputs",
+      title: messages.outputs,
+      count: outputs.length,
+      content: <NodeList title={messages.outputs} nodes={outputs} messages={messages} locale={locale} onSelectNode={onSelectNode} />
+    },
+    {
+      id: "updates",
+      title: messages.updates,
+      count: updates.length,
+      content: <NodeList title={messages.updates} nodes={updates} messages={messages} locale={locale} onSelectNode={onSelectNode} />
+    },
+    {
+      id: "downstream",
+      title: messages.downstreamUsage,
+      count: downstream.length,
+      content: <DownstreamUsage downstream={downstream} messages={messages} onSelectNode={onSelectNode} />
+    }
+  ];
 
   return (
     <div className="details-stack">
@@ -70,37 +110,7 @@ function ProcessDetails({
         <span>{node.processGroupLabel ?? node.processGroup}</span>
         <span>{node.knowledgeAreaLabel ?? node.knowledgeArea}</span>
       </div>
-      <NodeList title={messages.inputs} nodes={inputs} messages={messages} locale={locale} onSelectNode={onSelectNode} />
-      <TechniqueList nodes={techniques} messages={messages} onSelectNode={onSelectNode} />
-      <NodeList title={messages.outputs} nodes={outputs} messages={messages} locale={locale} onSelectNode={onSelectNode} />
-      <NodeList title={messages.updates} nodes={updates} messages={messages} locale={locale} onSelectNode={onSelectNode} />
-      <section className="detail-section">
-        <h3>{messages.downstreamUsage}</h3>
-        {downstream.length > 0 ? (
-          downstream.map(({ output, consumers }) => (
-            <div className="usage-group" key={output.id}>
-              <button type="button" onClick={() => onSelectNode(output.id)}>
-                {output.label}
-              </button>
-              {consumers.length > 0 ? (
-                <ul>
-                  {consumers.map((consumer) => (
-                    <li key={consumer.id}>
-                      <button type="button" onClick={() => onSelectNode(consumer.id)}>
-                        {consumer.label}
-                      </button>
-                    </li>
-                  ))}
-                </ul>
-              ) : (
-                <p className="empty-text">{messages.noMappedConsumers}</p>
-              )}
-            </div>
-          ))
-        ) : (
-          <p className="empty-text">{messages.noMappedDownstreamUsage}</p>
-        )}
-      </section>
+      <DetailTabs sections={sections} resetKey={node.id} />
     </div>
   );
 }
@@ -121,15 +131,33 @@ function ArtifactDetails({
   const producers = getProducersForArtifact(graph, node.id);
   const updaters = getUpdatersForArtifact(graph, node.id);
   const consumers = getConsumersForArtifact(graph, node.id);
+  const sections: DetailTab[] = [
+    {
+      id: "produced-by",
+      title: messages.producedBy,
+      count: producers.length,
+      content: <NodeList title={messages.producedBy} nodes={producers} messages={messages} locale={locale} onSelectNode={onSelectNode} />
+    },
+    {
+      id: "updated-by",
+      title: messages.updatedBy,
+      count: updaters.length,
+      content: <NodeList title={messages.updatedBy} nodes={updaters} messages={messages} locale={locale} onSelectNode={onSelectNode} />
+    },
+    {
+      id: "used-as-input-by",
+      title: messages.usedAsInputBy,
+      count: consumers.length,
+      content: <NodeList title={messages.usedAsInputBy} nodes={consumers} messages={messages} locale={locale} onSelectNode={onSelectNode} />
+    }
+  ];
 
   return (
     <div className="details-stack">
       <div className="detail-meta">
         <span>{getNodeTypeLabel("artifact", locale)}</span>
       </div>
-      <NodeList title={messages.producedBy} nodes={producers} messages={messages} locale={locale} onSelectNode={onSelectNode} />
-      <NodeList title={messages.updatedBy} nodes={updaters} messages={messages} locale={locale} onSelectNode={onSelectNode} />
-      <NodeList title={messages.usedAsInputBy} nodes={consumers} messages={messages} locale={locale} onSelectNode={onSelectNode} />
+      <DetailTabs sections={sections} resetKey={node.id} />
     </div>
   );
 }
@@ -148,6 +176,14 @@ function TechniqueDetails({
   onSelectNode: (nodeId: string) => void;
 }) {
   const processes = getProcessesUsingTechnique(graph, node.id);
+  const sections: DetailTab[] = [
+    {
+      id: "used-by",
+      title: messages.usedBy,
+      count: processes.length,
+      content: <NodeList title={messages.usedBy} nodes={processes} messages={messages} locale={locale} onSelectNode={onSelectNode} />
+    }
+  ];
 
   return (
     <div className="details-stack">
@@ -155,8 +191,86 @@ function TechniqueDetails({
         <span>{messages.toolsAndTechniques}</span>
         {node.category ? <span>{node.category}</span> : null}
       </div>
-      <NodeList title={messages.usedBy} nodes={processes} messages={messages} locale={locale} onSelectNode={onSelectNode} />
+      <DetailTabs sections={sections} resetKey={node.id} />
     </div>
+  );
+}
+
+function DetailTabs({ sections, resetKey }: { sections: DetailTab[]; resetKey: string }) {
+  const sectionIds = useMemo(() => sections.map((section) => section.id).join("|"), [sections]);
+  const [activeId, setActiveId] = useState(sections[0]?.id ?? "");
+
+  useEffect(() => {
+    setActiveId(sections[0]?.id ?? "");
+  }, [resetKey, sectionIds]);
+
+  const activeSection = sections.find((section) => section.id === activeId) ?? sections[0];
+
+  if (!activeSection) {
+    return null;
+  }
+
+  return (
+    <div className="detail-tabs-wrap">
+      <div className="detail-tabs" role="tablist" aria-label="Detail sections">
+        {sections.map((section) => (
+          <button
+            key={section.id}
+            type="button"
+            role="tab"
+            aria-selected={section.id === activeSection.id}
+            className={section.id === activeSection.id ? "is-active" : ""}
+            onClick={() => setActiveId(section.id)}
+          >
+            <span>{section.title}</span>
+            <small>{section.count}</small>
+          </button>
+        ))}
+      </div>
+      <div className="detail-tab-panel" role="tabpanel">
+        {activeSection.content}
+      </div>
+    </div>
+  );
+}
+
+function DownstreamUsage({
+  downstream,
+  messages,
+  onSelectNode
+}: {
+  downstream: Array<{ output: IttoNode; consumers: IttoNode[] }>;
+  messages: Messages;
+  onSelectNode: (nodeId: string) => void;
+}) {
+  return (
+    <section className="detail-section">
+      <h3>{messages.downstreamUsage}</h3>
+      {downstream.length > 0 ? (
+        downstream.map(({ output, consumers }) => (
+          <div className="usage-group" key={output.id}>
+            <button type="button" onClick={() => onSelectNode(output.id)}>
+              {output.label}
+            </button>
+            {consumers.length > 0 ? (
+              <ul>
+                {consumers.map((consumer) => (
+                  <li key={consumer.id}>
+                    <button type="button" onClick={() => onSelectNode(consumer.id)}>
+                      {consumer.label}
+                    </button>
+                  </li>
+                ))}
+              </ul>
+            ) : (
+              <p className="empty-text">{messages.noMappedConsumers}</p>
+            )}
+          </div>
+        ))
+      ) : (
+        <p className="empty-text">{messages.noMappedDownstreamUsage}</p>
+      )}
+    </section>
   );
 }
 

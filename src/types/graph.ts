@@ -54,7 +54,6 @@ export type GraphFilters = {
   knowledgeArea: KnowledgeArea | "all";
   nodeType: NodeTypeFilter;
   downstreamDepth: 1 | 2;
-  showTechniques: boolean;
 };
 
 export type FlowNodeData = {
@@ -66,6 +65,7 @@ export type FlowNodeData = {
   knowledgeAreaLabel?: string;
   processGroupLabel?: string;
   isFocus?: boolean;
+  isRecent?: boolean;
   muted?: boolean;
 };
 

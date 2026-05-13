@@ -22,11 +22,12 @@ export function buildTechniqueView(
 
   return {
     nodes: [
-      ...layoutCenteredColumn(processes, ARTIFACT_COLUMN_X.producers, focusY, 100, (node) => ({
+      ...layoutCenteredColumn(processes, ARTIFACT_COLUMN_X.producers, focusY, 78, (node) => ({
         muted: muted(node.id)
       })),
       toFlowNode(focus, ARTIFACT_COLUMN_X.focus, focusY, {
         isFocus: true,
+        isRecent: true,
         muted: muted(focus.id)
       })
     ],
@@ -39,6 +40,8 @@ function toFlowEdge(source: string, target: string): IttoFlowEdge {
     id: `${source}-${target}-uses`,
     source,
     target,
+    sourceHandle: "source-right",
+    targetHandle: "target-left",
     type: "smoothstep",
     animated: true,
     data: { relation: "uses" },

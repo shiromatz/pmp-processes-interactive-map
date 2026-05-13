@@ -5,7 +5,13 @@ import { GraphView } from "./components/GraphView";
 import { ProcessMatrix } from "./components/ProcessMatrix";
 import { SearchBox } from "./components/SearchBox";
 import ittoData from "./data/itto.json";
-import { getNodeById } from "./graph/selectors";
+import {
+  getConsumersForArtifact,
+  getNodeById,
+  getProcessesUsingTechnique,
+  getProducersForArtifact,
+  getUpdatersForArtifact
+} from "./graph/selectors";
 import { DEFAULT_LOCALE, LOCALE_OPTIONS, getMessages, isLocale, localizeGraph, type Locale } from "./i18n";
 import type { GraphFilters, IttoGraph } from "./types/graph";
 
@@ -17,8 +23,7 @@ const defaultFilters: GraphFilters = {
   processGroup: "all",
   knowledgeArea: "all",
   nodeType: "all",
-  downstreamDepth: 2,
-  showTechniques: false
+  downstreamDepth: 2
 };
 
 export default function App() {
@@ -28,6 +33,27 @@ export default function App() {
   const graph = useMemo(() => localizeGraph(baseGraph, locale), [locale]);
   const messages = useMemo(() => getMessages(locale), [locale]);
   const selectedNode = useMemo(() => getNodeById(graph, selectedNodeId), [graph, selectedNodeId]);
+  const relatedProcessIds = useMemo(() => {
+    if (!selectedNode) {
+      return new Set<string>();
+    }
+
+    if (selectedNode.type === "artifact") {
+      return new Set(
+        [
+          ...getProducersForArtifact(graph, selectedNode.id),
+          ...getUpdatersForArtifact(graph, selectedNode.id),
+          ...getConsumersForArtifact(graph, selectedNode.id)
+        ].map((node) => node.id)
+      );
+    }
+
+    if (selectedNode.type === "technique") {
+      return new Set(getProcessesUsingTechnique(graph, selectedNode.id).map((node) => node.id));
+    }
+
+    return new Set<string>();
+  }, [graph, selectedNode]);
 
   useEffect(() => {
     const handlePopState = () => {
@@ -101,6 +127,7 @@ export default function App() {
           filters={filters}
           messages={messages}
           locale={locale}
+          relatedProcessIds={relatedProcessIds}
           onSelectNode={selectNode}
         />
         <GraphView

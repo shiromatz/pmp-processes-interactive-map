@@ -2,19 +2,19 @@ import type { FlowNodeData, IttoFlowNode, IttoNode } from "../types/graph";
 
 export const PROCESS_COLUMN_X = {
   inputs: 0,
-  focus: 360,
-  outputs: 720,
-  consumers: 1080,
+  focus: 320,
+  outputs: 640,
+  consumers: 960,
   techniques: 0
 };
 
 export const ARTIFACT_COLUMN_X = {
   producers: 0,
-  focus: 360,
-  consumers: 720
+  focus: 320,
+  consumers: 640
 };
 
-export function getFocusY(columnSizes: number[], startY = 80, gap = 100): number {
+export function getFocusY(columnSizes: number[], startY = 80, gap = 78): number {
   const tallest = Math.max(...columnSizes, 1);
   return Math.max(160, startY + ((tallest - 1) * gap) / 2);
 }
@@ -23,7 +23,7 @@ export function layoutVerticalColumn(
   items: IttoNode[],
   x: number,
   startY = 80,
-  gap = 100,
+  gap = 78,
   dataForNode?: (node: IttoNode) => Partial<FlowNodeData>
 ): IttoFlowNode[] {
   return items.map((item, index) => toFlowNode(item, x, startY + index * gap, dataForNode?.(item)));
@@ -33,7 +33,7 @@ export function layoutCenteredColumn(
   items: IttoNode[],
   x: number,
   centerY: number,
-  gap = 100,
+  gap = 78,
   dataForNode?: (node: IttoNode) => Partial<FlowNodeData>
 ): IttoFlowNode[] {
   const startY = centerY - ((items.length - 1) * gap) / 2;
@@ -57,6 +57,36 @@ export function layoutGrid(
       dataForNode?.(item)
     )
   );
+}
+
+export function layoutCenteredGrid(
+  items: IttoNode[],
+  startX: number,
+  centerY: number,
+  columns = 2,
+  xGap = 260,
+  yGap = 78,
+  dataForNode?: (node: IttoNode) => Partial<FlowNodeData>
+): IttoFlowNode[] {
+  const rows = Math.ceil(items.length / columns);
+  const startY = centerY - ((rows - 1) * yGap) / 2;
+  return layoutGrid(items, startX, startY, columns, xGap, yGap, dataForNode);
+}
+
+export function getReadableGridColumns(itemCount: number): number {
+  if (itemCount >= 16) {
+    return 4;
+  }
+
+  if (itemCount >= 10) {
+    return 3;
+  }
+
+  if (itemCount >= 7) {
+    return 2;
+  }
+
+  return 1;
 }
 
 export function toFlowNode(

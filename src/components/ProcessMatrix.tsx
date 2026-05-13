@@ -9,6 +9,7 @@ type ProcessMatrixProps = {
   filters: GraphFilters;
   messages: Messages;
   locale: Locale;
+  relatedProcessIds: Set<string>;
   onSelectNode: (nodeId: string) => void;
 };
 
@@ -18,6 +19,7 @@ export function ProcessMatrix({
   filters,
   messages,
   locale,
+  relatedProcessIds,
   onSelectNode
 }: ProcessMatrixProps) {
   const processCount = getProcessNodes(graph).length;
@@ -51,10 +53,12 @@ export function ProcessMatrix({
               return (
                 <div className="matrix-cell" role="cell" key={`${area}-${group}`}>
                   {processes.map((process) => {
+                    const isRelated = relatedProcessIds.has(process.id);
                     const className = [
                       "process-chip",
                       selectedNodeId === process.id ? "is-selected" : "",
-                      !nodeMatchesFilters(process, filters) ? "is-muted" : ""
+                      isRelated ? "is-related" : "",
+                      !isRelated && !nodeMatchesFilters(process, filters) ? "is-muted" : ""
                     ]
                       .filter(Boolean)
                       .join(" ");

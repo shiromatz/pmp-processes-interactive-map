@@ -81,25 +81,6 @@ export function FilterBar({ filters, messages, locale, onChange }: FilterBarProp
         </div>
       </div>
 
-      <div className="depth-control" aria-label={messages.techniquesGraphVisibility}>
-        <span>{messages.techniquesInGraph}</span>
-        <div className="segmented-control">
-          <button
-            type="button"
-            className={!filters.showTechniques ? "is-active" : ""}
-            onClick={() => onChange({ ...filters, showTechniques: false })}
-          >
-            {messages.off}
-          </button>
-          <button
-            type="button"
-            className={filters.showTechniques ? "is-active" : ""}
-            onClick={() => onChange({ ...filters, showTechniques: true })}
-          >
-            {messages.on}
-          </button>
-        </div>
-      </div>
     </div>
   );
 }
