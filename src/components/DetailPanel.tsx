@@ -25,17 +25,52 @@ type DetailPanelProps = {
   selectedNodeId: string;
   messages: Messages;
   locale: Locale;
+  isCollapsed: boolean;
+  onToggleCollapsed: () => void;
   onSelectNode: (nodeId: string) => void;
 };
 
-export function DetailPanel({ graph, selectedNodeId, messages, locale, onSelectNode }: DetailPanelProps) {
+export function DetailPanel({
+  graph,
+  selectedNodeId,
+  messages,
+  locale,
+  isCollapsed,
+  onToggleCollapsed,
+  onSelectNode
+}: DetailPanelProps) {
   const selectedNode = getNodeById(graph, selectedNodeId);
+
+  if (isCollapsed) {
+    return (
+      <aside className="detail-panel panel-collapsed" aria-label={messages.selectedNodeDetails}>
+        <button
+          type="button"
+          className="panel-collapse-button"
+          aria-label={`${messages.expandPanel}: ${messages.detailPanel}`}
+          onClick={onToggleCollapsed}
+        >
+          <span>{messages.detailPanel}</span>
+        </button>
+      </aside>
+    );
+  }
 
   return (
     <aside className="detail-panel" aria-label={messages.selectedNodeDetails}>
-      <div className="panel-heading">
-        <p className="eyebrow">{messages.detailPanel}</p>
-        <h2>{selectedNode?.label ?? messages.noSelection}</h2>
+      <div className="panel-heading panel-heading--with-action">
+        <div>
+          <p className="eyebrow">{messages.detailPanel}</p>
+          <h2>{selectedNode?.label ?? messages.noSelection}</h2>
+        </div>
+        <button
+          type="button"
+          className="panel-icon-button"
+          aria-label={`${messages.collapsePanel}: ${messages.detailPanel}`}
+          onClick={onToggleCollapsed}
+        >
+          &gt;
+        </button>
       </div>
       {selectedNode ? (
         selectedNode.type === "process" ? (

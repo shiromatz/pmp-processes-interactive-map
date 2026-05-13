@@ -10,6 +10,8 @@ type ProcessMatrixProps = {
   messages: Messages;
   locale: Locale;
   relatedProcessIds: Set<string>;
+  isCollapsed: boolean;
+  onToggleCollapsed: () => void;
   onSelectNode: (nodeId: string) => void;
 };
 
@@ -20,15 +22,42 @@ export function ProcessMatrix({
   messages,
   locale,
   relatedProcessIds,
+  isCollapsed,
+  onToggleCollapsed,
   onSelectNode
 }: ProcessMatrixProps) {
   const processCount = getProcessNodes(graph).length;
 
+  if (isCollapsed) {
+    return (
+      <section className="matrix-panel panel-collapsed" aria-label={messages.processMatrix}>
+        <button
+          type="button"
+          className="panel-collapse-button"
+          aria-label={`${messages.expandPanel}: ${messages.processMatrix}`}
+          onClick={onToggleCollapsed}
+        >
+          <span>{messages.processMatrix}</span>
+        </button>
+      </section>
+    );
+  }
+
   return (
     <section className="matrix-panel" aria-label={messages.processMatrix}>
-      <div className="panel-heading">
-        <p className="eyebrow">{messages.processMatrix}</p>
-        <h2>{formatProcessCount(processCount, locale)}</h2>
+      <div className="panel-heading panel-heading--with-action">
+        <div>
+          <p className="eyebrow">{messages.processMatrix}</p>
+          <h2>{formatProcessCount(processCount, locale)}</h2>
+        </div>
+        <button
+          type="button"
+          className="panel-icon-button"
+          aria-label={`${messages.collapsePanel}: ${messages.processMatrix}`}
+          onClick={onToggleCollapsed}
+        >
+          &lt;
+        </button>
       </div>
       <div className="process-matrix" role="table" aria-label={messages.knowledgeAreaByProcessGroup}>
         <div className="matrix-row matrix-row--header" role="row">

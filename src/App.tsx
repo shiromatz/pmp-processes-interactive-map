@@ -29,6 +29,8 @@ export default function App() {
   const [selectedNodeId, setSelectedNodeId] = useState(() => getInitialNodeId());
   const [locale, setLocale] = useState<Locale>(() => getInitialLocale());
   const [filters, setFilters] = useState<GraphFilters>(defaultFilters);
+  const [isMatrixCollapsed, setIsMatrixCollapsed] = useState(false);
+  const [isDetailCollapsed, setIsDetailCollapsed] = useState(false);
   const graph = useMemo(() => localizeGraph(baseGraph, locale), [locale]);
   const messages = useMemo(() => getMessages(locale), [locale]);
   const selectedNode = useMemo(() => getNodeById(graph, selectedNodeId), [graph, selectedNodeId]);
@@ -118,7 +120,15 @@ export default function App() {
         <FilterBar filters={filters} messages={messages} locale={locale} onChange={setFilters} />
       </section>
 
-      <main className="workspace-layout">
+      <main
+        className={[
+          "workspace-layout",
+          isMatrixCollapsed ? "is-left-collapsed" : "",
+          isDetailCollapsed ? "is-right-collapsed" : ""
+        ]
+          .filter(Boolean)
+          .join(" ")}
+      >
         <ProcessMatrix
           graph={graph}
           selectedNodeId={selectedNodeId}
@@ -126,6 +136,8 @@ export default function App() {
           messages={messages}
           locale={locale}
           relatedProcessIds={relatedProcessIds}
+          isCollapsed={isMatrixCollapsed}
+          onToggleCollapsed={() => setIsMatrixCollapsed((collapsed) => !collapsed)}
           onSelectNode={selectNode}
         />
         <GraphView
@@ -135,7 +147,15 @@ export default function App() {
           messages={messages}
           onSelectNode={selectNode}
         />
-        <DetailPanel graph={graph} selectedNodeId={selectedNodeId} messages={messages} locale={locale} onSelectNode={selectNode} />
+        <DetailPanel
+          graph={graph}
+          selectedNodeId={selectedNodeId}
+          messages={messages}
+          locale={locale}
+          isCollapsed={isDetailCollapsed}
+          onToggleCollapsed={() => setIsDetailCollapsed((collapsed) => !collapsed)}
+          onSelectNode={selectNode}
+        />
       </main>
 
       <footer className="app-footer">

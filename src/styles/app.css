@@ -259,6 +259,18 @@ button {
   width: 100%;
 }
 
+.workspace-layout.is-left-collapsed {
+  grid-template-columns: 48px minmax(520px, 1.75fr) minmax(300px, 0.82fr);
+}
+
+.workspace-layout.is-right-collapsed {
+  grid-template-columns: minmax(330px, 0.92fr) minmax(520px, 1.75fr) 48px;
+}
+
+.workspace-layout.is-left-collapsed.is-right-collapsed {
+  grid-template-columns: 48px minmax(520px, 1fr) 48px;
+}
+
 .matrix-panel,
 .graph-panel,
 .detail-panel {
@@ -281,6 +293,67 @@ button {
 
 .panel-heading {
   margin-bottom: 12px;
+}
+
+.panel-heading--with-action {
+  align-items: flex-start;
+  display: flex;
+  gap: 10px;
+  justify-content: space-between;
+}
+
+.panel-heading--with-action > div {
+  min-width: 0;
+}
+
+.panel-icon-button,
+.panel-collapse-button {
+  background: #f4f7fa;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  color: #405069;
+  font-weight: 900;
+}
+
+.panel-icon-button {
+  flex: 0 0 auto;
+  height: 32px;
+  line-height: 1;
+  width: 32px;
+}
+
+.panel-icon-button:hover,
+.panel-collapse-button:hover {
+  background: #e9eef5;
+  border-color: #9eacbd;
+}
+
+.panel-collapsed {
+  align-items: stretch;
+  display: flex;
+  justify-content: center;
+}
+
+.matrix-panel.panel-collapsed,
+.detail-panel.panel-collapsed {
+  overflow: hidden;
+  padding: 8px;
+}
+
+.panel-collapse-button {
+  align-items: center;
+  display: inline-flex;
+  font-size: 0.72rem;
+  height: 100%;
+  justify-content: center;
+  min-height: 160px;
+  padding: 8px 4px;
+  text-transform: uppercase;
+  width: 100%;
+}
+
+.panel-collapse-button span {
+  writing-mode: vertical-rl;
 }
 
 .panel-heading h2,
@@ -418,6 +491,10 @@ button {
   background: var(--artifact-border);
 }
 
+.legend-item--technique::before {
+  background: #63b4aa;
+}
+
 .legend-line {
   border-radius: 999px;
   display: inline-block;
@@ -452,6 +529,10 @@ button {
 
 .legend-line-item--update .legend-line {
   color: var(--edge-update);
+}
+
+.legend-line-item--uses .legend-line {
+  color: #0f766e;
 }
 
 .graph-canvas {
@@ -559,6 +640,28 @@ button {
   margin-top: 6px;
 }
 
+.axis-label {
+  background: rgba(255, 255, 255, 0.88);
+  border: 1px solid #d8e0e8;
+  border-radius: 6px;
+  color: #4b5565;
+  font-size: 0.78rem;
+  font-weight: 900;
+  line-height: 1.15;
+  padding: 5px 7px;
+  pointer-events: none;
+  text-align: center;
+  width: 172px;
+}
+
+.axis-label--row {
+  background: transparent;
+  border-color: transparent;
+  color: #657184;
+  text-align: right;
+  width: 132px;
+}
+
 .react-flow__handle {
   background: #fff;
   border: 2px solid #526070;
@@ -591,8 +694,37 @@ button {
   stroke-dasharray: 8 6;
 }
 
+.react-flow__edge.is-active path {
+  filter: drop-shadow(0 2px 2px rgba(21, 31, 47, 0.22));
+  stroke-width: 3;
+}
+
+.react-flow__edge.is-dimmed path {
+  opacity: 0.22;
+}
+
+.react-flow__edge .react-flow__edge-text,
+.react-flow__edge .react-flow__edge-textbg {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 140ms ease;
+}
+
+.react-flow__edge:hover .react-flow__edge-text,
+.react-flow__edge:hover .react-flow__edge-textbg,
+.react-flow__edge.is-edge-selected .react-flow__edge-text,
+.react-flow__edge.is-edge-selected .react-flow__edge-textbg,
+.react-flow__edge.selected .react-flow__edge-text,
+.react-flow__edge.selected .react-flow__edge-textbg {
+  opacity: 1;
+}
+
 .detail-panel {
   display: block;
+}
+
+.detail-panel.panel-collapsed {
+  display: flex;
 }
 
 .details-stack {
@@ -780,6 +912,14 @@ button {
     overscroll-behavior: contain;
   }
 
+  .workspace-layout.is-left-collapsed {
+    grid-template-columns: 48px minmax(520px, 1fr);
+  }
+
+  .workspace-layout.is-right-collapsed {
+    grid-template-columns: minmax(320px, 0.85fr) minmax(520px, 1.45fr) 48px;
+  }
+
   .detail-panel {
     grid-column: 1 / -1;
     min-height: 260px;
@@ -810,6 +950,19 @@ button {
   .matrix-panel,
   .detail-panel {
     min-height: 320px;
+  }
+
+  .matrix-panel.panel-collapsed,
+  .detail-panel.panel-collapsed {
+    min-height: 48px;
+  }
+
+  .panel-collapse-button {
+    min-height: 32px;
+  }
+
+  .panel-collapse-button span {
+    writing-mode: horizontal-tb;
   }
 
   .graph-panel {

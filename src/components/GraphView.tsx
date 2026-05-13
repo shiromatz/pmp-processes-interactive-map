@@ -14,7 +14,7 @@ import { buildProcessView } from "../graph/buildProcessView";
 import { buildTechniqueView } from "../graph/buildTechniqueView";
 import { getNodeById } from "../graph/selectors";
 import type { Messages } from "../i18n";
-import type { GraphFilters, IttoFlowEdge, IttoFlowNode, IttoGraph } from "../types/graph";
+import type { GraphFilters, IttoFlowEdge, IttoFlowNode, IttoGraph, NodeType, RelationType } from "../types/graph";
 
 type GraphViewProps = {
   graph: IttoGraph;
@@ -29,12 +29,14 @@ export function GraphView({ graph, selectedNodeId, filters, messages, onSelectNo
   const canvasRef = useRef<HTMLDivElement | null>(null);
   const [isTransitioning, setIsTransitioning] = useState(false);
   const [readableMinZoom, setReadableMinZoom] = useState(0.62);
+  const [selectedEdgeId, setSelectedEdgeId] = useState<string | null>(null);
   const selectedNode = getNodeById(graph, selectedNodeId);
   const nodeTypes = useMemo(
     () => ({
       processNode: (props: NodeProps<IttoFlowNode>) => <IttoNode {...props} messages={messages} />,
       artifactNode: (props: NodeProps<IttoFlowNode>) => <IttoNode {...props} messages={messages} />,
-      techniqueNode: (props: NodeProps<IttoFlowNode>) => <IttoNode {...props} messages={messages} />
+      techniqueNode: (props: NodeProps<IttoFlowNode>) => <IttoNode {...props} messages={messages} />,
+      axisLabelNode: (props: NodeProps<IttoFlowNode>) => <AxisLabelNode {...props} />
     }),
     [messages]
   );
@@ -55,6 +57,33 @@ export function GraphView({ graph, selectedNodeId, filters, messages, onSelectNo
   }, [filters, graph, selectedNode]);
   const viewNodeIds = useMemo(() => view.nodes.map((node) => node.id).join("|"), [view.nodes]);
   const viewEdgeIds = useMemo(() => view.edges.map((edge) => edge.id).join("|"), [view.edges]);
+  const visibleEdges = useMemo<IttoFlowEdge[]>(
+    () =>
+      view.edges.map((edge): IttoFlowEdge => {
+        const isDirectConnection = edge.source === selectedNodeId || edge.target === selectedNodeId;
+        return {
+          ...edge,
+          label: getRelationLabel(edge.data?.relation, selectedNode?.type, messages),
+          labelShowBg: true,
+          labelBgPadding: [6, 3] as [number, number],
+          labelBgBorderRadius: 4,
+          labelStyle: {
+            fill: "#172033",
+            fontSize: 11,
+            fontWeight: 800
+          },
+          className: [
+            edge.className,
+            isDirectConnection ? "is-active" : "is-dimmed",
+            selectedEdgeId === edge.id ? "is-edge-selected" : ""
+          ]
+            .filter(Boolean)
+            .join(" ")
+        };
+      }),
+    [messages, selectedEdgeId, selectedNode?.type, selectedNodeId, view.edges]
+  );
+  const legendItems = useMemo(() => getLegendItems(selectedNode?.type, messages), [messages, selectedNode?.type]);
 
   useEffect(() => {
     if (!canvasRef.current) {
@@ -107,6 +136,10 @@ export function GraphView({ graph, selectedNodeId, filters, messages, onSelectNo
     readableMinZoom
   ]);
 
+  useEffect(() => {
+    setSelectedEdgeId(null);
+  }, [selectedNodeId, viewEdgeIds]);
+
   return (
     <section className="graph-panel" aria-label={messages.relationshipGraph}>
       <div className="graph-panel__header">
@@ -115,31 +148,36 @@ export function GraphView({ graph, selectedNodeId, filters, messages, onSelectNo
           <h2>{selectedNode?.label ?? messages.selectNode}</h2>
         </div>
         <div className="graph-legend" aria-label={messages.graphLegend}>
-          <span className="legend-item legend-item--process">{messages.nodeTypes.process}</span>
-          <span className="legend-item legend-item--artifact">{messages.nodeTypes.artifact}</span>
-          <span className="legend-line-item legend-line-item--input">
-            <span className="legend-line" aria-hidden="true" />
-            {messages.inputs}
-          </span>
-          <span className="legend-line-item legend-line-item--output">
-            <span className="legend-line" aria-hidden="true" />
-            {messages.outputs}
-          </span>
-          <span className="legend-line-item legend-line-item--update">
-            <span className="legend-line" aria-hidden="true" />
-            {messages.updates}
-          </span>
+          {legendItems.map((item) =>
+            item.type === "node" ? (
+              <span key={item.label} className={`legend-item legend-item--${item.nodeType}`}>
+                {item.label}
+              </span>
+            ) : (
+              <span key={item.label} className={`legend-line-item legend-line-item--${item.relation}`}>
+                <span className="legend-line" aria-hidden="true" />
+                {item.label}
+              </span>
+            )
+          )}
         </div>
       </div>
       <div ref={canvasRef} className={`graph-canvas${isTransitioning ? " is-transitioning" : ""}`}>
         <ReactFlow
           nodes={view.nodes}
-          edges={view.edges}
+          edges={visibleEdges}
           nodeTypes={nodeTypes}
           onInit={(instance) => {
             flowInstanceRef.current = instance;
           }}
-          onNodeClick={(_, node) => onSelectNode(node.id)}
+          onNodeClick={(_, node) => {
+            if (node.type !== "axisLabelNode" && node.data.nodeType) {
+              setSelectedEdgeId(null);
+              onSelectNode(node.id);
+            }
+          }}
+          onEdgeClick={(_, edge) => setSelectedEdgeId(edge.id)}
+          onPaneClick={() => setSelectedEdgeId(null)}
           fitView
           fitViewOptions={{ padding: 0.18 }}
           minZoom={readableMinZoom}
@@ -156,6 +194,10 @@ export function GraphView({ graph, selectedNodeId, filters, messages, onSelectNo
 }
 
 function IttoNode({ data, messages }: NodeProps<IttoFlowNode> & { messages: Messages }) {
+  if (!data.nodeType) {
+    return null;
+  }
+
   const className = [
     "itto-node",
     data.nodeType === "process"
@@ -185,4 +227,74 @@ function IttoNode({ data, messages }: NodeProps<IttoFlowNode> & { messages: Mess
       <Handle id="source-right" type="source" position={Position.Right} />
     </div>
   );
+}
+
+function AxisLabelNode({ data }: NodeProps<IttoFlowNode>) {
+  return <div className={`axis-label axis-label--${data.axis ?? "column"}`}>{data.label}</div>;
+}
+
+type LegendEntry =
+  | { type: "node"; nodeType: NodeType; label: string }
+  | { type: "line"; relation: "input" | "output" | "update" | "uses"; label: string };
+
+function getLegendItems(selectedType: NodeType | undefined, messages: Messages): LegendEntry[] {
+  if (selectedType === "artifact") {
+    return [
+      { type: "node", nodeType: "process", label: messages.nodeTypes.process },
+      { type: "node", nodeType: "artifact", label: messages.nodeTypes.artifact },
+      { type: "line", relation: "output", label: messages.producedBy },
+      { type: "line", relation: "input", label: messages.usedAsInputBy },
+      { type: "line", relation: "update", label: messages.updatedBy }
+    ];
+  }
+
+  if (selectedType === "technique") {
+    return [
+      { type: "node", nodeType: "process", label: messages.nodeTypes.process },
+      { type: "node", nodeType: "technique", label: messages.nodeTypes.technique },
+      { type: "line", relation: "uses", label: messages.usedBy }
+    ];
+  }
+
+  return [
+    { type: "node", nodeType: "process", label: messages.nodeTypes.process },
+    { type: "node", nodeType: "artifact", label: messages.nodeTypes.artifact },
+    { type: "line", relation: "input", label: messages.inputs },
+    { type: "line", relation: "output", label: messages.outputs },
+    { type: "line", relation: "update", label: messages.updates }
+  ];
+}
+
+function getRelationLabel(
+  relation: RelationType | undefined,
+  selectedType: NodeType | undefined,
+  messages: Messages
+): string {
+  if (selectedType === "artifact") {
+    if (relation === "outputs") {
+      return messages.producedBy;
+    }
+
+    if (relation === "input_to") {
+      return messages.usedAsInputBy;
+    }
+
+    if (relation === "updates") {
+      return messages.updatedBy;
+    }
+  }
+
+  if (relation === "outputs") {
+    return messages.outputs;
+  }
+
+  if (relation === "updates") {
+    return messages.updates;
+  }
+
+  if (relation === "uses") {
+    return messages.usedBy;
+  }
+
+  return messages.inputs;
 }

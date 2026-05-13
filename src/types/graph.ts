@@ -34,6 +34,8 @@ export type IttoNode = {
   englishCategory?: string;
   knowledgeAreaLabel?: string;
   processGroupLabel?: string;
+  knowledgeAreaShortLabel?: string;
+  processGroupShortLabel?: string;
 };
 
 export type IttoEdge = {
@@ -57,12 +59,15 @@ export type GraphFilters = {
 
 export type FlowNodeData = {
   label: string;
-  nodeType: NodeType;
+  nodeType?: NodeType;
+  axis?: "column" | "row";
   knowledgeArea?: KnowledgeArea;
   processGroup?: ProcessGroup;
   category?: string;
   knowledgeAreaLabel?: string;
   processGroupLabel?: string;
+  knowledgeAreaShortLabel?: string;
+  processGroupShortLabel?: string;
   isFocus?: boolean;
   isRecent?: boolean;
   muted?: boolean;
@@ -72,7 +77,7 @@ export type FlowEdgeData = {
   relation: RelationType;
 };
 
-export type IttoFlowNode = Node<FlowNodeData, "processNode" | "artifactNode" | "techniqueNode">;
+export type IttoFlowNode = Node<FlowNodeData, "processNode" | "artifactNode" | "techniqueNode" | "axisLabelNode">;
 export type IttoFlowEdge = Edge<FlowEdgeData>;
 
 export type BuiltView = {

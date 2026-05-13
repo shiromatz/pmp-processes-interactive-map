@@ -1,6 +1,6 @@
 import type { BuiltView, GraphFilters, IttoFlowEdge, IttoGraph } from "../types/graph";
 import { getConsumersForArtifact, getNodeById, getProducersForArtifact, getUpdatersForArtifact, nodeMatchesFilters, uniqueNodes } from "./selectors";
-import { ARTIFACT_COLUMN_X, getFocusY, layoutCenteredColumn, layoutProcessMatrixGrid, toFlowNode } from "./layout";
+import { ARTIFACT_COLUMN_X, getFocusY, layoutCenteredColumn, layoutProcessMatrixGridWithAxes, toFlowNode } from "./layout";
 
 export function buildArtifactView(
   graph: IttoGraph,
@@ -26,6 +26,9 @@ export function buildArtifactView(
     return node ? !nodeMatchesFilters(node, filters) : false;
   };
   const focusY = getFocusY([producers.length, consumers.length]);
+  const consumerLayout = layoutProcessMatrixGridWithAxes(consumers, ARTIFACT_COLUMN_X.consumers, focusY, 250, 116, (node) => ({
+    muted: muted(node.id)
+  }));
 
   const nodes = [
     ...layoutCenteredColumn(producers, ARTIFACT_COLUMN_X.producers, focusY, 116, (node) => ({
@@ -36,9 +39,8 @@ export function buildArtifactView(
       isRecent: true,
       muted: muted(focus.id)
     }),
-    ...layoutProcessMatrixGrid(consumers, ARTIFACT_COLUMN_X.consumers, focusY, 250, 116, (node) => ({
-      muted: muted(node.id)
-    }))
+    ...consumerLayout.axisNodes,
+    ...consumerLayout.nodes
   ];
   const edges = [
     ...producerNodes.map((producer) => toFlowEdge(producer.id, focus.id, "outputs")),

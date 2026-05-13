@@ -70,8 +70,14 @@ function localizeNode(node: IttoNode, locale: Locale): IttoNode {
     processGroupLabel: node.processGroup
       ? localeData[locale].processGroups[node.processGroup] ?? node.processGroup
       : undefined,
+    processGroupShortLabel: node.processGroup
+      ? localeData[locale].processGroupShort[node.processGroup] ?? localeData[locale].processGroups[node.processGroup] ?? node.processGroup
+      : undefined,
     knowledgeAreaLabel: node.knowledgeArea
       ? localeData[locale].knowledgeAreas[node.knowledgeArea] ?? node.knowledgeArea
+      : undefined,
+    knowledgeAreaShortLabel: node.knowledgeArea
+      ? localeData[locale].knowledgeAreaShort[node.knowledgeArea] ?? localeData[locale].knowledgeAreas[node.knowledgeArea] ?? node.knowledgeArea
       : undefined
   };
 }

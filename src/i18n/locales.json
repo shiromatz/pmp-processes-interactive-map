@@ -34,6 +34,8 @@
       "graphLegend": "Graph legend",
       "selectNode": "Select a node",
       "detailPanel": "Detail Panel",
+      "collapsePanel": "Collapse",
+      "expandPanel": "Expand",
       "selectedNodeDetails": "Selected node details",
       "noSelection": "No selection",
       "chooseNode": "Choose a process, artifact, or T&T item to inspect relationships.",
@@ -53,7 +55,8 @@
       "disclaimer": [
         "Unofficial study aid. Not affiliated with, endorsed by, or sponsored by PMI.",
         "PMI, PMP, and PMBOK are trademarks of Project Management Institute, Inc.",
-        "Content may contain errors or omissions. Use at your own risk; no warranty is provided for accuracy, completeness, or fitness for purpose."
+        "Content may contain errors or omissions. Use at your own risk; no warranty is provided for accuracy, completeness, or fitness for purpose.",
+        "Global metadata: source, review status, and PMBOK version apply to the dataset as a whole only (PMBOK Guide Sixth Edition process/ITTO structure); relation-level metadata is not tracked."
       ],
       "nodeTypes": {
         "process": "Process",
@@ -145,6 +148,8 @@
       "graphLegend": "グラフ凡例",
       "selectNode": "ノードを選択",
       "detailPanel": "詳細パネル",
+      "collapsePanel": "折りたたむ",
+      "expandPanel": "展開",
       "selectedNodeDetails": "選択ノードの詳細",
       "noSelection": "未選択",
       "chooseNode": "プロセス、成果物、またはT&Tを選択して関係を確認してください。",
@@ -164,7 +169,8 @@
       "disclaimer": [
         "本ツールは非公式の学習補助ツールです。PMIによる承認・後援・提携を受けたものではありません。",
         "PMI、PMP、PMBOKはProject Management Institute, Inc.の商標です。",
-        "内容には誤りや漏れが含まれる可能性があります。利用は自己責任で行ってください。正確性、完全性、特定目的への適合性を保証するものではありません。"
+        "内容には誤りや漏れが含まれる可能性があります。利用は自己責任で行ってください。正確性、完全性、特定目的への適合性を保証するものではありません。",
+        "全体メタ情報: 出典・確認状態・PMBOK版はデータセット全体にのみ適用します（PMBOK Guide 第6版のプロセス/ITTO構造）。関係単位のメタデータは保持していません。"
       ],
       "nodeTypes": {
         "process": "プロセス",
@@ -522,6 +528,8 @@
       "graphLegend": "图例",
       "selectNode": "选择节点",
       "detailPanel": "详细信息",
+      "collapsePanel": "收起",
+      "expandPanel": "展开",
       "selectedNodeDetails": "所选节点详情",
       "noSelection": "未选择",
       "chooseNode": "请选择过程、工件或T&T项来查看关系。",
@@ -541,7 +549,8 @@
       "disclaimer": [
         "本工具是非官方学习辅助工具，未获得PMI的认可、赞助或关联。",
         "PMI、PMP 和 PMBOK 是 Project Management Institute, Inc. 的商标。",
-        "内容可能包含错误或遗漏。请自行承担使用风险；不保证其准确性、完整性或特定用途适用性。"
+        "内容可能包含错误或遗漏。请自行承担使用风险；不保证其准确性、完整性或特定用途适用性。",
+        "全局元数据：来源、审核状态和PMBOK版本仅适用于整个数据集（基于《PMBOK指南》第六版的过程/ITTO结构）；未按关系记录元数据。"
       ],
       "nodeTypes": {
         "process": "过程",
