@@ -1,6 +1,6 @@
 import type { BuiltView, GraphFilters, IttoFlowEdge, IttoGraph } from "../types/graph";
 import { getNodeById, getProcessesUsingTechnique, nodeMatchesFilters, uniqueNodes } from "./selectors";
-import { ARTIFACT_COLUMN_X, getFocusY, layoutCenteredColumn, toFlowNode } from "./layout";
+import { ARTIFACT_COLUMN_X, getFocusY, layoutProcessMatrixGrid, toFlowNode } from "./layout";
 
 export function buildTechniqueView(
   graph: IttoGraph,
@@ -22,7 +22,7 @@ export function buildTechniqueView(
 
   return {
     nodes: [
-      ...layoutCenteredColumn(processes, ARTIFACT_COLUMN_X.producers, focusY, 78, (node) => ({
+      ...layoutProcessMatrixGrid(processes, ARTIFACT_COLUMN_X.producers, focusY, 250, 116, (node) => ({
         muted: muted(node.id)
       })),
       toFlowNode(focus, ARTIFACT_COLUMN_X.focus, focusY, {

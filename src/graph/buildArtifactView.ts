@@ -1,6 +1,6 @@
 import type { BuiltView, GraphFilters, IttoFlowEdge, IttoGraph } from "../types/graph";
 import { getConsumersForArtifact, getNodeById, getProducersForArtifact, getUpdatersForArtifact, nodeMatchesFilters, uniqueNodes } from "./selectors";
-import { ARTIFACT_COLUMN_X, getFocusY, getReadableGridColumns, layoutCenteredColumn, layoutCenteredGrid, toFlowNode } from "./layout";
+import { ARTIFACT_COLUMN_X, getFocusY, layoutCenteredColumn, layoutProcessMatrixGrid, toFlowNode } from "./layout";
 
 export function buildArtifactView(
   graph: IttoGraph,
@@ -26,10 +26,9 @@ export function buildArtifactView(
     return node ? !nodeMatchesFilters(node, filters) : false;
   };
   const focusY = getFocusY([producers.length, consumers.length]);
-  const consumerColumns = getReadableGridColumns(consumers.length);
 
   const nodes = [
-    ...layoutCenteredColumn(producers, ARTIFACT_COLUMN_X.producers, focusY, 78, (node) => ({
+    ...layoutCenteredColumn(producers, ARTIFACT_COLUMN_X.producers, focusY, 116, (node) => ({
       muted: muted(node.id)
     })),
     toFlowNode(focus, ARTIFACT_COLUMN_X.focus, focusY, {
@@ -37,17 +36,13 @@ export function buildArtifactView(
       isRecent: true,
       muted: muted(focus.id)
     }),
-    ...layoutCenteredGrid(consumers, ARTIFACT_COLUMN_X.consumers, focusY, consumerColumns, 250, 78, (node) => ({
+    ...layoutProcessMatrixGrid(consumers, ARTIFACT_COLUMN_X.consumers, focusY, 250, 116, (node) => ({
       muted: muted(node.id)
     }))
   ];
   const edges = [
-    ...producerNodes.map((producer) =>
-      toFlowEdge(producer.id, focus.id, "outputs", consumerIds.has(producer.id) ? "backward" : "forward")
-    ),
-    ...updaterNodes.map((producer) =>
-      toFlowEdge(producer.id, focus.id, "updates", consumerIds.has(producer.id) ? "backward" : "forward")
-    ),
+    ...producerNodes.map((producer) => toFlowEdge(producer.id, focus.id, "outputs")),
+    ...updaterNodes.map((producer) => toFlowEdge(producer.id, focus.id, "updates")),
     ...consumers.map((consumer) => toFlowEdge(focus.id, consumer.id, "input_to"))
   ];
 
@@ -57,17 +52,16 @@ export function buildArtifactView(
 function toFlowEdge(
   source: string,
   target: string,
-  relation: "input_to" | "outputs" | "updates" | "uses",
-  direction: "forward" | "backward" = "forward"
+  relation: "input_to" | "outputs" | "updates" | "uses"
 ): IttoFlowEdge {
   return {
     id: `${source}-${target}-${relation}`,
     source,
     target,
-    sourceHandle: direction === "backward" ? "source-left" : "source-right",
-    targetHandle: direction === "backward" ? "target-right" : "target-left",
+    sourceHandle: "source-right",
+    targetHandle: "target-left",
     type: "smoothstep",
-    animated: relation === "outputs" || relation === "updates",
+    animated: true,
     data: { relation },
     className:
       relation === "outputs"
@@ -82,5 +76,13 @@ function toFlowEdge(
 
 function filterVisibleEdges(nodes: BuiltView["nodes"], edges: IttoFlowEdge[]): IttoFlowEdge[] {
   const nodeIds = new Set(nodes.map((node) => node.id));
-  return edges.filter((edge) => nodeIds.has(edge.source) && nodeIds.has(edge.target));
+  const seenEdgeIds = new Set<string>();
+  return edges.filter((edge) => {
+    if (!nodeIds.has(edge.source) || !nodeIds.has(edge.target) || seenEdgeIds.has(edge.id)) {
+      return false;
+    }
+
+    seenEdgeIds.add(edge.id);
+    return true;
+  });
 }

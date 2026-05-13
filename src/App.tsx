@@ -22,8 +22,7 @@ const LOCALE_STORAGE_KEY = "pmp-itto-locale";
 const defaultFilters: GraphFilters = {
   processGroup: "all",
   knowledgeArea: "all",
-  nodeType: "all",
-  downstreamDepth: 2
+  nodeType: "all"
 };
 
 export default function App() {
@@ -97,7 +96,6 @@ export default function App() {
     <div className="app-shell">
       <header className="app-header">
         <div>
-          <p className="eyebrow">{messages.eyebrow}</p>
           <h1>{messages.title}</h1>
         </div>
         <div className="app-header__side">

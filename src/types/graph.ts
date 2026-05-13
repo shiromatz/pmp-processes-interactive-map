@@ -53,7 +53,6 @@ export type GraphFilters = {
   processGroup: ProcessGroup | "all";
   knowledgeArea: KnowledgeArea | "all";
   nodeType: NodeTypeFilter;
-  downstreamDepth: 1 | 2;
 };
 
 export type FlowNodeData = {

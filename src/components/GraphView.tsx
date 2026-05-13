@@ -101,7 +101,6 @@ export function GraphView({ graph, selectedNodeId, filters, messages, onSelectNo
     view.nodes.length,
     viewNodeIds,
     viewEdgeIds,
-    filters.downstreamDepth,
     filters.knowledgeArea,
     filters.nodeType,
     filters.processGroup,
@@ -118,8 +117,18 @@ export function GraphView({ graph, selectedNodeId, filters, messages, onSelectNo
         <div className="graph-legend" aria-label={messages.graphLegend}>
           <span className="legend-item legend-item--process">{messages.nodeTypes.process}</span>
           <span className="legend-item legend-item--artifact">{messages.nodeTypes.artifact}</span>
-          <span className="legend-item legend-item--update">{messages.updates}</span>
-          <span className="legend-item legend-item--technique">{messages.toolsAndTechniques}</span>
+          <span className="legend-line-item legend-line-item--input">
+            <span className="legend-line" aria-hidden="true" />
+            {messages.inputs}
+          </span>
+          <span className="legend-line-item legend-line-item--output">
+            <span className="legend-line" aria-hidden="true" />
+            {messages.outputs}
+          </span>
+          <span className="legend-line-item legend-line-item--update">
+            <span className="legend-line" aria-hidden="true" />
+            {messages.updates}
+          </span>
         </div>
       </div>
       <div ref={canvasRef} className={`graph-canvas${isTransitioning ? " is-transitioning" : ""}`}>
@@ -164,7 +173,6 @@ function IttoNode({ data, messages }: NodeProps<IttoFlowNode> & { messages: Mess
   return (
     <div className={className}>
       <Handle id="target-left" type="target" position={Position.Left} />
-      <Handle id="source-left" type="source" position={Position.Left} />
       <div className="itto-node__kind">{messages.nodeTypes[data.nodeType]}</div>
       <div className="itto-node__label">{data.label}</div>
       {data.nodeType === "process" ? (
@@ -174,7 +182,6 @@ function IttoNode({ data, messages }: NodeProps<IttoFlowNode> & { messages: Mess
       ) : data.nodeType === "technique" ? (
         <div className="itto-node__meta">{data.category}</div>
       ) : null}
-      <Handle id="target-right" type="target" position={Position.Right} />
       <Handle id="source-right" type="source" position={Position.Right} />
     </div>
   );

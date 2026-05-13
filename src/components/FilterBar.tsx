@@ -57,30 +57,8 @@ export function FilterBar({ filters, messages, locale, onChange }: FilterBarProp
           <option value="all">{messages.allNodes}</option>
           <option value="process">{messages.processesOnly}</option>
           <option value="artifact">{messages.artifactsOnly}</option>
-          <option value="technique">{messages.techniquesOnly}</option>
         </select>
       </label>
-
-      <div className="depth-control" aria-label={messages.downstreamDepth}>
-        <span>{messages.downstream}</span>
-        <div className="segmented-control">
-          <button
-            type="button"
-            className={filters.downstreamDepth === 1 ? "is-active" : ""}
-            onClick={() => onChange({ ...filters, downstreamDepth: 1 })}
-          >
-            1
-          </button>
-          <button
-            type="button"
-            className={filters.downstreamDepth === 2 ? "is-active" : ""}
-            onClick={() => onChange({ ...filters, downstreamDepth: 2 })}
-          >
-            2
-          </button>
-        </div>
-      </div>
-
     </div>
   );
 }

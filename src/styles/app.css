@@ -11,7 +11,8 @@
   --artifact-border: #7db58b;
   --focus-border: #111827;
   --edge-input: #687385;
-  --edge-output: #2f6fb2;
+  --edge-output: #2563eb;
+  --edge-update: #d28b28;
   --accent: #a9571b;
   --shadow: 0 14px 34px rgba(21, 31, 47, 0.08);
   font-family:
@@ -60,10 +61,10 @@ button {
 }
 
 .app-header {
-  align-items: end;
+  align-items: center;
   display: grid;
-  gap: 16px;
-  grid-template-columns: minmax(0, 1fr) minmax(260px, 480px);
+  gap: 14px;
+  grid-template-columns: minmax(0, 1fr) minmax(300px, 520px);
   margin: 0 auto;
   max-width: 1760px;
   width: 100%;
@@ -78,7 +79,7 @@ button {
 }
 
 .app-header h1 {
-  font-size: clamp(2rem, 4vw, 3.8rem);
+  font-size: clamp(1.85rem, 3.6vw, 3.45rem);
   line-height: 1;
 }
 
@@ -91,17 +92,17 @@ button {
 .app-header__side {
   align-items: end;
   display: grid;
-  gap: 10px;
+  gap: 6px;
 }
 
 .language-control {
+  align-items: center;
   color: var(--text-muted);
-  display: grid;
+  display: flex;
   font-size: 0.75rem;
   font-weight: 700;
-  gap: 6px;
+  gap: 8px;
   justify-self: end;
-  min-width: 180px;
 }
 
 .language-control select {
@@ -109,7 +110,8 @@ button {
   border: 1px solid #c6ced8;
   border-radius: 6px;
   color: var(--text-main);
-  min-height: 38px;
+  min-height: 36px;
+  min-width: 180px;
   padding: 7px 10px;
 }
 
@@ -211,7 +213,7 @@ button {
   align-items: end;
   display: grid;
   gap: 12px;
-  grid-template-columns: repeat(3, minmax(150px, 1fr)) auto;
+  grid-template-columns: repeat(3, minmax(150px, 1fr));
 }
 
 .depth-control {
@@ -384,11 +386,12 @@ button {
 .graph-legend {
   display: flex;
   flex-wrap: wrap;
-  gap: 8px;
+  gap: 10px;
   justify-content: flex-end;
 }
 
-.legend-item {
+.legend-item,
+.legend-line-item {
   align-items: center;
   color: var(--text-muted);
   display: inline-flex;
@@ -412,12 +415,40 @@ button {
   background: var(--artifact-border);
 }
 
-.legend-item--update::before {
-  background: #d28b28;
+.legend-line {
+  border-radius: 999px;
+  display: inline-block;
+  height: 3px;
+  overflow: hidden;
+  position: relative;
+  width: 28px;
 }
 
-.legend-item--technique::before {
-  background: #3f9a8d;
+.legend-line::before {
+  animation: legend-flow 680ms linear infinite;
+  background: repeating-linear-gradient(
+    90deg,
+    currentColor 0,
+    currentColor 7px,
+    transparent 7px,
+    transparent 12px
+  );
+  content: "";
+  inset: 0;
+  position: absolute;
+  width: 200%;
+}
+
+.legend-line-item--input .legend-line {
+  color: var(--edge-input);
+}
+
+.legend-line-item--output .legend-line {
+  color: var(--edge-output);
+}
+
+.legend-line-item--update .legend-line {
+  color: var(--edge-update);
 }
 
 .graph-canvas {
@@ -438,7 +469,9 @@ button {
 }
 
 .graph-canvas.is-transitioning .react-flow__edge-path {
-  animation: edge-arrive 560ms ease both;
+  animation:
+    edge-arrive 560ms ease both,
+    edge-flow 640ms linear infinite;
 }
 
 .itto-node {
@@ -532,7 +565,7 @@ button {
 
 .react-flow__edge.flow-edge--input path {
   stroke: var(--edge-input);
-  stroke-width: 2;
+  stroke-width: 2.2;
 }
 
 .react-flow__edge.flow-edge--outputs path {
@@ -541,15 +574,18 @@ button {
 }
 
 .react-flow__edge.flow-edge--updates path {
-  stroke: #d28b28;
-  stroke-dasharray: 6 5;
+  stroke: var(--edge-update);
   stroke-width: 2.3;
 }
 
 .react-flow__edge.flow-edge--uses path {
   stroke: #0f766e;
-  stroke-dasharray: 3 5;
   stroke-width: 2.2;
+}
+
+.react-flow__edge.animated path {
+  animation: edge-flow 640ms linear infinite;
+  stroke-dasharray: 8 6;
 }
 
 .detail-panel {
@@ -792,6 +828,18 @@ button {
 
   100% {
     opacity: 1;
+  }
+}
+
+@keyframes edge-flow {
+  to {
+    stroke-dashoffset: -14;
+  }
+}
+
+@keyframes legend-flow {
+  to {
+    transform: translateX(-12px);
   }
 }
 

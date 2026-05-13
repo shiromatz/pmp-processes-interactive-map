@@ -1,7 +1,6 @@
 import { useEffect, useMemo, useState, type ReactNode } from "react";
 import {
   getConsumersForArtifact,
-  getDownstreamUsage,
   getInputsForProcess,
   getNodeById,
   getOutputsForProcess,
@@ -70,7 +69,6 @@ function ProcessDetails({
   const outputs = getOutputsForProcess(graph, node.id);
   const updates = getUpdatesForProcess(graph, node.id);
   const techniques = getTechniquesForProcess(graph, node.id);
-  const downstream = getDownstreamUsage(graph, node.id);
   const sections: DetailTab[] = [
     {
       id: "inputs",
@@ -95,12 +93,6 @@ function ProcessDetails({
       title: messages.updates,
       count: updates.length,
       content: <NodeList title={messages.updates} nodes={updates} messages={messages} locale={locale} onSelectNode={onSelectNode} />
-    },
-    {
-      id: "downstream",
-      title: messages.downstreamUsage,
-      count: downstream.length,
-      content: <DownstreamUsage downstream={downstream} messages={messages} onSelectNode={onSelectNode} />
     }
   ];
 
@@ -231,46 +223,6 @@ function DetailTabs({ sections, resetKey }: { sections: DetailTab[]; resetKey: s
         {activeSection.content}
       </div>
     </div>
-  );
-}
-
-function DownstreamUsage({
-  downstream,
-  messages,
-  onSelectNode
-}: {
-  downstream: Array<{ output: IttoNode; consumers: IttoNode[] }>;
-  messages: Messages;
-  onSelectNode: (nodeId: string) => void;
-}) {
-  return (
-    <section className="detail-section">
-      <h3>{messages.downstreamUsage}</h3>
-      {downstream.length > 0 ? (
-        downstream.map(({ output, consumers }) => (
-          <div className="usage-group" key={output.id}>
-            <button type="button" onClick={() => onSelectNode(output.id)}>
-              {output.label}
-            </button>
-            {consumers.length > 0 ? (
-              <ul>
-                {consumers.map((consumer) => (
-                  <li key={consumer.id}>
-                    <button type="button" onClick={() => onSelectNode(consumer.id)}>
-                      {consumer.label}
-                    </button>
-                  </li>
-                ))}
-              </ul>
-            ) : (
-              <p className="empty-text">{messages.noMappedConsumers}</p>
-            )}
-          </div>
-        ))
-      ) : (
-        <p className="empty-text">{messages.noMappedDownstreamUsage}</p>
-      )}
-    </section>
   );
 }
 

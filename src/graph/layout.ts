@@ -1,4 +1,5 @@
 import type { FlowNodeData, IttoFlowNode, IttoNode } from "../types/graph";
+import { KNOWLEDGE_AREAS, PROCESS_GROUPS } from "../data/constants";
 
 export const PROCESS_COLUMN_X = {
   inputs: 0,
@@ -71,6 +72,64 @@ export function layoutCenteredGrid(
   const rows = Math.ceil(items.length / columns);
   const startY = centerY - ((rows - 1) * yGap) / 2;
   return layoutGrid(items, startX, startY, columns, xGap, yGap, dataForNode);
+}
+
+export function layoutProcessMatrixGrid(
+  items: IttoNode[],
+  startX: number,
+  centerY: number,
+  xGap = 260,
+  yGap = 116,
+  dataForNode?: (node: IttoNode) => Partial<FlowNodeData>
+): IttoFlowNode[] {
+  const processes = items.filter((item) => item.type === "process" && item.processGroup && item.knowledgeArea);
+
+  if (processes.length !== items.length) {
+    return layoutCenteredColumn(items, startX, centerY, yGap, dataForNode);
+  }
+
+  const groupKeys = PROCESS_GROUPS.filter((group) => processes.some((process) => process.processGroup === group));
+  const areaKeys = KNOWLEDGE_AREAS.filter((area) => processes.some((process) => process.knowledgeArea === area));
+  const cells = new Map<string, IttoNode[]>();
+
+  for (const process of processes) {
+    const key = `${process.knowledgeArea}|${process.processGroup}`;
+    cells.set(key, [...(cells.get(key) ?? []), process]);
+  }
+
+  const rowHeights = areaKeys.map((area) => {
+    const maxItemsInRow = Math.max(
+      ...groupKeys.map((group) => cells.get(`${area}|${group}`)?.length ?? 0),
+      1
+    );
+    return maxItemsInRow * yGap;
+  });
+  const totalHeight = rowHeights.reduce((sum, height) => sum + height, 0);
+  const startY = centerY - (totalHeight - yGap) / 2;
+  const rowStartByArea = new Map<string, number>();
+  let currentY = startY;
+
+  for (const [index, area] of areaKeys.entries()) {
+    rowStartByArea.set(area, currentY);
+    currentY += rowHeights[index];
+  }
+
+  return processes.map((process) => {
+    const area = process.knowledgeArea;
+    const group = process.processGroup;
+    if (!area || !group) {
+      return toFlowNode(process, startX, centerY, dataForNode?.(process));
+    }
+
+    const cellItems = cells.get(`${area}|${group}`) ?? [];
+    const stackIndex = cellItems.findIndex((item) => item.id === process.id);
+    return toFlowNode(
+      process,
+      startX + groupKeys.indexOf(group) * xGap,
+      (rowStartByArea.get(area) ?? centerY) + stackIndex * yGap,
+      dataForNode?.(process)
+    );
+  });
 }
 
 export function getReadableGridColumns(itemCount: number): number {
