@@ -83,6 +83,7 @@ export function GraphView({ graph, selectedNodeId, filters, onSelectNode }: Grap
         <div className="graph-legend" aria-label="Graph legend">
           <span className="legend-item legend-item--process">Process</span>
           <span className="legend-item legend-item--artifact">Artifact</span>
+          <span className="legend-item legend-item--update">Update</span>
         </div>
       </div>
       <div className={`graph-canvas${isTransitioning ? " is-transitioning" : ""}`}>

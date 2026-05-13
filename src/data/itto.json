@@ -343,474 +343,4372 @@
       "knowledgeArea": "Project Stakeholder Management",
       "processGroup": "Monitoring and Controlling"
     },
-    { "id": "accepted_deliverables", "label": "Accepted Deliverables", "type": "artifact" },
-    { "id": "activity_attributes", "label": "Activity Attributes", "type": "artifact" },
-    { "id": "activity_duration_estimates", "label": "Activity Duration Estimates", "type": "artifact" },
-    { "id": "activity_list", "label": "Activity List", "type": "artifact" },
-    { "id": "agreements", "label": "Agreements", "type": "artifact" },
-    { "id": "approved_change_requests", "label": "Approved Change Requests", "type": "artifact" },
-    { "id": "assumption_log", "label": "Assumption Log", "type": "artifact" },
-    { "id": "basis_of_estimates", "label": "Basis of Estimates", "type": "artifact" },
-    { "id": "bid_documents", "label": "Bid Documents", "type": "artifact" },
-    { "id": "business_documents", "label": "Business Documents", "type": "artifact" },
-    { "id": "change_log", "label": "Change Log", "type": "artifact" },
-    { "id": "change_requests", "label": "Change Requests", "type": "artifact" },
-    { "id": "communications_management_plan", "label": "Communications Management Plan", "type": "artifact" },
-    { "id": "cost_baseline", "label": "Cost Baseline", "type": "artifact" },
-    { "id": "cost_estimates", "label": "Cost Estimates", "type": "artifact" },
-    { "id": "cost_forecasts", "label": "Cost Forecasts", "type": "artifact" },
-    { "id": "cost_management_plan", "label": "Cost Management Plan", "type": "artifact" },
-    { "id": "deliverables", "label": "Deliverables", "type": "artifact" },
-    { "id": "enterprise_environmental_factors", "label": "Enterprise Environmental Factors", "type": "artifact" },
-    { "id": "final_product_service_or_result", "label": "Final Product, Service, or Result", "type": "artifact" },
-    { "id": "final_report", "label": "Final Report", "type": "artifact" },
-    { "id": "issue_log", "label": "Issue Log", "type": "artifact" },
-    { "id": "lessons_learned_register", "label": "Lessons Learned Register", "type": "artifact" },
-    { "id": "milestone_list", "label": "Milestone List", "type": "artifact" },
-    { "id": "organizational_process_assets", "label": "Organizational Process Assets", "type": "artifact" },
-    { "id": "organizational_process_assets_updates", "label": "Organizational Process Assets Updates", "type": "artifact" },
-    { "id": "physical_resource_assignments", "label": "Physical Resource Assignments", "type": "artifact" },
-    { "id": "procurement_agreements", "label": "Procurement Agreements", "type": "artifact" },
-    { "id": "procurement_closure_records", "label": "Procurement Closure Records", "type": "artifact" },
-    { "id": "procurement_documentation", "label": "Procurement Documentation", "type": "artifact" },
-    { "id": "procurement_management_plan", "label": "Procurement Management Plan", "type": "artifact" },
-    { "id": "procurement_statement_of_work", "label": "Procurement Statement of Work", "type": "artifact" },
-    { "id": "project_charter", "label": "Project Charter", "type": "artifact" },
-    { "id": "project_communications", "label": "Project Communications", "type": "artifact" },
-    { "id": "project_documents", "label": "Project Documents", "type": "artifact" },
-    { "id": "project_documents_updates", "label": "Project Documents Updates", "type": "artifact" },
-    { "id": "project_funding_requirements", "label": "Project Funding Requirements", "type": "artifact" },
-    { "id": "project_management_plan", "label": "Project Management Plan", "type": "artifact" },
-    { "id": "project_management_plan_updates", "label": "Project Management Plan Updates", "type": "artifact" },
-    { "id": "project_schedule", "label": "Project Schedule", "type": "artifact" },
-    { "id": "project_schedule_network_diagrams", "label": "Project Schedule Network Diagrams", "type": "artifact" },
-    { "id": "project_scope_statement", "label": "Project Scope Statement", "type": "artifact" },
-    { "id": "project_team_assignments", "label": "Project Team Assignments", "type": "artifact" },
-    { "id": "quality_control_measurements", "label": "Quality Control Measurements", "type": "artifact" },
-    { "id": "quality_management_plan", "label": "Quality Management Plan", "type": "artifact" },
-    { "id": "quality_metrics", "label": "Quality Metrics", "type": "artifact" },
-    { "id": "quality_reports", "label": "Quality Reports", "type": "artifact" },
-    { "id": "requirements_documentation", "label": "Requirements Documentation", "type": "artifact" },
-    { "id": "requirements_management_plan", "label": "Requirements Management Plan", "type": "artifact" },
-    { "id": "requirements_traceability_matrix", "label": "Requirements Traceability Matrix", "type": "artifact" },
-    { "id": "resource_breakdown_structure", "label": "Resource Breakdown Structure", "type": "artifact" },
-    { "id": "resource_calendars", "label": "Resource Calendars", "type": "artifact" },
-    { "id": "resource_management_plan", "label": "Resource Management Plan", "type": "artifact" },
-    { "id": "resource_requirements", "label": "Resource Requirements", "type": "artifact" },
-    { "id": "risk_management_plan", "label": "Risk Management Plan", "type": "artifact" },
-    { "id": "risk_register", "label": "Risk Register", "type": "artifact" },
-    { "id": "risk_report", "label": "Risk Report", "type": "artifact" },
-    { "id": "schedule_baseline", "label": "Schedule Baseline", "type": "artifact" },
-    { "id": "schedule_data", "label": "Schedule Data", "type": "artifact" },
-    { "id": "schedule_forecasts", "label": "Schedule Forecasts", "type": "artifact" },
-    { "id": "schedule_management_plan", "label": "Schedule Management Plan", "type": "artifact" },
-    { "id": "scope_baseline", "label": "Scope Baseline", "type": "artifact" },
-    { "id": "scope_management_plan", "label": "Scope Management Plan", "type": "artifact" },
-    { "id": "selected_sellers", "label": "Selected Sellers", "type": "artifact" },
-    { "id": "seller_proposals", "label": "Seller Proposals", "type": "artifact" },
-    { "id": "stakeholder_engagement_plan", "label": "Stakeholder Engagement Plan", "type": "artifact" },
-    { "id": "stakeholder_register", "label": "Stakeholder Register", "type": "artifact" },
-    { "id": "team_charter", "label": "Team Charter", "type": "artifact" },
-    { "id": "team_performance_assessments", "label": "Team Performance Assessments", "type": "artifact" },
-    { "id": "test_and_evaluation_documents", "label": "Test and Evaluation Documents", "type": "artifact" },
-    { "id": "verified_deliverables", "label": "Verified Deliverables", "type": "artifact" },
-    { "id": "wbs", "label": "WBS", "type": "artifact" },
-    { "id": "wbs_dictionary", "label": "WBS Dictionary", "type": "artifact" },
-    { "id": "work_performance_data", "label": "Work Performance Data", "type": "artifact" },
-    { "id": "work_performance_information", "label": "Work Performance Information", "type": "artifact" },
-    { "id": "work_performance_reports", "label": "Work Performance Reports", "type": "artifact" }
+    {
+      "id": "accepted_deliverables",
+      "label": "Accepted Deliverables",
+      "type": "artifact"
+    },
+    {
+      "id": "activity_attributes",
+      "label": "Activity Attributes",
+      "type": "artifact"
+    },
+    {
+      "id": "activity_duration_estimates",
+      "label": "Duration Estimates",
+      "type": "artifact"
+    },
+    {
+      "id": "activity_list",
+      "label": "Activity List",
+      "type": "artifact"
+    },
+    {
+      "id": "agreements",
+      "label": "Agreements",
+      "type": "artifact"
+    },
+    {
+      "id": "approved_change_requests",
+      "label": "Approved Change Requests",
+      "type": "artifact"
+    },
+    {
+      "id": "assumption_log",
+      "label": "Assumption Log",
+      "type": "artifact"
+    },
+    {
+      "id": "basis_of_estimates",
+      "label": "Basis of Estimates",
+      "type": "artifact"
+    },
+    {
+      "id": "bid_documents",
+      "label": "Bid Documents",
+      "type": "artifact"
+    },
+    {
+      "id": "business_documents",
+      "label": "Business Documents",
+      "type": "artifact"
+    },
+    {
+      "id": "change_log",
+      "label": "Change Log",
+      "type": "artifact"
+    },
+    {
+      "id": "change_requests",
+      "label": "Change Requests",
+      "type": "artifact"
+    },
+    {
+      "id": "communications_management_plan",
+      "label": "Communications Management Plan",
+      "type": "artifact"
+    },
+    {
+      "id": "cost_baseline",
+      "label": "Cost Baseline",
+      "type": "artifact"
+    },
+    {
+      "id": "cost_estimates",
+      "label": "Cost Estimates",
+      "type": "artifact"
+    },
+    {
+      "id": "cost_forecasts",
+      "label": "Cost Forecasts",
+      "type": "artifact"
+    },
+    {
+      "id": "cost_management_plan",
+      "label": "Cost Management Plan",
+      "type": "artifact"
+    },
+    {
+      "id": "deliverables",
+      "label": "Deliverables",
+      "type": "artifact"
+    },
+    {
+      "id": "enterprise_environmental_factors",
+      "label": "Enterprise Environmental Factors",
+      "type": "artifact"
+    },
+    {
+      "id": "final_product_service_or_result",
+      "label": "Final Product, Service, or Result",
+      "type": "artifact"
+    },
+    {
+      "id": "final_report",
+      "label": "Final Report",
+      "type": "artifact"
+    },
+    {
+      "id": "issue_log",
+      "label": "Issue Log",
+      "type": "artifact"
+    },
+    {
+      "id": "lessons_learned_register",
+      "label": "Lessons Learned Register",
+      "type": "artifact"
+    },
+    {
+      "id": "milestone_list",
+      "label": "Milestone List",
+      "type": "artifact"
+    },
+    {
+      "id": "organizational_process_assets",
+      "label": "Organizational Process Assets",
+      "type": "artifact"
+    },
+    {
+      "id": "physical_resource_assignments",
+      "label": "Physical Resource Assignments",
+      "type": "artifact"
+    },
+    {
+      "id": "procurement_documentation",
+      "label": "Procurement Documentation",
+      "type": "artifact"
+    },
+    {
+      "id": "procurement_management_plan",
+      "label": "Procurement Management Plan",
+      "type": "artifact"
+    },
+    {
+      "id": "procurement_statement_of_work",
+      "label": "Procurement Statement of Work",
+      "type": "artifact"
+    },
+    {
+      "id": "project_charter",
+      "label": "Project Charter",
+      "type": "artifact"
+    },
+    {
+      "id": "project_communications",
+      "label": "Project Communications",
+      "type": "artifact"
+    },
+    {
+      "id": "project_documents",
+      "label": "Project Documents",
+      "type": "artifact"
+    },
+    {
+      "id": "project_funding_requirements",
+      "label": "Project Funding Requirements",
+      "type": "artifact"
+    },
+    {
+      "id": "project_management_plan",
+      "label": "Project Management Plan",
+      "type": "artifact"
+    },
+    {
+      "id": "project_schedule",
+      "label": "Project Schedule",
+      "type": "artifact"
+    },
+    {
+      "id": "project_schedule_network_diagrams",
+      "label": "Project Schedule Network Diagrams",
+      "type": "artifact"
+    },
+    {
+      "id": "project_scope_statement",
+      "label": "Project Scope Statement",
+      "type": "artifact"
+    },
+    {
+      "id": "project_team_assignments",
+      "label": "Project Team Assignments",
+      "type": "artifact"
+    },
+    {
+      "id": "quality_control_measurements",
+      "label": "Quality Control Measurements",
+      "type": "artifact"
+    },
+    {
+      "id": "quality_management_plan",
+      "label": "Quality Management Plan",
+      "type": "artifact"
+    },
+    {
+      "id": "quality_metrics",
+      "label": "Quality Metrics",
+      "type": "artifact"
+    },
+    {
+      "id": "quality_reports",
+      "label": "Quality Reports",
+      "type": "artifact"
+    },
+    {
+      "id": "requirements_documentation",
+      "label": "Requirements Documentation",
+      "type": "artifact"
+    },
+    {
+      "id": "requirements_management_plan",
+      "label": "Requirements Management Plan",
+      "type": "artifact"
+    },
+    {
+      "id": "requirements_traceability_matrix",
+      "label": "Requirements Traceability Matrix",
+      "type": "artifact"
+    },
+    {
+      "id": "resource_breakdown_structure",
+      "label": "Resource Breakdown Structure",
+      "type": "artifact"
+    },
+    {
+      "id": "resource_calendars",
+      "label": "Resource Calendars",
+      "type": "artifact"
+    },
+    {
+      "id": "resource_management_plan",
+      "label": "Resource Management Plan",
+      "type": "artifact"
+    },
+    {
+      "id": "resource_requirements",
+      "label": "Resource Requirements",
+      "type": "artifact"
+    },
+    {
+      "id": "risk_management_plan",
+      "label": "Risk Management Plan",
+      "type": "artifact"
+    },
+    {
+      "id": "risk_register",
+      "label": "Risk Register",
+      "type": "artifact"
+    },
+    {
+      "id": "risk_report",
+      "label": "Risk Report",
+      "type": "artifact"
+    },
+    {
+      "id": "schedule_baseline",
+      "label": "Schedule Baseline",
+      "type": "artifact"
+    },
+    {
+      "id": "schedule_data",
+      "label": "Schedule Data",
+      "type": "artifact"
+    },
+    {
+      "id": "schedule_forecasts",
+      "label": "Schedule Forecasts",
+      "type": "artifact"
+    },
+    {
+      "id": "schedule_management_plan",
+      "label": "Schedule Management Plan",
+      "type": "artifact"
+    },
+    {
+      "id": "scope_baseline",
+      "label": "Scope Baseline",
+      "type": "artifact"
+    },
+    {
+      "id": "scope_management_plan",
+      "label": "Scope Management Plan",
+      "type": "artifact"
+    },
+    {
+      "id": "selected_sellers",
+      "label": "Selected Sellers",
+      "type": "artifact"
+    },
+    {
+      "id": "seller_proposals",
+      "label": "Seller Proposals",
+      "type": "artifact"
+    },
+    {
+      "id": "stakeholder_engagement_plan",
+      "label": "Stakeholder Engagement Plan",
+      "type": "artifact"
+    },
+    {
+      "id": "stakeholder_register",
+      "label": "Stakeholder Register",
+      "type": "artifact"
+    },
+    {
+      "id": "team_charter",
+      "label": "Team Charter",
+      "type": "artifact"
+    },
+    {
+      "id": "team_performance_assessments",
+      "label": "Team Performance Assessments",
+      "type": "artifact"
+    },
+    {
+      "id": "test_and_evaluation_documents",
+      "label": "Test and Evaluation Documents",
+      "type": "artifact"
+    },
+    {
+      "id": "verified_deliverables",
+      "label": "Verified Deliverables",
+      "type": "artifact"
+    },
+    {
+      "id": "wbs",
+      "label": "WBS",
+      "type": "artifact"
+    },
+    {
+      "id": "wbs_dictionary",
+      "label": "WBS Dictionary",
+      "type": "artifact"
+    },
+    {
+      "id": "work_performance_data",
+      "label": "Work Performance Data",
+      "type": "artifact"
+    },
+    {
+      "id": "work_performance_information",
+      "label": "Work Performance Information",
+      "type": "artifact"
+    },
+    {
+      "id": "work_performance_reports",
+      "label": "Work Performance Reports",
+      "type": "artifact"
+    },
+    {
+      "id": "change_management_plan",
+      "label": "Change Management Plan",
+      "type": "artifact"
+    },
+    {
+      "id": "configuration_management_plan",
+      "label": "Configuration Management Plan",
+      "type": "artifact"
+    },
+    {
+      "id": "performance_measurement_baseline",
+      "label": "Performance Measurement Baseline",
+      "type": "artifact"
+    },
+    {
+      "id": "project_calendars",
+      "label": "Project Calendars",
+      "type": "artifact"
+    },
+    {
+      "id": "procurement_strategy",
+      "label": "Procurement Strategy",
+      "type": "artifact"
+    },
+    {
+      "id": "source_selection_criteria",
+      "label": "Source Selection Criteria",
+      "type": "artifact"
+    },
+    {
+      "id": "make_or_buy_decisions",
+      "label": "Make-or-Buy Decisions",
+      "type": "artifact"
+    },
+    {
+      "id": "independent_cost_estimates",
+      "label": "Independent Cost Estimates",
+      "type": "artifact"
+    },
+    {
+      "id": "closed_procurements",
+      "label": "Closed Procurements",
+      "type": "artifact"
+    }
   ],
   "edges": [
-    { "source": "business_documents", "target": "develop_project_charter", "relation": "input_to" },
-    { "source": "agreements", "target": "develop_project_charter", "relation": "input_to" },
-    { "source": "enterprise_environmental_factors", "target": "develop_project_charter", "relation": "input_to" },
-    { "source": "organizational_process_assets", "target": "develop_project_charter", "relation": "input_to" },
-    { "source": "develop_project_charter", "target": "project_charter", "relation": "outputs" },
-    { "source": "develop_project_charter", "target": "assumption_log", "relation": "outputs" },
-
-    { "source": "project_charter", "target": "develop_project_management_plan", "relation": "input_to" },
-    { "source": "scope_management_plan", "target": "develop_project_management_plan", "relation": "input_to" },
-    { "source": "schedule_management_plan", "target": "develop_project_management_plan", "relation": "input_to" },
-    { "source": "cost_management_plan", "target": "develop_project_management_plan", "relation": "input_to" },
-    { "source": "quality_management_plan", "target": "develop_project_management_plan", "relation": "input_to" },
-    { "source": "resource_management_plan", "target": "develop_project_management_plan", "relation": "input_to" },
-    { "source": "communications_management_plan", "target": "develop_project_management_plan", "relation": "input_to" },
-    { "source": "risk_management_plan", "target": "develop_project_management_plan", "relation": "input_to" },
-    { "source": "procurement_management_plan", "target": "develop_project_management_plan", "relation": "input_to" },
-    { "source": "stakeholder_engagement_plan", "target": "develop_project_management_plan", "relation": "input_to" },
-    { "source": "develop_project_management_plan", "target": "project_management_plan", "relation": "outputs" },
-
-    { "source": "project_management_plan", "target": "direct_and_manage_project_work", "relation": "input_to" },
-    { "source": "approved_change_requests", "target": "direct_and_manage_project_work", "relation": "input_to" },
-    { "source": "project_documents", "target": "direct_and_manage_project_work", "relation": "input_to" },
-    { "source": "enterprise_environmental_factors", "target": "direct_and_manage_project_work", "relation": "input_to" },
-    { "source": "organizational_process_assets", "target": "direct_and_manage_project_work", "relation": "input_to" },
-    { "source": "direct_and_manage_project_work", "target": "deliverables", "relation": "outputs" },
-    { "source": "direct_and_manage_project_work", "target": "work_performance_data", "relation": "outputs" },
-    { "source": "direct_and_manage_project_work", "target": "issue_log", "relation": "outputs" },
-    { "source": "direct_and_manage_project_work", "target": "change_requests", "relation": "outputs" },
-
-    { "source": "project_management_plan", "target": "manage_project_knowledge", "relation": "input_to" },
-    { "source": "project_documents", "target": "manage_project_knowledge", "relation": "input_to" },
-    { "source": "deliverables", "target": "manage_project_knowledge", "relation": "input_to" },
-    { "source": "organizational_process_assets", "target": "manage_project_knowledge", "relation": "input_to" },
-    { "source": "manage_project_knowledge", "target": "lessons_learned_register", "relation": "outputs" },
-    { "source": "manage_project_knowledge", "target": "project_management_plan_updates", "relation": "outputs" },
-    { "source": "manage_project_knowledge", "target": "organizational_process_assets_updates", "relation": "outputs" },
-
-    { "source": "project_management_plan", "target": "monitor_and_control_project_work", "relation": "input_to" },
-    { "source": "project_documents", "target": "monitor_and_control_project_work", "relation": "input_to" },
-    { "source": "work_performance_information", "target": "monitor_and_control_project_work", "relation": "input_to" },
-    { "source": "agreements", "target": "monitor_and_control_project_work", "relation": "input_to" },
-    { "source": "enterprise_environmental_factors", "target": "monitor_and_control_project_work", "relation": "input_to" },
-    { "source": "organizational_process_assets", "target": "monitor_and_control_project_work", "relation": "input_to" },
-    { "source": "monitor_and_control_project_work", "target": "work_performance_reports", "relation": "outputs" },
-    { "source": "monitor_and_control_project_work", "target": "change_requests", "relation": "outputs" },
-
-    { "source": "project_management_plan", "target": "perform_integrated_change_control", "relation": "input_to" },
-    { "source": "project_documents", "target": "perform_integrated_change_control", "relation": "input_to" },
-    { "source": "work_performance_reports", "target": "perform_integrated_change_control", "relation": "input_to" },
-    { "source": "change_requests", "target": "perform_integrated_change_control", "relation": "input_to" },
-    { "source": "perform_integrated_change_control", "target": "approved_change_requests", "relation": "outputs" },
-    { "source": "perform_integrated_change_control", "target": "change_log", "relation": "outputs" },
-    { "source": "perform_integrated_change_control", "target": "project_management_plan_updates", "relation": "outputs" },
-    { "source": "perform_integrated_change_control", "target": "project_documents_updates", "relation": "outputs" },
-
-    { "source": "project_charter", "target": "close_project_or_phase", "relation": "input_to" },
-    { "source": "project_management_plan", "target": "close_project_or_phase", "relation": "input_to" },
-    { "source": "project_documents", "target": "close_project_or_phase", "relation": "input_to" },
-    { "source": "accepted_deliverables", "target": "close_project_or_phase", "relation": "input_to" },
-    { "source": "business_documents", "target": "close_project_or_phase", "relation": "input_to" },
-    { "source": "agreements", "target": "close_project_or_phase", "relation": "input_to" },
-    { "source": "procurement_documentation", "target": "close_project_or_phase", "relation": "input_to" },
-    { "source": "organizational_process_assets", "target": "close_project_or_phase", "relation": "input_to" },
-    { "source": "close_project_or_phase", "target": "final_product_service_or_result", "relation": "outputs" },
-    { "source": "close_project_or_phase", "target": "final_report", "relation": "outputs" },
-    { "source": "close_project_or_phase", "target": "organizational_process_assets_updates", "relation": "outputs" },
-
-    { "source": "project_charter", "target": "plan_scope_management", "relation": "input_to" },
-    { "source": "project_management_plan", "target": "plan_scope_management", "relation": "input_to" },
-    { "source": "enterprise_environmental_factors", "target": "plan_scope_management", "relation": "input_to" },
-    { "source": "organizational_process_assets", "target": "plan_scope_management", "relation": "input_to" },
-    { "source": "plan_scope_management", "target": "scope_management_plan", "relation": "outputs" },
-    { "source": "plan_scope_management", "target": "requirements_management_plan", "relation": "outputs" },
-
-    { "source": "project_charter", "target": "collect_requirements", "relation": "input_to" },
-    { "source": "project_management_plan", "target": "collect_requirements", "relation": "input_to" },
-    { "source": "project_documents", "target": "collect_requirements", "relation": "input_to" },
-    { "source": "stakeholder_register", "target": "collect_requirements", "relation": "input_to" },
-    { "source": "collect_requirements", "target": "requirements_documentation", "relation": "outputs" },
-    { "source": "collect_requirements", "target": "requirements_traceability_matrix", "relation": "outputs" },
-
-    { "source": "project_charter", "target": "define_scope", "relation": "input_to" },
-    { "source": "scope_management_plan", "target": "define_scope", "relation": "input_to" },
-    { "source": "requirements_documentation", "target": "define_scope", "relation": "input_to" },
-    { "source": "project_documents", "target": "define_scope", "relation": "input_to" },
-    { "source": "define_scope", "target": "project_scope_statement", "relation": "outputs" },
-    { "source": "define_scope", "target": "project_documents_updates", "relation": "outputs" },
-
-    { "source": "scope_management_plan", "target": "create_wbs", "relation": "input_to" },
-    { "source": "requirements_documentation", "target": "create_wbs", "relation": "input_to" },
-    { "source": "project_scope_statement", "target": "create_wbs", "relation": "input_to" },
-    { "source": "create_wbs", "target": "wbs", "relation": "outputs" },
-    { "source": "create_wbs", "target": "wbs_dictionary", "relation": "outputs" },
-    { "source": "create_wbs", "target": "scope_baseline", "relation": "outputs" },
-
-    { "source": "project_management_plan", "target": "validate_scope", "relation": "input_to" },
-    { "source": "project_documents", "target": "validate_scope", "relation": "input_to" },
-    { "source": "verified_deliverables", "target": "validate_scope", "relation": "input_to" },
-    { "source": "work_performance_data", "target": "validate_scope", "relation": "input_to" },
-    { "source": "validate_scope", "target": "accepted_deliverables", "relation": "outputs" },
-    { "source": "validate_scope", "target": "work_performance_information", "relation": "outputs" },
-    { "source": "validate_scope", "target": "change_requests", "relation": "outputs" },
-
-    { "source": "project_management_plan", "target": "control_scope", "relation": "input_to" },
-    { "source": "project_documents", "target": "control_scope", "relation": "input_to" },
-    { "source": "work_performance_data", "target": "control_scope", "relation": "input_to" },
-    { "source": "control_scope", "target": "work_performance_information", "relation": "outputs" },
-    { "source": "control_scope", "target": "change_requests", "relation": "outputs" },
-    { "source": "control_scope", "target": "project_management_plan_updates", "relation": "outputs" },
-
-    { "source": "project_charter", "target": "plan_schedule_management", "relation": "input_to" },
-    { "source": "project_management_plan", "target": "plan_schedule_management", "relation": "input_to" },
-    { "source": "enterprise_environmental_factors", "target": "plan_schedule_management", "relation": "input_to" },
-    { "source": "organizational_process_assets", "target": "plan_schedule_management", "relation": "input_to" },
-    { "source": "plan_schedule_management", "target": "schedule_management_plan", "relation": "outputs" },
-
-    { "source": "schedule_management_plan", "target": "define_activities", "relation": "input_to" },
-    { "source": "scope_baseline", "target": "define_activities", "relation": "input_to" },
-    { "source": "enterprise_environmental_factors", "target": "define_activities", "relation": "input_to" },
-    { "source": "organizational_process_assets", "target": "define_activities", "relation": "input_to" },
-    { "source": "define_activities", "target": "activity_list", "relation": "outputs" },
-    { "source": "define_activities", "target": "activity_attributes", "relation": "outputs" },
-    { "source": "define_activities", "target": "milestone_list", "relation": "outputs" },
-
-    { "source": "activity_list", "target": "sequence_activities", "relation": "input_to" },
-    { "source": "activity_attributes", "target": "sequence_activities", "relation": "input_to" },
-    { "source": "milestone_list", "target": "sequence_activities", "relation": "input_to" },
-    { "source": "project_scope_statement", "target": "sequence_activities", "relation": "input_to" },
-    { "source": "sequence_activities", "target": "project_schedule_network_diagrams", "relation": "outputs" },
-    { "source": "sequence_activities", "target": "project_documents_updates", "relation": "outputs" },
-
-    { "source": "activity_list", "target": "estimate_activity_durations", "relation": "input_to" },
-    { "source": "activity_attributes", "target": "estimate_activity_durations", "relation": "input_to" },
-    { "source": "resource_requirements", "target": "estimate_activity_durations", "relation": "input_to" },
-    { "source": "resource_calendars", "target": "estimate_activity_durations", "relation": "input_to" },
-    { "source": "enterprise_environmental_factors", "target": "estimate_activity_durations", "relation": "input_to" },
-    { "source": "organizational_process_assets", "target": "estimate_activity_durations", "relation": "input_to" },
-    { "source": "estimate_activity_durations", "target": "activity_duration_estimates", "relation": "outputs" },
-    { "source": "estimate_activity_durations", "target": "basis_of_estimates", "relation": "outputs" },
-
-    { "source": "schedule_management_plan", "target": "develop_schedule", "relation": "input_to" },
-    { "source": "scope_baseline", "target": "develop_schedule", "relation": "input_to" },
-    { "source": "activity_list", "target": "develop_schedule", "relation": "input_to" },
-    { "source": "activity_attributes", "target": "develop_schedule", "relation": "input_to" },
-    { "source": "project_schedule_network_diagrams", "target": "develop_schedule", "relation": "input_to" },
-    { "source": "activity_duration_estimates", "target": "develop_schedule", "relation": "input_to" },
-    { "source": "resource_requirements", "target": "develop_schedule", "relation": "input_to" },
-    { "source": "resource_calendars", "target": "develop_schedule", "relation": "input_to" },
-    { "source": "develop_schedule", "target": "schedule_baseline", "relation": "outputs" },
-    { "source": "develop_schedule", "target": "project_schedule", "relation": "outputs" },
-    { "source": "develop_schedule", "target": "schedule_data", "relation": "outputs" },
-
-    { "source": "project_management_plan", "target": "control_schedule", "relation": "input_to" },
-    { "source": "project_schedule", "target": "control_schedule", "relation": "input_to" },
-    { "source": "schedule_baseline", "target": "control_schedule", "relation": "input_to" },
-    { "source": "work_performance_data", "target": "control_schedule", "relation": "input_to" },
-    { "source": "control_schedule", "target": "work_performance_information", "relation": "outputs" },
-    { "source": "control_schedule", "target": "schedule_forecasts", "relation": "outputs" },
-    { "source": "control_schedule", "target": "change_requests", "relation": "outputs" },
-
-    { "source": "project_charter", "target": "plan_cost_management", "relation": "input_to" },
-    { "source": "project_management_plan", "target": "plan_cost_management", "relation": "input_to" },
-    { "source": "enterprise_environmental_factors", "target": "plan_cost_management", "relation": "input_to" },
-    { "source": "organizational_process_assets", "target": "plan_cost_management", "relation": "input_to" },
-    { "source": "plan_cost_management", "target": "cost_management_plan", "relation": "outputs" },
-
-    { "source": "cost_management_plan", "target": "estimate_costs", "relation": "input_to" },
-    { "source": "quality_management_plan", "target": "estimate_costs", "relation": "input_to" },
-    { "source": "scope_baseline", "target": "estimate_costs", "relation": "input_to" },
-    { "source": "project_schedule", "target": "estimate_costs", "relation": "input_to" },
-    { "source": "resource_requirements", "target": "estimate_costs", "relation": "input_to" },
-    { "source": "risk_register", "target": "estimate_costs", "relation": "input_to" },
-    { "source": "estimate_costs", "target": "cost_estimates", "relation": "outputs" },
-    { "source": "estimate_costs", "target": "basis_of_estimates", "relation": "outputs" },
-
-    { "source": "cost_management_plan", "target": "determine_budget", "relation": "input_to" },
-    { "source": "scope_baseline", "target": "determine_budget", "relation": "input_to" },
-    { "source": "cost_estimates", "target": "determine_budget", "relation": "input_to" },
-    { "source": "basis_of_estimates", "target": "determine_budget", "relation": "input_to" },
-    { "source": "project_schedule", "target": "determine_budget", "relation": "input_to" },
-    { "source": "risk_register", "target": "determine_budget", "relation": "input_to" },
-    { "source": "determine_budget", "target": "cost_baseline", "relation": "outputs" },
-    { "source": "determine_budget", "target": "project_funding_requirements", "relation": "outputs" },
-
-    { "source": "cost_management_plan", "target": "control_costs", "relation": "input_to" },
-    { "source": "cost_baseline", "target": "control_costs", "relation": "input_to" },
-    { "source": "project_funding_requirements", "target": "control_costs", "relation": "input_to" },
-    { "source": "work_performance_data", "target": "control_costs", "relation": "input_to" },
-    { "source": "control_costs", "target": "work_performance_information", "relation": "outputs" },
-    { "source": "control_costs", "target": "cost_forecasts", "relation": "outputs" },
-    { "source": "control_costs", "target": "change_requests", "relation": "outputs" },
-
-    { "source": "project_charter", "target": "plan_quality_management", "relation": "input_to" },
-    { "source": "project_management_plan", "target": "plan_quality_management", "relation": "input_to" },
-    { "source": "requirements_documentation", "target": "plan_quality_management", "relation": "input_to" },
-    { "source": "risk_register", "target": "plan_quality_management", "relation": "input_to" },
-    { "source": "stakeholder_register", "target": "plan_quality_management", "relation": "input_to" },
-    { "source": "plan_quality_management", "target": "quality_management_plan", "relation": "outputs" },
-    { "source": "plan_quality_management", "target": "quality_metrics", "relation": "outputs" },
-
-    { "source": "quality_management_plan", "target": "manage_quality", "relation": "input_to" },
-    { "source": "quality_metrics", "target": "manage_quality", "relation": "input_to" },
-    { "source": "project_documents", "target": "manage_quality", "relation": "input_to" },
-    { "source": "work_performance_data", "target": "manage_quality", "relation": "input_to" },
-    { "source": "manage_quality", "target": "quality_reports", "relation": "outputs" },
-    { "source": "manage_quality", "target": "test_and_evaluation_documents", "relation": "outputs" },
-    { "source": "manage_quality", "target": "change_requests", "relation": "outputs" },
-
-    { "source": "quality_management_plan", "target": "control_quality", "relation": "input_to" },
-    { "source": "quality_metrics", "target": "control_quality", "relation": "input_to" },
-    { "source": "deliverables", "target": "control_quality", "relation": "input_to" },
-    { "source": "test_and_evaluation_documents", "target": "control_quality", "relation": "input_to" },
-    { "source": "approved_change_requests", "target": "control_quality", "relation": "input_to" },
-    { "source": "work_performance_data", "target": "control_quality", "relation": "input_to" },
-    { "source": "control_quality", "target": "verified_deliverables", "relation": "outputs" },
-    { "source": "control_quality", "target": "quality_control_measurements", "relation": "outputs" },
-    { "source": "control_quality", "target": "work_performance_information", "relation": "outputs" },
-    { "source": "control_quality", "target": "change_requests", "relation": "outputs" },
-
-    { "source": "project_charter", "target": "plan_resource_management", "relation": "input_to" },
-    { "source": "project_management_plan", "target": "plan_resource_management", "relation": "input_to" },
-    { "source": "enterprise_environmental_factors", "target": "plan_resource_management", "relation": "input_to" },
-    { "source": "organizational_process_assets", "target": "plan_resource_management", "relation": "input_to" },
-    { "source": "plan_resource_management", "target": "resource_management_plan", "relation": "outputs" },
-    { "source": "plan_resource_management", "target": "team_charter", "relation": "outputs" },
-
-    { "source": "resource_management_plan", "target": "estimate_activity_resources", "relation": "input_to" },
-    { "source": "activity_list", "target": "estimate_activity_resources", "relation": "input_to" },
-    { "source": "activity_attributes", "target": "estimate_activity_resources", "relation": "input_to" },
-    { "source": "cost_estimates", "target": "estimate_activity_resources", "relation": "input_to" },
-    { "source": "project_schedule", "target": "estimate_activity_resources", "relation": "input_to" },
-    { "source": "estimate_activity_resources", "target": "resource_requirements", "relation": "outputs" },
-    { "source": "estimate_activity_resources", "target": "resource_breakdown_structure", "relation": "outputs" },
-    { "source": "estimate_activity_resources", "target": "basis_of_estimates", "relation": "outputs" },
-
-    { "source": "resource_management_plan", "target": "acquire_resources", "relation": "input_to" },
-    { "source": "procurement_management_plan", "target": "acquire_resources", "relation": "input_to" },
-    { "source": "cost_baseline", "target": "acquire_resources", "relation": "input_to" },
-    { "source": "project_schedule", "target": "acquire_resources", "relation": "input_to" },
-    { "source": "acquire_resources", "target": "physical_resource_assignments", "relation": "outputs" },
-    { "source": "acquire_resources", "target": "project_team_assignments", "relation": "outputs" },
-    { "source": "acquire_resources", "target": "resource_calendars", "relation": "outputs" },
-    { "source": "acquire_resources", "target": "change_requests", "relation": "outputs" },
-
-    { "source": "resource_management_plan", "target": "develop_team", "relation": "input_to" },
-    { "source": "team_charter", "target": "develop_team", "relation": "input_to" },
-    { "source": "project_team_assignments", "target": "develop_team", "relation": "input_to" },
-    { "source": "resource_calendars", "target": "develop_team", "relation": "input_to" },
-    { "source": "develop_team", "target": "team_performance_assessments", "relation": "outputs" },
-    { "source": "develop_team", "target": "change_requests", "relation": "outputs" },
-
-    { "source": "resource_management_plan", "target": "manage_team", "relation": "input_to" },
-    { "source": "team_charter", "target": "manage_team", "relation": "input_to" },
-    { "source": "project_team_assignments", "target": "manage_team", "relation": "input_to" },
-    { "source": "issue_log", "target": "manage_team", "relation": "input_to" },
-    { "source": "work_performance_reports", "target": "manage_team", "relation": "input_to" },
-    { "source": "manage_team", "target": "change_requests", "relation": "outputs" },
-    { "source": "manage_team", "target": "project_documents_updates", "relation": "outputs" },
-
-    { "source": "resource_management_plan", "target": "control_resources", "relation": "input_to" },
-    { "source": "resource_requirements", "target": "control_resources", "relation": "input_to" },
-    { "source": "physical_resource_assignments", "target": "control_resources", "relation": "input_to" },
-    { "source": "work_performance_data", "target": "control_resources", "relation": "input_to" },
-    { "source": "control_resources", "target": "work_performance_information", "relation": "outputs" },
-    { "source": "control_resources", "target": "change_requests", "relation": "outputs" },
-
-    { "source": "project_charter", "target": "plan_communications_management", "relation": "input_to" },
-    { "source": "project_management_plan", "target": "plan_communications_management", "relation": "input_to" },
-    { "source": "stakeholder_register", "target": "plan_communications_management", "relation": "input_to" },
-    { "source": "enterprise_environmental_factors", "target": "plan_communications_management", "relation": "input_to" },
-    { "source": "organizational_process_assets", "target": "plan_communications_management", "relation": "input_to" },
-    { "source": "plan_communications_management", "target": "communications_management_plan", "relation": "outputs" },
-
-    { "source": "communications_management_plan", "target": "manage_communications", "relation": "input_to" },
-    { "source": "work_performance_reports", "target": "manage_communications", "relation": "input_to" },
-    { "source": "stakeholder_register", "target": "manage_communications", "relation": "input_to" },
-    { "source": "stakeholder_engagement_plan", "target": "manage_communications", "relation": "input_to" },
-    { "source": "manage_communications", "target": "project_communications", "relation": "outputs" },
-    { "source": "manage_communications", "target": "project_management_plan_updates", "relation": "outputs" },
-
-    { "source": "communications_management_plan", "target": "monitor_communications", "relation": "input_to" },
-    { "source": "project_communications", "target": "monitor_communications", "relation": "input_to" },
-    { "source": "issue_log", "target": "monitor_communications", "relation": "input_to" },
-    { "source": "work_performance_data", "target": "monitor_communications", "relation": "input_to" },
-    { "source": "monitor_communications", "target": "work_performance_information", "relation": "outputs" },
-    { "source": "monitor_communications", "target": "change_requests", "relation": "outputs" },
-
-    { "source": "project_charter", "target": "plan_risk_management", "relation": "input_to" },
-    { "source": "project_management_plan", "target": "plan_risk_management", "relation": "input_to" },
-    { "source": "enterprise_environmental_factors", "target": "plan_risk_management", "relation": "input_to" },
-    { "source": "organizational_process_assets", "target": "plan_risk_management", "relation": "input_to" },
-    { "source": "plan_risk_management", "target": "risk_management_plan", "relation": "outputs" },
-
-    { "source": "risk_management_plan", "target": "identify_risks", "relation": "input_to" },
-    { "source": "requirements_documentation", "target": "identify_risks", "relation": "input_to" },
-    { "source": "cost_estimates", "target": "identify_risks", "relation": "input_to" },
-    { "source": "activity_duration_estimates", "target": "identify_risks", "relation": "input_to" },
-    { "source": "stakeholder_register", "target": "identify_risks", "relation": "input_to" },
-    { "source": "identify_risks", "target": "risk_register", "relation": "outputs" },
-    { "source": "identify_risks", "target": "risk_report", "relation": "outputs" },
-
-    { "source": "risk_management_plan", "target": "perform_qualitative_risk_analysis", "relation": "input_to" },
-    { "source": "risk_register", "target": "perform_qualitative_risk_analysis", "relation": "input_to" },
-    { "source": "stakeholder_register", "target": "perform_qualitative_risk_analysis", "relation": "input_to" },
-    { "source": "perform_qualitative_risk_analysis", "target": "project_documents_updates", "relation": "outputs" },
-    { "source": "perform_qualitative_risk_analysis", "target": "risk_report", "relation": "outputs" },
-
-    { "source": "risk_management_plan", "target": "perform_quantitative_risk_analysis", "relation": "input_to" },
-    { "source": "risk_register", "target": "perform_quantitative_risk_analysis", "relation": "input_to" },
-    { "source": "project_schedule", "target": "perform_quantitative_risk_analysis", "relation": "input_to" },
-    { "source": "cost_estimates", "target": "perform_quantitative_risk_analysis", "relation": "input_to" },
-    { "source": "perform_quantitative_risk_analysis", "target": "risk_report", "relation": "outputs" },
-    { "source": "perform_quantitative_risk_analysis", "target": "project_documents_updates", "relation": "outputs" },
-
-    { "source": "risk_management_plan", "target": "plan_risk_responses", "relation": "input_to" },
-    { "source": "risk_register", "target": "plan_risk_responses", "relation": "input_to" },
-    { "source": "risk_report", "target": "plan_risk_responses", "relation": "input_to" },
-    { "source": "resource_management_plan", "target": "plan_risk_responses", "relation": "input_to" },
-    { "source": "plan_risk_responses", "target": "change_requests", "relation": "outputs" },
-    { "source": "plan_risk_responses", "target": "project_management_plan_updates", "relation": "outputs" },
-    { "source": "plan_risk_responses", "target": "project_documents_updates", "relation": "outputs" },
-
-    { "source": "risk_management_plan", "target": "implement_risk_responses", "relation": "input_to" },
-    { "source": "risk_register", "target": "implement_risk_responses", "relation": "input_to" },
-    { "source": "risk_report", "target": "implement_risk_responses", "relation": "input_to" },
-    { "source": "lessons_learned_register", "target": "implement_risk_responses", "relation": "input_to" },
-    { "source": "implement_risk_responses", "target": "change_requests", "relation": "outputs" },
-    { "source": "implement_risk_responses", "target": "project_documents_updates", "relation": "outputs" },
-
-    { "source": "risk_management_plan", "target": "monitor_risks", "relation": "input_to" },
-    { "source": "risk_register", "target": "monitor_risks", "relation": "input_to" },
-    { "source": "risk_report", "target": "monitor_risks", "relation": "input_to" },
-    { "source": "work_performance_data", "target": "monitor_risks", "relation": "input_to" },
-    { "source": "monitor_risks", "target": "work_performance_information", "relation": "outputs" },
-    { "source": "monitor_risks", "target": "change_requests", "relation": "outputs" },
-
-    { "source": "project_charter", "target": "plan_procurement_management", "relation": "input_to" },
-    { "source": "project_management_plan", "target": "plan_procurement_management", "relation": "input_to" },
-    { "source": "project_documents", "target": "plan_procurement_management", "relation": "input_to" },
-    { "source": "enterprise_environmental_factors", "target": "plan_procurement_management", "relation": "input_to" },
-    { "source": "organizational_process_assets", "target": "plan_procurement_management", "relation": "input_to" },
-    { "source": "plan_procurement_management", "target": "procurement_management_plan", "relation": "outputs" },
-    { "source": "plan_procurement_management", "target": "procurement_statement_of_work", "relation": "outputs" },
-    { "source": "plan_procurement_management", "target": "bid_documents", "relation": "outputs" },
-
-    { "source": "procurement_management_plan", "target": "conduct_procurements", "relation": "input_to" },
-    { "source": "procurement_statement_of_work", "target": "conduct_procurements", "relation": "input_to" },
-    { "source": "bid_documents", "target": "conduct_procurements", "relation": "input_to" },
-    { "source": "seller_proposals", "target": "conduct_procurements", "relation": "input_to" },
-    { "source": "enterprise_environmental_factors", "target": "conduct_procurements", "relation": "input_to" },
-    { "source": "organizational_process_assets", "target": "conduct_procurements", "relation": "input_to" },
-    { "source": "conduct_procurements", "target": "selected_sellers", "relation": "outputs" },
-    { "source": "conduct_procurements", "target": "procurement_agreements", "relation": "outputs" },
-    { "source": "conduct_procurements", "target": "change_requests", "relation": "outputs" },
-
-    { "source": "procurement_management_plan", "target": "control_procurements", "relation": "input_to" },
-    { "source": "procurement_agreements", "target": "control_procurements", "relation": "input_to" },
-    { "source": "procurement_documentation", "target": "control_procurements", "relation": "input_to" },
-    { "source": "approved_change_requests", "target": "control_procurements", "relation": "input_to" },
-    { "source": "work_performance_data", "target": "control_procurements", "relation": "input_to" },
-    { "source": "control_procurements", "target": "procurement_closure_records", "relation": "outputs" },
-    { "source": "control_procurements", "target": "work_performance_information", "relation": "outputs" },
-    { "source": "control_procurements", "target": "change_requests", "relation": "outputs" },
-
-    { "source": "project_charter", "target": "identify_stakeholders", "relation": "input_to" },
-    { "source": "business_documents", "target": "identify_stakeholders", "relation": "input_to" },
-    { "source": "agreements", "target": "identify_stakeholders", "relation": "input_to" },
-    { "source": "enterprise_environmental_factors", "target": "identify_stakeholders", "relation": "input_to" },
-    { "source": "organizational_process_assets", "target": "identify_stakeholders", "relation": "input_to" },
-    { "source": "identify_stakeholders", "target": "stakeholder_register", "relation": "outputs" },
-
-    { "source": "project_charter", "target": "plan_stakeholder_engagement", "relation": "input_to" },
-    { "source": "project_management_plan", "target": "plan_stakeholder_engagement", "relation": "input_to" },
-    { "source": "stakeholder_register", "target": "plan_stakeholder_engagement", "relation": "input_to" },
-    { "source": "enterprise_environmental_factors", "target": "plan_stakeholder_engagement", "relation": "input_to" },
-    { "source": "organizational_process_assets", "target": "plan_stakeholder_engagement", "relation": "input_to" },
-    { "source": "plan_stakeholder_engagement", "target": "stakeholder_engagement_plan", "relation": "outputs" },
-
-    { "source": "stakeholder_engagement_plan", "target": "manage_stakeholder_engagement", "relation": "input_to" },
-    { "source": "communications_management_plan", "target": "manage_stakeholder_engagement", "relation": "input_to" },
-    { "source": "stakeholder_register", "target": "manage_stakeholder_engagement", "relation": "input_to" },
-    { "source": "issue_log", "target": "manage_stakeholder_engagement", "relation": "input_to" },
-    { "source": "manage_stakeholder_engagement", "target": "change_requests", "relation": "outputs" },
-    { "source": "manage_stakeholder_engagement", "target": "project_documents_updates", "relation": "outputs" },
-
-    { "source": "stakeholder_engagement_plan", "target": "monitor_stakeholder_engagement", "relation": "input_to" },
-    { "source": "communications_management_plan", "target": "monitor_stakeholder_engagement", "relation": "input_to" },
-    { "source": "stakeholder_register", "target": "monitor_stakeholder_engagement", "relation": "input_to" },
-    { "source": "work_performance_data", "target": "monitor_stakeholder_engagement", "relation": "input_to" },
-    { "source": "monitor_stakeholder_engagement", "target": "work_performance_information", "relation": "outputs" },
-    { "source": "monitor_stakeholder_engagement", "target": "change_requests", "relation": "outputs" }
+    {
+      "source": "business_documents",
+      "target": "develop_project_charter",
+      "relation": "input_to"
+    },
+    {
+      "source": "agreements",
+      "target": "develop_project_charter",
+      "relation": "input_to"
+    },
+    {
+      "source": "enterprise_environmental_factors",
+      "target": "develop_project_charter",
+      "relation": "input_to"
+    },
+    {
+      "source": "organizational_process_assets",
+      "target": "develop_project_charter",
+      "relation": "input_to"
+    },
+    {
+      "source": "develop_project_charter",
+      "target": "project_charter",
+      "relation": "outputs"
+    },
+    {
+      "source": "develop_project_charter",
+      "target": "assumption_log",
+      "relation": "outputs"
+    },
+    {
+      "source": "project_charter",
+      "target": "develop_project_management_plan",
+      "relation": "input_to"
+    },
+    {
+      "source": "scope_management_plan",
+      "target": "develop_project_management_plan",
+      "relation": "input_to"
+    },
+    {
+      "source": "schedule_management_plan",
+      "target": "develop_project_management_plan",
+      "relation": "input_to"
+    },
+    {
+      "source": "cost_management_plan",
+      "target": "develop_project_management_plan",
+      "relation": "input_to"
+    },
+    {
+      "source": "quality_management_plan",
+      "target": "develop_project_management_plan",
+      "relation": "input_to"
+    },
+    {
+      "source": "resource_management_plan",
+      "target": "develop_project_management_plan",
+      "relation": "input_to"
+    },
+    {
+      "source": "communications_management_plan",
+      "target": "develop_project_management_plan",
+      "relation": "input_to"
+    },
+    {
+      "source": "risk_management_plan",
+      "target": "develop_project_management_plan",
+      "relation": "input_to"
+    },
+    {
+      "source": "procurement_management_plan",
+      "target": "develop_project_management_plan",
+      "relation": "input_to"
+    },
+    {
+      "source": "stakeholder_engagement_plan",
+      "target": "develop_project_management_plan",
+      "relation": "input_to"
+    },
+    {
+      "source": "develop_project_management_plan",
+      "target": "project_management_plan",
+      "relation": "outputs"
+    },
+    {
+      "source": "project_management_plan",
+      "target": "direct_and_manage_project_work",
+      "relation": "input_to"
+    },
+    {
+      "source": "approved_change_requests",
+      "target": "direct_and_manage_project_work",
+      "relation": "input_to"
+    },
+    {
+      "source": "project_documents",
+      "target": "direct_and_manage_project_work",
+      "relation": "input_to"
+    },
+    {
+      "source": "enterprise_environmental_factors",
+      "target": "direct_and_manage_project_work",
+      "relation": "input_to"
+    },
+    {
+      "source": "organizational_process_assets",
+      "target": "direct_and_manage_project_work",
+      "relation": "input_to"
+    },
+    {
+      "source": "direct_and_manage_project_work",
+      "target": "deliverables",
+      "relation": "outputs"
+    },
+    {
+      "source": "direct_and_manage_project_work",
+      "target": "work_performance_data",
+      "relation": "outputs"
+    },
+    {
+      "source": "direct_and_manage_project_work",
+      "target": "issue_log",
+      "relation": "outputs"
+    },
+    {
+      "source": "direct_and_manage_project_work",
+      "target": "change_requests",
+      "relation": "outputs"
+    },
+    {
+      "source": "project_management_plan",
+      "target": "manage_project_knowledge",
+      "relation": "input_to"
+    },
+    {
+      "source": "project_documents",
+      "target": "manage_project_knowledge",
+      "relation": "input_to"
+    },
+    {
+      "source": "deliverables",
+      "target": "manage_project_knowledge",
+      "relation": "input_to"
+    },
+    {
+      "source": "organizational_process_assets",
+      "target": "manage_project_knowledge",
+      "relation": "input_to"
+    },
+    {
+      "source": "manage_project_knowledge",
+      "target": "lessons_learned_register",
+      "relation": "outputs"
+    },
+    {
+      "source": "project_management_plan",
+      "target": "monitor_and_control_project_work",
+      "relation": "input_to"
+    },
+    {
+      "source": "project_documents",
+      "target": "monitor_and_control_project_work",
+      "relation": "input_to"
+    },
+    {
+      "source": "work_performance_information",
+      "target": "monitor_and_control_project_work",
+      "relation": "input_to"
+    },
+    {
+      "source": "agreements",
+      "target": "monitor_and_control_project_work",
+      "relation": "input_to"
+    },
+    {
+      "source": "enterprise_environmental_factors",
+      "target": "monitor_and_control_project_work",
+      "relation": "input_to"
+    },
+    {
+      "source": "organizational_process_assets",
+      "target": "monitor_and_control_project_work",
+      "relation": "input_to"
+    },
+    {
+      "source": "monitor_and_control_project_work",
+      "target": "work_performance_reports",
+      "relation": "outputs"
+    },
+    {
+      "source": "monitor_and_control_project_work",
+      "target": "change_requests",
+      "relation": "outputs"
+    },
+    {
+      "source": "project_management_plan",
+      "target": "perform_integrated_change_control",
+      "relation": "input_to"
+    },
+    {
+      "source": "project_documents",
+      "target": "perform_integrated_change_control",
+      "relation": "input_to"
+    },
+    {
+      "source": "work_performance_reports",
+      "target": "perform_integrated_change_control",
+      "relation": "input_to"
+    },
+    {
+      "source": "change_requests",
+      "target": "perform_integrated_change_control",
+      "relation": "input_to"
+    },
+    {
+      "source": "perform_integrated_change_control",
+      "target": "approved_change_requests",
+      "relation": "outputs"
+    },
+    {
+      "source": "perform_integrated_change_control",
+      "target": "change_log",
+      "relation": "outputs"
+    },
+    {
+      "source": "project_charter",
+      "target": "close_project_or_phase",
+      "relation": "input_to"
+    },
+    {
+      "source": "project_management_plan",
+      "target": "close_project_or_phase",
+      "relation": "input_to"
+    },
+    {
+      "source": "project_documents",
+      "target": "close_project_or_phase",
+      "relation": "input_to"
+    },
+    {
+      "source": "accepted_deliverables",
+      "target": "close_project_or_phase",
+      "relation": "input_to"
+    },
+    {
+      "source": "business_documents",
+      "target": "close_project_or_phase",
+      "relation": "input_to"
+    },
+    {
+      "source": "agreements",
+      "target": "close_project_or_phase",
+      "relation": "input_to"
+    },
+    {
+      "source": "procurement_documentation",
+      "target": "close_project_or_phase",
+      "relation": "input_to"
+    },
+    {
+      "source": "organizational_process_assets",
+      "target": "close_project_or_phase",
+      "relation": "input_to"
+    },
+    {
+      "source": "close_project_or_phase",
+      "target": "final_product_service_or_result",
+      "relation": "outputs"
+    },
+    {
+      "source": "close_project_or_phase",
+      "target": "final_report",
+      "relation": "outputs"
+    },
+    {
+      "source": "project_charter",
+      "target": "plan_scope_management",
+      "relation": "input_to"
+    },
+    {
+      "source": "project_management_plan",
+      "target": "plan_scope_management",
+      "relation": "input_to"
+    },
+    {
+      "source": "enterprise_environmental_factors",
+      "target": "plan_scope_management",
+      "relation": "input_to"
+    },
+    {
+      "source": "organizational_process_assets",
+      "target": "plan_scope_management",
+      "relation": "input_to"
+    },
+    {
+      "source": "plan_scope_management",
+      "target": "scope_management_plan",
+      "relation": "outputs"
+    },
+    {
+      "source": "plan_scope_management",
+      "target": "requirements_management_plan",
+      "relation": "outputs"
+    },
+    {
+      "source": "project_charter",
+      "target": "collect_requirements",
+      "relation": "input_to"
+    },
+    {
+      "source": "project_management_plan",
+      "target": "collect_requirements",
+      "relation": "input_to"
+    },
+    {
+      "source": "project_documents",
+      "target": "collect_requirements",
+      "relation": "input_to"
+    },
+    {
+      "source": "stakeholder_register",
+      "target": "collect_requirements",
+      "relation": "input_to"
+    },
+    {
+      "source": "collect_requirements",
+      "target": "requirements_documentation",
+      "relation": "outputs"
+    },
+    {
+      "source": "collect_requirements",
+      "target": "requirements_traceability_matrix",
+      "relation": "outputs"
+    },
+    {
+      "source": "project_charter",
+      "target": "define_scope",
+      "relation": "input_to"
+    },
+    {
+      "source": "scope_management_plan",
+      "target": "define_scope",
+      "relation": "input_to"
+    },
+    {
+      "source": "requirements_documentation",
+      "target": "define_scope",
+      "relation": "input_to"
+    },
+    {
+      "source": "project_documents",
+      "target": "define_scope",
+      "relation": "input_to"
+    },
+    {
+      "source": "define_scope",
+      "target": "project_scope_statement",
+      "relation": "outputs"
+    },
+    {
+      "source": "scope_management_plan",
+      "target": "create_wbs",
+      "relation": "input_to"
+    },
+    {
+      "source": "requirements_documentation",
+      "target": "create_wbs",
+      "relation": "input_to"
+    },
+    {
+      "source": "project_scope_statement",
+      "target": "create_wbs",
+      "relation": "input_to"
+    },
+    {
+      "source": "create_wbs",
+      "target": "wbs",
+      "relation": "outputs"
+    },
+    {
+      "source": "create_wbs",
+      "target": "wbs_dictionary",
+      "relation": "outputs"
+    },
+    {
+      "source": "create_wbs",
+      "target": "scope_baseline",
+      "relation": "outputs"
+    },
+    {
+      "source": "project_management_plan",
+      "target": "validate_scope",
+      "relation": "input_to"
+    },
+    {
+      "source": "project_documents",
+      "target": "validate_scope",
+      "relation": "input_to"
+    },
+    {
+      "source": "verified_deliverables",
+      "target": "validate_scope",
+      "relation": "input_to"
+    },
+    {
+      "source": "work_performance_data",
+      "target": "validate_scope",
+      "relation": "input_to"
+    },
+    {
+      "source": "validate_scope",
+      "target": "accepted_deliverables",
+      "relation": "outputs"
+    },
+    {
+      "source": "validate_scope",
+      "target": "work_performance_information",
+      "relation": "outputs"
+    },
+    {
+      "source": "validate_scope",
+      "target": "change_requests",
+      "relation": "outputs"
+    },
+    {
+      "source": "project_management_plan",
+      "target": "control_scope",
+      "relation": "input_to"
+    },
+    {
+      "source": "project_documents",
+      "target": "control_scope",
+      "relation": "input_to"
+    },
+    {
+      "source": "work_performance_data",
+      "target": "control_scope",
+      "relation": "input_to"
+    },
+    {
+      "source": "control_scope",
+      "target": "work_performance_information",
+      "relation": "outputs"
+    },
+    {
+      "source": "control_scope",
+      "target": "change_requests",
+      "relation": "outputs"
+    },
+    {
+      "source": "project_charter",
+      "target": "plan_schedule_management",
+      "relation": "input_to"
+    },
+    {
+      "source": "project_management_plan",
+      "target": "plan_schedule_management",
+      "relation": "input_to"
+    },
+    {
+      "source": "enterprise_environmental_factors",
+      "target": "plan_schedule_management",
+      "relation": "input_to"
+    },
+    {
+      "source": "organizational_process_assets",
+      "target": "plan_schedule_management",
+      "relation": "input_to"
+    },
+    {
+      "source": "plan_schedule_management",
+      "target": "schedule_management_plan",
+      "relation": "outputs"
+    },
+    {
+      "source": "schedule_management_plan",
+      "target": "define_activities",
+      "relation": "input_to"
+    },
+    {
+      "source": "scope_baseline",
+      "target": "define_activities",
+      "relation": "input_to"
+    },
+    {
+      "source": "enterprise_environmental_factors",
+      "target": "define_activities",
+      "relation": "input_to"
+    },
+    {
+      "source": "organizational_process_assets",
+      "target": "define_activities",
+      "relation": "input_to"
+    },
+    {
+      "source": "define_activities",
+      "target": "activity_list",
+      "relation": "outputs"
+    },
+    {
+      "source": "define_activities",
+      "target": "activity_attributes",
+      "relation": "outputs"
+    },
+    {
+      "source": "define_activities",
+      "target": "milestone_list",
+      "relation": "outputs"
+    },
+    {
+      "source": "activity_list",
+      "target": "sequence_activities",
+      "relation": "input_to"
+    },
+    {
+      "source": "activity_attributes",
+      "target": "sequence_activities",
+      "relation": "input_to"
+    },
+    {
+      "source": "milestone_list",
+      "target": "sequence_activities",
+      "relation": "input_to"
+    },
+    {
+      "source": "project_scope_statement",
+      "target": "sequence_activities",
+      "relation": "input_to"
+    },
+    {
+      "source": "sequence_activities",
+      "target": "project_schedule_network_diagrams",
+      "relation": "outputs"
+    },
+    {
+      "source": "activity_list",
+      "target": "estimate_activity_durations",
+      "relation": "input_to"
+    },
+    {
+      "source": "activity_attributes",
+      "target": "estimate_activity_durations",
+      "relation": "input_to"
+    },
+    {
+      "source": "resource_requirements",
+      "target": "estimate_activity_durations",
+      "relation": "input_to"
+    },
+    {
+      "source": "resource_calendars",
+      "target": "estimate_activity_durations",
+      "relation": "input_to"
+    },
+    {
+      "source": "enterprise_environmental_factors",
+      "target": "estimate_activity_durations",
+      "relation": "input_to"
+    },
+    {
+      "source": "organizational_process_assets",
+      "target": "estimate_activity_durations",
+      "relation": "input_to"
+    },
+    {
+      "source": "estimate_activity_durations",
+      "target": "activity_duration_estimates",
+      "relation": "outputs"
+    },
+    {
+      "source": "estimate_activity_durations",
+      "target": "basis_of_estimates",
+      "relation": "outputs"
+    },
+    {
+      "source": "schedule_management_plan",
+      "target": "develop_schedule",
+      "relation": "input_to"
+    },
+    {
+      "source": "scope_baseline",
+      "target": "develop_schedule",
+      "relation": "input_to"
+    },
+    {
+      "source": "activity_list",
+      "target": "develop_schedule",
+      "relation": "input_to"
+    },
+    {
+      "source": "activity_attributes",
+      "target": "develop_schedule",
+      "relation": "input_to"
+    },
+    {
+      "source": "project_schedule_network_diagrams",
+      "target": "develop_schedule",
+      "relation": "input_to"
+    },
+    {
+      "source": "activity_duration_estimates",
+      "target": "develop_schedule",
+      "relation": "input_to"
+    },
+    {
+      "source": "resource_requirements",
+      "target": "develop_schedule",
+      "relation": "input_to"
+    },
+    {
+      "source": "resource_calendars",
+      "target": "develop_schedule",
+      "relation": "input_to"
+    },
+    {
+      "source": "develop_schedule",
+      "target": "schedule_baseline",
+      "relation": "outputs"
+    },
+    {
+      "source": "develop_schedule",
+      "target": "project_schedule",
+      "relation": "outputs"
+    },
+    {
+      "source": "develop_schedule",
+      "target": "schedule_data",
+      "relation": "outputs"
+    },
+    {
+      "source": "project_management_plan",
+      "target": "control_schedule",
+      "relation": "input_to"
+    },
+    {
+      "source": "project_schedule",
+      "target": "control_schedule",
+      "relation": "input_to"
+    },
+    {
+      "source": "schedule_baseline",
+      "target": "control_schedule",
+      "relation": "input_to"
+    },
+    {
+      "source": "work_performance_data",
+      "target": "control_schedule",
+      "relation": "input_to"
+    },
+    {
+      "source": "control_schedule",
+      "target": "work_performance_information",
+      "relation": "outputs"
+    },
+    {
+      "source": "control_schedule",
+      "target": "schedule_forecasts",
+      "relation": "outputs"
+    },
+    {
+      "source": "control_schedule",
+      "target": "change_requests",
+      "relation": "outputs"
+    },
+    {
+      "source": "project_charter",
+      "target": "plan_cost_management",
+      "relation": "input_to"
+    },
+    {
+      "source": "project_management_plan",
+      "target": "plan_cost_management",
+      "relation": "input_to"
+    },
+    {
+      "source": "enterprise_environmental_factors",
+      "target": "plan_cost_management",
+      "relation": "input_to"
+    },
+    {
+      "source": "organizational_process_assets",
+      "target": "plan_cost_management",
+      "relation": "input_to"
+    },
+    {
+      "source": "plan_cost_management",
+      "target": "cost_management_plan",
+      "relation": "outputs"
+    },
+    {
+      "source": "cost_management_plan",
+      "target": "estimate_costs",
+      "relation": "input_to"
+    },
+    {
+      "source": "quality_management_plan",
+      "target": "estimate_costs",
+      "relation": "input_to"
+    },
+    {
+      "source": "scope_baseline",
+      "target": "estimate_costs",
+      "relation": "input_to"
+    },
+    {
+      "source": "project_schedule",
+      "target": "estimate_costs",
+      "relation": "input_to"
+    },
+    {
+      "source": "resource_requirements",
+      "target": "estimate_costs",
+      "relation": "input_to"
+    },
+    {
+      "source": "risk_register",
+      "target": "estimate_costs",
+      "relation": "input_to"
+    },
+    {
+      "source": "estimate_costs",
+      "target": "cost_estimates",
+      "relation": "outputs"
+    },
+    {
+      "source": "estimate_costs",
+      "target": "basis_of_estimates",
+      "relation": "outputs"
+    },
+    {
+      "source": "cost_management_plan",
+      "target": "determine_budget",
+      "relation": "input_to"
+    },
+    {
+      "source": "scope_baseline",
+      "target": "determine_budget",
+      "relation": "input_to"
+    },
+    {
+      "source": "cost_estimates",
+      "target": "determine_budget",
+      "relation": "input_to"
+    },
+    {
+      "source": "basis_of_estimates",
+      "target": "determine_budget",
+      "relation": "input_to"
+    },
+    {
+      "source": "project_schedule",
+      "target": "determine_budget",
+      "relation": "input_to"
+    },
+    {
+      "source": "risk_register",
+      "target": "determine_budget",
+      "relation": "input_to"
+    },
+    {
+      "source": "determine_budget",
+      "target": "cost_baseline",
+      "relation": "outputs"
+    },
+    {
+      "source": "determine_budget",
+      "target": "project_funding_requirements",
+      "relation": "outputs"
+    },
+    {
+      "source": "cost_management_plan",
+      "target": "control_costs",
+      "relation": "input_to"
+    },
+    {
+      "source": "cost_baseline",
+      "target": "control_costs",
+      "relation": "input_to"
+    },
+    {
+      "source": "project_funding_requirements",
+      "target": "control_costs",
+      "relation": "input_to"
+    },
+    {
+      "source": "work_performance_data",
+      "target": "control_costs",
+      "relation": "input_to"
+    },
+    {
+      "source": "control_costs",
+      "target": "work_performance_information",
+      "relation": "outputs"
+    },
+    {
+      "source": "control_costs",
+      "target": "cost_forecasts",
+      "relation": "outputs"
+    },
+    {
+      "source": "control_costs",
+      "target": "change_requests",
+      "relation": "outputs"
+    },
+    {
+      "source": "project_charter",
+      "target": "plan_quality_management",
+      "relation": "input_to"
+    },
+    {
+      "source": "project_management_plan",
+      "target": "plan_quality_management",
+      "relation": "input_to"
+    },
+    {
+      "source": "requirements_documentation",
+      "target": "plan_quality_management",
+      "relation": "input_to"
+    },
+    {
+      "source": "risk_register",
+      "target": "plan_quality_management",
+      "relation": "input_to"
+    },
+    {
+      "source": "stakeholder_register",
+      "target": "plan_quality_management",
+      "relation": "input_to"
+    },
+    {
+      "source": "plan_quality_management",
+      "target": "quality_management_plan",
+      "relation": "outputs"
+    },
+    {
+      "source": "plan_quality_management",
+      "target": "quality_metrics",
+      "relation": "outputs"
+    },
+    {
+      "source": "quality_management_plan",
+      "target": "manage_quality",
+      "relation": "input_to"
+    },
+    {
+      "source": "quality_metrics",
+      "target": "manage_quality",
+      "relation": "input_to"
+    },
+    {
+      "source": "project_documents",
+      "target": "manage_quality",
+      "relation": "input_to"
+    },
+    {
+      "source": "work_performance_data",
+      "target": "manage_quality",
+      "relation": "input_to"
+    },
+    {
+      "source": "manage_quality",
+      "target": "quality_reports",
+      "relation": "outputs"
+    },
+    {
+      "source": "manage_quality",
+      "target": "test_and_evaluation_documents",
+      "relation": "outputs"
+    },
+    {
+      "source": "manage_quality",
+      "target": "change_requests",
+      "relation": "outputs"
+    },
+    {
+      "source": "quality_management_plan",
+      "target": "control_quality",
+      "relation": "input_to"
+    },
+    {
+      "source": "quality_metrics",
+      "target": "control_quality",
+      "relation": "input_to"
+    },
+    {
+      "source": "deliverables",
+      "target": "control_quality",
+      "relation": "input_to"
+    },
+    {
+      "source": "test_and_evaluation_documents",
+      "target": "control_quality",
+      "relation": "input_to"
+    },
+    {
+      "source": "approved_change_requests",
+      "target": "control_quality",
+      "relation": "input_to"
+    },
+    {
+      "source": "work_performance_data",
+      "target": "control_quality",
+      "relation": "input_to"
+    },
+    {
+      "source": "control_quality",
+      "target": "verified_deliverables",
+      "relation": "outputs"
+    },
+    {
+      "source": "control_quality",
+      "target": "quality_control_measurements",
+      "relation": "outputs"
+    },
+    {
+      "source": "control_quality",
+      "target": "work_performance_information",
+      "relation": "outputs"
+    },
+    {
+      "source": "control_quality",
+      "target": "change_requests",
+      "relation": "outputs"
+    },
+    {
+      "source": "project_charter",
+      "target": "plan_resource_management",
+      "relation": "input_to"
+    },
+    {
+      "source": "project_management_plan",
+      "target": "plan_resource_management",
+      "relation": "input_to"
+    },
+    {
+      "source": "enterprise_environmental_factors",
+      "target": "plan_resource_management",
+      "relation": "input_to"
+    },
+    {
+      "source": "organizational_process_assets",
+      "target": "plan_resource_management",
+      "relation": "input_to"
+    },
+    {
+      "source": "plan_resource_management",
+      "target": "resource_management_plan",
+      "relation": "outputs"
+    },
+    {
+      "source": "plan_resource_management",
+      "target": "team_charter",
+      "relation": "outputs"
+    },
+    {
+      "source": "resource_management_plan",
+      "target": "estimate_activity_resources",
+      "relation": "input_to"
+    },
+    {
+      "source": "activity_list",
+      "target": "estimate_activity_resources",
+      "relation": "input_to"
+    },
+    {
+      "source": "activity_attributes",
+      "target": "estimate_activity_resources",
+      "relation": "input_to"
+    },
+    {
+      "source": "cost_estimates",
+      "target": "estimate_activity_resources",
+      "relation": "input_to"
+    },
+    {
+      "source": "project_schedule",
+      "target": "estimate_activity_resources",
+      "relation": "input_to"
+    },
+    {
+      "source": "estimate_activity_resources",
+      "target": "resource_requirements",
+      "relation": "outputs"
+    },
+    {
+      "source": "estimate_activity_resources",
+      "target": "resource_breakdown_structure",
+      "relation": "outputs"
+    },
+    {
+      "source": "estimate_activity_resources",
+      "target": "basis_of_estimates",
+      "relation": "outputs"
+    },
+    {
+      "source": "resource_management_plan",
+      "target": "acquire_resources",
+      "relation": "input_to"
+    },
+    {
+      "source": "procurement_management_plan",
+      "target": "acquire_resources",
+      "relation": "input_to"
+    },
+    {
+      "source": "cost_baseline",
+      "target": "acquire_resources",
+      "relation": "input_to"
+    },
+    {
+      "source": "project_schedule",
+      "target": "acquire_resources",
+      "relation": "input_to"
+    },
+    {
+      "source": "acquire_resources",
+      "target": "physical_resource_assignments",
+      "relation": "outputs"
+    },
+    {
+      "source": "acquire_resources",
+      "target": "project_team_assignments",
+      "relation": "outputs"
+    },
+    {
+      "source": "acquire_resources",
+      "target": "resource_calendars",
+      "relation": "outputs"
+    },
+    {
+      "source": "acquire_resources",
+      "target": "change_requests",
+      "relation": "outputs"
+    },
+    {
+      "source": "resource_management_plan",
+      "target": "develop_team",
+      "relation": "input_to"
+    },
+    {
+      "source": "team_charter",
+      "target": "develop_team",
+      "relation": "input_to"
+    },
+    {
+      "source": "project_team_assignments",
+      "target": "develop_team",
+      "relation": "input_to"
+    },
+    {
+      "source": "resource_calendars",
+      "target": "develop_team",
+      "relation": "input_to"
+    },
+    {
+      "source": "develop_team",
+      "target": "team_performance_assessments",
+      "relation": "outputs"
+    },
+    {
+      "source": "develop_team",
+      "target": "change_requests",
+      "relation": "outputs"
+    },
+    {
+      "source": "resource_management_plan",
+      "target": "manage_team",
+      "relation": "input_to"
+    },
+    {
+      "source": "team_charter",
+      "target": "manage_team",
+      "relation": "input_to"
+    },
+    {
+      "source": "project_team_assignments",
+      "target": "manage_team",
+      "relation": "input_to"
+    },
+    {
+      "source": "issue_log",
+      "target": "manage_team",
+      "relation": "input_to"
+    },
+    {
+      "source": "work_performance_reports",
+      "target": "manage_team",
+      "relation": "input_to"
+    },
+    {
+      "source": "manage_team",
+      "target": "change_requests",
+      "relation": "outputs"
+    },
+    {
+      "source": "resource_management_plan",
+      "target": "control_resources",
+      "relation": "input_to"
+    },
+    {
+      "source": "resource_requirements",
+      "target": "control_resources",
+      "relation": "input_to"
+    },
+    {
+      "source": "physical_resource_assignments",
+      "target": "control_resources",
+      "relation": "input_to"
+    },
+    {
+      "source": "work_performance_data",
+      "target": "control_resources",
+      "relation": "input_to"
+    },
+    {
+      "source": "control_resources",
+      "target": "work_performance_information",
+      "relation": "outputs"
+    },
+    {
+      "source": "control_resources",
+      "target": "change_requests",
+      "relation": "outputs"
+    },
+    {
+      "source": "project_charter",
+      "target": "plan_communications_management",
+      "relation": "input_to"
+    },
+    {
+      "source": "project_management_plan",
+      "target": "plan_communications_management",
+      "relation": "input_to"
+    },
+    {
+      "source": "stakeholder_register",
+      "target": "plan_communications_management",
+      "relation": "input_to"
+    },
+    {
+      "source": "enterprise_environmental_factors",
+      "target": "plan_communications_management",
+      "relation": "input_to"
+    },
+    {
+      "source": "organizational_process_assets",
+      "target": "plan_communications_management",
+      "relation": "input_to"
+    },
+    {
+      "source": "plan_communications_management",
+      "target": "communications_management_plan",
+      "relation": "outputs"
+    },
+    {
+      "source": "communications_management_plan",
+      "target": "manage_communications",
+      "relation": "input_to"
+    },
+    {
+      "source": "work_performance_reports",
+      "target": "manage_communications",
+      "relation": "input_to"
+    },
+    {
+      "source": "stakeholder_register",
+      "target": "manage_communications",
+      "relation": "input_to"
+    },
+    {
+      "source": "stakeholder_engagement_plan",
+      "target": "manage_communications",
+      "relation": "input_to"
+    },
+    {
+      "source": "manage_communications",
+      "target": "project_communications",
+      "relation": "outputs"
+    },
+    {
+      "source": "communications_management_plan",
+      "target": "monitor_communications",
+      "relation": "input_to"
+    },
+    {
+      "source": "project_communications",
+      "target": "monitor_communications",
+      "relation": "input_to"
+    },
+    {
+      "source": "issue_log",
+      "target": "monitor_communications",
+      "relation": "input_to"
+    },
+    {
+      "source": "work_performance_data",
+      "target": "monitor_communications",
+      "relation": "input_to"
+    },
+    {
+      "source": "monitor_communications",
+      "target": "work_performance_information",
+      "relation": "outputs"
+    },
+    {
+      "source": "monitor_communications",
+      "target": "change_requests",
+      "relation": "outputs"
+    },
+    {
+      "source": "project_charter",
+      "target": "plan_risk_management",
+      "relation": "input_to"
+    },
+    {
+      "source": "project_management_plan",
+      "target": "plan_risk_management",
+      "relation": "input_to"
+    },
+    {
+      "source": "enterprise_environmental_factors",
+      "target": "plan_risk_management",
+      "relation": "input_to"
+    },
+    {
+      "source": "organizational_process_assets",
+      "target": "plan_risk_management",
+      "relation": "input_to"
+    },
+    {
+      "source": "plan_risk_management",
+      "target": "risk_management_plan",
+      "relation": "outputs"
+    },
+    {
+      "source": "risk_management_plan",
+      "target": "identify_risks",
+      "relation": "input_to"
+    },
+    {
+      "source": "requirements_documentation",
+      "target": "identify_risks",
+      "relation": "input_to"
+    },
+    {
+      "source": "cost_estimates",
+      "target": "identify_risks",
+      "relation": "input_to"
+    },
+    {
+      "source": "activity_duration_estimates",
+      "target": "identify_risks",
+      "relation": "input_to"
+    },
+    {
+      "source": "stakeholder_register",
+      "target": "identify_risks",
+      "relation": "input_to"
+    },
+    {
+      "source": "identify_risks",
+      "target": "risk_register",
+      "relation": "outputs"
+    },
+    {
+      "source": "identify_risks",
+      "target": "risk_report",
+      "relation": "outputs"
+    },
+    {
+      "source": "risk_management_plan",
+      "target": "perform_qualitative_risk_analysis",
+      "relation": "input_to"
+    },
+    {
+      "source": "risk_register",
+      "target": "perform_qualitative_risk_analysis",
+      "relation": "input_to"
+    },
+    {
+      "source": "stakeholder_register",
+      "target": "perform_qualitative_risk_analysis",
+      "relation": "input_to"
+    },
+    {
+      "source": "perform_qualitative_risk_analysis",
+      "target": "risk_report",
+      "relation": "outputs"
+    },
+    {
+      "source": "risk_management_plan",
+      "target": "perform_quantitative_risk_analysis",
+      "relation": "input_to"
+    },
+    {
+      "source": "risk_register",
+      "target": "perform_quantitative_risk_analysis",
+      "relation": "input_to"
+    },
+    {
+      "source": "project_schedule",
+      "target": "perform_quantitative_risk_analysis",
+      "relation": "input_to"
+    },
+    {
+      "source": "cost_estimates",
+      "target": "perform_quantitative_risk_analysis",
+      "relation": "input_to"
+    },
+    {
+      "source": "perform_quantitative_risk_analysis",
+      "target": "risk_report",
+      "relation": "outputs"
+    },
+    {
+      "source": "risk_management_plan",
+      "target": "plan_risk_responses",
+      "relation": "input_to"
+    },
+    {
+      "source": "risk_register",
+      "target": "plan_risk_responses",
+      "relation": "input_to"
+    },
+    {
+      "source": "risk_report",
+      "target": "plan_risk_responses",
+      "relation": "input_to"
+    },
+    {
+      "source": "resource_management_plan",
+      "target": "plan_risk_responses",
+      "relation": "input_to"
+    },
+    {
+      "source": "plan_risk_responses",
+      "target": "change_requests",
+      "relation": "outputs"
+    },
+    {
+      "source": "risk_management_plan",
+      "target": "implement_risk_responses",
+      "relation": "input_to"
+    },
+    {
+      "source": "risk_register",
+      "target": "implement_risk_responses",
+      "relation": "input_to"
+    },
+    {
+      "source": "risk_report",
+      "target": "implement_risk_responses",
+      "relation": "input_to"
+    },
+    {
+      "source": "lessons_learned_register",
+      "target": "implement_risk_responses",
+      "relation": "input_to"
+    },
+    {
+      "source": "implement_risk_responses",
+      "target": "change_requests",
+      "relation": "outputs"
+    },
+    {
+      "source": "risk_management_plan",
+      "target": "monitor_risks",
+      "relation": "input_to"
+    },
+    {
+      "source": "risk_register",
+      "target": "monitor_risks",
+      "relation": "input_to"
+    },
+    {
+      "source": "risk_report",
+      "target": "monitor_risks",
+      "relation": "input_to"
+    },
+    {
+      "source": "work_performance_data",
+      "target": "monitor_risks",
+      "relation": "input_to"
+    },
+    {
+      "source": "monitor_risks",
+      "target": "work_performance_information",
+      "relation": "outputs"
+    },
+    {
+      "source": "monitor_risks",
+      "target": "change_requests",
+      "relation": "outputs"
+    },
+    {
+      "source": "project_charter",
+      "target": "plan_procurement_management",
+      "relation": "input_to"
+    },
+    {
+      "source": "project_management_plan",
+      "target": "plan_procurement_management",
+      "relation": "input_to"
+    },
+    {
+      "source": "project_documents",
+      "target": "plan_procurement_management",
+      "relation": "input_to"
+    },
+    {
+      "source": "enterprise_environmental_factors",
+      "target": "plan_procurement_management",
+      "relation": "input_to"
+    },
+    {
+      "source": "organizational_process_assets",
+      "target": "plan_procurement_management",
+      "relation": "input_to"
+    },
+    {
+      "source": "plan_procurement_management",
+      "target": "procurement_management_plan",
+      "relation": "outputs"
+    },
+    {
+      "source": "plan_procurement_management",
+      "target": "procurement_statement_of_work",
+      "relation": "outputs"
+    },
+    {
+      "source": "plan_procurement_management",
+      "target": "bid_documents",
+      "relation": "outputs"
+    },
+    {
+      "source": "procurement_management_plan",
+      "target": "conduct_procurements",
+      "relation": "input_to"
+    },
+    {
+      "source": "procurement_statement_of_work",
+      "target": "conduct_procurements",
+      "relation": "input_to"
+    },
+    {
+      "source": "bid_documents",
+      "target": "conduct_procurements",
+      "relation": "input_to"
+    },
+    {
+      "source": "seller_proposals",
+      "target": "conduct_procurements",
+      "relation": "input_to"
+    },
+    {
+      "source": "enterprise_environmental_factors",
+      "target": "conduct_procurements",
+      "relation": "input_to"
+    },
+    {
+      "source": "organizational_process_assets",
+      "target": "conduct_procurements",
+      "relation": "input_to"
+    },
+    {
+      "source": "conduct_procurements",
+      "target": "selected_sellers",
+      "relation": "outputs"
+    },
+    {
+      "source": "conduct_procurements",
+      "target": "change_requests",
+      "relation": "outputs"
+    },
+    {
+      "source": "procurement_management_plan",
+      "target": "control_procurements",
+      "relation": "input_to"
+    },
+    {
+      "source": "procurement_documentation",
+      "target": "control_procurements",
+      "relation": "input_to"
+    },
+    {
+      "source": "approved_change_requests",
+      "target": "control_procurements",
+      "relation": "input_to"
+    },
+    {
+      "source": "work_performance_data",
+      "target": "control_procurements",
+      "relation": "input_to"
+    },
+    {
+      "source": "control_procurements",
+      "target": "work_performance_information",
+      "relation": "outputs"
+    },
+    {
+      "source": "control_procurements",
+      "target": "change_requests",
+      "relation": "outputs"
+    },
+    {
+      "source": "project_charter",
+      "target": "identify_stakeholders",
+      "relation": "input_to"
+    },
+    {
+      "source": "business_documents",
+      "target": "identify_stakeholders",
+      "relation": "input_to"
+    },
+    {
+      "source": "agreements",
+      "target": "identify_stakeholders",
+      "relation": "input_to"
+    },
+    {
+      "source": "enterprise_environmental_factors",
+      "target": "identify_stakeholders",
+      "relation": "input_to"
+    },
+    {
+      "source": "organizational_process_assets",
+      "target": "identify_stakeholders",
+      "relation": "input_to"
+    },
+    {
+      "source": "identify_stakeholders",
+      "target": "stakeholder_register",
+      "relation": "outputs"
+    },
+    {
+      "source": "project_charter",
+      "target": "plan_stakeholder_engagement",
+      "relation": "input_to"
+    },
+    {
+      "source": "project_management_plan",
+      "target": "plan_stakeholder_engagement",
+      "relation": "input_to"
+    },
+    {
+      "source": "stakeholder_register",
+      "target": "plan_stakeholder_engagement",
+      "relation": "input_to"
+    },
+    {
+      "source": "enterprise_environmental_factors",
+      "target": "plan_stakeholder_engagement",
+      "relation": "input_to"
+    },
+    {
+      "source": "organizational_process_assets",
+      "target": "plan_stakeholder_engagement",
+      "relation": "input_to"
+    },
+    {
+      "source": "plan_stakeholder_engagement",
+      "target": "stakeholder_engagement_plan",
+      "relation": "outputs"
+    },
+    {
+      "source": "stakeholder_engagement_plan",
+      "target": "manage_stakeholder_engagement",
+      "relation": "input_to"
+    },
+    {
+      "source": "communications_management_plan",
+      "target": "manage_stakeholder_engagement",
+      "relation": "input_to"
+    },
+    {
+      "source": "stakeholder_register",
+      "target": "manage_stakeholder_engagement",
+      "relation": "input_to"
+    },
+    {
+      "source": "issue_log",
+      "target": "manage_stakeholder_engagement",
+      "relation": "input_to"
+    },
+    {
+      "source": "manage_stakeholder_engagement",
+      "target": "change_requests",
+      "relation": "outputs"
+    },
+    {
+      "source": "stakeholder_engagement_plan",
+      "target": "monitor_stakeholder_engagement",
+      "relation": "input_to"
+    },
+    {
+      "source": "communications_management_plan",
+      "target": "monitor_stakeholder_engagement",
+      "relation": "input_to"
+    },
+    {
+      "source": "stakeholder_register",
+      "target": "monitor_stakeholder_engagement",
+      "relation": "input_to"
+    },
+    {
+      "source": "work_performance_data",
+      "target": "monitor_stakeholder_engagement",
+      "relation": "input_to"
+    },
+    {
+      "source": "monitor_stakeholder_engagement",
+      "target": "work_performance_information",
+      "relation": "outputs"
+    },
+    {
+      "source": "monitor_stakeholder_engagement",
+      "target": "change_requests",
+      "relation": "outputs"
+    },
+    {
+      "source": "define_activities",
+      "target": "change_requests",
+      "relation": "outputs"
+    },
+    {
+      "source": "develop_schedule",
+      "target": "project_calendars",
+      "relation": "outputs"
+    },
+    {
+      "source": "develop_schedule",
+      "target": "change_requests",
+      "relation": "outputs"
+    },
+    {
+      "source": "plan_procurement_management",
+      "target": "procurement_strategy",
+      "relation": "outputs"
+    },
+    {
+      "source": "plan_procurement_management",
+      "target": "source_selection_criteria",
+      "relation": "outputs"
+    },
+    {
+      "source": "plan_procurement_management",
+      "target": "make_or_buy_decisions",
+      "relation": "outputs"
+    },
+    {
+      "source": "plan_procurement_management",
+      "target": "independent_cost_estimates",
+      "relation": "outputs"
+    },
+    {
+      "source": "plan_procurement_management",
+      "target": "change_requests",
+      "relation": "outputs"
+    },
+    {
+      "source": "conduct_procurements",
+      "target": "agreements",
+      "relation": "outputs"
+    },
+    {
+      "source": "control_procurements",
+      "target": "closed_procurements",
+      "relation": "outputs"
+    },
+    {
+      "source": "change_log",
+      "target": "direct_and_manage_project_work",
+      "relation": "input_to"
+    },
+    {
+      "source": "lessons_learned_register",
+      "target": "direct_and_manage_project_work",
+      "relation": "input_to"
+    },
+    {
+      "source": "milestone_list",
+      "target": "direct_and_manage_project_work",
+      "relation": "input_to"
+    },
+    {
+      "source": "project_communications",
+      "target": "direct_and_manage_project_work",
+      "relation": "input_to"
+    },
+    {
+      "source": "project_schedule",
+      "target": "direct_and_manage_project_work",
+      "relation": "input_to"
+    },
+    {
+      "source": "requirements_traceability_matrix",
+      "target": "direct_and_manage_project_work",
+      "relation": "input_to"
+    },
+    {
+      "source": "risk_register",
+      "target": "direct_and_manage_project_work",
+      "relation": "input_to"
+    },
+    {
+      "source": "risk_report",
+      "target": "direct_and_manage_project_work",
+      "relation": "input_to"
+    },
+    {
+      "source": "lessons_learned_register",
+      "target": "manage_project_knowledge",
+      "relation": "input_to"
+    },
+    {
+      "source": "project_team_assignments",
+      "target": "manage_project_knowledge",
+      "relation": "input_to"
+    },
+    {
+      "source": "resource_breakdown_structure",
+      "target": "manage_project_knowledge",
+      "relation": "input_to"
+    },
+    {
+      "source": "source_selection_criteria",
+      "target": "manage_project_knowledge",
+      "relation": "input_to"
+    },
+    {
+      "source": "stakeholder_register",
+      "target": "manage_project_knowledge",
+      "relation": "input_to"
+    },
+    {
+      "source": "assumption_log",
+      "target": "monitor_and_control_project_work",
+      "relation": "input_to"
+    },
+    {
+      "source": "basis_of_estimates",
+      "target": "monitor_and_control_project_work",
+      "relation": "input_to"
+    },
+    {
+      "source": "cost_forecasts",
+      "target": "monitor_and_control_project_work",
+      "relation": "input_to"
+    },
+    {
+      "source": "issue_log",
+      "target": "monitor_and_control_project_work",
+      "relation": "input_to"
+    },
+    {
+      "source": "lessons_learned_register",
+      "target": "monitor_and_control_project_work",
+      "relation": "input_to"
+    },
+    {
+      "source": "milestone_list",
+      "target": "monitor_and_control_project_work",
+      "relation": "input_to"
+    },
+    {
+      "source": "quality_reports",
+      "target": "monitor_and_control_project_work",
+      "relation": "input_to"
+    },
+    {
+      "source": "risk_register",
+      "target": "monitor_and_control_project_work",
+      "relation": "input_to"
+    },
+    {
+      "source": "risk_report",
+      "target": "monitor_and_control_project_work",
+      "relation": "input_to"
+    },
+    {
+      "source": "schedule_forecasts",
+      "target": "monitor_and_control_project_work",
+      "relation": "input_to"
+    },
+    {
+      "source": "change_management_plan",
+      "target": "perform_integrated_change_control",
+      "relation": "input_to"
+    },
+    {
+      "source": "configuration_management_plan",
+      "target": "perform_integrated_change_control",
+      "relation": "input_to"
+    },
+    {
+      "source": "scope_baseline",
+      "target": "perform_integrated_change_control",
+      "relation": "input_to"
+    },
+    {
+      "source": "schedule_baseline",
+      "target": "perform_integrated_change_control",
+      "relation": "input_to"
+    },
+    {
+      "source": "cost_baseline",
+      "target": "perform_integrated_change_control",
+      "relation": "input_to"
+    },
+    {
+      "source": "basis_of_estimates",
+      "target": "perform_integrated_change_control",
+      "relation": "input_to"
+    },
+    {
+      "source": "requirements_traceability_matrix",
+      "target": "perform_integrated_change_control",
+      "relation": "input_to"
+    },
+    {
+      "source": "risk_report",
+      "target": "perform_integrated_change_control",
+      "relation": "input_to"
+    },
+    {
+      "source": "assumption_log",
+      "target": "close_project_or_phase",
+      "relation": "input_to"
+    },
+    {
+      "source": "basis_of_estimates",
+      "target": "close_project_or_phase",
+      "relation": "input_to"
+    },
+    {
+      "source": "change_log",
+      "target": "close_project_or_phase",
+      "relation": "input_to"
+    },
+    {
+      "source": "issue_log",
+      "target": "close_project_or_phase",
+      "relation": "input_to"
+    },
+    {
+      "source": "lessons_learned_register",
+      "target": "close_project_or_phase",
+      "relation": "input_to"
+    },
+    {
+      "source": "milestone_list",
+      "target": "close_project_or_phase",
+      "relation": "input_to"
+    },
+    {
+      "source": "project_communications",
+      "target": "close_project_or_phase",
+      "relation": "input_to"
+    },
+    {
+      "source": "quality_control_measurements",
+      "target": "close_project_or_phase",
+      "relation": "input_to"
+    },
+    {
+      "source": "quality_reports",
+      "target": "close_project_or_phase",
+      "relation": "input_to"
+    },
+    {
+      "source": "requirements_documentation",
+      "target": "close_project_or_phase",
+      "relation": "input_to"
+    },
+    {
+      "source": "risk_register",
+      "target": "close_project_or_phase",
+      "relation": "input_to"
+    },
+    {
+      "source": "risk_report",
+      "target": "close_project_or_phase",
+      "relation": "input_to"
+    },
+    {
+      "source": "scope_management_plan",
+      "target": "collect_requirements",
+      "relation": "input_to"
+    },
+    {
+      "source": "requirements_management_plan",
+      "target": "collect_requirements",
+      "relation": "input_to"
+    },
+    {
+      "source": "stakeholder_engagement_plan",
+      "target": "collect_requirements",
+      "relation": "input_to"
+    },
+    {
+      "source": "assumption_log",
+      "target": "collect_requirements",
+      "relation": "input_to"
+    },
+    {
+      "source": "lessons_learned_register",
+      "target": "collect_requirements",
+      "relation": "input_to"
+    },
+    {
+      "source": "assumption_log",
+      "target": "define_scope",
+      "relation": "input_to"
+    },
+    {
+      "source": "risk_register",
+      "target": "define_scope",
+      "relation": "input_to"
+    },
+    {
+      "source": "scope_management_plan",
+      "target": "validate_scope",
+      "relation": "input_to"
+    },
+    {
+      "source": "requirements_management_plan",
+      "target": "validate_scope",
+      "relation": "input_to"
+    },
+    {
+      "source": "scope_baseline",
+      "target": "validate_scope",
+      "relation": "input_to"
+    },
+    {
+      "source": "lessons_learned_register",
+      "target": "validate_scope",
+      "relation": "input_to"
+    },
+    {
+      "source": "quality_reports",
+      "target": "validate_scope",
+      "relation": "input_to"
+    },
+    {
+      "source": "requirements_documentation",
+      "target": "validate_scope",
+      "relation": "input_to"
+    },
+    {
+      "source": "requirements_traceability_matrix",
+      "target": "validate_scope",
+      "relation": "input_to"
+    },
+    {
+      "source": "scope_management_plan",
+      "target": "control_scope",
+      "relation": "input_to"
+    },
+    {
+      "source": "requirements_management_plan",
+      "target": "control_scope",
+      "relation": "input_to"
+    },
+    {
+      "source": "change_management_plan",
+      "target": "control_scope",
+      "relation": "input_to"
+    },
+    {
+      "source": "configuration_management_plan",
+      "target": "control_scope",
+      "relation": "input_to"
+    },
+    {
+      "source": "scope_baseline",
+      "target": "control_scope",
+      "relation": "input_to"
+    },
+    {
+      "source": "performance_measurement_baseline",
+      "target": "control_scope",
+      "relation": "input_to"
+    },
+    {
+      "source": "lessons_learned_register",
+      "target": "control_scope",
+      "relation": "input_to"
+    },
+    {
+      "source": "requirements_documentation",
+      "target": "control_scope",
+      "relation": "input_to"
+    },
+    {
+      "source": "requirements_traceability_matrix",
+      "target": "control_scope",
+      "relation": "input_to"
+    },
+    {
+      "source": "scope_management_plan",
+      "target": "plan_schedule_management",
+      "relation": "input_to"
+    },
+    {
+      "source": "schedule_management_plan",
+      "target": "sequence_activities",
+      "relation": "input_to"
+    },
+    {
+      "source": "scope_baseline",
+      "target": "sequence_activities",
+      "relation": "input_to"
+    },
+    {
+      "source": "assumption_log",
+      "target": "sequence_activities",
+      "relation": "input_to"
+    },
+    {
+      "source": "schedule_management_plan",
+      "target": "estimate_activity_durations",
+      "relation": "input_to"
+    },
+    {
+      "source": "scope_baseline",
+      "target": "estimate_activity_durations",
+      "relation": "input_to"
+    },
+    {
+      "source": "assumption_log",
+      "target": "estimate_activity_durations",
+      "relation": "input_to"
+    },
+    {
+      "source": "lessons_learned_register",
+      "target": "estimate_activity_durations",
+      "relation": "input_to"
+    },
+    {
+      "source": "milestone_list",
+      "target": "estimate_activity_durations",
+      "relation": "input_to"
+    },
+    {
+      "source": "project_team_assignments",
+      "target": "estimate_activity_durations",
+      "relation": "input_to"
+    },
+    {
+      "source": "resource_breakdown_structure",
+      "target": "estimate_activity_durations",
+      "relation": "input_to"
+    },
+    {
+      "source": "risk_register",
+      "target": "estimate_activity_durations",
+      "relation": "input_to"
+    },
+    {
+      "source": "basis_of_estimates",
+      "target": "develop_schedule",
+      "relation": "input_to"
+    },
+    {
+      "source": "lessons_learned_register",
+      "target": "develop_schedule",
+      "relation": "input_to"
+    },
+    {
+      "source": "milestone_list",
+      "target": "develop_schedule",
+      "relation": "input_to"
+    },
+    {
+      "source": "schedule_management_plan",
+      "target": "control_schedule",
+      "relation": "input_to"
+    },
+    {
+      "source": "scope_baseline",
+      "target": "control_schedule",
+      "relation": "input_to"
+    },
+    {
+      "source": "performance_measurement_baseline",
+      "target": "control_schedule",
+      "relation": "input_to"
+    },
+    {
+      "source": "lessons_learned_register",
+      "target": "control_schedule",
+      "relation": "input_to"
+    },
+    {
+      "source": "project_calendars",
+      "target": "control_schedule",
+      "relation": "input_to"
+    },
+    {
+      "source": "resource_calendars",
+      "target": "control_schedule",
+      "relation": "input_to"
+    },
+    {
+      "source": "schedule_data",
+      "target": "control_schedule",
+      "relation": "input_to"
+    },
+    {
+      "source": "schedule_management_plan",
+      "target": "plan_cost_management",
+      "relation": "input_to"
+    },
+    {
+      "source": "risk_management_plan",
+      "target": "plan_cost_management",
+      "relation": "input_to"
+    },
+    {
+      "source": "lessons_learned_register",
+      "target": "estimate_costs",
+      "relation": "input_to"
+    },
+    {
+      "source": "resource_management_plan",
+      "target": "determine_budget",
+      "relation": "input_to"
+    },
+    {
+      "source": "performance_measurement_baseline",
+      "target": "control_costs",
+      "relation": "input_to"
+    },
+    {
+      "source": "lessons_learned_register",
+      "target": "control_costs",
+      "relation": "input_to"
+    },
+    {
+      "source": "requirements_management_plan",
+      "target": "plan_quality_management",
+      "relation": "input_to"
+    },
+    {
+      "source": "risk_management_plan",
+      "target": "plan_quality_management",
+      "relation": "input_to"
+    },
+    {
+      "source": "stakeholder_engagement_plan",
+      "target": "plan_quality_management",
+      "relation": "input_to"
+    },
+    {
+      "source": "scope_baseline",
+      "target": "plan_quality_management",
+      "relation": "input_to"
+    },
+    {
+      "source": "requirements_traceability_matrix",
+      "target": "plan_quality_management",
+      "relation": "input_to"
+    },
+    {
+      "source": "quality_control_measurements",
+      "target": "manage_quality",
+      "relation": "input_to"
+    },
+    {
+      "source": "risk_report",
+      "target": "manage_quality",
+      "relation": "input_to"
+    },
+    {
+      "source": "lessons_learned_register",
+      "target": "control_quality",
+      "relation": "input_to"
+    },
+    {
+      "source": "quality_management_plan",
+      "target": "plan_resource_management",
+      "relation": "input_to"
+    },
+    {
+      "source": "scope_baseline",
+      "target": "plan_resource_management",
+      "relation": "input_to"
+    },
+    {
+      "source": "project_schedule",
+      "target": "plan_resource_management",
+      "relation": "input_to"
+    },
+    {
+      "source": "requirements_documentation",
+      "target": "plan_resource_management",
+      "relation": "input_to"
+    },
+    {
+      "source": "risk_register",
+      "target": "plan_resource_management",
+      "relation": "input_to"
+    },
+    {
+      "source": "stakeholder_register",
+      "target": "plan_resource_management",
+      "relation": "input_to"
+    },
+    {
+      "source": "assumption_log",
+      "target": "estimate_activity_resources",
+      "relation": "input_to"
+    },
+    {
+      "source": "resource_calendars",
+      "target": "estimate_activity_resources",
+      "relation": "input_to"
+    },
+    {
+      "source": "risk_register",
+      "target": "estimate_activity_resources",
+      "relation": "input_to"
+    },
+    {
+      "source": "resource_calendars",
+      "target": "acquire_resources",
+      "relation": "input_to"
+    },
+    {
+      "source": "resource_requirements",
+      "target": "acquire_resources",
+      "relation": "input_to"
+    },
+    {
+      "source": "stakeholder_register",
+      "target": "acquire_resources",
+      "relation": "input_to"
+    },
+    {
+      "source": "lessons_learned_register",
+      "target": "develop_team",
+      "relation": "input_to"
+    },
+    {
+      "source": "project_schedule",
+      "target": "develop_team",
+      "relation": "input_to"
+    },
+    {
+      "source": "team_performance_assessments",
+      "target": "manage_team",
+      "relation": "input_to"
+    },
+    {
+      "source": "issue_log",
+      "target": "control_resources",
+      "relation": "input_to"
+    },
+    {
+      "source": "lessons_learned_register",
+      "target": "control_resources",
+      "relation": "input_to"
+    },
+    {
+      "source": "resource_breakdown_structure",
+      "target": "control_resources",
+      "relation": "input_to"
+    },
+    {
+      "source": "risk_register",
+      "target": "control_resources",
+      "relation": "input_to"
+    },
+    {
+      "source": "agreements",
+      "target": "control_resources",
+      "relation": "input_to"
+    },
+    {
+      "source": "resource_management_plan",
+      "target": "plan_communications_management",
+      "relation": "input_to"
+    },
+    {
+      "source": "stakeholder_engagement_plan",
+      "target": "plan_communications_management",
+      "relation": "input_to"
+    },
+    {
+      "source": "requirements_documentation",
+      "target": "plan_communications_management",
+      "relation": "input_to"
+    },
+    {
+      "source": "resource_management_plan",
+      "target": "manage_communications",
+      "relation": "input_to"
+    },
+    {
+      "source": "change_log",
+      "target": "manage_communications",
+      "relation": "input_to"
+    },
+    {
+      "source": "issue_log",
+      "target": "manage_communications",
+      "relation": "input_to"
+    },
+    {
+      "source": "lessons_learned_register",
+      "target": "manage_communications",
+      "relation": "input_to"
+    },
+    {
+      "source": "quality_reports",
+      "target": "manage_communications",
+      "relation": "input_to"
+    },
+    {
+      "source": "risk_report",
+      "target": "manage_communications",
+      "relation": "input_to"
+    },
+    {
+      "source": "resource_management_plan",
+      "target": "monitor_communications",
+      "relation": "input_to"
+    },
+    {
+      "source": "stakeholder_engagement_plan",
+      "target": "monitor_communications",
+      "relation": "input_to"
+    },
+    {
+      "source": "lessons_learned_register",
+      "target": "monitor_communications",
+      "relation": "input_to"
+    },
+    {
+      "source": "stakeholder_register",
+      "target": "plan_risk_management",
+      "relation": "input_to"
+    },
+    {
+      "source": "requirements_management_plan",
+      "target": "identify_risks",
+      "relation": "input_to"
+    },
+    {
+      "source": "schedule_management_plan",
+      "target": "identify_risks",
+      "relation": "input_to"
+    },
+    {
+      "source": "cost_management_plan",
+      "target": "identify_risks",
+      "relation": "input_to"
+    },
+    {
+      "source": "quality_management_plan",
+      "target": "identify_risks",
+      "relation": "input_to"
+    },
+    {
+      "source": "resource_management_plan",
+      "target": "identify_risks",
+      "relation": "input_to"
+    },
+    {
+      "source": "scope_baseline",
+      "target": "identify_risks",
+      "relation": "input_to"
+    },
+    {
+      "source": "schedule_baseline",
+      "target": "identify_risks",
+      "relation": "input_to"
+    },
+    {
+      "source": "cost_baseline",
+      "target": "identify_risks",
+      "relation": "input_to"
+    },
+    {
+      "source": "assumption_log",
+      "target": "identify_risks",
+      "relation": "input_to"
+    },
+    {
+      "source": "issue_log",
+      "target": "identify_risks",
+      "relation": "input_to"
+    },
+    {
+      "source": "lessons_learned_register",
+      "target": "identify_risks",
+      "relation": "input_to"
+    },
+    {
+      "source": "resource_requirements",
+      "target": "identify_risks",
+      "relation": "input_to"
+    },
+    {
+      "source": "assumption_log",
+      "target": "perform_qualitative_risk_analysis",
+      "relation": "input_to"
+    },
+    {
+      "source": "assumption_log",
+      "target": "perform_quantitative_risk_analysis",
+      "relation": "input_to"
+    },
+    {
+      "source": "basis_of_estimates",
+      "target": "perform_quantitative_risk_analysis",
+      "relation": "input_to"
+    },
+    {
+      "source": "cost_forecasts",
+      "target": "perform_quantitative_risk_analysis",
+      "relation": "input_to"
+    },
+    {
+      "source": "milestone_list",
+      "target": "perform_quantitative_risk_analysis",
+      "relation": "input_to"
+    },
+    {
+      "source": "resource_requirements",
+      "target": "perform_quantitative_risk_analysis",
+      "relation": "input_to"
+    },
+    {
+      "source": "risk_report",
+      "target": "perform_quantitative_risk_analysis",
+      "relation": "input_to"
+    },
+    {
+      "source": "schedule_forecasts",
+      "target": "perform_quantitative_risk_analysis",
+      "relation": "input_to"
+    },
+    {
+      "source": "cost_baseline",
+      "target": "plan_risk_responses",
+      "relation": "input_to"
+    },
+    {
+      "source": "lessons_learned_register",
+      "target": "plan_risk_responses",
+      "relation": "input_to"
+    },
+    {
+      "source": "project_schedule",
+      "target": "plan_risk_responses",
+      "relation": "input_to"
+    },
+    {
+      "source": "project_team_assignments",
+      "target": "plan_risk_responses",
+      "relation": "input_to"
+    },
+    {
+      "source": "resource_calendars",
+      "target": "plan_risk_responses",
+      "relation": "input_to"
+    },
+    {
+      "source": "stakeholder_register",
+      "target": "plan_risk_responses",
+      "relation": "input_to"
+    },
+    {
+      "source": "issue_log",
+      "target": "monitor_risks",
+      "relation": "input_to"
+    },
+    {
+      "source": "lessons_learned_register",
+      "target": "monitor_risks",
+      "relation": "input_to"
+    },
+    {
+      "source": "work_performance_reports",
+      "target": "monitor_risks",
+      "relation": "input_to"
+    },
+    {
+      "source": "scope_management_plan",
+      "target": "plan_procurement_management",
+      "relation": "input_to"
+    },
+    {
+      "source": "quality_management_plan",
+      "target": "plan_procurement_management",
+      "relation": "input_to"
+    },
+    {
+      "source": "resource_management_plan",
+      "target": "plan_procurement_management",
+      "relation": "input_to"
+    },
+    {
+      "source": "scope_baseline",
+      "target": "plan_procurement_management",
+      "relation": "input_to"
+    },
+    {
+      "source": "milestone_list",
+      "target": "plan_procurement_management",
+      "relation": "input_to"
+    },
+    {
+      "source": "project_team_assignments",
+      "target": "plan_procurement_management",
+      "relation": "input_to"
+    },
+    {
+      "source": "requirements_traceability_matrix",
+      "target": "plan_procurement_management",
+      "relation": "input_to"
+    },
+    {
+      "source": "resource_requirements",
+      "target": "plan_procurement_management",
+      "relation": "input_to"
+    },
+    {
+      "source": "risk_register",
+      "target": "plan_procurement_management",
+      "relation": "input_to"
+    },
+    {
+      "source": "stakeholder_register",
+      "target": "plan_procurement_management",
+      "relation": "input_to"
+    },
+    {
+      "source": "scope_management_plan",
+      "target": "conduct_procurements",
+      "relation": "input_to"
+    },
+    {
+      "source": "requirements_management_plan",
+      "target": "conduct_procurements",
+      "relation": "input_to"
+    },
+    {
+      "source": "communications_management_plan",
+      "target": "conduct_procurements",
+      "relation": "input_to"
+    },
+    {
+      "source": "risk_management_plan",
+      "target": "conduct_procurements",
+      "relation": "input_to"
+    },
+    {
+      "source": "configuration_management_plan",
+      "target": "conduct_procurements",
+      "relation": "input_to"
+    },
+    {
+      "source": "cost_baseline",
+      "target": "conduct_procurements",
+      "relation": "input_to"
+    },
+    {
+      "source": "lessons_learned_register",
+      "target": "conduct_procurements",
+      "relation": "input_to"
+    },
+    {
+      "source": "project_schedule",
+      "target": "conduct_procurements",
+      "relation": "input_to"
+    },
+    {
+      "source": "requirements_documentation",
+      "target": "conduct_procurements",
+      "relation": "input_to"
+    },
+    {
+      "source": "stakeholder_register",
+      "target": "conduct_procurements",
+      "relation": "input_to"
+    },
+    {
+      "source": "procurement_documentation",
+      "target": "conduct_procurements",
+      "relation": "input_to"
+    },
+    {
+      "source": "source_selection_criteria",
+      "target": "conduct_procurements",
+      "relation": "input_to"
+    },
+    {
+      "source": "requirements_management_plan",
+      "target": "control_procurements",
+      "relation": "input_to"
+    },
+    {
+      "source": "risk_management_plan",
+      "target": "control_procurements",
+      "relation": "input_to"
+    },
+    {
+      "source": "change_management_plan",
+      "target": "control_procurements",
+      "relation": "input_to"
+    },
+    {
+      "source": "schedule_baseline",
+      "target": "control_procurements",
+      "relation": "input_to"
+    },
+    {
+      "source": "assumption_log",
+      "target": "control_procurements",
+      "relation": "input_to"
+    },
+    {
+      "source": "lessons_learned_register",
+      "target": "control_procurements",
+      "relation": "input_to"
+    },
+    {
+      "source": "milestone_list",
+      "target": "control_procurements",
+      "relation": "input_to"
+    },
+    {
+      "source": "quality_reports",
+      "target": "control_procurements",
+      "relation": "input_to"
+    },
+    {
+      "source": "requirements_documentation",
+      "target": "control_procurements",
+      "relation": "input_to"
+    },
+    {
+      "source": "requirements_traceability_matrix",
+      "target": "control_procurements",
+      "relation": "input_to"
+    },
+    {
+      "source": "risk_register",
+      "target": "control_procurements",
+      "relation": "input_to"
+    },
+    {
+      "source": "stakeholder_register",
+      "target": "control_procurements",
+      "relation": "input_to"
+    },
+    {
+      "source": "agreements",
+      "target": "control_procurements",
+      "relation": "input_to"
+    },
+    {
+      "source": "communications_management_plan",
+      "target": "identify_stakeholders",
+      "relation": "input_to"
+    },
+    {
+      "source": "stakeholder_engagement_plan",
+      "target": "identify_stakeholders",
+      "relation": "input_to"
+    },
+    {
+      "source": "change_log",
+      "target": "identify_stakeholders",
+      "relation": "input_to"
+    },
+    {
+      "source": "issue_log",
+      "target": "identify_stakeholders",
+      "relation": "input_to"
+    },
+    {
+      "source": "requirements_documentation",
+      "target": "identify_stakeholders",
+      "relation": "input_to"
+    },
+    {
+      "source": "resource_management_plan",
+      "target": "plan_stakeholder_engagement",
+      "relation": "input_to"
+    },
+    {
+      "source": "communications_management_plan",
+      "target": "plan_stakeholder_engagement",
+      "relation": "input_to"
+    },
+    {
+      "source": "risk_management_plan",
+      "target": "plan_stakeholder_engagement",
+      "relation": "input_to"
+    },
+    {
+      "source": "assumption_log",
+      "target": "plan_stakeholder_engagement",
+      "relation": "input_to"
+    },
+    {
+      "source": "change_log",
+      "target": "plan_stakeholder_engagement",
+      "relation": "input_to"
+    },
+    {
+      "source": "issue_log",
+      "target": "plan_stakeholder_engagement",
+      "relation": "input_to"
+    },
+    {
+      "source": "project_schedule",
+      "target": "plan_stakeholder_engagement",
+      "relation": "input_to"
+    },
+    {
+      "source": "risk_register",
+      "target": "plan_stakeholder_engagement",
+      "relation": "input_to"
+    },
+    {
+      "source": "risk_management_plan",
+      "target": "manage_stakeholder_engagement",
+      "relation": "input_to"
+    },
+    {
+      "source": "change_management_plan",
+      "target": "manage_stakeholder_engagement",
+      "relation": "input_to"
+    },
+    {
+      "source": "change_log",
+      "target": "manage_stakeholder_engagement",
+      "relation": "input_to"
+    },
+    {
+      "source": "lessons_learned_register",
+      "target": "manage_stakeholder_engagement",
+      "relation": "input_to"
+    },
+    {
+      "source": "resource_management_plan",
+      "target": "monitor_stakeholder_engagement",
+      "relation": "input_to"
+    },
+    {
+      "source": "lessons_learned_register",
+      "target": "monitor_stakeholder_engagement",
+      "relation": "input_to"
+    },
+    {
+      "source": "project_communications",
+      "target": "monitor_stakeholder_engagement",
+      "relation": "input_to"
+    },
+    {
+      "source": "risk_register",
+      "target": "monitor_stakeholder_engagement",
+      "relation": "input_to"
+    },
+    {
+      "source": "direct_and_manage_project_work",
+      "target": "project_management_plan",
+      "relation": "updates"
+    },
+    {
+      "source": "direct_and_manage_project_work",
+      "target": "activity_list",
+      "relation": "updates"
+    },
+    {
+      "source": "direct_and_manage_project_work",
+      "target": "assumption_log",
+      "relation": "updates"
+    },
+    {
+      "source": "direct_and_manage_project_work",
+      "target": "lessons_learned_register",
+      "relation": "updates"
+    },
+    {
+      "source": "direct_and_manage_project_work",
+      "target": "requirements_documentation",
+      "relation": "updates"
+    },
+    {
+      "source": "direct_and_manage_project_work",
+      "target": "risk_register",
+      "relation": "updates"
+    },
+    {
+      "source": "direct_and_manage_project_work",
+      "target": "stakeholder_register",
+      "relation": "updates"
+    },
+    {
+      "source": "manage_project_knowledge",
+      "target": "project_management_plan",
+      "relation": "updates"
+    },
+    {
+      "source": "manage_project_knowledge",
+      "target": "organizational_process_assets",
+      "relation": "updates"
+    },
+    {
+      "source": "monitor_and_control_project_work",
+      "target": "project_management_plan",
+      "relation": "updates"
+    },
+    {
+      "source": "monitor_and_control_project_work",
+      "target": "cost_forecasts",
+      "relation": "updates"
+    },
+    {
+      "source": "monitor_and_control_project_work",
+      "target": "issue_log",
+      "relation": "updates"
+    },
+    {
+      "source": "monitor_and_control_project_work",
+      "target": "lessons_learned_register",
+      "relation": "updates"
+    },
+    {
+      "source": "monitor_and_control_project_work",
+      "target": "risk_register",
+      "relation": "updates"
+    },
+    {
+      "source": "monitor_and_control_project_work",
+      "target": "schedule_forecasts",
+      "relation": "updates"
+    },
+    {
+      "source": "perform_integrated_change_control",
+      "target": "project_management_plan",
+      "relation": "updates"
+    },
+    {
+      "source": "perform_integrated_change_control",
+      "target": "change_log",
+      "relation": "updates"
+    },
+    {
+      "source": "close_project_or_phase",
+      "target": "lessons_learned_register",
+      "relation": "updates"
+    },
+    {
+      "source": "close_project_or_phase",
+      "target": "organizational_process_assets",
+      "relation": "updates"
+    },
+    {
+      "source": "define_scope",
+      "target": "assumption_log",
+      "relation": "updates"
+    },
+    {
+      "source": "define_scope",
+      "target": "requirements_documentation",
+      "relation": "updates"
+    },
+    {
+      "source": "define_scope",
+      "target": "requirements_traceability_matrix",
+      "relation": "updates"
+    },
+    {
+      "source": "define_scope",
+      "target": "stakeholder_register",
+      "relation": "updates"
+    },
+    {
+      "source": "create_wbs",
+      "target": "assumption_log",
+      "relation": "updates"
+    },
+    {
+      "source": "create_wbs",
+      "target": "requirements_documentation",
+      "relation": "updates"
+    },
+    {
+      "source": "validate_scope",
+      "target": "lessons_learned_register",
+      "relation": "updates"
+    },
+    {
+      "source": "validate_scope",
+      "target": "requirements_documentation",
+      "relation": "updates"
+    },
+    {
+      "source": "validate_scope",
+      "target": "requirements_traceability_matrix",
+      "relation": "updates"
+    },
+    {
+      "source": "control_scope",
+      "target": "scope_management_plan",
+      "relation": "updates"
+    },
+    {
+      "source": "control_scope",
+      "target": "scope_baseline",
+      "relation": "updates"
+    },
+    {
+      "source": "control_scope",
+      "target": "schedule_baseline",
+      "relation": "updates"
+    },
+    {
+      "source": "control_scope",
+      "target": "cost_baseline",
+      "relation": "updates"
+    },
+    {
+      "source": "control_scope",
+      "target": "performance_measurement_baseline",
+      "relation": "updates"
+    },
+    {
+      "source": "control_scope",
+      "target": "lessons_learned_register",
+      "relation": "updates"
+    },
+    {
+      "source": "control_scope",
+      "target": "requirements_documentation",
+      "relation": "updates"
+    },
+    {
+      "source": "control_scope",
+      "target": "requirements_traceability_matrix",
+      "relation": "updates"
+    },
+    {
+      "source": "define_activities",
+      "target": "schedule_baseline",
+      "relation": "updates"
+    },
+    {
+      "source": "define_activities",
+      "target": "cost_baseline",
+      "relation": "updates"
+    },
+    {
+      "source": "sequence_activities",
+      "target": "activity_attributes",
+      "relation": "updates"
+    },
+    {
+      "source": "sequence_activities",
+      "target": "activity_list",
+      "relation": "updates"
+    },
+    {
+      "source": "sequence_activities",
+      "target": "assumption_log",
+      "relation": "updates"
+    },
+    {
+      "source": "sequence_activities",
+      "target": "milestone_list",
+      "relation": "updates"
+    },
+    {
+      "source": "estimate_activity_durations",
+      "target": "activity_attributes",
+      "relation": "updates"
+    },
+    {
+      "source": "estimate_activity_durations",
+      "target": "assumption_log",
+      "relation": "updates"
+    },
+    {
+      "source": "estimate_activity_durations",
+      "target": "lessons_learned_register",
+      "relation": "updates"
+    },
+    {
+      "source": "develop_schedule",
+      "target": "schedule_management_plan",
+      "relation": "updates"
+    },
+    {
+      "source": "develop_schedule",
+      "target": "cost_baseline",
+      "relation": "updates"
+    },
+    {
+      "source": "develop_schedule",
+      "target": "activity_attributes",
+      "relation": "updates"
+    },
+    {
+      "source": "develop_schedule",
+      "target": "assumption_log",
+      "relation": "updates"
+    },
+    {
+      "source": "develop_schedule",
+      "target": "activity_duration_estimates",
+      "relation": "updates"
+    },
+    {
+      "source": "develop_schedule",
+      "target": "lessons_learned_register",
+      "relation": "updates"
+    },
+    {
+      "source": "develop_schedule",
+      "target": "resource_requirements",
+      "relation": "updates"
+    },
+    {
+      "source": "develop_schedule",
+      "target": "risk_register",
+      "relation": "updates"
+    },
+    {
+      "source": "control_schedule",
+      "target": "schedule_management_plan",
+      "relation": "updates"
+    },
+    {
+      "source": "control_schedule",
+      "target": "schedule_baseline",
+      "relation": "updates"
+    },
+    {
+      "source": "control_schedule",
+      "target": "cost_baseline",
+      "relation": "updates"
+    },
+    {
+      "source": "control_schedule",
+      "target": "performance_measurement_baseline",
+      "relation": "updates"
+    },
+    {
+      "source": "control_schedule",
+      "target": "assumption_log",
+      "relation": "updates"
+    },
+    {
+      "source": "control_schedule",
+      "target": "basis_of_estimates",
+      "relation": "updates"
+    },
+    {
+      "source": "control_schedule",
+      "target": "lessons_learned_register",
+      "relation": "updates"
+    },
+    {
+      "source": "control_schedule",
+      "target": "project_schedule",
+      "relation": "updates"
+    },
+    {
+      "source": "control_schedule",
+      "target": "resource_calendars",
+      "relation": "updates"
+    },
+    {
+      "source": "control_schedule",
+      "target": "risk_register",
+      "relation": "updates"
+    },
+    {
+      "source": "control_schedule",
+      "target": "schedule_data",
+      "relation": "updates"
+    },
+    {
+      "source": "estimate_costs",
+      "target": "assumption_log",
+      "relation": "updates"
+    },
+    {
+      "source": "estimate_costs",
+      "target": "lessons_learned_register",
+      "relation": "updates"
+    },
+    {
+      "source": "estimate_costs",
+      "target": "risk_register",
+      "relation": "updates"
+    },
+    {
+      "source": "determine_budget",
+      "target": "cost_estimates",
+      "relation": "updates"
+    },
+    {
+      "source": "determine_budget",
+      "target": "project_schedule",
+      "relation": "updates"
+    },
+    {
+      "source": "determine_budget",
+      "target": "risk_register",
+      "relation": "updates"
+    },
+    {
+      "source": "control_costs",
+      "target": "cost_management_plan",
+      "relation": "updates"
+    },
+    {
+      "source": "control_costs",
+      "target": "cost_baseline",
+      "relation": "updates"
+    },
+    {
+      "source": "control_costs",
+      "target": "performance_measurement_baseline",
+      "relation": "updates"
+    },
+    {
+      "source": "control_costs",
+      "target": "assumption_log",
+      "relation": "updates"
+    },
+    {
+      "source": "control_costs",
+      "target": "basis_of_estimates",
+      "relation": "updates"
+    },
+    {
+      "source": "control_costs",
+      "target": "cost_estimates",
+      "relation": "updates"
+    },
+    {
+      "source": "control_costs",
+      "target": "lessons_learned_register",
+      "relation": "updates"
+    },
+    {
+      "source": "control_costs",
+      "target": "risk_register",
+      "relation": "updates"
+    },
+    {
+      "source": "plan_quality_management",
+      "target": "risk_management_plan",
+      "relation": "updates"
+    },
+    {
+      "source": "plan_quality_management",
+      "target": "scope_baseline",
+      "relation": "updates"
+    },
+    {
+      "source": "plan_quality_management",
+      "target": "lessons_learned_register",
+      "relation": "updates"
+    },
+    {
+      "source": "plan_quality_management",
+      "target": "requirements_traceability_matrix",
+      "relation": "updates"
+    },
+    {
+      "source": "plan_quality_management",
+      "target": "risk_register",
+      "relation": "updates"
+    },
+    {
+      "source": "plan_quality_management",
+      "target": "stakeholder_register",
+      "relation": "updates"
+    },
+    {
+      "source": "manage_quality",
+      "target": "quality_management_plan",
+      "relation": "updates"
+    },
+    {
+      "source": "manage_quality",
+      "target": "scope_baseline",
+      "relation": "updates"
+    },
+    {
+      "source": "manage_quality",
+      "target": "schedule_baseline",
+      "relation": "updates"
+    },
+    {
+      "source": "manage_quality",
+      "target": "cost_baseline",
+      "relation": "updates"
+    },
+    {
+      "source": "manage_quality",
+      "target": "issue_log",
+      "relation": "updates"
+    },
+    {
+      "source": "manage_quality",
+      "target": "lessons_learned_register",
+      "relation": "updates"
+    },
+    {
+      "source": "manage_quality",
+      "target": "risk_register",
+      "relation": "updates"
+    },
+    {
+      "source": "control_quality",
+      "target": "quality_management_plan",
+      "relation": "updates"
+    },
+    {
+      "source": "control_quality",
+      "target": "issue_log",
+      "relation": "updates"
+    },
+    {
+      "source": "control_quality",
+      "target": "lessons_learned_register",
+      "relation": "updates"
+    },
+    {
+      "source": "control_quality",
+      "target": "risk_register",
+      "relation": "updates"
+    },
+    {
+      "source": "control_quality",
+      "target": "test_and_evaluation_documents",
+      "relation": "updates"
+    },
+    {
+      "source": "plan_resource_management",
+      "target": "assumption_log",
+      "relation": "updates"
+    },
+    {
+      "source": "plan_resource_management",
+      "target": "risk_register",
+      "relation": "updates"
+    },
+    {
+      "source": "estimate_activity_resources",
+      "target": "activity_attributes",
+      "relation": "updates"
+    },
+    {
+      "source": "estimate_activity_resources",
+      "target": "assumption_log",
+      "relation": "updates"
+    },
+    {
+      "source": "estimate_activity_resources",
+      "target": "lessons_learned_register",
+      "relation": "updates"
+    },
+    {
+      "source": "acquire_resources",
+      "target": "resource_management_plan",
+      "relation": "updates"
+    },
+    {
+      "source": "acquire_resources",
+      "target": "cost_baseline",
+      "relation": "updates"
+    },
+    {
+      "source": "acquire_resources",
+      "target": "lessons_learned_register",
+      "relation": "updates"
+    },
+    {
+      "source": "acquire_resources",
+      "target": "project_schedule",
+      "relation": "updates"
+    },
+    {
+      "source": "acquire_resources",
+      "target": "resource_breakdown_structure",
+      "relation": "updates"
+    },
+    {
+      "source": "acquire_resources",
+      "target": "resource_requirements",
+      "relation": "updates"
+    },
+    {
+      "source": "acquire_resources",
+      "target": "risk_register",
+      "relation": "updates"
+    },
+    {
+      "source": "acquire_resources",
+      "target": "stakeholder_register",
+      "relation": "updates"
+    },
+    {
+      "source": "acquire_resources",
+      "target": "enterprise_environmental_factors",
+      "relation": "updates"
+    },
+    {
+      "source": "acquire_resources",
+      "target": "organizational_process_assets",
+      "relation": "updates"
+    },
+    {
+      "source": "develop_team",
+      "target": "resource_management_plan",
+      "relation": "updates"
+    },
+    {
+      "source": "develop_team",
+      "target": "lessons_learned_register",
+      "relation": "updates"
+    },
+    {
+      "source": "develop_team",
+      "target": "project_schedule",
+      "relation": "updates"
+    },
+    {
+      "source": "develop_team",
+      "target": "project_team_assignments",
+      "relation": "updates"
+    },
+    {
+      "source": "develop_team",
+      "target": "resource_calendars",
+      "relation": "updates"
+    },
+    {
+      "source": "develop_team",
+      "target": "team_charter",
+      "relation": "updates"
+    },
+    {
+      "source": "develop_team",
+      "target": "enterprise_environmental_factors",
+      "relation": "updates"
+    },
+    {
+      "source": "develop_team",
+      "target": "organizational_process_assets",
+      "relation": "updates"
+    },
+    {
+      "source": "manage_team",
+      "target": "resource_management_plan",
+      "relation": "updates"
+    },
+    {
+      "source": "manage_team",
+      "target": "schedule_baseline",
+      "relation": "updates"
+    },
+    {
+      "source": "manage_team",
+      "target": "cost_baseline",
+      "relation": "updates"
+    },
+    {
+      "source": "manage_team",
+      "target": "issue_log",
+      "relation": "updates"
+    },
+    {
+      "source": "manage_team",
+      "target": "lessons_learned_register",
+      "relation": "updates"
+    },
+    {
+      "source": "manage_team",
+      "target": "project_team_assignments",
+      "relation": "updates"
+    },
+    {
+      "source": "manage_team",
+      "target": "enterprise_environmental_factors",
+      "relation": "updates"
+    },
+    {
+      "source": "control_resources",
+      "target": "resource_management_plan",
+      "relation": "updates"
+    },
+    {
+      "source": "control_resources",
+      "target": "schedule_baseline",
+      "relation": "updates"
+    },
+    {
+      "source": "control_resources",
+      "target": "cost_baseline",
+      "relation": "updates"
+    },
+    {
+      "source": "control_resources",
+      "target": "assumption_log",
+      "relation": "updates"
+    },
+    {
+      "source": "control_resources",
+      "target": "issue_log",
+      "relation": "updates"
+    },
+    {
+      "source": "control_resources",
+      "target": "lessons_learned_register",
+      "relation": "updates"
+    },
+    {
+      "source": "control_resources",
+      "target": "physical_resource_assignments",
+      "relation": "updates"
+    },
+    {
+      "source": "control_resources",
+      "target": "resource_breakdown_structure",
+      "relation": "updates"
+    },
+    {
+      "source": "control_resources",
+      "target": "risk_register",
+      "relation": "updates"
+    },
+    {
+      "source": "plan_communications_management",
+      "target": "stakeholder_engagement_plan",
+      "relation": "updates"
+    },
+    {
+      "source": "plan_communications_management",
+      "target": "project_schedule",
+      "relation": "updates"
+    },
+    {
+      "source": "plan_communications_management",
+      "target": "stakeholder_register",
+      "relation": "updates"
+    },
+    {
+      "source": "manage_communications",
+      "target": "communications_management_plan",
+      "relation": "updates"
+    },
+    {
+      "source": "manage_communications",
+      "target": "stakeholder_engagement_plan",
+      "relation": "updates"
+    },
+    {
+      "source": "manage_communications",
+      "target": "issue_log",
+      "relation": "updates"
+    },
+    {
+      "source": "manage_communications",
+      "target": "lessons_learned_register",
+      "relation": "updates"
+    },
+    {
+      "source": "manage_communications",
+      "target": "project_schedule",
+      "relation": "updates"
+    },
+    {
+      "source": "manage_communications",
+      "target": "risk_register",
+      "relation": "updates"
+    },
+    {
+      "source": "manage_communications",
+      "target": "stakeholder_register",
+      "relation": "updates"
+    },
+    {
+      "source": "manage_communications",
+      "target": "organizational_process_assets",
+      "relation": "updates"
+    },
+    {
+      "source": "monitor_communications",
+      "target": "communications_management_plan",
+      "relation": "updates"
+    },
+    {
+      "source": "monitor_communications",
+      "target": "stakeholder_engagement_plan",
+      "relation": "updates"
+    },
+    {
+      "source": "monitor_communications",
+      "target": "issue_log",
+      "relation": "updates"
+    },
+    {
+      "source": "monitor_communications",
+      "target": "lessons_learned_register",
+      "relation": "updates"
+    },
+    {
+      "source": "monitor_communications",
+      "target": "stakeholder_register",
+      "relation": "updates"
+    },
+    {
+      "source": "identify_risks",
+      "target": "assumption_log",
+      "relation": "updates"
+    },
+    {
+      "source": "identify_risks",
+      "target": "issue_log",
+      "relation": "updates"
+    },
+    {
+      "source": "identify_risks",
+      "target": "lessons_learned_register",
+      "relation": "updates"
+    },
+    {
+      "source": "perform_qualitative_risk_analysis",
+      "target": "assumption_log",
+      "relation": "updates"
+    },
+    {
+      "source": "perform_qualitative_risk_analysis",
+      "target": "issue_log",
+      "relation": "updates"
+    },
+    {
+      "source": "perform_qualitative_risk_analysis",
+      "target": "risk_register",
+      "relation": "updates"
+    },
+    {
+      "source": "perform_qualitative_risk_analysis",
+      "target": "risk_report",
+      "relation": "updates"
+    },
+    {
+      "source": "perform_quantitative_risk_analysis",
+      "target": "risk_report",
+      "relation": "updates"
+    },
+    {
+      "source": "plan_risk_responses",
+      "target": "schedule_management_plan",
+      "relation": "updates"
+    },
+    {
+      "source": "plan_risk_responses",
+      "target": "cost_management_plan",
+      "relation": "updates"
+    },
+    {
+      "source": "plan_risk_responses",
+      "target": "quality_management_plan",
+      "relation": "updates"
+    },
+    {
+      "source": "plan_risk_responses",
+      "target": "resource_management_plan",
+      "relation": "updates"
+    },
+    {
+      "source": "plan_risk_responses",
+      "target": "procurement_management_plan",
+      "relation": "updates"
+    },
+    {
+      "source": "plan_risk_responses",
+      "target": "scope_baseline",
+      "relation": "updates"
+    },
+    {
+      "source": "plan_risk_responses",
+      "target": "schedule_baseline",
+      "relation": "updates"
+    },
+    {
+      "source": "plan_risk_responses",
+      "target": "cost_baseline",
+      "relation": "updates"
+    },
+    {
+      "source": "plan_risk_responses",
+      "target": "assumption_log",
+      "relation": "updates"
+    },
+    {
+      "source": "plan_risk_responses",
+      "target": "cost_forecasts",
+      "relation": "updates"
+    },
+    {
+      "source": "plan_risk_responses",
+      "target": "lessons_learned_register",
+      "relation": "updates"
+    },
+    {
+      "source": "plan_risk_responses",
+      "target": "project_schedule",
+      "relation": "updates"
+    },
+    {
+      "source": "plan_risk_responses",
+      "target": "project_team_assignments",
+      "relation": "updates"
+    },
+    {
+      "source": "plan_risk_responses",
+      "target": "risk_register",
+      "relation": "updates"
+    },
+    {
+      "source": "plan_risk_responses",
+      "target": "risk_report",
+      "relation": "updates"
+    },
+    {
+      "source": "implement_risk_responses",
+      "target": "issue_log",
+      "relation": "updates"
+    },
+    {
+      "source": "implement_risk_responses",
+      "target": "lessons_learned_register",
+      "relation": "updates"
+    },
+    {
+      "source": "implement_risk_responses",
+      "target": "project_team_assignments",
+      "relation": "updates"
+    },
+    {
+      "source": "implement_risk_responses",
+      "target": "risk_register",
+      "relation": "updates"
+    },
+    {
+      "source": "implement_risk_responses",
+      "target": "risk_report",
+      "relation": "updates"
+    },
+    {
+      "source": "monitor_risks",
+      "target": "project_management_plan",
+      "relation": "updates"
+    },
+    {
+      "source": "monitor_risks",
+      "target": "assumption_log",
+      "relation": "updates"
+    },
+    {
+      "source": "monitor_risks",
+      "target": "issue_log",
+      "relation": "updates"
+    },
+    {
+      "source": "monitor_risks",
+      "target": "lessons_learned_register",
+      "relation": "updates"
+    },
+    {
+      "source": "monitor_risks",
+      "target": "risk_register",
+      "relation": "updates"
+    },
+    {
+      "source": "monitor_risks",
+      "target": "risk_report",
+      "relation": "updates"
+    },
+    {
+      "source": "monitor_risks",
+      "target": "organizational_process_assets",
+      "relation": "updates"
+    },
+    {
+      "source": "plan_procurement_management",
+      "target": "lessons_learned_register",
+      "relation": "updates"
+    },
+    {
+      "source": "plan_procurement_management",
+      "target": "milestone_list",
+      "relation": "updates"
+    },
+    {
+      "source": "plan_procurement_management",
+      "target": "requirements_documentation",
+      "relation": "updates"
+    },
+    {
+      "source": "plan_procurement_management",
+      "target": "requirements_traceability_matrix",
+      "relation": "updates"
+    },
+    {
+      "source": "plan_procurement_management",
+      "target": "risk_register",
+      "relation": "updates"
+    },
+    {
+      "source": "plan_procurement_management",
+      "target": "stakeholder_register",
+      "relation": "updates"
+    },
+    {
+      "source": "plan_procurement_management",
+      "target": "organizational_process_assets",
+      "relation": "updates"
+    },
+    {
+      "source": "conduct_procurements",
+      "target": "requirements_management_plan",
+      "relation": "updates"
+    },
+    {
+      "source": "conduct_procurements",
+      "target": "quality_management_plan",
+      "relation": "updates"
+    },
+    {
+      "source": "conduct_procurements",
+      "target": "communications_management_plan",
+      "relation": "updates"
+    },
+    {
+      "source": "conduct_procurements",
+      "target": "risk_management_plan",
+      "relation": "updates"
+    },
+    {
+      "source": "conduct_procurements",
+      "target": "procurement_management_plan",
+      "relation": "updates"
+    },
+    {
+      "source": "conduct_procurements",
+      "target": "scope_baseline",
+      "relation": "updates"
+    },
+    {
+      "source": "conduct_procurements",
+      "target": "schedule_baseline",
+      "relation": "updates"
+    },
+    {
+      "source": "conduct_procurements",
+      "target": "cost_baseline",
+      "relation": "updates"
+    },
+    {
+      "source": "conduct_procurements",
+      "target": "lessons_learned_register",
+      "relation": "updates"
+    },
+    {
+      "source": "conduct_procurements",
+      "target": "requirements_documentation",
+      "relation": "updates"
+    },
+    {
+      "source": "conduct_procurements",
+      "target": "requirements_traceability_matrix",
+      "relation": "updates"
+    },
+    {
+      "source": "conduct_procurements",
+      "target": "resource_calendars",
+      "relation": "updates"
+    },
+    {
+      "source": "conduct_procurements",
+      "target": "risk_register",
+      "relation": "updates"
+    },
+    {
+      "source": "conduct_procurements",
+      "target": "stakeholder_register",
+      "relation": "updates"
+    },
+    {
+      "source": "conduct_procurements",
+      "target": "organizational_process_assets",
+      "relation": "updates"
+    },
+    {
+      "source": "control_procurements",
+      "target": "risk_management_plan",
+      "relation": "updates"
+    },
+    {
+      "source": "control_procurements",
+      "target": "procurement_management_plan",
+      "relation": "updates"
+    },
+    {
+      "source": "control_procurements",
+      "target": "schedule_baseline",
+      "relation": "updates"
+    },
+    {
+      "source": "control_procurements",
+      "target": "cost_baseline",
+      "relation": "updates"
+    },
+    {
+      "source": "control_procurements",
+      "target": "procurement_documentation",
+      "relation": "updates"
+    },
+    {
+      "source": "control_procurements",
+      "target": "lessons_learned_register",
+      "relation": "updates"
+    },
+    {
+      "source": "control_procurements",
+      "target": "resource_requirements",
+      "relation": "updates"
+    },
+    {
+      "source": "control_procurements",
+      "target": "requirements_traceability_matrix",
+      "relation": "updates"
+    },
+    {
+      "source": "control_procurements",
+      "target": "risk_register",
+      "relation": "updates"
+    },
+    {
+      "source": "control_procurements",
+      "target": "stakeholder_register",
+      "relation": "updates"
+    },
+    {
+      "source": "control_procurements",
+      "target": "organizational_process_assets",
+      "relation": "updates"
+    },
+    {
+      "source": "identify_stakeholders",
+      "target": "requirements_management_plan",
+      "relation": "updates"
+    },
+    {
+      "source": "identify_stakeholders",
+      "target": "communications_management_plan",
+      "relation": "updates"
+    },
+    {
+      "source": "identify_stakeholders",
+      "target": "risk_management_plan",
+      "relation": "updates"
+    },
+    {
+      "source": "identify_stakeholders",
+      "target": "stakeholder_engagement_plan",
+      "relation": "updates"
+    },
+    {
+      "source": "identify_stakeholders",
+      "target": "assumption_log",
+      "relation": "updates"
+    },
+    {
+      "source": "identify_stakeholders",
+      "target": "issue_log",
+      "relation": "updates"
+    },
+    {
+      "source": "identify_stakeholders",
+      "target": "risk_register",
+      "relation": "updates"
+    },
+    {
+      "source": "manage_stakeholder_engagement",
+      "target": "communications_management_plan",
+      "relation": "updates"
+    },
+    {
+      "source": "manage_stakeholder_engagement",
+      "target": "stakeholder_engagement_plan",
+      "relation": "updates"
+    },
+    {
+      "source": "manage_stakeholder_engagement",
+      "target": "change_log",
+      "relation": "updates"
+    },
+    {
+      "source": "manage_stakeholder_engagement",
+      "target": "issue_log",
+      "relation": "updates"
+    },
+    {
+      "source": "manage_stakeholder_engagement",
+      "target": "lessons_learned_register",
+      "relation": "updates"
+    },
+    {
+      "source": "manage_stakeholder_engagement",
+      "target": "stakeholder_register",
+      "relation": "updates"
+    },
+    {
+      "source": "monitor_stakeholder_engagement",
+      "target": "resource_management_plan",
+      "relation": "updates"
+    },
+    {
+      "source": "monitor_stakeholder_engagement",
+      "target": "communications_management_plan",
+      "relation": "updates"
+    },
+    {
+      "source": "monitor_stakeholder_engagement",
+      "target": "stakeholder_engagement_plan",
+      "relation": "updates"
+    },
+    {
+      "source": "monitor_stakeholder_engagement",
+      "target": "issue_log",
+      "relation": "updates"
+    },
+    {
+      "source": "monitor_stakeholder_engagement",
+      "target": "lessons_learned_register",
+      "relation": "updates"
+    },
+    {
+      "source": "monitor_stakeholder_engagement",
+      "target": "risk_register",
+      "relation": "updates"
+    },
+    {
+      "source": "monitor_stakeholder_engagement",
+      "target": "stakeholder_register",
+      "relation": "updates"
+    }
   ]
 }

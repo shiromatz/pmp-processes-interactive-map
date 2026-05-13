@@ -1,5 +1,5 @@
 import type { BuiltView, GraphFilters, IttoFlowEdge, IttoGraph } from "../types/graph";
-import { getConsumersForArtifact, getNodeById, getProducersForArtifact, nodeMatchesFilters, uniqueNodes } from "./selectors";
+import { getConsumersForArtifact, getNodeById, getProducersForArtifact, getUpdatersForArtifact, nodeMatchesFilters, uniqueNodes } from "./selectors";
 import { ARTIFACT_COLUMN_X, getFocusY, layoutCenteredColumn, toFlowNode } from "./layout";
 
 export function buildArtifactView(
@@ -13,7 +13,12 @@ export function buildArtifactView(
     return { nodes: [], edges: [] };
   }
 
-  const producers = uniqueNodes(getProducersForArtifact(graph, selectedArtifactId));
+  const producerNodes = getProducersForArtifact(graph, selectedArtifactId);
+  const updaterNodes = getUpdatersForArtifact(graph, selectedArtifactId);
+  const producers = uniqueNodes([
+    ...producerNodes,
+    ...updaterNodes
+  ]);
   const consumers = uniqueNodes(getConsumersForArtifact(graph, selectedArtifactId));
   const muted = (nodeId: string) => {
     const node = getNodeById(graph, nodeId);
@@ -35,7 +40,8 @@ export function buildArtifactView(
       }))
     ],
     edges: [
-      ...producers.map((producer) => toFlowEdge(producer.id, focus.id, "outputs")),
+      ...producerNodes.map((producer) => toFlowEdge(producer.id, focus.id, "outputs")),
+      ...updaterNodes.map((producer) => toFlowEdge(producer.id, focus.id, "updates")),
       ...consumers.map((consumer) => toFlowEdge(focus.id, consumer.id, "input_to"))
     ]
   };
@@ -44,15 +50,20 @@ export function buildArtifactView(
 function toFlowEdge(
   source: string,
   target: string,
-  relation: "input_to" | "outputs"
+  relation: "input_to" | "outputs" | "updates"
 ): IttoFlowEdge {
   return {
     id: `${source}-${target}-${relation}`,
     source,
     target,
     type: "smoothstep",
-    animated: relation === "outputs",
+    animated: relation === "outputs" || relation === "updates",
     data: { relation },
-    className: relation === "outputs" ? "flow-edge--outputs" : "flow-edge--input"
+    className:
+      relation === "outputs"
+        ? "flow-edge--outputs"
+        : relation === "updates"
+          ? "flow-edge--updates"
+          : "flow-edge--input"
   };
 }

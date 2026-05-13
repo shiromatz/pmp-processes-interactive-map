@@ -4,7 +4,9 @@ import {
   getInputsForProcess,
   getNodeById,
   getOutputsForProcess,
-  getProducersForArtifact
+  getProducersForArtifact,
+  getUpdatesForProcess,
+  getUpdatersForArtifact
 } from "../graph/selectors";
 import type { IttoGraph, IttoNode } from "../types/graph";
 
@@ -47,6 +49,7 @@ function ProcessDetails({
 }) {
   const inputs = getInputsForProcess(graph, node.id);
   const outputs = getOutputsForProcess(graph, node.id);
+  const updates = getUpdatesForProcess(graph, node.id);
   const downstream = getDownstreamUsage(graph, node.id);
 
   return (
@@ -57,6 +60,7 @@ function ProcessDetails({
       </div>
       <NodeList title="Inputs" nodes={inputs} onSelectNode={onSelectNode} />
       <NodeList title="Outputs" nodes={outputs} onSelectNode={onSelectNode} />
+      <NodeList title="Updates" nodes={updates} onSelectNode={onSelectNode} />
       <section className="detail-section">
         <h3>Downstream Usage</h3>
         {downstream.length > 0 ? (
@@ -98,6 +102,7 @@ function ArtifactDetails({
   onSelectNode: (nodeId: string) => void;
 }) {
   const producers = getProducersForArtifact(graph, node.id);
+  const updaters = getUpdatersForArtifact(graph, node.id);
   const consumers = getConsumersForArtifact(graph, node.id);
 
   return (
@@ -106,6 +111,7 @@ function ArtifactDetails({
         <span>Artifact</span>
       </div>
       <NodeList title="Produced By" nodes={producers} onSelectNode={onSelectNode} />
+      <NodeList title="Updated By" nodes={updaters} onSelectNode={onSelectNode} />
       <NodeList title="Used As Input By" nodes={consumers} onSelectNode={onSelectNode} />
     </div>
   );

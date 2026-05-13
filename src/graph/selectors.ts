@@ -34,9 +34,23 @@ export function getOutputsForProcess(graph: IttoGraph, processId: string): IttoN
     .filter(isNode);
 }
 
+export function getUpdatesForProcess(graph: IttoGraph, processId: string): IttoNode[] {
+  return graph.edges
+    .filter((edge) => edge.source === processId && edge.relation === "updates")
+    .map((edge) => getNodeById(graph, edge.target))
+    .filter(isNode);
+}
+
 export function getProducersForArtifact(graph: IttoGraph, artifactId: string): IttoNode[] {
   return graph.edges
     .filter((edge) => edge.target === artifactId && edge.relation === "outputs")
+    .map((edge) => getNodeById(graph, edge.source))
+    .filter(isNode);
+}
+
+export function getUpdatersForArtifact(graph: IttoGraph, artifactId: string): IttoNode[] {
+  return graph.edges
+    .filter((edge) => edge.target === artifactId && edge.relation === "updates")
     .map((edge) => getNodeById(graph, edge.source))
     .filter(isNode);
 }
@@ -52,7 +66,10 @@ export function getDownstreamUsage(
   graph: IttoGraph,
   processId: string
 ): Array<{ output: IttoNode; consumers: IttoNode[] }> {
-  return getOutputsForProcess(graph, processId).map((output) => ({
+  return uniqueNodes([
+    ...getOutputsForProcess(graph, processId),
+    ...getUpdatesForProcess(graph, processId)
+  ]).map((output) => ({
     output,
     consumers: getConsumersForArtifact(graph, output.id)
   }));

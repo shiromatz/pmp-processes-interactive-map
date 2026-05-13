@@ -2,7 +2,7 @@ import type { Edge, Node } from "@xyflow/react";
 
 export type NodeType = "process" | "artifact";
 
-export type RelationType = "input_to" | "outputs";
+export type RelationType = "input_to" | "outputs" | "updates";
 
 export type ProcessGroup =
   | "Initiating"

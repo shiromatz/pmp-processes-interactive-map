@@ -1,5 +1,5 @@
 import type { BuiltView, GraphFilters, IttoFlowEdge, IttoGraph } from "../types/graph";
-import { getConsumersForArtifact, getInputsForProcess, getNodeById, getOutputsForProcess, nodeMatchesFilters, uniqueNodes } from "./selectors";
+import { getConsumersForArtifact, getInputsForProcess, getNodeById, getOutputsForProcess, getUpdatesForProcess, nodeMatchesFilters, uniqueNodes } from "./selectors";
 import { getFocusY, layoutCenteredColumn, PROCESS_COLUMN_X, toFlowNode } from "./layout";
 
 export function buildProcessView(
@@ -14,7 +14,10 @@ export function buildProcessView(
   }
 
   const inputs = uniqueNodes(getInputsForProcess(graph, selectedProcessId));
-  const outputs = uniqueNodes(getOutputsForProcess(graph, selectedProcessId));
+  const outputs = uniqueNodes([
+    ...getOutputsForProcess(graph, selectedProcessId),
+    ...getUpdatesForProcess(graph, selectedProcessId)
+  ]);
   const consumers =
     filters.downstreamDepth === 2
       ? uniqueNodes(outputs.flatMap((output) => getConsumersForArtifact(graph, output.id)))
@@ -43,7 +46,14 @@ export function buildProcessView(
   ];
 
   const inputEdges = inputs.map((input) => toFlowEdge(input.id, focus.id, "input_to"));
-  const outputEdges = outputs.map((output) => toFlowEdge(focus.id, output.id, "outputs"));
+  const outputEdges = [
+    ...getOutputsForProcess(graph, selectedProcessId).map((output) =>
+      toFlowEdge(focus.id, output.id, "outputs")
+    ),
+    ...getUpdatesForProcess(graph, selectedProcessId).map((output) =>
+      toFlowEdge(focus.id, output.id, "updates")
+    )
+  ];
   const downstreamEdges =
     filters.downstreamDepth === 2
       ? outputs.flatMap((output) =>
@@ -62,15 +72,20 @@ export function buildProcessView(
 function toFlowEdge(
   source: string,
   target: string,
-  relation: "input_to" | "outputs"
+  relation: "input_to" | "outputs" | "updates"
 ): IttoFlowEdge {
   return {
     id: `${source}-${target}-${relation}`,
     source,
     target,
     type: "smoothstep",
-    animated: relation === "outputs",
+    animated: relation === "outputs" || relation === "updates",
     data: { relation },
-    className: relation === "outputs" ? "flow-edge--outputs" : "flow-edge--input"
+    className:
+      relation === "outputs"
+        ? "flow-edge--outputs"
+        : relation === "updates"
+          ? "flow-edge--updates"
+          : "flow-edge--input"
   };
 }
