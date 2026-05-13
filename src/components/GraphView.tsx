@@ -35,8 +35,7 @@ export function GraphView({ graph, selectedNodeId, filters, messages, onSelectNo
     () => ({
       processNode: (props: NodeProps<IttoFlowNode>) => <IttoNode {...props} messages={messages} />,
       artifactNode: (props: NodeProps<IttoFlowNode>) => <IttoNode {...props} messages={messages} />,
-      techniqueNode: (props: NodeProps<IttoFlowNode>) => <IttoNode {...props} messages={messages} />,
-      axisLabelNode: (props: NodeProps<IttoFlowNode>) => <AxisLabelNode {...props} />
+      techniqueNode: (props: NodeProps<IttoFlowNode>) => <IttoNode {...props} messages={messages} />
     }),
     [messages]
   );
@@ -171,10 +170,8 @@ export function GraphView({ graph, selectedNodeId, filters, messages, onSelectNo
             flowInstanceRef.current = instance;
           }}
           onNodeClick={(_, node) => {
-            if (node.type !== "axisLabelNode" && node.data.nodeType) {
-              setSelectedEdgeId(null);
-              onSelectNode(node.id);
-            }
+            setSelectedEdgeId(null);
+            onSelectNode(node.id);
           }}
           onEdgeClick={(_, edge) => setSelectedEdgeId(edge.id)}
           onPaneClick={() => setSelectedEdgeId(null)}
@@ -194,10 +191,6 @@ export function GraphView({ graph, selectedNodeId, filters, messages, onSelectNo
 }
 
 function IttoNode({ data, messages }: NodeProps<IttoFlowNode> & { messages: Messages }) {
-  if (!data.nodeType) {
-    return null;
-  }
-
   const className = [
     "itto-node",
     data.nodeType === "process"
@@ -214,23 +207,22 @@ function IttoNode({ data, messages }: NodeProps<IttoFlowNode> & { messages: Mess
 
   return (
     <div className={className}>
+      <Handle id="source-left" type="source" position={Position.Left} className="react-flow__handle--hidden" />
       <Handle id="target-left" type="target" position={Position.Left} />
       <div className="itto-node__kind">{messages.nodeTypes[data.nodeType]}</div>
       <div className="itto-node__label">{data.label}</div>
       {data.nodeType === "process" ? (
         <div className="itto-node__meta">
-          {data.processGroupLabel ?? data.processGroup} / {data.knowledgeAreaLabel ?? data.knowledgeArea}
+          {data.processGroupShortLabel ?? data.processGroupLabel ?? data.processGroup} /{" "}
+          {data.knowledgeAreaShortLabel ?? data.knowledgeAreaLabel ?? data.knowledgeArea}
         </div>
       ) : data.nodeType === "technique" ? (
         <div className="itto-node__meta">{data.category}</div>
       ) : null}
+      <Handle id="target-right" type="target" position={Position.Right} className="react-flow__handle--hidden" />
       <Handle id="source-right" type="source" position={Position.Right} />
     </div>
   );
-}
-
-function AxisLabelNode({ data }: NodeProps<IttoFlowNode>) {
-  return <div className={`axis-label axis-label--${data.axis ?? "column"}`}>{data.label}</div>;
 }
 
 type LegendEntry =

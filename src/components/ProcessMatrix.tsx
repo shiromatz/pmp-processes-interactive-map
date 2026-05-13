@@ -1,7 +1,7 @@
 import { KNOWLEDGE_AREAS, PROCESS_GROUPS } from "../data/constants";
 import { filterProcesses, getProcessNodes, nodeMatchesFilters } from "../graph/selectors";
 import { formatProcessCount, getKnowledgeAreaShortLabel, getProcessGroupShortLabel, type Locale, type Messages } from "../i18n";
-import type { GraphFilters, IttoGraph } from "../types/graph";
+import type { GraphFilters, IttoGraph, ProcessRelationHighlight } from "../types/graph";
 
 type ProcessMatrixProps = {
   graph: IttoGraph;
@@ -9,7 +9,7 @@ type ProcessMatrixProps = {
   filters: GraphFilters;
   messages: Messages;
   locale: Locale;
-  relatedProcessIds: Set<string>;
+  processRelationHighlights: Map<string, Set<ProcessRelationHighlight>>;
   isCollapsed: boolean;
   onToggleCollapsed: () => void;
   onSelectNode: (nodeId: string) => void;
@@ -21,7 +21,7 @@ export function ProcessMatrix({
   filters,
   messages,
   locale,
-  relatedProcessIds,
+  processRelationHighlights,
   isCollapsed,
   onToggleCollapsed,
   onSelectNode
@@ -82,12 +82,19 @@ export function ProcessMatrix({
               return (
                 <div className="matrix-cell" role="cell" key={`${area}-${group}`}>
                   {processes.map((process) => {
-                    const isRelated = relatedProcessIds.has(process.id);
+                    const highlights = processRelationHighlights.get(process.id) ?? new Set<ProcessRelationHighlight>();
+                    const relationHighlights = PROCESS_RELATION_ORDER.filter((highlight) => highlights.has(highlight));
+                    const relationLabels = relationHighlights.map((highlight) => getRelationHighlightLabel(highlight, messages));
+                    const isHighlighted = highlights.size > 0;
                     const className = [
                       "process-chip",
                       selectedNodeId === process.id ? "is-selected" : "",
-                      isRelated ? "is-related" : "",
-                      !isRelated && !nodeMatchesFilters(process, filters) ? "is-muted" : ""
+                      highlights.has("related") ? "is-related" : "",
+                      relationHighlights.length > 0 ? "has-relation-highlight" : "",
+                      relationHighlights.includes("produced") ? "is-produced" : "",
+                      relationHighlights.includes("usedAsInput") ? "is-used-as-input" : "",
+                      relationHighlights.includes("updated") ? "is-updated" : "",
+                      !isHighlighted && !nodeMatchesFilters(process, filters) ? "is-muted" : ""
                     ]
                       .filter(Boolean)
                       .join(" ");
@@ -97,9 +104,20 @@ export function ProcessMatrix({
                         type="button"
                         key={process.id}
                         className={className}
+                        aria-label={relationLabels.length > 0 ? `${process.label}: ${relationLabels.join(", ")}` : process.label}
                         onClick={() => onSelectNode(process.id)}
                       >
-                        {process.label}
+                        <span>{process.label}</span>
+                        {relationHighlights.length > 0 ? (
+                          <span className="process-chip__relations" aria-hidden="true">
+                            {relationHighlights.map((highlight) => (
+                              <span
+                                key={highlight}
+                                className={`process-chip__relation-line process-chip__relation-line--${highlight}`}
+                              />
+                            ))}
+                          </span>
+                        ) : null}
                       </button>
                     );
                   })}
@@ -111,4 +129,22 @@ export function ProcessMatrix({
       </div>
     </section>
   );
+}
+
+const PROCESS_RELATION_ORDER: ProcessRelationHighlight[] = ["produced", "usedAsInput", "updated"];
+
+function getRelationHighlightLabel(highlight: ProcessRelationHighlight, messages: Messages): string {
+  if (highlight === "produced") {
+    return messages.producedBy;
+  }
+
+  if (highlight === "usedAsInput") {
+    return messages.usedAsInputBy;
+  }
+
+  if (highlight === "updated") {
+    return messages.updatedBy;
+  }
+
+  return messages.usedBy;
 }

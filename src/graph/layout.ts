@@ -1,11 +1,6 @@
 import type { FlowNodeData, IttoFlowNode, IttoNode } from "../types/graph";
 import { KNOWLEDGE_AREAS, PROCESS_GROUPS } from "../data/constants";
 
-type ProcessMatrixGridLayout = {
-  nodes: IttoFlowNode[];
-  axisNodes: IttoFlowNode[];
-};
-
 export const PROCESS_COLUMN_X = {
   inputs: 0,
   focus: 320,
@@ -87,24 +82,10 @@ export function layoutProcessMatrixGrid(
   yGap = 116,
   dataForNode?: (node: IttoNode) => Partial<FlowNodeData>
 ): IttoFlowNode[] {
-  return layoutProcessMatrixGridWithAxes(items, startX, centerY, xGap, yGap, dataForNode).nodes;
-}
-
-export function layoutProcessMatrixGridWithAxes(
-  items: IttoNode[],
-  startX: number,
-  centerY: number,
-  xGap = 260,
-  yGap = 116,
-  dataForNode?: (node: IttoNode) => Partial<FlowNodeData>
-): ProcessMatrixGridLayout {
   const processes = items.filter((item) => item.type === "process" && item.processGroup && item.knowledgeArea);
 
   if (processes.length !== items.length) {
-    return {
-      nodes: layoutCenteredColumn(items, startX, centerY, yGap, dataForNode),
-      axisNodes: []
-    };
+    return layoutCenteredColumn(items, startX, centerY, yGap, dataForNode);
   }
 
   const groupKeys = PROCESS_GROUPS.filter((group) => processes.some((process) => process.processGroup === group));
@@ -133,7 +114,7 @@ export function layoutProcessMatrixGridWithAxes(
     currentY += rowHeights[index];
   }
 
-  const nodes = processes.map((process) => {
+  return processes.map((process) => {
     const area = process.knowledgeArea;
     const group = process.processGroup;
     if (!area || !group) {
@@ -149,34 +130,6 @@ export function layoutProcessMatrixGridWithAxes(
       dataForNode?.(process)
     );
   });
-
-  const columnLabelY = Math.max(startY - 42, centerY - 300);
-  const columnLabels = groupKeys.map((group) => {
-    const labelNode = processes.find((process) => process.processGroup === group);
-    return toAxisLabelNode(
-      `axis-column-${group}`,
-      labelNode?.processGroupShortLabel ?? labelNode?.processGroupLabel ?? group,
-      startX + groupKeys.indexOf(group) * xGap + 24,
-      columnLabelY,
-      "column"
-    );
-  });
-  const rowLabels = areaKeys.map((area, index) => {
-    const labelNode = processes.find((process) => process.knowledgeArea === area);
-    const rowStart = rowStartByArea.get(area) ?? centerY;
-    return toAxisLabelNode(
-      `axis-row-${area}`,
-      labelNode?.knowledgeAreaShortLabel ?? labelNode?.knowledgeAreaLabel ?? area,
-      startX - 152,
-      rowStart + (rowHeights[index] - 28) / 2,
-      "row"
-    );
-  });
-
-  return {
-    nodes,
-    axisNodes: [...columnLabels, ...rowLabels]
-  };
 }
 
 export function getReadableGridColumns(itemCount: number): number {
@@ -219,28 +172,6 @@ export function toFlowNode(
       knowledgeAreaShortLabel: node.knowledgeAreaShortLabel,
       processGroupShortLabel: node.processGroupShortLabel,
       ...data
-    }
-  };
-}
-
-function toAxisLabelNode(
-  id: string,
-  label: string,
-  x: number,
-  y: number,
-  axis: "column" | "row"
-): IttoFlowNode {
-  return {
-    id,
-    type: "axisLabelNode",
-    position: { x, y },
-    selectable: false,
-    draggable: false,
-    focusable: false,
-    zIndex: 4,
-    data: {
-      label,
-      axis
     }
   };
 }

@@ -51,6 +51,8 @@ export type IttoGraph = {
 
 export type NodeTypeFilter = "all" | "process" | "artifact" | "technique";
 
+export type ProcessRelationHighlight = "produced" | "usedAsInput" | "updated" | "related";
+
 export type GraphFilters = {
   processGroup: ProcessGroup | "all";
   knowledgeArea: KnowledgeArea | "all";
@@ -59,8 +61,7 @@ export type GraphFilters = {
 
 export type FlowNodeData = {
   label: string;
-  nodeType?: NodeType;
-  axis?: "column" | "row";
+  nodeType: NodeType;
   knowledgeArea?: KnowledgeArea;
   processGroup?: ProcessGroup;
   category?: string;
@@ -77,7 +78,7 @@ export type FlowEdgeData = {
   relation: RelationType;
 };
 
-export type IttoFlowNode = Node<FlowNodeData, "processNode" | "artifactNode" | "techniqueNode" | "axisLabelNode">;
+export type IttoFlowNode = Node<FlowNodeData, "processNode" | "artifactNode" | "techniqueNode">;
 export type IttoFlowEdge = Edge<FlowEdgeData>;
 
 export type BuiltView = {

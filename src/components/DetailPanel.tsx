@@ -326,7 +326,7 @@ function NodeList({
             <li key={node.id}>
               <button type="button" onClick={() => onSelectNode(node.id)}>
                 <span>{node.label}</span>
-                <small>{getNodeTypeLabel(node.type, locale)}</small>
+                <small>{getNodeSecondaryLabel(node, locale)}</small>
               </button>
             </li>
           ))}
@@ -336,4 +336,14 @@ function NodeList({
       )}
     </section>
   );
+}
+
+function getNodeSecondaryLabel(node: IttoNode, locale: Locale): string {
+  if (node.type === "process") {
+    const group = node.processGroupShortLabel ?? node.processGroupLabel ?? node.processGroup;
+    const area = node.knowledgeAreaShortLabel ?? node.knowledgeAreaLabel ?? node.knowledgeArea;
+    return [group, area].filter(Boolean).join(" / ") || getNodeTypeLabel(node.type, locale);
+  }
+
+  return getNodeTypeLabel(node.type, locale);
 }

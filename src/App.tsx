@@ -13,7 +13,7 @@ import {
   getUpdatersForArtifact
 } from "./graph/selectors";
 import { DEFAULT_LOCALE, LOCALE_OPTIONS, getMessages, isLocale, localizeGraph, type Locale } from "./i18n";
-import type { GraphFilters, IttoGraph } from "./types/graph";
+import type { GraphFilters, IttoGraph, ProcessRelationHighlight } from "./types/graph";
 
 const baseGraph = ittoData as IttoGraph;
 const DEFAULT_NODE_ID = "develop_project_management_plan";
@@ -34,26 +34,29 @@ export default function App() {
   const graph = useMemo(() => localizeGraph(baseGraph, locale), [locale]);
   const messages = useMemo(() => getMessages(locale), [locale]);
   const selectedNode = useMemo(() => getNodeById(graph, selectedNodeId), [graph, selectedNodeId]);
-  const relatedProcessIds = useMemo(() => {
+  const processRelationHighlights = useMemo(() => {
+    const highlights = new Map<string, Set<ProcessRelationHighlight>>();
+    const addHighlight = (nodeId: string, highlight: ProcessRelationHighlight) => {
+      highlights.set(nodeId, new Set([...(highlights.get(nodeId) ?? []), highlight]));
+    };
+
     if (!selectedNode) {
-      return new Set<string>();
+      return highlights;
     }
 
     if (selectedNode.type === "artifact") {
-      return new Set(
-        [
-          ...getProducersForArtifact(graph, selectedNode.id),
-          ...getUpdatersForArtifact(graph, selectedNode.id),
-          ...getConsumersForArtifact(graph, selectedNode.id)
-        ].map((node) => node.id)
-      );
+      getProducersForArtifact(graph, selectedNode.id).forEach((node) => addHighlight(node.id, "produced"));
+      getConsumersForArtifact(graph, selectedNode.id).forEach((node) => addHighlight(node.id, "usedAsInput"));
+      getUpdatersForArtifact(graph, selectedNode.id).forEach((node) => addHighlight(node.id, "updated"));
+      return highlights;
     }
 
     if (selectedNode.type === "technique") {
-      return new Set(getProcessesUsingTechnique(graph, selectedNode.id).map((node) => node.id));
+      getProcessesUsingTechnique(graph, selectedNode.id).forEach((node) => addHighlight(node.id, "related"));
+      return highlights;
     }
 
-    return new Set<string>();
+    return highlights;
   }, [graph, selectedNode]);
 
   useEffect(() => {
@@ -135,7 +138,7 @@ export default function App() {
           filters={filters}
           messages={messages}
           locale={locale}
-          relatedProcessIds={relatedProcessIds}
+          processRelationHighlights={processRelationHighlights}
           isCollapsed={isMatrixCollapsed}
           onToggleCollapsed={() => setIsMatrixCollapsed((collapsed) => !collapsed)}
           onSelectNode={selectNode}

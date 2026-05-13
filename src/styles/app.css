@@ -414,9 +414,10 @@ button {
   border: 1px solid #bad0ea;
   border-radius: 6px;
   color: #19385f;
-  display: block;
+  display: grid;
   font-size: 0.72rem;
   font-weight: 750;
+  gap: 5px;
   line-height: 1.2;
   margin: 0 0 5px;
   min-height: 34px;
@@ -437,6 +438,54 @@ button {
   border-color: #d28b28;
   box-shadow: inset 0 0 0 1px #d28b28;
   color: #5f3510;
+}
+
+.process-chip.has-relation-highlight {
+  background: #fff;
+  border-color: #aebccd;
+  color: #19385f;
+}
+
+.process-chip.has-relation-highlight:hover,
+.process-chip.has-relation-highlight.is-selected {
+  border-color: var(--focus-border);
+}
+
+.process-chip__relations {
+  display: grid;
+  gap: 3px;
+}
+
+.process-chip__relation-line {
+  border-radius: 999px;
+  color: var(--edge-output);
+  height: 3px;
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+}
+
+.process-chip__relation-line::before {
+  animation: matrix-relation-flow 680ms linear infinite;
+  background: repeating-linear-gradient(
+    90deg,
+    currentColor 0,
+    currentColor 6px,
+    transparent 6px,
+    transparent 10px
+  );
+  content: "";
+  inset: 0;
+  position: absolute;
+  width: 200%;
+}
+
+.process-chip__relation-line--usedAsInput {
+  color: var(--edge-input);
+}
+
+.process-chip__relation-line--updated {
+  color: var(--edge-update);
 }
 
 .process-chip.is-muted {
@@ -640,33 +689,16 @@ button {
   margin-top: 6px;
 }
 
-.axis-label {
-  background: rgba(255, 255, 255, 0.88);
-  border: 1px solid #d8e0e8;
-  border-radius: 6px;
-  color: #4b5565;
-  font-size: 0.78rem;
-  font-weight: 900;
-  line-height: 1.15;
-  padding: 5px 7px;
-  pointer-events: none;
-  text-align: center;
-  width: 172px;
-}
-
-.axis-label--row {
-  background: transparent;
-  border-color: transparent;
-  color: #657184;
-  text-align: right;
-  width: 132px;
-}
-
 .react-flow__handle {
   background: #fff;
   border: 2px solid #526070;
   height: 9px;
   width: 9px;
+}
+
+.react-flow__handle--hidden {
+  opacity: 0;
+  pointer-events: none;
 }
 
 .react-flow__edge.flow-edge--input path {
@@ -843,7 +875,7 @@ button {
   color: var(--text-muted);
   font-size: 0.68rem;
   font-weight: 800;
-  text-transform: uppercase;
+  text-transform: none;
 }
 
 .usage-group {
@@ -1001,6 +1033,12 @@ button {
 @keyframes legend-flow {
   to {
     transform: translateX(12px);
+  }
+}
+
+@keyframes matrix-relation-flow {
+  to {
+    transform: translateX(10px);
   }
 }
 

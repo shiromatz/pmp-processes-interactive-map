@@ -16,9 +16,12 @@ export function buildProcessView(
   const rawInputs = uniqueNodes(getInputsForProcess(graph, selectedProcessId));
   const rawOutputs = getOutputsForProcess(graph, selectedProcessId);
   const rawUpdates = getUpdatesForProcess(graph, selectedProcessId);
-  const outputs = uniqueNodes([...rawOutputs, ...rawUpdates]);
-  const outputIds = new Set(outputs.map((node) => node.id));
-  const inputs = rawInputs.filter((node) => !outputIds.has(node.id));
+  const inputIds = new Set(rawInputs.map((node) => node.id));
+  const inputs = rawInputs;
+  const outputs = uniqueNodes([
+    ...rawOutputs,
+    ...rawUpdates.filter((node) => !inputIds.has(node.id))
+  ]);
 
   const muted = (nodeId: string) => {
     const node = getNodeById(graph, nodeId);
@@ -46,7 +49,7 @@ export function buildProcessView(
       toFlowEdge(focus.id, output.id, "outputs")
     ),
     ...rawUpdates.map((output) =>
-      toFlowEdge(focus.id, output.id, "updates")
+      toFlowEdge(focus.id, output.id, "updates", inputIds.has(output.id) ? "backward" : "forward")
     )
   ];
   return {
@@ -58,14 +61,15 @@ export function buildProcessView(
 function toFlowEdge(
   source: string,
   target: string,
-  relation: "input_to" | "outputs" | "updates" | "uses"
+  relation: "input_to" | "outputs" | "updates" | "uses",
+  direction: "forward" | "backward" = "forward"
 ): IttoFlowEdge {
   return {
     id: `${source}-${target}-${relation}`,
     source,
     target,
-    sourceHandle: "source-right",
-    targetHandle: "target-left",
+    sourceHandle: direction === "backward" ? "source-left" : "source-right",
+    targetHandle: direction === "backward" ? "target-right" : "target-left",
     type: "smoothstep",
     animated: true,
     data: { relation },
