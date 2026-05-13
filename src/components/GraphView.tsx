@@ -1,18 +1,18 @@
-import { useMemo } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import {
   Background,
   Controls,
   Handle,
-  MiniMap,
   Position,
   ReactFlow,
+  type ReactFlowInstance,
   type NodeProps
 } from "@xyflow/react";
 import "@xyflow/react/dist/style.css";
 import { buildArtifactView } from "../graph/buildArtifactView";
 import { buildProcessView } from "../graph/buildProcessView";
 import { getNodeById } from "../graph/selectors";
-import type { GraphFilters, IttoFlowNode, IttoGraph } from "../types/graph";
+import type { GraphFilters, IttoFlowEdge, IttoFlowNode, IttoGraph } from "../types/graph";
 
 type GraphViewProps = {
   graph: IttoGraph;
@@ -27,6 +27,8 @@ const nodeTypes = {
 };
 
 export function GraphView({ graph, selectedNodeId, filters, onSelectNode }: GraphViewProps) {
+  const flowInstanceRef = useRef<ReactFlowInstance<IttoFlowNode, IttoFlowEdge> | null>(null);
+  const [isTransitioning, setIsTransitioning] = useState(false);
   const selectedNode = getNodeById(graph, selectedNodeId);
   const view = useMemo(() => {
     if (!selectedNode) {
@@ -37,6 +39,39 @@ export function GraphView({ graph, selectedNodeId, filters, onSelectNode }: Grap
       ? buildProcessView(graph, selectedNode.id, filters)
       : buildArtifactView(graph, selectedNode.id, filters);
   }, [filters, graph, selectedNode]);
+  const viewNodeIds = useMemo(() => view.nodes.map((node) => node.id).join("|"), [view.nodes]);
+
+  useEffect(() => {
+    if (!flowInstanceRef.current || view.nodes.length === 0) {
+      return;
+    }
+
+    setIsTransitioning(true);
+
+    const fitTimer = window.setTimeout(() => {
+      void flowInstanceRef.current?.fitView({
+        padding: 0.18,
+        duration: 650,
+        minZoom: 0.18,
+        maxZoom: 1.05,
+        interpolate: "smooth"
+      });
+    }, 40);
+    const transitionTimer = window.setTimeout(() => setIsTransitioning(false), 820);
+
+    return () => {
+      window.clearTimeout(fitTimer);
+      window.clearTimeout(transitionTimer);
+    };
+  }, [
+    selectedNodeId,
+    view.nodes.length,
+    viewNodeIds,
+    filters.downstreamDepth,
+    filters.knowledgeArea,
+    filters.nodeType,
+    filters.processGroup
+  ]);
 
   return (
     <section className="graph-panel" aria-label="Relationship graph">
@@ -50,21 +85,23 @@ export function GraphView({ graph, selectedNodeId, filters, onSelectNode }: Grap
           <span className="legend-item legend-item--artifact">Artifact</span>
         </div>
       </div>
-      <div className="graph-canvas">
+      <div className={`graph-canvas${isTransitioning ? " is-transitioning" : ""}`}>
         <ReactFlow
           nodes={view.nodes}
           edges={view.edges}
           nodeTypes={nodeTypes}
+          onInit={(instance) => {
+            flowInstanceRef.current = instance;
+          }}
           onNodeClick={(_, node) => onSelectNode(node.id)}
           fitView
           fitViewOptions={{ padding: 0.18 }}
-          minZoom={0.35}
+          minZoom={0.18}
           maxZoom={1.3}
           nodesDraggable={false}
           proOptions={{ hideAttribution: true }}
         >
           <Background gap={24} size={1} />
-          <MiniMap pannable zoomable nodeStrokeWidth={3} />
           <Controls showInteractive={false} />
         </ReactFlow>
       </div>
