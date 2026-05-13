@@ -1,4 +1,5 @@
 import graph from "../src/data/itto.json" with { type: "json" };
+import locales from "../src/i18n/locales.json" with { type: "json" };
 
 const REQUIRED_PROCESS_COUNT = 49;
 const deprecatedNodeIds = new Set([
@@ -29,6 +30,7 @@ const nodesById = new Map(graph.nodes.map((node) => [node.id, node]));
 const processCount = graph.nodes.filter((node) => node.type === "process").length;
 const processIds = graph.nodes.filter((node) => node.type === "process").map((node) => node.id);
 const techniqueIds = graph.nodes.filter((node) => node.type === "technique").map((node) => node.id);
+const localizedLocales = ["ja", "zh-CN"];
 
 if (processCount !== REQUIRED_PROCESS_COUNT) {
   errors.push(`Expected ${REQUIRED_PROCESS_COUNT} process nodes, found ${processCount}.`);
@@ -86,6 +88,43 @@ for (const processId of processIds) {
 for (const techniqueId of techniqueIds) {
   if (!graph.edges.some((edge) => edge.target === techniqueId && edge.relation === "uses")) {
     errors.push(`Technique is not mapped to any process: ${techniqueId}.`);
+  }
+}
+
+for (const locale of localizedLocales) {
+  const data = locales[locale];
+
+  if (!data) {
+    errors.push(`Missing locale data: ${locale}.`);
+    continue;
+  }
+
+  for (const node of graph.nodes) {
+    if (!data.nodeLabels[node.id]) {
+      errors.push(`Missing ${locale} node label: ${node.id}.`);
+    }
+  }
+
+  for (const group of new Set(graph.nodes.map((node) => node.processGroup).filter(Boolean))) {
+    if (!data.processGroups[group] || !data.processGroupShort[group]) {
+      errors.push(`Missing ${locale} process group label: ${group}.`);
+    }
+  }
+
+  for (const area of new Set(graph.nodes.map((node) => node.knowledgeArea).filter(Boolean))) {
+    if (!data.knowledgeAreas[area] || !data.knowledgeAreaShort[area]) {
+      errors.push(`Missing ${locale} knowledge area label: ${area}.`);
+    }
+  }
+
+  for (const category of new Set(graph.nodes.map((node) => node.category).filter(Boolean))) {
+    if (!data.techniqueCategories[category]) {
+      errors.push(`Missing ${locale} technique category label: ${category}.`);
+    }
+  }
+
+  if (!Array.isArray(data.messages?.disclaimer) || data.messages.disclaimer.length < 3) {
+    errors.push(`Locale disclaimer must include affiliation, trademark, and no-warranty text: ${locale}.`);
   }
 }
 

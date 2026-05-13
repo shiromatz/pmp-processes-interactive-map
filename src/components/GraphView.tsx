@@ -13,25 +13,29 @@ import { buildArtifactView } from "../graph/buildArtifactView";
 import { buildProcessView } from "../graph/buildProcessView";
 import { buildTechniqueView } from "../graph/buildTechniqueView";
 import { getNodeById } from "../graph/selectors";
+import type { Messages } from "../i18n";
 import type { GraphFilters, IttoFlowEdge, IttoFlowNode, IttoGraph } from "../types/graph";
 
 type GraphViewProps = {
   graph: IttoGraph;
   selectedNodeId: string;
   filters: GraphFilters;
+  messages: Messages;
   onSelectNode: (nodeId: string) => void;
 };
 
-const nodeTypes = {
-  processNode: IttoNode,
-  artifactNode: IttoNode,
-  techniqueNode: IttoNode
-};
-
-export function GraphView({ graph, selectedNodeId, filters, onSelectNode }: GraphViewProps) {
+export function GraphView({ graph, selectedNodeId, filters, messages, onSelectNode }: GraphViewProps) {
   const flowInstanceRef = useRef<ReactFlowInstance<IttoFlowNode, IttoFlowEdge> | null>(null);
   const [isTransitioning, setIsTransitioning] = useState(false);
   const selectedNode = getNodeById(graph, selectedNodeId);
+  const nodeTypes = useMemo(
+    () => ({
+      processNode: (props: NodeProps<IttoFlowNode>) => <IttoNode {...props} messages={messages} />,
+      artifactNode: (props: NodeProps<IttoFlowNode>) => <IttoNode {...props} messages={messages} />,
+      techniqueNode: (props: NodeProps<IttoFlowNode>) => <IttoNode {...props} messages={messages} />
+    }),
+    [messages]
+  );
   const view = useMemo(() => {
     if (!selectedNode) {
       return { nodes: [], edges: [] };
@@ -83,17 +87,17 @@ export function GraphView({ graph, selectedNodeId, filters, onSelectNode }: Grap
   ]);
 
   return (
-    <section className="graph-panel" aria-label="Relationship graph">
+    <section className="graph-panel" aria-label={messages.relationshipGraph}>
       <div className="graph-panel__header">
         <div>
-          <p className="eyebrow">Graph View</p>
-          <h2>{selectedNode?.label ?? "Select a node"}</h2>
+          <p className="eyebrow">{messages.graphView}</p>
+          <h2>{selectedNode?.label ?? messages.selectNode}</h2>
         </div>
-        <div className="graph-legend" aria-label="Graph legend">
-          <span className="legend-item legend-item--process">Process</span>
-          <span className="legend-item legend-item--artifact">Artifact</span>
-          <span className="legend-item legend-item--update">Update</span>
-          <span className="legend-item legend-item--technique">T&amp;T</span>
+        <div className="graph-legend" aria-label={messages.graphLegend}>
+          <span className="legend-item legend-item--process">{messages.nodeTypes.process}</span>
+          <span className="legend-item legend-item--artifact">{messages.nodeTypes.artifact}</span>
+          <span className="legend-item legend-item--update">{messages.updates}</span>
+          <span className="legend-item legend-item--technique">{messages.toolsAndTechniques}</span>
         </div>
       </div>
       <div className={`graph-canvas${isTransitioning ? " is-transitioning" : ""}`}>
@@ -120,7 +124,7 @@ export function GraphView({ graph, selectedNodeId, filters, onSelectNode }: Grap
   );
 }
 
-function IttoNode({ data }: NodeProps<IttoFlowNode>) {
+function IttoNode({ data, messages }: NodeProps<IttoFlowNode> & { messages: Messages }) {
   const className = [
     "itto-node",
     data.nodeType === "process"
@@ -137,17 +141,11 @@ function IttoNode({ data }: NodeProps<IttoFlowNode>) {
   return (
     <div className={className}>
       <Handle type="target" position={Position.Left} />
-      <div className="itto-node__kind">
-        {data.nodeType === "process"
-          ? "Process"
-          : data.nodeType === "technique"
-            ? "Tools & Techniques"
-            : "Artifact"}
-      </div>
+      <div className="itto-node__kind">{messages.nodeTypes[data.nodeType]}</div>
       <div className="itto-node__label">{data.label}</div>
       {data.nodeType === "process" ? (
         <div className="itto-node__meta">
-          {data.processGroup} / {data.knowledgeArea?.replace("Project ", "").replace(" Management", "")}
+          {data.processGroupLabel ?? data.processGroup} / {data.knowledgeAreaLabel ?? data.knowledgeArea}
         </div>
       ) : data.nodeType === "technique" ? (
         <div className="itto-node__meta">{data.category}</div>

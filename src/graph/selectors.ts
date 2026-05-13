@@ -161,10 +161,14 @@ export function searchNodes(
     .filter((node) => {
       const text = [
         node.label,
+        node.englishLabel ?? "",
         node.type,
         node.category ?? "",
+        node.englishCategory ?? "",
         node.knowledgeArea ?? "",
-        node.processGroup ?? ""
+        node.knowledgeAreaLabel ?? "",
+        node.processGroup ?? "",
+        node.processGroupLabel ?? ""
       ]
         .join(" ")
         .toLowerCase();

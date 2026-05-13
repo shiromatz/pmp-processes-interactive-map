@@ -30,6 +30,10 @@ export type IttoNode = {
   knowledgeArea?: KnowledgeArea;
   processGroup?: ProcessGroup;
   category?: string;
+  englishLabel?: string;
+  englishCategory?: string;
+  knowledgeAreaLabel?: string;
+  processGroupLabel?: string;
 };
 
 export type IttoEdge = {
@@ -59,6 +63,8 @@ export type FlowNodeData = {
   knowledgeArea?: KnowledgeArea;
   processGroup?: ProcessGroup;
   category?: string;
+  knowledgeAreaLabel?: string;
+  processGroupLabel?: string;
   isFocus?: boolean;
   muted?: boolean;
 };

@@ -88,6 +88,31 @@ button {
   margin: 0;
 }
 
+.app-header__side {
+  align-items: end;
+  display: grid;
+  gap: 10px;
+}
+
+.language-control {
+  color: var(--text-muted);
+  display: grid;
+  font-size: 0.75rem;
+  font-weight: 700;
+  gap: 6px;
+  justify-self: end;
+  min-width: 180px;
+}
+
+.language-control select {
+  background: #fff;
+  border: 1px solid #c6ced8;
+  border-radius: 6px;
+  color: var(--text-main);
+  min-height: 38px;
+  padding: 7px 10px;
+}
+
 .eyebrow {
   color: var(--accent);
   font-size: 0.72rem;

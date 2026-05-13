@@ -1,44 +1,41 @@
 import { KNOWLEDGE_AREAS, PROCESS_GROUPS } from "../data/constants";
 import { filterProcesses, getProcessNodes, nodeMatchesFilters } from "../graph/selectors";
+import { formatProcessCount, getKnowledgeAreaShortLabel, getProcessGroupShortLabel, type Locale, type Messages } from "../i18n";
 import type { GraphFilters, IttoGraph } from "../types/graph";
 
 type ProcessMatrixProps = {
   graph: IttoGraph;
   selectedNodeId: string;
   filters: GraphFilters;
+  messages: Messages;
+  locale: Locale;
   onSelectNode: (nodeId: string) => void;
-};
-
-const SHORT_GROUP_LABELS: Record<string, string> = {
-  Initiating: "Initiating",
-  Planning: "Planning",
-  Executing: "Executing",
-  "Monitoring and Controlling": "M&C",
-  Closing: "Closing"
 };
 
 export function ProcessMatrix({
   graph,
   selectedNodeId,
   filters,
+  messages,
+  locale,
   onSelectNode
 }: ProcessMatrixProps) {
   const processCount = getProcessNodes(graph).length;
 
   return (
-    <section className="matrix-panel" aria-label="Process matrix">
+    <section className="matrix-panel" aria-label={messages.processMatrix}>
       <div className="panel-heading">
-        <p className="eyebrow">Process Matrix</p>
-        <h2>{processCount} Processes</h2>
+        <p className="eyebrow">{messages.processMatrix}</p>
+        <h2>{formatProcessCount(processCount, locale)}</h2>
       </div>
-      <div className="process-matrix" role="table" aria-label="Knowledge area by process group">
+      <div className="process-matrix" role="table" aria-label={messages.knowledgeAreaByProcessGroup}>
         <div className="matrix-row matrix-row--header" role="row">
           <div className="matrix-cell matrix-cell--area" role="columnheader">
-            Knowledge Area
+            {messages.knowledgeArea}
           </div>
           {PROCESS_GROUPS.map((group) => (
             <div className="matrix-cell matrix-cell--group" role="columnheader" key={group}>
-              {SHORT_GROUP_LABELS[group]}
+              {getProcessGroupShortLabel(group, locale)}
             </div>
           ))}
         </div>
@@ -46,7 +43,7 @@ export function ProcessMatrix({
         {KNOWLEDGE_AREAS.map((area) => (
           <div className="matrix-row" role="row" key={area}>
             <div className="matrix-cell matrix-cell--area" role="rowheader">
-              {area.replace("Project ", "").replace(" Management", "")}
+              {getKnowledgeAreaShortLabel(area, locale)}
             </div>
             {PROCESS_GROUPS.map((group) => {
               const processes = filterProcesses(graph, area, group);

@@ -1,14 +1,17 @@
 import { useMemo, useState, type KeyboardEvent } from "react";
 import { searchNodes } from "../graph/selectors";
+import { getNodeTypeLabel, type Locale, type Messages } from "../i18n";
 import type { GraphFilters, IttoGraph, IttoNode } from "../types/graph";
 
 type SearchBoxProps = {
   graph: IttoGraph;
   filters: GraphFilters;
+  messages: Messages;
+  locale: Locale;
   onSelectNode: (nodeId: string) => void;
 };
 
-export function SearchBox({ graph, filters, onSelectNode }: SearchBoxProps) {
+export function SearchBox({ graph, filters, messages, locale, onSelectNode }: SearchBoxProps) {
   const [query, setQuery] = useState("");
   const [isOpen, setIsOpen] = useState(false);
   const results = useMemo(
@@ -35,7 +38,7 @@ export function SearchBox({ graph, filters, onSelectNode }: SearchBoxProps) {
 
   return (
     <div className="search-box">
-      <label htmlFor="node-search">Search</label>
+      <label htmlFor="node-search">{messages.search}</label>
       <input
         id="node-search"
         type="search"
@@ -46,15 +49,15 @@ export function SearchBox({ graph, filters, onSelectNode }: SearchBoxProps) {
         }}
         onFocus={() => setIsOpen(true)}
         onKeyDown={handleKeyDown}
-        placeholder="Process, artifact, T&T, KA, or group"
+        placeholder={messages.searchPlaceholder}
         autoComplete="off"
       />
       {isOpen && results.length > 0 ? (
-        <div className="search-results" role="listbox" aria-label="Search results">
+        <div className="search-results" role="listbox" aria-label={messages.searchResults}>
           {results.map((node) => (
             <button key={node.id} type="button" onMouseDown={() => selectNode(node)}>
               <span>{node.label}</span>
-              <small>{getNodeSummary(node)}</small>
+              <small>{getNodeSummary(node, locale)}</small>
             </button>
           ))}
         </div>
@@ -63,14 +66,14 @@ export function SearchBox({ graph, filters, onSelectNode }: SearchBoxProps) {
   );
 }
 
-function getNodeSummary(node: IttoNode): string {
+function getNodeSummary(node: IttoNode, locale: Locale): string {
   if (node.type === "process") {
-    return `${node.processGroup} / ${node.knowledgeArea}`;
+    return `${node.processGroupLabel ?? node.processGroup} / ${node.knowledgeAreaLabel ?? node.knowledgeArea}`;
   }
 
   if (node.type === "technique") {
-    return node.category ? `T&T / ${node.category}` : "T&T";
+    return node.category ? `${getNodeTypeLabel(node.type, locale)} / ${node.category}` : getNodeTypeLabel(node.type, locale);
   }
 
-  return "Artifact";
+  return getNodeTypeLabel(node.type, locale);
 }

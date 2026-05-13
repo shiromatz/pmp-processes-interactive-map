@@ -78,6 +78,8 @@ export function toFlowNode(
       knowledgeArea: node.knowledgeArea,
       processGroup: node.processGroup,
       category: node.category,
+      knowledgeAreaLabel: node.knowledgeAreaLabel,
+      processGroupLabel: node.processGroupLabel,
       ...data
     }
   };

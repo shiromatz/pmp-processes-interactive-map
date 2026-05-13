@@ -10,33 +10,36 @@ import {
   getUpdatesForProcess,
   getUpdatersForArtifact
 } from "../graph/selectors";
+import { getNodeTypeLabel, type Locale, type Messages } from "../i18n";
 import type { IttoGraph, IttoNode } from "../types/graph";
 
 type DetailPanelProps = {
   graph: IttoGraph;
   selectedNodeId: string;
+  messages: Messages;
+  locale: Locale;
   onSelectNode: (nodeId: string) => void;
 };
 
-export function DetailPanel({ graph, selectedNodeId, onSelectNode }: DetailPanelProps) {
+export function DetailPanel({ graph, selectedNodeId, messages, locale, onSelectNode }: DetailPanelProps) {
   const selectedNode = getNodeById(graph, selectedNodeId);
 
   return (
-    <aside className="detail-panel" aria-label="Selected node details">
+    <aside className="detail-panel" aria-label={messages.selectedNodeDetails}>
       <div className="panel-heading">
-        <p className="eyebrow">Detail Panel</p>
-        <h2>{selectedNode?.label ?? "No selection"}</h2>
+        <p className="eyebrow">{messages.detailPanel}</p>
+        <h2>{selectedNode?.label ?? messages.noSelection}</h2>
       </div>
       {selectedNode ? (
         selectedNode.type === "process" ? (
-          <ProcessDetails graph={graph} node={selectedNode} onSelectNode={onSelectNode} />
+          <ProcessDetails graph={graph} node={selectedNode} messages={messages} locale={locale} onSelectNode={onSelectNode} />
         ) : selectedNode.type === "artifact" ? (
-          <ArtifactDetails graph={graph} node={selectedNode} onSelectNode={onSelectNode} />
+          <ArtifactDetails graph={graph} node={selectedNode} messages={messages} locale={locale} onSelectNode={onSelectNode} />
         ) : (
-          <TechniqueDetails graph={graph} node={selectedNode} onSelectNode={onSelectNode} />
+          <TechniqueDetails graph={graph} node={selectedNode} messages={messages} locale={locale} onSelectNode={onSelectNode} />
         )
       ) : (
-        <p className="empty-text">Choose a process or artifact to inspect relationships.</p>
+        <p className="empty-text">{messages.chooseNode}</p>
       )}
     </aside>
   );
@@ -45,10 +48,14 @@ export function DetailPanel({ graph, selectedNodeId, onSelectNode }: DetailPanel
 function ProcessDetails({
   graph,
   node,
+  messages,
+  locale,
   onSelectNode
 }: {
   graph: IttoGraph;
   node: IttoNode;
+  messages: Messages;
+  locale: Locale;
   onSelectNode: (nodeId: string) => void;
 }) {
   const inputs = getInputsForProcess(graph, node.id);
@@ -60,15 +67,15 @@ function ProcessDetails({
   return (
     <div className="details-stack">
       <div className="detail-meta">
-        <span>{node.processGroup}</span>
-        <span>{node.knowledgeArea}</span>
+        <span>{node.processGroupLabel ?? node.processGroup}</span>
+        <span>{node.knowledgeAreaLabel ?? node.knowledgeArea}</span>
       </div>
-      <NodeList title="Inputs" nodes={inputs} onSelectNode={onSelectNode} />
-      <TechniqueList nodes={techniques} onSelectNode={onSelectNode} />
-      <NodeList title="Outputs" nodes={outputs} onSelectNode={onSelectNode} />
-      <NodeList title="Updates" nodes={updates} onSelectNode={onSelectNode} />
+      <NodeList title={messages.inputs} nodes={inputs} messages={messages} locale={locale} onSelectNode={onSelectNode} />
+      <TechniqueList nodes={techniques} messages={messages} onSelectNode={onSelectNode} />
+      <NodeList title={messages.outputs} nodes={outputs} messages={messages} locale={locale} onSelectNode={onSelectNode} />
+      <NodeList title={messages.updates} nodes={updates} messages={messages} locale={locale} onSelectNode={onSelectNode} />
       <section className="detail-section">
-        <h3>Downstream Usage</h3>
+        <h3>{messages.downstreamUsage}</h3>
         {downstream.length > 0 ? (
           downstream.map(({ output, consumers }) => (
             <div className="usage-group" key={output.id}>
@@ -86,12 +93,12 @@ function ProcessDetails({
                   ))}
                 </ul>
               ) : (
-                <p className="empty-text">No mapped consumers.</p>
+                <p className="empty-text">{messages.noMappedConsumers}</p>
               )}
             </div>
           ))
         ) : (
-          <p className="empty-text">No mapped downstream usage.</p>
+          <p className="empty-text">{messages.noMappedDownstreamUsage}</p>
         )}
       </section>
     </div>
@@ -101,10 +108,14 @@ function ProcessDetails({
 function ArtifactDetails({
   graph,
   node,
+  messages,
+  locale,
   onSelectNode
 }: {
   graph: IttoGraph;
   node: IttoNode;
+  messages: Messages;
+  locale: Locale;
   onSelectNode: (nodeId: string) => void;
 }) {
   const producers = getProducersForArtifact(graph, node.id);
@@ -114,11 +125,11 @@ function ArtifactDetails({
   return (
     <div className="details-stack">
       <div className="detail-meta">
-        <span>Artifact</span>
+        <span>{getNodeTypeLabel("artifact", locale)}</span>
       </div>
-      <NodeList title="Produced By" nodes={producers} onSelectNode={onSelectNode} />
-      <NodeList title="Updated By" nodes={updaters} onSelectNode={onSelectNode} />
-      <NodeList title="Used As Input By" nodes={consumers} onSelectNode={onSelectNode} />
+      <NodeList title={messages.producedBy} nodes={producers} messages={messages} locale={locale} onSelectNode={onSelectNode} />
+      <NodeList title={messages.updatedBy} nodes={updaters} messages={messages} locale={locale} onSelectNode={onSelectNode} />
+      <NodeList title={messages.usedAsInputBy} nodes={consumers} messages={messages} locale={locale} onSelectNode={onSelectNode} />
     </div>
   );
 }
@@ -126,10 +137,14 @@ function ArtifactDetails({
 function TechniqueDetails({
   graph,
   node,
+  messages,
+  locale,
   onSelectNode
 }: {
   graph: IttoGraph;
   node: IttoNode;
+  messages: Messages;
+  locale: Locale;
   onSelectNode: (nodeId: string) => void;
 }) {
   const processes = getProcessesUsingTechnique(graph, node.id);
@@ -137,19 +152,21 @@ function TechniqueDetails({
   return (
     <div className="details-stack">
       <div className="detail-meta">
-        <span>Tools & Techniques</span>
+        <span>{messages.toolsAndTechniques}</span>
         {node.category ? <span>{node.category}</span> : null}
       </div>
-      <NodeList title="Used By" nodes={processes} onSelectNode={onSelectNode} />
+      <NodeList title={messages.usedBy} nodes={processes} messages={messages} locale={locale} onSelectNode={onSelectNode} />
     </div>
   );
 }
 
 function TechniqueList({
   nodes,
+  messages,
   onSelectNode
 }: {
   nodes: IttoNode[];
+  messages: Messages;
   onSelectNode: (nodeId: string) => void;
 }) {
   const groups = nodes.reduce<Record<string, IttoNode[]>>((grouped, node) => {
@@ -160,7 +177,7 @@ function TechniqueList({
 
   return (
     <section className="detail-section">
-      <h3>Tools & Techniques</h3>
+      <h3>{messages.toolsAndTechniques}</h3>
       {nodes.length > 0 ? (
         <div className="technique-groups">
           {Object.entries(groups).map(([category, items]) => (
@@ -171,7 +188,7 @@ function TechniqueList({
                   <li key={node.id}>
                     <button type="button" onClick={() => onSelectNode(node.id)}>
                       <span>{node.label}</span>
-                      <small>{node.category ?? "T&T"}</small>
+                      <small>{node.category ?? messages.toolsAndTechniques}</small>
                     </button>
                   </li>
                 ))}
@@ -180,7 +197,7 @@ function TechniqueList({
           ))}
         </div>
       ) : (
-        <p className="empty-text">No mapped tools or techniques.</p>
+        <p className="empty-text">{messages.noMappedTools}</p>
       )}
     </section>
   );
@@ -189,10 +206,14 @@ function TechniqueList({
 function NodeList({
   title,
   nodes,
+  messages,
+  locale,
   onSelectNode
 }: {
   title: string;
   nodes: IttoNode[];
+  messages: Messages;
+  locale: Locale;
   onSelectNode: (nodeId: string) => void;
 }) {
   return (
@@ -204,13 +225,13 @@ function NodeList({
             <li key={node.id}>
               <button type="button" onClick={() => onSelectNode(node.id)}>
                 <span>{node.label}</span>
-                <small>{node.type}</small>
+                <small>{getNodeTypeLabel(node.type, locale)}</small>
               </button>
             </li>
           ))}
         </ul>
       ) : (
-        <p className="empty-text">No mapped nodes.</p>
+        <p className="empty-text">{messages.noMappedNodes}</p>
       )}
     </section>
   );

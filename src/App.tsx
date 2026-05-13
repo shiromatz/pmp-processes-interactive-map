@@ -6,10 +6,12 @@ import { ProcessMatrix } from "./components/ProcessMatrix";
 import { SearchBox } from "./components/SearchBox";
 import ittoData from "./data/itto.json";
 import { getNodeById } from "./graph/selectors";
+import { DEFAULT_LOCALE, LOCALE_OPTIONS, getMessages, isLocale, localizeGraph, type Locale } from "./i18n";
 import type { GraphFilters, IttoGraph } from "./types/graph";
 
-const graph = ittoData as IttoGraph;
+const baseGraph = ittoData as IttoGraph;
 const DEFAULT_NODE_ID = "develop_project_management_plan";
+const LOCALE_STORAGE_KEY = "pmp-itto-locale";
 
 const defaultFilters: GraphFilters = {
   processGroup: "all",
@@ -21,8 +23,11 @@ const defaultFilters: GraphFilters = {
 
 export default function App() {
   const [selectedNodeId, setSelectedNodeId] = useState(() => getInitialNodeId());
+  const [locale, setLocale] = useState<Locale>(() => getInitialLocale());
   const [filters, setFilters] = useState<GraphFilters>(defaultFilters);
-  const selectedNode = useMemo(() => getNodeById(graph, selectedNodeId), [selectedNodeId]);
+  const graph = useMemo(() => localizeGraph(baseGraph, locale), [locale]);
+  const messages = useMemo(() => getMessages(locale), [locale]);
+  const selectedNode = useMemo(() => getNodeById(graph, selectedNodeId), [graph, selectedNodeId]);
 
   useEffect(() => {
     const handlePopState = () => {
@@ -39,6 +44,11 @@ export default function App() {
     }
   }, [selectedNode]);
 
+  useEffect(() => {
+    document.documentElement.lang = locale;
+    window.localStorage.setItem(LOCALE_STORAGE_KEY, locale);
+  }, [locale]);
+
   const selectNode = (nodeId: string) => {
     if (!getNodeById(graph, nodeId)) {
       return;
@@ -50,21 +60,38 @@ export default function App() {
     window.history.pushState({}, "", url);
   };
 
+  const changeLocale = (nextLocale: Locale) => {
+    setLocale(nextLocale);
+    const url = new URL(window.location.href);
+    url.searchParams.set("lang", nextLocale);
+    window.history.replaceState({}, "", url);
+  };
+
   return (
     <div className="app-shell">
       <header className="app-header">
         <div>
-          <p className="eyebrow">Unofficial Study Aid</p>
-          <h1>PMP ITTO Relationship Explorer</h1>
+          <p className="eyebrow">{messages.eyebrow}</p>
+          <h1>{messages.title}</h1>
         </div>
-        <p className="app-header__summary">
-          Explore process inputs, outputs, and downstream artifact usage in a selected-node-centered flow.
-        </p>
+        <div className="app-header__side">
+          <label className="language-control">
+            <span>{messages.language}</span>
+            <select value={locale} onChange={(event) => changeLocale(event.target.value as Locale)}>
+              {LOCALE_OPTIONS.map((option) => (
+                <option key={option.value} value={option.value}>
+                  {option.label}
+                </option>
+              ))}
+            </select>
+          </label>
+          <p className="app-header__summary">{messages.summary}</p>
+        </div>
       </header>
 
-      <section className="top-panel" aria-label="Search and filters">
-        <SearchBox graph={graph} filters={filters} onSelectNode={selectNode} />
-        <FilterBar filters={filters} onChange={setFilters} />
+      <section className="top-panel" aria-label={messages.searchAndFilters}>
+        <SearchBox graph={graph} filters={filters} messages={messages} locale={locale} onSelectNode={selectNode} />
+        <FilterBar filters={filters} messages={messages} locale={locale} onChange={setFilters} />
       </section>
 
       <main className="workspace-layout">
@@ -72,22 +99,24 @@ export default function App() {
           graph={graph}
           selectedNodeId={selectedNodeId}
           filters={filters}
+          messages={messages}
+          locale={locale}
           onSelectNode={selectNode}
         />
         <GraphView
           graph={graph}
           selectedNodeId={selectedNodeId}
           filters={filters}
+          messages={messages}
           onSelectNode={selectNode}
         />
-        <DetailPanel graph={graph} selectedNodeId={selectedNodeId} onSelectNode={selectNode} />
+        <DetailPanel graph={graph} selectedNodeId={selectedNodeId} messages={messages} locale={locale} onSelectNode={selectNode} />
       </main>
 
       <footer className="app-footer">
-        <p>Unofficial study aid. Not affiliated with, endorsed by, or sponsored by PMI.</p>
-        <p>PMI, PMP, and PMBOK are trademarks of Project Management Institute, Inc.</p>
-        <p>本ツールは非公式の学習補助ツールです。PMIによる承認・後援・提携を受けたものではありません。</p>
-        <p>PMI、PMP、PMBOKはProject Management Institute, Inc.の商標です。</p>
+        {messages.disclaimer.map((line) => (
+          <p key={line}>{line}</p>
+        ))}
       </footer>
     </div>
   );
@@ -97,9 +126,34 @@ function getInitialNodeId(): string {
   const params = new URLSearchParams(window.location.search);
   const nodeId = params.get("node");
 
-  if (nodeId && getNodeById(graph, nodeId)) {
+  if (nodeId && getNodeById(baseGraph, nodeId)) {
     return nodeId;
   }
 
   return DEFAULT_NODE_ID;
+}
+
+function getInitialLocale(): Locale {
+  const params = new URLSearchParams(window.location.search);
+  const localeParam = params.get("lang");
+
+  if (isLocale(localeParam)) {
+    return localeParam;
+  }
+
+  const storedLocale = window.localStorage.getItem(LOCALE_STORAGE_KEY);
+  if (isLocale(storedLocale)) {
+    return storedLocale;
+  }
+
+  const browserLanguage = window.navigator.language;
+  if (browserLanguage.startsWith("ja")) {
+    return "ja";
+  }
+
+  if (browserLanguage.toLowerCase().startsWith("zh")) {
+    return "zh-CN";
+  }
+
+  return DEFAULT_LOCALE;
 }
