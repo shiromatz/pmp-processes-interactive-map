@@ -32,6 +32,7 @@ Deployment is published from the `gh-pages` branch.
 
 ## Notice
 
-This site is an unofficial study aid for project management certification preparation.
-It is not affiliated with, endorsed by, or sponsored by Project Management Institute, Inc.
+Unofficial study aid. Not affiliated with, endorsed by, or sponsored by PMI.
 PMI, PMP, and PMBOK are trademarks of Project Management Institute, Inc.
+本ツールは非公式の学習補助ツールです。PMIによる承認・後援・提携を受けたものではありません。
+PMI、PMP、PMBOKはProject Management Institute, Inc.の商標です。

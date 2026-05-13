@@ -548,6 +548,10 @@ button {
   max-width: 1760px;
 }
 
+.app-footer p {
+  margin: 0;
+}
+
 @media (max-width: 1320px) {
   .workspace-layout {
     grid-template-columns: minmax(320px, 0.85fr) minmax(520px, 1.45fr);

@@ -83,9 +83,10 @@ export default function App() {
       </main>
 
       <footer className="app-footer">
-        This site is an unofficial study aid. It is not affiliated with, endorsed by, or sponsored by
-        Project Management Institute, Inc. PMI, PMP, and PMBOK are trademarks of Project Management
-        Institute, Inc.
+        <p>Unofficial study aid. Not affiliated with, endorsed by, or sponsored by PMI.</p>
+        <p>PMI, PMP, and PMBOK are trademarks of Project Management Institute, Inc.</p>
+        <p>本ツールは非公式の学習補助ツールです。PMIによる承認・後援・提携を受けたものではありません。</p>
+        <p>PMI、PMP、PMBOKはProject Management Institute, Inc.の商標です。</p>
       </footer>
     </div>
   );
