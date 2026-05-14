@@ -92,22 +92,6 @@ button {
   white-space: nowrap;
 }
 
-.app-header__scope-note {
-  background: #fff7ed;
-  border: 1px solid #f1c28d;
-  border-left: 4px solid var(--accent);
-  border-radius: 6px;
-  color: #6c3b11;
-  font-size: 0.76rem;
-  font-weight: 750;
-  justify-self: end;
-  line-height: 1.4;
-  margin: 0;
-  max-width: 680px;
-  padding: 7px 9px;
-  text-align: right;
-}
-
 .app-header__side {
   align-items: end;
   display: grid;
@@ -1012,11 +996,6 @@ button {
   .app-header__summary {
     text-align: left;
     white-space: normal;
-  }
-
-  .app-header__scope-note {
-    justify-self: stretch;
-    text-align: left;
   }
 
   .top-panel {

@@ -137,7 +137,6 @@ export default function App() {
             </select>
           </label>
           <p className="app-header__summary">{messages.summary}</p>
-          <p className="app-header__scope-note">{messages.dataScopeNote}</p>
         </div>
       </header>
 
