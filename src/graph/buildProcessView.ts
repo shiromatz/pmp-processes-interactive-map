@@ -49,7 +49,7 @@ export function buildProcessView(
       toFlowEdge(focus.id, output.id, "outputs")
     ),
     ...rawUpdates.map((output) =>
-      toFlowEdge(focus.id, output.id, "updates", inputIds.has(output.id) ? "backward" : "forward")
+      toFlowEdge(focus.id, output.id, "updates")
     )
   ];
   return {
@@ -61,15 +61,14 @@ export function buildProcessView(
 function toFlowEdge(
   source: string,
   target: string,
-  relation: "input_to" | "outputs" | "updates" | "uses",
-  direction: "forward" | "backward" = "forward"
+  relation: "input_to" | "outputs" | "updates" | "uses"
 ): IttoFlowEdge {
   return {
     id: `${source}-${target}-${relation}`,
     source,
     target,
-    sourceHandle: direction === "backward" ? "source-left" : "source-right",
-    targetHandle: direction === "backward" ? "target-right" : "target-left",
+    sourceHandle: "source-right",
+    targetHandle: "target-left",
     type: "smoothstep",
     animated: true,
     data: { relation },

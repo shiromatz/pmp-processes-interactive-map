@@ -696,11 +696,6 @@ button {
   width: 9px;
 }
 
-.react-flow__handle--hidden {
-  opacity: 0;
-  pointer-events: none;
-}
-
 .react-flow__edge.flow-edge--input path {
   stroke: var(--edge-input);
   stroke-width: 2.2;

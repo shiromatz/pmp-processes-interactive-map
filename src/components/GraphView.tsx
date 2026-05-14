@@ -207,7 +207,6 @@ function IttoNode({ data, messages }: NodeProps<IttoFlowNode> & { messages: Mess
 
   return (
     <div className={className}>
-      <Handle id="source-left" type="source" position={Position.Left} className="react-flow__handle--hidden" />
       <Handle id="target-left" type="target" position={Position.Left} />
       <div className="itto-node__kind">{messages.nodeTypes[data.nodeType]}</div>
       <div className="itto-node__label">{data.label}</div>
@@ -219,7 +218,6 @@ function IttoNode({ data, messages }: NodeProps<IttoFlowNode> & { messages: Mess
       ) : data.nodeType === "technique" ? (
         <div className="itto-node__meta">{data.category}</div>
       ) : null}
-      <Handle id="target-right" type="target" position={Position.Right} className="react-flow__handle--hidden" />
       <Handle id="source-right" type="source" position={Position.Right} />
     </div>
   );
