@@ -19,7 +19,7 @@ export function buildProcessView(
   const inputIds = new Set(rawInputs.map((node) => node.id));
   const inputs = rawInputs;
   const outputs = uniqueNodes([
-    ...rawOutputs,
+    ...rawOutputs.filter((node) => !inputIds.has(node.id)),
     ...rawUpdates.filter((node) => !inputIds.has(node.id))
   ]);
 
