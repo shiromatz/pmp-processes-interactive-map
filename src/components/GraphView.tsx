@@ -12,12 +12,13 @@ import "@xyflow/react/dist/style.css";
 import { buildArtifactView } from "../graph/buildArtifactView";
 import { buildProcessView } from "../graph/buildProcessView";
 import { buildTechniqueView } from "../graph/buildTechniqueView";
+import type { GraphSource } from "../graph/graphIndex";
 import { getNodeById } from "../graph/selectors";
 import type { Messages } from "../i18n";
-import type { GraphFilters, IttoFlowEdge, IttoFlowNode, IttoGraph, NodeType, RelationType } from "../types/graph";
+import type { GraphFilters, IttoFlowEdge, IttoFlowNode, NodeType, RelationType } from "../types/graph";
 
 type GraphViewProps = {
-  graph: IttoGraph;
+  graph: GraphSource;
   selectedNodeId: string;
   filters: GraphFilters;
   messages: Messages;

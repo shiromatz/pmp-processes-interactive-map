@@ -1,9 +1,11 @@
-import type { BuiltView, GraphFilters, IttoFlowEdge, IttoGraph } from "../types/graph";
+import { filterVisibleEdges, toFlowEdge } from "./flowEdges";
+import type { GraphSource } from "./graphIndex";
+import type { BuiltView, GraphFilters } from "../types/graph";
 import { getInputsForProcess, getNodeById, getOutputsForProcess, getUpdatesForProcess, nodeMatchesFilters, uniqueNodes } from "./selectors";
 import { getFocusY, layoutCenteredColumn, PROCESS_COLUMN_X, toFlowNode } from "./layout";
 
 export function buildProcessView(
-  graph: IttoGraph,
+  graph: GraphSource,
   selectedProcessId: string,
   filters: GraphFilters
 ): BuiltView {
@@ -56,42 +58,4 @@ export function buildProcessView(
     nodes,
     edges: filterVisibleEdges(nodes, [...inputEdges, ...outputEdges])
   };
-}
-
-function toFlowEdge(
-  source: string,
-  target: string,
-  relation: "input_to" | "outputs" | "updates" | "uses"
-): IttoFlowEdge {
-  return {
-    id: `${source}-${target}-${relation}`,
-    source,
-    target,
-    sourceHandle: "source-right",
-    targetHandle: "target-left",
-    type: "smoothstep",
-    animated: true,
-    data: { relation },
-    className:
-      relation === "outputs"
-        ? "flow-edge--outputs"
-        : relation === "updates"
-          ? "flow-edge--updates"
-          : relation === "uses"
-            ? "flow-edge--uses"
-            : "flow-edge--input"
-  };
-}
-
-function filterVisibleEdges(nodes: BuiltView["nodes"], edges: IttoFlowEdge[]): IttoFlowEdge[] {
-  const nodeIds = new Set(nodes.map((node) => node.id));
-  const seenEdgeIds = new Set<string>();
-  return edges.filter((edge) => {
-    if (!nodeIds.has(edge.source) || !nodeIds.has(edge.target) || seenEdgeIds.has(edge.id)) {
-      return false;
-    }
-
-    seenEdgeIds.add(edge.id);
-    return true;
-  });
 }

@@ -28,6 +28,8 @@ The Detail Panel keeps the T&T navigation path: selecting a T&T item from a proc
 
 The study data is based on PMBOK Guide Sixth Edition process/ITTO structure. It may contain errors or omissions, so verify critical study decisions against official PMI materials.
 
+This app is a PMBOK Guide Sixth Edition 49-process/ITTO reference, not a current PMP Exam Content Outline. PMI has announced a new PMP exam launching on July 9, 2026, and candidates planning to take the current version are directed by PMI to sit for it before July 8, 2026. For exam preparation, check PMI's current [PMP exam information](https://www.pmi.org/certifications/project-management-pmp/new-exam) and [PMBOK Guide](https://www.pmi.org/standards/pmbok) pages.
+
 ## Local Development
 
 ```bash
@@ -55,7 +57,13 @@ The Vite base path is configured for:
 /pmp-processes-interactive-map/
 ```
 
-Deployment is published from the `gh-pages` branch.
+`.github/workflows/pages.yml` runs `npm ci`, `npm run validate:data`, and `npm run build` on pull requests and pushes to `main`. On pushes to `main`, it uploads `dist` and deploys through GitHub Pages Actions.
+
+Repository setting:
+
+```text
+Settings -> Pages -> Build and deployment -> Source: GitHub Actions
+```
 
 ## Notice
 

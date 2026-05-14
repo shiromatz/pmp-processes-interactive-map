@@ -1,10 +1,11 @@
-import { useMemo, useState, type KeyboardEvent } from "react";
+import { useEffect, useId, useMemo, useState, type KeyboardEvent } from "react";
 import { searchNodes } from "../graph/selectors";
+import type { GraphSource } from "../graph/graphIndex";
 import { getNodeTypeLabel, type Locale, type Messages } from "../i18n";
-import type { GraphFilters, IttoGraph, IttoNode } from "../types/graph";
+import type { GraphFilters, IttoNode } from "../types/graph";
 
 type SearchBoxProps = {
-  graph: IttoGraph;
+  graph: GraphSource;
   filters: GraphFilters;
   messages: Messages;
   locale: Locale;
@@ -12,12 +13,27 @@ type SearchBoxProps = {
 };
 
 export function SearchBox({ graph, filters, messages, locale, onSelectNode }: SearchBoxProps) {
+  const inputId = useId();
+  const listboxId = useId();
   const [query, setQuery] = useState("");
   const [isOpen, setIsOpen] = useState(false);
+  const [activeIndex, setActiveIndex] = useState(0);
   const results = useMemo(
     () => searchNodes(graph, query, filters.nodeType),
     [filters.nodeType, graph, query]
   );
+  const hasResults = isOpen && results.length > 0;
+  const activeResult = hasResults ? results[activeIndex] ?? results[0] : undefined;
+
+  useEffect(() => {
+    setActiveIndex(0);
+  }, [query, filters.nodeType]);
+
+  useEffect(() => {
+    if (activeIndex >= results.length) {
+      setActiveIndex(Math.max(results.length - 1, 0));
+    }
+  }, [activeIndex, results.length]);
 
   const selectNode = (node: IttoNode) => {
     onSelectNode(node.id);
@@ -26,9 +42,36 @@ export function SearchBox({ graph, filters, messages, locale, onSelectNode }: Se
   };
 
   const handleKeyDown = (event: KeyboardEvent<HTMLInputElement>) => {
-    if (event.key === "Enter" && results[0]) {
+    if (event.key === "ArrowDown" && results.length > 0) {
       event.preventDefault();
-      selectNode(results[0]);
+      setIsOpen(true);
+      setActiveIndex((index) => (index + 1) % results.length);
+      return;
+    }
+
+    if (event.key === "ArrowUp" && results.length > 0) {
+      event.preventDefault();
+      setIsOpen(true);
+      setActiveIndex((index) => (index - 1 + results.length) % results.length);
+      return;
+    }
+
+    if (event.key === "Home" && hasResults) {
+      event.preventDefault();
+      setActiveIndex(0);
+      return;
+    }
+
+    if (event.key === "End" && hasResults) {
+      event.preventDefault();
+      setActiveIndex(results.length - 1);
+      return;
+    }
+
+    if (event.key === "Enter" && activeResult) {
+      event.preventDefault();
+      selectNode(activeResult);
+      return;
     }
 
     if (event.key === "Escape") {
@@ -38,10 +81,11 @@ export function SearchBox({ graph, filters, messages, locale, onSelectNode }: Se
 
   return (
     <div className="search-box">
-      <label htmlFor="node-search">{messages.search}</label>
+      <label htmlFor={inputId}>{messages.search}</label>
       <input
-        id="node-search"
+        id={inputId}
         type="search"
+        role="combobox"
         value={query}
         onChange={(event) => {
           setQuery(event.target.value);
@@ -51,11 +95,23 @@ export function SearchBox({ graph, filters, messages, locale, onSelectNode }: Se
         onKeyDown={handleKeyDown}
         placeholder={messages.searchPlaceholder}
         autoComplete="off"
+        aria-autocomplete="list"
+        aria-controls={hasResults ? listboxId : undefined}
+        aria-expanded={hasResults}
+        aria-activedescendant={activeResult ? `${listboxId}-${activeResult.id}` : undefined}
       />
-      {isOpen && results.length > 0 ? (
-        <div className="search-results" role="listbox" aria-label={messages.searchResults}>
-          {results.map((node) => (
-            <button key={node.id} type="button" onMouseDown={() => selectNode(node)}>
+      {hasResults ? (
+        <div id={listboxId} className="search-results" role="listbox" aria-label={messages.searchResults}>
+          {results.map((node, index) => (
+            <button
+              id={`${listboxId}-${node.id}`}
+              key={node.id}
+              type="button"
+              role="option"
+              aria-selected={index === activeIndex}
+              onMouseDown={() => selectNode(node)}
+              onMouseEnter={() => setActiveIndex(index)}
+            >
               <span>{node.label}</span>
               <small>{getNodeSummary(node, locale)}</small>
             </button>

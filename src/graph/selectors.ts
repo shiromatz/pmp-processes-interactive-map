@@ -1,91 +1,67 @@
 import type {
   GraphFilters,
   IttoEdge,
-  IttoGraph,
   IttoNode,
   KnowledgeArea,
   NodeType,
   ProcessGroup
 } from "../types/graph";
+import { getGraphIndex, type GraphSource } from "./graphIndex";
 
-export function getNodeById(graph: IttoGraph, nodeId: string): IttoNode | undefined {
-  return graph.nodes.find((node) => node.id === nodeId);
+export function getNodeById(graph: GraphSource, nodeId: string): IttoNode | undefined {
+  return getGraphIndex(graph).nodesById.get(nodeId);
 }
 
-export function getProcessNodes(graph: IttoGraph): IttoNode[] {
-  return graph.nodes.filter((node) => node.type === "process");
+export function getProcessNodes(graph: GraphSource): IttoNode[] {
+  return getGraphIndex(graph).nodesByType.process;
 }
 
-export function getArtifactNodes(graph: IttoGraph): IttoNode[] {
-  return graph.nodes.filter((node) => node.type === "artifact");
+export function getArtifactNodes(graph: GraphSource): IttoNode[] {
+  return getGraphIndex(graph).nodesByType.artifact;
 }
 
-export function getTechniqueNodes(graph: IttoGraph): IttoNode[] {
-  return graph.nodes.filter((node) => node.type === "technique");
+export function getTechniqueNodes(graph: GraphSource): IttoNode[] {
+  return getGraphIndex(graph).nodesByType.technique;
 }
 
-export function getInputsForProcess(graph: IttoGraph, processId: string): IttoNode[] {
-  return graph.edges
-    .filter((edge) => edge.target === processId && edge.relation === "input_to")
-    .map((edge) => getNodeById(graph, edge.source))
-    .filter(isNode);
+export function getInputsForProcess(graph: GraphSource, processId: string): IttoNode[] {
+  return getGraphIndex(graph).inputsByProcess.get(processId) ?? [];
 }
 
-export function getOutputsForProcess(graph: IttoGraph, processId: string): IttoNode[] {
-  return graph.edges
-    .filter((edge) => edge.source === processId && edge.relation === "outputs")
-    .map((edge) => getNodeById(graph, edge.target))
-    .filter(isNode);
+export function getOutputsForProcess(graph: GraphSource, processId: string): IttoNode[] {
+  return getGraphIndex(graph).outputsByProcess.get(processId) ?? [];
 }
 
-export function getUpdatesForProcess(graph: IttoGraph, processId: string): IttoNode[] {
-  return graph.edges
-    .filter((edge) => edge.source === processId && edge.relation === "updates")
-    .map((edge) => getNodeById(graph, edge.target))
-    .filter(isNode);
+export function getUpdatesForProcess(graph: GraphSource, processId: string): IttoNode[] {
+  return getGraphIndex(graph).updatesByProcess.get(processId) ?? [];
 }
 
-export function getProducersForArtifact(graph: IttoGraph, artifactId: string): IttoNode[] {
-  return graph.edges
-    .filter((edge) => edge.target === artifactId && edge.relation === "outputs")
-    .map((edge) => getNodeById(graph, edge.source))
-    .filter(isNode);
+export function getProducersForArtifact(graph: GraphSource, artifactId: string): IttoNode[] {
+  return getGraphIndex(graph).producersByArtifact.get(artifactId) ?? [];
 }
 
-export function getUpdatersForArtifact(graph: IttoGraph, artifactId: string): IttoNode[] {
-  return graph.edges
-    .filter((edge) => edge.target === artifactId && edge.relation === "updates")
-    .map((edge) => getNodeById(graph, edge.source))
-    .filter(isNode);
+export function getUpdatersForArtifact(graph: GraphSource, artifactId: string): IttoNode[] {
+  return getGraphIndex(graph).updatersByArtifact.get(artifactId) ?? [];
 }
 
-export function getConsumersForArtifact(graph: IttoGraph, artifactId: string): IttoNode[] {
-  return graph.edges
-    .filter((edge) => edge.source === artifactId && edge.relation === "input_to")
-    .map((edge) => getNodeById(graph, edge.target))
-    .filter(isNode);
+export function getConsumersForArtifact(graph: GraphSource, artifactId: string): IttoNode[] {
+  return getGraphIndex(graph).consumersByArtifact.get(artifactId) ?? [];
 }
 
-export function getTechniquesForProcess(graph: IttoGraph, processId: string): IttoNode[] {
-  return graph.edges
-    .filter((edge) => edge.source === processId && edge.relation === "uses")
-    .map((edge) => getNodeById(graph, edge.target))
-    .filter(isNode);
+export function getTechniquesForProcess(graph: GraphSource, processId: string): IttoNode[] {
+  return getGraphIndex(graph).techniquesByProcess.get(processId) ?? [];
 }
 
-export function getProcessesUsingTechnique(graph: IttoGraph, techniqueId: string): IttoNode[] {
-  return graph.edges
-    .filter((edge) => edge.target === techniqueId && edge.relation === "uses")
-    .map((edge) => getNodeById(graph, edge.source))
-    .filter(isNode);
+export function getProcessesUsingTechnique(graph: GraphSource, techniqueId: string): IttoNode[] {
+  return getGraphIndex(graph).processesByTechnique.get(techniqueId) ?? [];
 }
 
 export function getEdgeBetween(
-  graph: IttoGraph,
+  graph: GraphSource,
   source: string,
   target: string
 ): IttoEdge | undefined {
-  return graph.edges.find((edge) => edge.source === source && edge.target === target);
+  return getGraphIndex(graph).edgeByEndpoints.get(`${source}->${target}`);
 }
 
 export function uniqueNodes(nodes: IttoNode[]): IttoNode[] {
@@ -123,7 +99,7 @@ export function nodeMatchesFilters(node: IttoNode, filters: GraphFilters): boole
 }
 
 export function filterProcesses(
-  graph: IttoGraph,
+  graph: GraphSource,
   knowledgeArea: KnowledgeArea,
   processGroup: ProcessGroup
 ): IttoNode[] {
@@ -133,17 +109,18 @@ export function filterProcesses(
 }
 
 export function searchNodes(
-  graph: IttoGraph,
+  graph: GraphSource,
   query: string,
   nodeType: NodeType | "all" = "all"
 ): IttoNode[] {
+  const index = getGraphIndex(graph);
   const normalizedQuery = query.trim().toLowerCase();
 
   if (!normalizedQuery) {
     return [];
   }
 
-  return graph.nodes
+  return index.nodes
     .filter((node) => nodeType === "all" || node.type === nodeType)
     .filter((node) => {
       const text = [
@@ -163,8 +140,4 @@ export function searchNodes(
       return text.includes(normalizedQuery);
     })
     .slice(0, 12);
-}
-
-function isNode(node: IttoNode | undefined): node is IttoNode {
-  return Boolean(node);
 }

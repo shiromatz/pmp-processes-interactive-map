@@ -1,9 +1,11 @@
-import type { BuiltView, GraphFilters, IttoFlowEdge, IttoGraph } from "../types/graph";
+import { toFlowEdge } from "./flowEdges";
+import type { GraphSource } from "./graphIndex";
+import type { BuiltView, GraphFilters } from "../types/graph";
 import { getNodeById, getProcessesUsingTechnique, nodeMatchesFilters, uniqueNodes } from "./selectors";
 import { layoutProcessMatrixGrid, toFlowNode } from "./layout";
 
 export function buildTechniqueView(
-  graph: IttoGraph,
+  graph: GraphSource,
   selectedTechniqueId: string,
   filters: GraphFilters
 ): BuiltView {
@@ -44,21 +46,12 @@ export function buildTechniqueView(
         muted: muted(focus.id)
       })
     ],
-    edges: processes.map((process) => toFlowEdge(process.id, focus.id))
-  };
-}
-
-function toFlowEdge(source: string, target: string): IttoFlowEdge {
-  return {
-    id: `${source}-${target}-uses`,
-    source,
-    target,
-    sourceHandle: "source-bottom",
-    targetHandle: "target-top",
-    type: "smoothstep",
-    animated: true,
-    data: { relation: "uses" },
-    className: "flow-edge--uses"
+    edges: processes.map((process) =>
+      toFlowEdge(process.id, focus.id, "uses", {
+        sourceHandle: "source-bottom",
+        targetHandle: "target-top"
+      })
+    )
   };
 }
 

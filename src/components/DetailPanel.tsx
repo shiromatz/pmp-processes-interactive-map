@@ -10,8 +10,9 @@ import {
   getUpdatesForProcess,
   getUpdatersForArtifact
 } from "../graph/selectors";
+import type { GraphSource } from "../graph/graphIndex";
 import { getNodeTypeLabel, type Locale, type Messages } from "../i18n";
-import type { IttoGraph, IttoNode } from "../types/graph";
+import type { IttoNode } from "../types/graph";
 
 type DetailTab = {
   id: string;
@@ -21,7 +22,7 @@ type DetailTab = {
 };
 
 type DetailPanelProps = {
-  graph: IttoGraph;
+  graph: GraphSource;
   selectedNodeId: string;
   messages: Messages;
   locale: Locale;
@@ -94,7 +95,7 @@ function ProcessDetails({
   locale,
   onSelectNode
 }: {
-  graph: IttoGraph;
+  graph: GraphSource;
   node: IttoNode;
   messages: Messages;
   locale: Locale;
@@ -149,7 +150,7 @@ function ArtifactDetails({
   locale,
   onSelectNode
 }: {
-  graph: IttoGraph;
+  graph: GraphSource;
   node: IttoNode;
   messages: Messages;
   locale: Locale;
@@ -196,7 +197,7 @@ function TechniqueDetails({
   locale,
   onSelectNode
 }: {
-  graph: IttoGraph;
+  graph: GraphSource;
   node: IttoNode;
   messages: Messages;
   locale: Locale;

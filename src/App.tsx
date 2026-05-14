@@ -12,10 +12,12 @@ import {
   getProducersForArtifact,
   getUpdatersForArtifact
 } from "./graph/selectors";
+import { createGraphIndex } from "./graph/graphIndex";
 import { DEFAULT_LOCALE, LOCALE_OPTIONS, getMessages, isLocale, localizeGraph, type Locale } from "./i18n";
 import type { GraphFilters, IttoGraph, ProcessRelationHighlight } from "./types/graph";
 
 const baseGraph = ittoData as IttoGraph;
+const baseGraphIndex = createGraphIndex(baseGraph);
 const DEFAULT_NODE_ID = "develop_project_management_plan";
 const LOCALE_STORAGE_KEY = "pmp-itto-locale";
 
@@ -51,8 +53,9 @@ export default function App() {
   const [isMatrixCollapsed, setIsMatrixCollapsed] = useState(false);
   const [isDetailCollapsed, setIsDetailCollapsed] = useState(false);
   const graph = useMemo(() => localizeGraph(baseGraph, locale), [locale]);
+  const graphIndex = useMemo(() => createGraphIndex(graph), [graph]);
   const messages = useMemo(() => getMessages(locale), [locale]);
-  const selectedNode = useMemo(() => getNodeById(graph, selectedNodeId), [graph, selectedNodeId]);
+  const selectedNode = useMemo(() => getNodeById(graphIndex, selectedNodeId), [graphIndex, selectedNodeId]);
   const processRelationHighlights = useMemo(() => {
     const highlights = new Map<string, Set<ProcessRelationHighlight>>();
     const addHighlight = (nodeId: string, highlight: ProcessRelationHighlight) => {
@@ -64,19 +67,19 @@ export default function App() {
     }
 
     if (selectedNode.type === "artifact") {
-      getProducersForArtifact(graph, selectedNode.id).forEach((node) => addHighlight(node.id, "produced"));
-      getConsumersForArtifact(graph, selectedNode.id).forEach((node) => addHighlight(node.id, "usedAsInput"));
-      getUpdatersForArtifact(graph, selectedNode.id).forEach((node) => addHighlight(node.id, "updated"));
+      getProducersForArtifact(graphIndex, selectedNode.id).forEach((node) => addHighlight(node.id, "produced"));
+      getConsumersForArtifact(graphIndex, selectedNode.id).forEach((node) => addHighlight(node.id, "usedAsInput"));
+      getUpdatersForArtifact(graphIndex, selectedNode.id).forEach((node) => addHighlight(node.id, "updated"));
       return highlights;
     }
 
     if (selectedNode.type === "technique") {
-      getProcessesUsingTechnique(graph, selectedNode.id).forEach((node) => addHighlight(node.id, "related"));
+      getProcessesUsingTechnique(graphIndex, selectedNode.id).forEach((node) => addHighlight(node.id, "related"));
       return highlights;
     }
 
     return highlights;
-  }, [graph, selectedNode]);
+  }, [graphIndex, selectedNode]);
 
   useEffect(() => {
     const handlePopState = () => {
@@ -99,7 +102,7 @@ export default function App() {
   }, [locale]);
 
   const selectNode = (nodeId: string) => {
-    if (!getNodeById(graph, nodeId)) {
+    if (!getNodeById(graphIndex, nodeId)) {
       return;
     }
 
@@ -134,11 +137,12 @@ export default function App() {
             </select>
           </label>
           <p className="app-header__summary">{messages.summary}</p>
+          <p className="app-header__scope-note">{messages.dataScopeNote}</p>
         </div>
       </header>
 
       <section className="top-panel" aria-label={messages.searchAndFilters}>
-        <SearchBox graph={graph} filters={filters} messages={messages} locale={locale} onSelectNode={selectNode} />
+        <SearchBox graph={graphIndex} filters={filters} messages={messages} locale={locale} onSelectNode={selectNode} />
         <FilterBar filters={filters} messages={messages} locale={locale} onChange={setFilters} />
       </section>
 
@@ -152,7 +156,7 @@ export default function App() {
           .join(" ")}
       >
         <ProcessMatrix
-          graph={graph}
+          graph={graphIndex}
           selectedNodeId={selectedNodeId}
           filters={filters}
           messages={messages}
@@ -163,14 +167,14 @@ export default function App() {
           onSelectNode={selectNode}
         />
         <GraphView
-          graph={graph}
+          graph={graphIndex}
           selectedNodeId={selectedNodeId}
           filters={filters}
           messages={messages}
           onSelectNode={selectNode}
         />
         <DetailPanel
-          graph={graph}
+          graph={graphIndex}
           selectedNodeId={selectedNodeId}
           messages={messages}
           locale={locale}
@@ -202,7 +206,7 @@ function getInitialNodeId(): string {
   const params = new URLSearchParams(window.location.search);
   const nodeId = params.get("node");
 
-  if (nodeId && getNodeById(baseGraph, nodeId)) {
+  if (nodeId && getNodeById(baseGraphIndex, nodeId)) {
     return nodeId;
   }
 

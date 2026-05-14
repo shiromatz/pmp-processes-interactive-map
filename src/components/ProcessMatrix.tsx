@@ -1,10 +1,11 @@
 import { KNOWLEDGE_AREAS, PROCESS_GROUPS } from "../data/constants";
+import type { GraphSource } from "../graph/graphIndex";
 import { filterProcesses, getProcessNodes, nodeMatchesFilters } from "../graph/selectors";
 import { formatProcessCount, getKnowledgeAreaShortLabel, getProcessGroupShortLabel, type Locale, type Messages } from "../i18n";
-import type { GraphFilters, IttoGraph, ProcessRelationHighlight } from "../types/graph";
+import type { GraphFilters, ProcessRelationHighlight } from "../types/graph";
 
 type ProcessMatrixProps = {
-  graph: IttoGraph;
+  graph: GraphSource;
   selectedNodeId: string;
   filters: GraphFilters;
   messages: Messages;
