@@ -28,8 +28,10 @@ export function GraphView({ graph, selectedNodeId, filters, messages, onSelectNo
   const flowInstanceRef = useRef<ReactFlowInstance<IttoFlowNode, IttoFlowEdge> | null>(null);
   const canvasRef = useRef<HTMLDivElement | null>(null);
   const [isTransitioning, setIsTransitioning] = useState(false);
+  const [manualPositions, setManualPositions] = useState<Record<string, IttoFlowNode["position"]>>({});
   const [readableMinZoom, setReadableMinZoom] = useState(0.62);
   const [selectedEdgeId, setSelectedEdgeId] = useState<string | null>(null);
+  const draggedNodeRef = useRef(false);
   const selectedNode = getNodeById(graph, selectedNodeId);
   const nodeTypes = useMemo(
     () => ({
@@ -56,6 +58,21 @@ export function GraphView({ graph, selectedNodeId, filters, messages, onSelectNo
   }, [filters, graph, selectedNode]);
   const viewNodeIds = useMemo(() => view.nodes.map((node) => node.id).join("|"), [view.nodes]);
   const viewEdgeIds = useMemo(() => view.edges.map((edge) => edge.id).join("|"), [view.edges]);
+  const displayNodes = useMemo<IttoFlowNode[]>(
+    () =>
+      view.nodes.map((node) => {
+        return {
+          ...node,
+          draggable: true,
+          position: manualPositions[node.id] ?? node.position,
+          data: {
+            ...node.data,
+            isDraggable: true
+          }
+        };
+      }),
+    [manualPositions, view.nodes]
+  );
   const visibleEdges = useMemo<IttoFlowEdge[]>(
     () =>
       view.edges.map((edge): IttoFlowEdge => {
@@ -139,6 +156,17 @@ export function GraphView({ graph, selectedNodeId, filters, messages, onSelectNo
     setSelectedEdgeId(null);
   }, [selectedNodeId, viewEdgeIds]);
 
+  useEffect(() => {
+    setManualPositions({});
+  }, [
+    selectedNodeId,
+    viewNodeIds,
+    viewEdgeIds,
+    filters.knowledgeArea,
+    filters.nodeType,
+    filters.processGroup
+  ]);
+
   return (
     <section className="graph-panel" aria-label={messages.relationshipGraph}>
       <div className="graph-panel__header">
@@ -163,15 +191,38 @@ export function GraphView({ graph, selectedNodeId, filters, messages, onSelectNo
       </div>
       <div ref={canvasRef} className={`graph-canvas${isTransitioning ? " is-transitioning" : ""}`}>
         <ReactFlow
-          nodes={view.nodes}
+          nodes={displayNodes}
           edges={visibleEdges}
           nodeTypes={nodeTypes}
           onInit={(instance) => {
             flowInstanceRef.current = instance;
           }}
           onNodeClick={(_, node) => {
+            if (draggedNodeRef.current) {
+              draggedNodeRef.current = false;
+              return;
+            }
+
             setSelectedEdgeId(null);
             onSelectNode(node.id);
+          }}
+          onNodeDragStart={() => {
+            draggedNodeRef.current = true;
+          }}
+          onNodeDrag={(_, node) => {
+            setManualPositions((positions) => ({
+              ...positions,
+              [node.id]: node.position
+            }));
+          }}
+          onNodeDragStop={(_, node) => {
+            setManualPositions((positions) => ({
+              ...positions,
+              [node.id]: node.position
+            }));
+            window.setTimeout(() => {
+              draggedNodeRef.current = false;
+            }, 0);
           }}
           onEdgeClick={(_, edge) => setSelectedEdgeId(edge.id)}
           onPaneClick={() => setSelectedEdgeId(null)}
@@ -179,7 +230,8 @@ export function GraphView({ graph, selectedNodeId, filters, messages, onSelectNo
           fitViewOptions={{ padding: 0.18 }}
           minZoom={readableMinZoom}
           maxZoom={1.3}
-          nodesDraggable={false}
+          nodesDraggable
+          panOnDrag
           proOptions={{ hideAttribution: true }}
         >
           <Background gap={24} size={1} />
@@ -200,6 +252,7 @@ function IttoNode({ data, messages }: NodeProps<IttoFlowNode> & { messages: Mess
         : "itto-node--artifact",
     data.isFocus ? "itto-node--focus" : "",
     data.isRecent ? "itto-node--recent" : "",
+    data.isDraggable ? "itto-node--draggable" : "",
     data.muted ? "itto-node--muted" : ""
   ]
     .filter(Boolean)

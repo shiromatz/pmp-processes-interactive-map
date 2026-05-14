@@ -71,6 +71,7 @@ export type FlowNodeData = {
   processGroupShortLabel?: string;
   isFocus?: boolean;
   isRecent?: boolean;
+  isDraggable?: boolean;
   muted?: boolean;
 };
 

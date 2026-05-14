@@ -8,6 +8,8 @@ The Graph View is centered on the selected node:
 - Artifact focus: producing, using, and updating processes are grouped around the selected artifact and ordered by process group and knowledge area where possible.
 - Tools & Techniques focus: related process cards are placed above the selected T&T card, with links drawn from each process card's bottom edge to the T&T card's top edge.
 
+Nodes in Graph View can be dragged temporarily to inspect overlapping edges. Dragging the empty canvas pans the graph. The layout resets when the selected node or filters change.
+
 The Detail Panel keeps the T&T navigation path: selecting a T&T item from a process opens its related-process graph.
 
 ## Development

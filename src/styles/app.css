@@ -637,6 +637,15 @@ button {
   opacity: 0.36;
 }
 
+.itto-node--draggable {
+  cursor: grab;
+}
+
+.react-flow__node.dragging .itto-node--draggable,
+.itto-node--draggable:active {
+  cursor: grabbing;
+}
+
 .itto-node__kind {
   color: var(--text-muted);
   font-size: 0.68rem;
