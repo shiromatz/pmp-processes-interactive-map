@@ -25,6 +25,25 @@ const defaultFilters: GraphFilters = {
   nodeType: "all"
 };
 
+const FOOTER_LINKS = [
+  {
+    label: "Repository",
+    href: "https://github.com/shiromatz/pmp-processes-interactive-map"
+  },
+  {
+    label: "README",
+    href: "https://github.com/shiromatz/pmp-processes-interactive-map#readme"
+  },
+  {
+    label: "Notice",
+    href: "https://github.com/shiromatz/pmp-processes-interactive-map/blob/main/NOTICE.md"
+  },
+  {
+    label: "License",
+    href: "https://github.com/shiromatz/pmp-processes-interactive-map/blob/main/LICENSE"
+  }
+];
+
 export default function App() {
   const [selectedNodeId, setSelectedNodeId] = useState(() => getInitialNodeId());
   const [locale, setLocale] = useState<Locale>(() => getInitialLocale());
@@ -162,9 +181,18 @@ export default function App() {
       </main>
 
       <footer className="app-footer">
-        {messages.disclaimer.map((line) => (
-          <p key={line}>{line}</p>
-        ))}
+        <div className="app-footer__notice">
+          {messages.disclaimer.map((line) => (
+            <p key={line}>{line}</p>
+          ))}
+        </div>
+        <nav className="app-footer__links" aria-label="Project links">
+          {FOOTER_LINKS.map((link) => (
+            <a key={link.href} href={link.href} target="_blank" rel="noreferrer">
+              {link.label}
+            </a>
+          ))}
+        </nav>
       </footer>
     </div>
   );
