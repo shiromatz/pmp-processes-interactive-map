@@ -80,19 +80,6 @@ export function getProcessesUsingTechnique(graph: IttoGraph, techniqueId: string
     .filter(isNode);
 }
 
-export function getDownstreamUsage(
-  graph: IttoGraph,
-  processId: string
-): Array<{ output: IttoNode; consumers: IttoNode[] }> {
-  return uniqueNodes([
-    ...getOutputsForProcess(graph, processId),
-    ...getUpdatesForProcess(graph, processId)
-  ]).map((output) => ({
-    output,
-    consumers: getConsumersForArtifact(graph, output.id)
-  }));
-}
-
 export function getEdgeBetween(
   graph: IttoGraph,
   source: string,

@@ -207,6 +207,7 @@ function IttoNode({ data, messages }: NodeProps<IttoFlowNode> & { messages: Mess
 
   return (
     <div className={className}>
+      <Handle id="target-top" type="target" position={Position.Top} className="react-flow__handle--vertical" />
       <Handle id="target-left" type="target" position={Position.Left} />
       <div className="itto-node__kind">{messages.nodeTypes[data.nodeType]}</div>
       <div className="itto-node__label">{data.label}</div>
@@ -219,6 +220,7 @@ function IttoNode({ data, messages }: NodeProps<IttoFlowNode> & { messages: Mess
         <div className="itto-node__meta">{data.category}</div>
       ) : null}
       <Handle id="source-right" type="source" position={Position.Right} />
+      <Handle id="source-bottom" type="source" position={Position.Bottom} className="react-flow__handle--vertical" />
     </div>
   );
 }

@@ -148,8 +148,7 @@ button {
 }
 
 .search-box label,
-.filter-bar label,
-.depth-control > span {
+.filter-bar label {
   color: var(--text-muted);
   display: grid;
   font-size: 0.75rem;
@@ -217,35 +216,6 @@ button {
   display: grid;
   gap: 12px;
   grid-template-columns: repeat(3, minmax(150px, 1fr));
-}
-
-.depth-control {
-  display: grid;
-  gap: 6px;
-}
-
-.segmented-control {
-  background: #edf1f5;
-  border: 1px solid #cbd3dc;
-  border-radius: 7px;
-  display: grid;
-  grid-template-columns: repeat(2, minmax(42px, auto));
-  min-height: 40px;
-  padding: 3px;
-}
-
-.segmented-control button {
-  background: transparent;
-  border: 0;
-  border-radius: 5px;
-  color: var(--text-muted);
-  font-weight: 800;
-}
-
-.segmented-control button.is-active {
-  background: #fff;
-  box-shadow: 0 1px 5px rgba(21, 31, 47, 0.14);
-  color: var(--text-main);
 }
 
 .workspace-layout {
@@ -694,6 +664,11 @@ button {
   border: 2px solid #526070;
   height: 9px;
   width: 9px;
+}
+
+.react-flow__handle--vertical {
+  opacity: 0;
+  pointer-events: none;
 }
 
 .react-flow__edge.flow-edge--input path {
