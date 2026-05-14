@@ -57,12 +57,13 @@ The Vite base path is configured for:
 /pmp-processes-interactive-map/
 ```
 
-`.github/workflows/pages.yml` runs `npm ci`, `npm run validate:data`, and `npm run build` on pull requests and pushes to `main`. On pushes to `main`, it uploads `dist` and deploys through GitHub Pages Actions.
+`.github/workflows/pages.yml` runs `npm ci`, `npm run validate:data`, and `npm run build` on pull requests and pushes to `main`. On pushes to `main`, it publishes the built `dist` files to the `gh-pages` branch.
 
 Repository setting:
 
 ```text
-Settings -> Pages -> Build and deployment -> Source: GitHub Actions
+Settings -> Pages -> Build and deployment -> Source: Deploy from a branch
+Branch: gh-pages / root
 ```
 
 ## Notice

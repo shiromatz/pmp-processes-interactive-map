@@ -228,6 +228,13 @@ The Vite base path is:
 /pmp-processes-interactive-map/
 ```
 
-GitHub Pages is published by `.github/workflows/pages.yml` when changes are pushed to `main`.
+GitHub Pages is published from the `gh-pages` branch.
 
-The repository's Pages source should be configured as GitHub Actions. Pull requests run install, data validation, and production build checks without deploying.
+`.github/workflows/pages.yml` runs install, data validation, and production build checks on pull requests and pushes to `main`. On pushes to `main`, it commits the built `dist` files to the `gh-pages` branch.
+
+The repository's Pages source should be configured as:
+
+```text
+Settings -> Pages -> Build and deployment -> Source: Deploy from a branch
+Branch: gh-pages / root
+```
