@@ -25,6 +25,12 @@ npm run dev
 npm run build
 ```
 
+## License
+
+Original software code is licensed under the MIT License. See [LICENSE](LICENSE).
+
+PMI trademark, PMBOK-related content, unofficial study-aid, and data warranty notices are documented in [NOTICE.md](NOTICE.md).
+
 ## GitHub Pages
 
 The Vite base path is configured for:
