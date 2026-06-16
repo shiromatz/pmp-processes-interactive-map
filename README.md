@@ -1,34 +1,39 @@
-# PMP ITTO Relationship Explorer
+# PMBOK® Guide Relationship Explorer
 
-An unofficial static study aid for exploring PMP process, artifact, and tools and techniques relationships. The app is available in English, Japanese, and Simplified Chinese.
+Unofficial PMP® certification study aid for exploring PMBOK® Guide relationships by edition. The app is available in English and Japanese.
 
 Use the app here: https://shiromatz.github.io/pmp-processes-interactive-map/
 
 ## How to Use
 
-- Select a display language from the header.
-- Search for a process, artifact, or T&T item, or select a process from the Process Matrix.
-- Use the Process Group, Knowledge Area, and Node Type filters to narrow the visible matrix and graph context.
-- Read the Detail Panel tabs to inspect inputs, tools and techniques, outputs, updates, producers, updaters, and consumers.
-- Click a process, artifact, or T&T item in the Detail Panel or Graph View to make it the graph focus.
-- Drag nodes in Graph View temporarily to inspect overlapping edges. Drag the empty canvas to pan the graph. The layout resets when the selected node or filters change.
+- Select a PMBOK® Guide edition and display language from the header.
+- Search for a process, artifact, principle, performance domain, focus area, or tools-and-techniques item.
+- In Sixth Edition mode, use the Process Group, Knowledge Area, and Node Type filters to narrow the ITTO view.
+- In Seventh and Eighth Edition modes, select items from the Edition Overview panel to inspect relationship mappings.
+- Click a node in the Detail Panel or Graph View to make it the graph focus.
+- Drag nodes in Graph View temporarily to inspect overlapping edges. Drag the empty canvas to pan the graph.
 - Use the graph controls to zoom or fit the current graph into view.
+
+## Edition Scope
+
+| Edition | Scope |
+|---|---|
+| Sixth Edition | 49-process ITTO relationship map: processes, inputs, outputs, updates, and tools and techniques. |
+| Seventh Edition | High-level relationship map for 12 principles, 8 performance domains, and overview nodes for models, methods, and artifacts. |
+| Eighth Edition | High-level relationship map for 6 principles, 7 performance domains, focus areas, non-prescriptive process guidance, and selected expanded-coverage topics. |
+
+The study data may contain errors, omissions, or interpretation differences. Verify exam-critical decisions against current PMI materials.
+
+This app is not a PMP Exam Content Outline and should not be treated as a complete or current exam-preparation source. For exam preparation, check PMI's current [PMP exam information](https://www.pmi.org/certifications/project-management-pmp/new-exam) and [PMBOK® Guide](https://www.pmi.org/standards/pmbok) pages.
 
 ## Graph View
 
-The Graph View is centered on the selected node:
+The Graph View is centered on the selected node.
 
-- Process focus: input artifacts appear on the left, the selected process appears in the center, and output/update artifacts appear on the right. If an artifact is both an input and an update for the selected process, it remains on the input side.
-- Artifact focus: producing, using, and updating processes are grouped around the selected artifact and ordered by process group and knowledge area where possible.
-- Tools & Techniques focus: related process cards are placed above the selected T&T card, with links drawn from each process card's bottom edge to the T&T card's top edge.
-
-The Detail Panel keeps the T&T navigation path: selecting a T&T item from a process opens its related-process graph.
-
-## Data Scope
-
-The study data is based on PMBOK Guide Sixth Edition process/ITTO structure. It may contain errors or omissions, so verify critical study decisions against official PMI materials.
-
-This app is a PMBOK Guide Sixth Edition 49-process/ITTO reference, not a current PMP Exam Content Outline. PMI has announced a new PMP exam launching on July 9, 2026, and candidates planning to take the current version are directed by PMI to sit for it before July 8, 2026. For exam preparation, check PMI's current [PMP exam information](https://www.pmi.org/certifications/project-management-pmp/new-exam) and [PMBOK Guide](https://www.pmi.org/standards/pmbok) pages.
+- Sixth Edition process focus: input artifacts appear on the left, the selected process appears in the center, and output/update artifacts appear on the right.
+- Sixth Edition artifact focus: producing, using, and updating processes are grouped around the selected artifact.
+- Sixth Edition tools-and-techniques focus: related process cards are placed above the selected tools-and-techniques card.
+- Seventh and Eighth Edition focus: incoming relationships appear on the left and outgoing relationships appear on the right.
 
 ## Local Development
 
@@ -37,9 +42,10 @@ npm install
 npm run dev
 ```
 
-## Build
+## Validation and Build
 
 ```bash
+npm run validate:data
 npm run build
 ```
 
@@ -47,7 +53,7 @@ npm run build
 
 Original software code is licensed under the MIT License. See [LICENSE](LICENSE).
 
-PMI trademark, PMBOK-related content, unofficial study-aid, and data warranty notices are documented in [NOTICE.md](NOTICE.md).
+PMI trademark, PMBOK® Guide-related content, unofficial study-aid, and data warranty notices are documented in [NOTICE.md](NOTICE.md).
 
 ## Deployment
 
@@ -69,16 +75,11 @@ Branch: gh-pages / root
 ## Notice
 
 Unofficial study aid. Not affiliated with, endorsed by, or sponsored by PMI.
-PMI, PMP, and PMBOK are trademarks of Project Management Institute, Inc.
-Content may contain errors or omissions. Use at your own risk; no warranty is provided for accuracy, completeness, or fitness for purpose.
-Based on PMBOK Guide Sixth Edition.
+PMI, PMP, and PMBOK are registered marks of Project Management Institute, Inc.
+Content may contain errors or omissions. Use at your own risk; no warranty is provided for accuracy, completeness, currency, or fitness for purpose.
+Based on PMBOK® Guide edition structures and public PMI information.
 
 本ツールは非公式の学習補助ツールです。PMIによる承認・後援・提携を受けたものではありません。
-PMI、PMP、PMBOKはProject Management Institute, Inc.の商標です。
-内容には誤りや漏れが含まれる可能性があります。利用は自己責任で行ってください。正確性、完全性、特定目的への適合性を保証するものではありません。
-PMBOK Guide 第6版に基づいています。
-
-本工具是非官方学习辅助工具，未获得PMI的认可、赞助或关联。
-PMI、PMP 和 PMBOK 是 Project Management Institute, Inc. 的商标。
-内容可能包含错误或遗漏。请自行承担使用风险；不保证其准确性、完整性或特定用途适用性。
-基于《PMBOK指南》第六版。
+PMI、PMP、PMBOKはProject Management Institute, Inc.の登録商標です。
+内容には誤りや漏れが含まれる可能性があります。利用は自己責任で行ってください。正確性、完全性、最新性、特定目的への適合性を保証するものではありません。
+PMBOK® Guideの版別構造およびPMI公開情報に基づいています。

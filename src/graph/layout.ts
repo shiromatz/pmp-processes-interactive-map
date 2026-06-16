@@ -155,7 +155,13 @@ export function toFlowNode(
   data?: Partial<FlowNodeData>
 ): IttoFlowNode {
   const nodeType =
-    node.type === "process" ? "processNode" : node.type === "technique" ? "techniqueNode" : "artifactNode";
+    node.type === "process"
+      ? "processNode"
+      : node.type === "technique"
+        ? "techniqueNode"
+        : node.type === "artifact"
+          ? "artifactNode"
+          : "genericNode";
 
   return {
     id: node.id,

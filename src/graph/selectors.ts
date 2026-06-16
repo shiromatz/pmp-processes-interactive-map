@@ -24,6 +24,32 @@ export function getTechniqueNodes(graph: GraphSource): IttoNode[] {
   return getGraphIndex(graph).nodesByType.technique;
 }
 
+export function getNodesByType(graph: GraphSource, type: NodeType): IttoNode[] {
+  return getGraphIndex(graph).nodesByType[type] ?? [];
+}
+
+export function getIncomingEdgesForNode(graph: GraphSource, nodeId: string): IttoEdge[] {
+  return getGraphIndex(graph).incomingByNode.get(nodeId) ?? [];
+}
+
+export function getOutgoingEdgesForNode(graph: GraphSource, nodeId: string): IttoEdge[] {
+  return getGraphIndex(graph).outgoingByNode.get(nodeId) ?? [];
+}
+
+export function getIncomingNodesForNode(graph: GraphSource, nodeId: string): IttoNode[] {
+  const index = getGraphIndex(graph);
+  return getIncomingEdgesForNode(index, nodeId)
+    .map((edge) => index.nodesById.get(edge.source))
+    .filter((node): node is IttoNode => Boolean(node));
+}
+
+export function getOutgoingNodesForNode(graph: GraphSource, nodeId: string): IttoNode[] {
+  const index = getGraphIndex(graph);
+  return getOutgoingEdgesForNode(index, nodeId)
+    .map((edge) => index.nodesById.get(edge.target))
+    .filter((node): node is IttoNode => Boolean(node));
+}
+
 export function getInputsForProcess(graph: GraphSource, processId: string): IttoNode[] {
   return getGraphIndex(graph).inputsByProcess.get(processId) ?? [];
 }
@@ -95,7 +121,7 @@ export function nodeMatchesFilters(node: IttoNode, filters: GraphFilters): boole
     return filters.processGroup === "all" && filters.knowledgeArea === "all";
   }
 
-  return true;
+  return filters.processGroup === "all" && filters.knowledgeArea === "all";
 }
 
 export function filterProcesses(

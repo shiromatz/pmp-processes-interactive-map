@@ -1,8 +1,10 @@
 import { useEffect, useMemo, useState, type ReactNode } from "react";
 import {
   getConsumersForArtifact,
+  getIncomingEdgesForNode,
   getInputsForProcess,
   getNodeById,
+  getOutgoingEdgesForNode,
   getOutputsForProcess,
   getProcessesUsingTechnique,
   getProducersForArtifact,
@@ -10,9 +12,10 @@ import {
   getUpdatesForProcess,
   getUpdatersForArtifact
 } from "../graph/selectors";
+import type { EditionId } from "../data/editions";
 import type { GraphSource } from "../graph/graphIndex";
 import { getNodeTypeLabel, type Locale, type Messages } from "../i18n";
-import type { IttoNode } from "../types/graph";
+import type { IttoEdge, IttoNode, RelationType } from "../types/graph";
 
 type DetailTab = {
   id: string;
@@ -24,6 +27,7 @@ type DetailTab = {
 type DetailPanelProps = {
   graph: GraphSource;
   selectedNodeId: string;
+  edition: EditionId;
   messages: Messages;
   locale: Locale;
   isCollapsed: boolean;
@@ -34,6 +38,7 @@ type DetailPanelProps = {
 export function DetailPanel({
   graph,
   selectedNodeId,
+  edition,
   messages,
   locale,
   isCollapsed,
@@ -74,7 +79,9 @@ export function DetailPanel({
         </button>
       </div>
       {selectedNode ? (
-        selectedNode.type === "process" ? (
+        edition !== "sixth" ? (
+          <EditionNodeDetails graph={graph} node={selectedNode} messages={messages} locale={locale} onSelectNode={onSelectNode} />
+        ) : selectedNode.type === "process" ? (
           <ProcessDetails graph={graph} node={selectedNode} messages={messages} locale={locale} onSelectNode={onSelectNode} />
         ) : selectedNode.type === "artifact" ? (
           <ArtifactDetails graph={graph} node={selectedNode} messages={messages} locale={locale} onSelectNode={onSelectNode} />
@@ -85,6 +92,49 @@ export function DetailPanel({
         <p className="empty-text">{messages.chooseNode}</p>
       )}
     </aside>
+  );
+}
+
+function EditionNodeDetails({
+  graph,
+  node,
+  messages,
+  locale,
+  onSelectNode
+}: {
+  graph: GraphSource;
+  node: IttoNode;
+  messages: Messages;
+  locale: Locale;
+  onSelectNode: (nodeId: string) => void;
+}) {
+  const incomingEdges = getIncomingEdgesForNode(graph, node.id);
+  const outgoingEdges = getOutgoingEdgesForNode(graph, node.id);
+  const incomingSections = toRelationSections(graph, incomingEdges, "source", messages, locale, onSelectNode, true);
+  const outgoingSections = toRelationSections(graph, outgoingEdges, "target", messages, locale, onSelectNode, false);
+  const sections: DetailTab[] = [
+    {
+      id: "related-from",
+      title: messages.relatedFrom,
+      count: incomingEdges.length,
+      content: <RelationGroups title={messages.relatedFrom} sections={incomingSections} messages={messages} />
+    },
+    {
+      id: "related-to",
+      title: messages.relatedTo,
+      count: outgoingEdges.length,
+      content: <RelationGroups title={messages.relatedTo} sections={outgoingSections} messages={messages} />
+    }
+  ];
+
+  return (
+    <div className="details-stack">
+      <div className="detail-meta">
+        <span>{getNodeTypeLabel(node.type, locale)}</span>
+        {node.category ? <span>{node.category}</span> : null}
+      </div>
+      <DetailTabs sections={sections} resetKey={node.id} />
+    </div>
   );
 }
 
@@ -337,6 +387,105 @@ function NodeList({
       )}
     </section>
   );
+}
+
+type RelationSection = {
+  relation: RelationType;
+  title: string;
+  nodes: IttoNode[];
+  content: ReactNode;
+};
+
+function RelationGroups({
+  title,
+  sections,
+  messages
+}: {
+  title: string;
+  sections: RelationSection[];
+  messages: Messages;
+}) {
+  return (
+    <section className="detail-section">
+      <h3>{title}</h3>
+      {sections.length > 0 ? (
+        <div className="technique-groups">
+          {sections.map((section) => (
+            <div className="technique-group" key={`${section.relation}-${section.title}`}>
+              <h4>{section.title}</h4>
+              {section.content}
+            </div>
+          ))}
+        </div>
+      ) : (
+        <p className="empty-text">{messages.noMappedNodes}</p>
+      )}
+    </section>
+  );
+}
+
+function toRelationSections(
+  graph: GraphSource,
+  edges: IttoEdge[],
+  endpoint: "source" | "target",
+  messages: Messages,
+  locale: Locale,
+  onSelectNode: (nodeId: string) => void,
+  reverseLabel: boolean
+): RelationSection[] {
+  const grouped = new Map<RelationType, IttoNode[]>();
+
+  for (const edge of edges) {
+    const relatedNode = getNodeById(graph, edge[endpoint]);
+    if (!relatedNode) {
+      continue;
+    }
+
+    grouped.set(edge.relation, [...(grouped.get(edge.relation) ?? []), relatedNode]);
+  }
+
+  return Array.from(grouped.entries()).map(([relation, nodes]) => ({
+    relation,
+    title: getRelationLabel(relation, messages, reverseLabel),
+    nodes,
+    content: <NodeList title={getRelationLabel(relation, messages, reverseLabel)} nodes={nodes} messages={messages} locale={locale} onSelectNode={onSelectNode} />
+  }));
+}
+
+function getRelationLabel(relation: RelationType, messages: Messages, reverseLabel: boolean): string {
+  if (relation === "supports") {
+    return reverseLabel ? messages.supportedBy : messages.supports;
+  }
+
+  if (relation === "applies_to") {
+    return reverseLabel ? messages.appliedBy : messages.appliesTo;
+  }
+
+  if (relation === "maps_to") {
+    return reverseLabel ? messages.mappedFrom : messages.mapsTo;
+  }
+
+  if (relation === "contains") {
+    return reverseLabel ? messages.containedIn : messages.contains;
+  }
+
+  if (relation === "references") {
+    return reverseLabel ? messages.referencedBy : messages.references;
+  }
+
+  if (relation === "outputs") {
+    return reverseLabel ? messages.producedBy : messages.outputs;
+  }
+
+  if (relation === "updates") {
+    return reverseLabel ? messages.updatedBy : messages.updates;
+  }
+
+  if (relation === "uses") {
+    return reverseLabel ? messages.usedBy : messages.toolsAndTechniques;
+  }
+
+  return reverseLabel ? messages.usedAsInputBy : messages.inputs;
 }
 
 function getNodeSecondaryLabel(node: IttoNode, locale: Locale): string {

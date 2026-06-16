@@ -1,4 +1,6 @@
 import graph from "../src/data/itto.json" with { type: "json" };
+import pmbokSeventh from "../src/data/pmbok-seventh.json" with { type: "json" };
+import pmbokEighth from "../src/data/pmbok-eighth.json" with { type: "json" };
 import locales from "../src/i18n/locales.json" with { type: "json" };
 
 const REQUIRED_PROCESS_COUNT = 49;
@@ -30,7 +32,26 @@ const nodesById = new Map(graph.nodes.map((node) => [node.id, node]));
 const processCount = graph.nodes.filter((node) => node.type === "process").length;
 const processIds = graph.nodes.filter((node) => node.type === "process").map((node) => node.id);
 const techniqueIds = graph.nodes.filter((node) => node.type === "technique").map((node) => node.id);
-const localizedLocales = ["ja", "zh-CN"];
+const localizedLocales = ["ja"];
+const editionGraphs = [
+  {
+    id: "seventh",
+    graph: pmbokSeventh,
+    expectedCounts: {
+      principle: 12,
+      performanceDomain: 8
+    }
+  },
+  {
+    id: "eighth",
+    graph: pmbokEighth,
+    expectedCounts: {
+      principle: 6,
+      performanceDomain: 7,
+      focusArea: 5
+    }
+  }
+];
 
 if (processCount !== REQUIRED_PROCESS_COUNT) {
   errors.push(`Expected ${REQUIRED_PROCESS_COUNT} process nodes, found ${processCount}.`);
@@ -128,6 +149,10 @@ for (const locale of localizedLocales) {
   }
 }
 
+for (const { id, graph: editionGraph, expectedCounts } of editionGraphs) {
+  validateEditionGraph(id, editionGraph, expectedCounts);
+}
+
 if (errors.length > 0) {
   console.error(errors.join("\n"));
   process.exit(1);
@@ -138,15 +163,88 @@ const relationCounts = graph.edges.reduce((counts, edge) => {
   return counts;
 }, {});
 
+const editionSummaries = Object.fromEntries(
+  editionGraphs.map(({ id, graph: editionGraph }) => [
+    id,
+    {
+      nodes: editionGraph.nodes.length,
+      edges: editionGraph.edges.length,
+      nodeCounts: countBy(editionGraph.nodes, "type"),
+      relationCounts: countBy(editionGraph.edges, "relation")
+    }
+  ])
+);
+
 console.log(
   JSON.stringify(
     {
       nodes: graph.nodes.length,
       processCount,
       edges: graph.edges.length,
-      relationCounts
+      relationCounts,
+      editions: editionSummaries
     },
     null,
     2
   )
 );
+
+function validateEditionGraph(id, editionGraph, expectedCounts) {
+  const editionNodeIds = new Set(editionGraph.nodes.map((node) => node.id));
+  const editionSeenEdges = new Set();
+  const nodeCounts = countBy(editionGraph.nodes, "type");
+
+  for (const [type, expectedCount] of Object.entries(expectedCounts)) {
+    const actualCount = nodeCounts[type] ?? 0;
+    if (actualCount !== expectedCount) {
+      errors.push(`${id}: expected ${expectedCount} ${type} nodes, found ${actualCount}.`);
+    }
+  }
+
+  for (const node of editionGraph.nodes) {
+    if (!node.id || !node.label || !node.type) {
+      errors.push(`${id}: node is missing id, label, or type.`);
+    }
+
+    for (const locale of localizedLocales) {
+      const data = locales[locale];
+      if (!data?.nodeLabels?.[node.id]) {
+        errors.push(`${id}: missing ${locale} node label: ${node.id}.`);
+      }
+
+      if (node.category && !data?.categoryLabels?.[node.category]) {
+        errors.push(`${id}: missing ${locale} category label: ${node.category}.`);
+      }
+    }
+  }
+
+  for (const edge of editionGraph.edges) {
+    if (!editionNodeIds.has(edge.source)) {
+      errors.push(`${id}: missing edge source node: ${edge.source}.`);
+    }
+
+    if (!editionNodeIds.has(edge.target)) {
+      errors.push(`${id}: missing edge target node: ${edge.target}.`);
+    }
+
+    const key = `${edge.source}->${edge.target}:${edge.relation}`;
+    if (editionSeenEdges.has(key)) {
+      errors.push(`${id}: duplicate edge: ${key}.`);
+    }
+    editionSeenEdges.add(key);
+  }
+
+  for (const node of editionGraph.nodes) {
+    const isConnected = editionGraph.edges.some((edge) => edge.source === node.id || edge.target === node.id);
+    if (!isConnected) {
+      errors.push(`${id}: node is not connected by any edge: ${node.id}.`);
+    }
+  }
+}
+
+function countBy(items, key) {
+  return items.reduce((counts, item) => {
+    counts[item[key]] = (counts[item[key]] ?? 0) + 1;
+    return counts;
+  }, {});
+}

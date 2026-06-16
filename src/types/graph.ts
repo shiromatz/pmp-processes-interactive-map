@@ -1,8 +1,26 @@
 import type { Edge, Node } from "@xyflow/react";
 
-export type NodeType = "process" | "artifact" | "technique";
+export type NodeType =
+  | "process"
+  | "artifact"
+  | "technique"
+  | "principle"
+  | "performanceDomain"
+  | "model"
+  | "method"
+  | "focusArea"
+  | "processGuidance";
 
-export type RelationType = "input_to" | "outputs" | "updates" | "uses";
+export type RelationType =
+  | "input_to"
+  | "outputs"
+  | "updates"
+  | "uses"
+  | "supports"
+  | "applies_to"
+  | "maps_to"
+  | "contains"
+  | "references";
 
 export type ProcessGroup =
   | "Initiating"
@@ -49,7 +67,7 @@ export type IttoGraph = {
   edges: IttoEdge[];
 };
 
-export type NodeTypeFilter = "all" | "process" | "artifact" | "technique";
+export type NodeTypeFilter = "all" | NodeType;
 
 export type ProcessRelationHighlight = "produced" | "usedAsInput" | "updated" | "related";
 
@@ -62,6 +80,7 @@ export type GraphFilters = {
 export type FlowNodeData = {
   label: string;
   nodeType: NodeType;
+  nodeTypeLabel?: string;
   knowledgeArea?: KnowledgeArea;
   processGroup?: ProcessGroup;
   category?: string;
@@ -79,7 +98,7 @@ export type FlowEdgeData = {
   relation: RelationType;
 };
 
-export type IttoFlowNode = Node<FlowNodeData, "processNode" | "artifactNode" | "techniqueNode">;
+export type IttoFlowNode = Node<FlowNodeData, "processNode" | "artifactNode" | "techniqueNode" | "genericNode">;
 export type IttoFlowEdge = Edge<FlowEdgeData>;
 
 export type BuiltView = {

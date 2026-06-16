@@ -6,6 +6,8 @@ export type GraphIndex = {
   edges: IttoEdge[];
   nodesById: Map<string, IttoNode>;
   nodesByType: Record<NodeType, IttoNode[]>;
+  incomingByNode: Map<string, IttoEdge[]>;
+  outgoingByNode: Map<string, IttoEdge[]>;
   inputsByProcess: Map<string, IttoNode[]>;
   outputsByProcess: Map<string, IttoNode[]>;
   updatesByProcess: Map<string, IttoNode[]>;
@@ -24,8 +26,16 @@ export function createGraphIndex(graph: IttoGraph): GraphIndex {
   const nodesByType: Record<NodeType, IttoNode[]> = {
     process: [],
     artifact: [],
-    technique: []
+    technique: [],
+    principle: [],
+    performanceDomain: [],
+    model: [],
+    method: [],
+    focusArea: [],
+    processGuidance: []
   };
+  const incomingByNode = new Map<string, IttoEdge[]>();
+  const outgoingByNode = new Map<string, IttoEdge[]>();
   const inputsByProcess = new Map<string, IttoNode[]>();
   const outputsByProcess = new Map<string, IttoNode[]>();
   const updatesByProcess = new Map<string, IttoNode[]>();
@@ -47,6 +57,9 @@ export function createGraphIndex(graph: IttoGraph): GraphIndex {
     if (!source || !target) {
       continue;
     }
+
+    addEdgeToMap(outgoingByNode, edge.source, edge);
+    addEdgeToMap(incomingByNode, edge.target, edge);
 
     if (!edgeByEndpoints.has(getEndpointKey(edge.source, edge.target))) {
       edgeByEndpoints.set(getEndpointKey(edge.source, edge.target), edge);
@@ -79,6 +92,8 @@ export function createGraphIndex(graph: IttoGraph): GraphIndex {
     edges: graph.edges,
     nodesById,
     nodesByType,
+    incomingByNode,
+    outgoingByNode,
     inputsByProcess,
     outputsByProcess,
     updatesByProcess,
@@ -101,6 +116,10 @@ function isGraphIndex(source: GraphSource): source is GraphIndex {
 
 function addToMap(map: Map<string, IttoNode[]>, key: string, node: IttoNode) {
   map.set(key, [...(map.get(key) ?? []), node]);
+}
+
+function addEdgeToMap(map: Map<string, IttoEdge[]>, key: string, edge: IttoEdge) {
+  map.set(key, [...(map.get(key) ?? []), edge]);
 }
 
 function getEndpointKey(source: string, target: string): string {
