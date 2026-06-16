@@ -2847,11 +2847,6 @@
       "relation": "input_to"
     },
     {
-      "source": "perform_qualitative_risk_analysis",
-      "target": "risk_report",
-      "relation": "outputs"
-    },
-    {
       "source": "risk_management_plan",
       "target": "perform_quantitative_risk_analysis",
       "relation": "input_to"
@@ -2870,11 +2865,6 @@
       "source": "cost_estimates",
       "target": "perform_quantitative_risk_analysis",
       "relation": "input_to"
-    },
-    {
-      "source": "perform_quantitative_risk_analysis",
-      "target": "risk_report",
-      "relation": "outputs"
     },
     {
       "source": "risk_management_plan",
@@ -4409,11 +4399,6 @@
     {
       "source": "perform_integrated_change_control",
       "target": "project_management_plan",
-      "relation": "updates"
-    },
-    {
-      "source": "perform_integrated_change_control",
-      "target": "change_log",
       "relation": "updates"
     },
     {
@@ -7355,6 +7340,281 @@
       "source": "monitor_stakeholder_engagement",
       "target": "tt_meetings",
       "relation": "uses"
+    },
+    {
+      "source": "enterprise_environmental_factors",
+      "target": "develop_project_management_plan",
+      "relation": "input_to"
+    },
+    {
+      "source": "enterprise_environmental_factors",
+      "target": "manage_project_knowledge",
+      "relation": "input_to"
+    },
+    {
+      "source": "enterprise_environmental_factors",
+      "target": "perform_integrated_change_control",
+      "relation": "input_to"
+    },
+    {
+      "source": "enterprise_environmental_factors",
+      "target": "collect_requirements",
+      "relation": "input_to"
+    },
+    {
+      "source": "enterprise_environmental_factors",
+      "target": "define_scope",
+      "relation": "input_to"
+    },
+    {
+      "source": "enterprise_environmental_factors",
+      "target": "create_wbs",
+      "relation": "input_to"
+    },
+    {
+      "source": "enterprise_environmental_factors",
+      "target": "sequence_activities",
+      "relation": "input_to"
+    },
+    {
+      "source": "enterprise_environmental_factors",
+      "target": "develop_schedule",
+      "relation": "input_to"
+    },
+    {
+      "source": "enterprise_environmental_factors",
+      "target": "estimate_costs",
+      "relation": "input_to"
+    },
+    {
+      "source": "enterprise_environmental_factors",
+      "target": "determine_budget",
+      "relation": "input_to"
+    },
+    {
+      "source": "enterprise_environmental_factors",
+      "target": "plan_quality_management",
+      "relation": "input_to"
+    },
+    {
+      "source": "enterprise_environmental_factors",
+      "target": "control_quality",
+      "relation": "input_to"
+    },
+    {
+      "source": "enterprise_environmental_factors",
+      "target": "estimate_activity_resources",
+      "relation": "input_to"
+    },
+    {
+      "source": "enterprise_environmental_factors",
+      "target": "acquire_resources",
+      "relation": "input_to"
+    },
+    {
+      "source": "enterprise_environmental_factors",
+      "target": "develop_team",
+      "relation": "input_to"
+    },
+    {
+      "source": "enterprise_environmental_factors",
+      "target": "manage_team",
+      "relation": "input_to"
+    },
+    {
+      "source": "enterprise_environmental_factors",
+      "target": "manage_communications",
+      "relation": "input_to"
+    },
+    {
+      "source": "enterprise_environmental_factors",
+      "target": "monitor_communications",
+      "relation": "input_to"
+    },
+    {
+      "source": "enterprise_environmental_factors",
+      "target": "identify_risks",
+      "relation": "input_to"
+    },
+    {
+      "source": "enterprise_environmental_factors",
+      "target": "perform_qualitative_risk_analysis",
+      "relation": "input_to"
+    },
+    {
+      "source": "enterprise_environmental_factors",
+      "target": "perform_quantitative_risk_analysis",
+      "relation": "input_to"
+    },
+    {
+      "source": "enterprise_environmental_factors",
+      "target": "plan_risk_responses",
+      "relation": "input_to"
+    },
+    {
+      "source": "enterprise_environmental_factors",
+      "target": "control_procurements",
+      "relation": "input_to"
+    },
+    {
+      "source": "enterprise_environmental_factors",
+      "target": "manage_stakeholder_engagement",
+      "relation": "input_to"
+    },
+    {
+      "source": "enterprise_environmental_factors",
+      "target": "monitor_stakeholder_engagement",
+      "relation": "input_to"
+    },
+    {
+      "source": "organizational_process_assets",
+      "target": "develop_project_management_plan",
+      "relation": "input_to"
+    },
+    {
+      "source": "organizational_process_assets",
+      "target": "perform_integrated_change_control",
+      "relation": "input_to"
+    },
+    {
+      "source": "organizational_process_assets",
+      "target": "collect_requirements",
+      "relation": "input_to"
+    },
+    {
+      "source": "organizational_process_assets",
+      "target": "define_scope",
+      "relation": "input_to"
+    },
+    {
+      "source": "organizational_process_assets",
+      "target": "create_wbs",
+      "relation": "input_to"
+    },
+    {
+      "source": "organizational_process_assets",
+      "target": "control_scope",
+      "relation": "input_to"
+    },
+    {
+      "source": "organizational_process_assets",
+      "target": "sequence_activities",
+      "relation": "input_to"
+    },
+    {
+      "source": "organizational_process_assets",
+      "target": "develop_schedule",
+      "relation": "input_to"
+    },
+    {
+      "source": "organizational_process_assets",
+      "target": "control_schedule",
+      "relation": "input_to"
+    },
+    {
+      "source": "organizational_process_assets",
+      "target": "estimate_costs",
+      "relation": "input_to"
+    },
+    {
+      "source": "organizational_process_assets",
+      "target": "determine_budget",
+      "relation": "input_to"
+    },
+    {
+      "source": "organizational_process_assets",
+      "target": "control_costs",
+      "relation": "input_to"
+    },
+    {
+      "source": "organizational_process_assets",
+      "target": "plan_quality_management",
+      "relation": "input_to"
+    },
+    {
+      "source": "organizational_process_assets",
+      "target": "manage_quality",
+      "relation": "input_to"
+    },
+    {
+      "source": "organizational_process_assets",
+      "target": "control_quality",
+      "relation": "input_to"
+    },
+    {
+      "source": "organizational_process_assets",
+      "target": "estimate_activity_resources",
+      "relation": "input_to"
+    },
+    {
+      "source": "organizational_process_assets",
+      "target": "acquire_resources",
+      "relation": "input_to"
+    },
+    {
+      "source": "organizational_process_assets",
+      "target": "develop_team",
+      "relation": "input_to"
+    },
+    {
+      "source": "organizational_process_assets",
+      "target": "manage_team",
+      "relation": "input_to"
+    },
+    {
+      "source": "organizational_process_assets",
+      "target": "control_resources",
+      "relation": "input_to"
+    },
+    {
+      "source": "organizational_process_assets",
+      "target": "manage_communications",
+      "relation": "input_to"
+    },
+    {
+      "source": "organizational_process_assets",
+      "target": "monitor_communications",
+      "relation": "input_to"
+    },
+    {
+      "source": "organizational_process_assets",
+      "target": "identify_risks",
+      "relation": "input_to"
+    },
+    {
+      "source": "organizational_process_assets",
+      "target": "perform_qualitative_risk_analysis",
+      "relation": "input_to"
+    },
+    {
+      "source": "organizational_process_assets",
+      "target": "perform_quantitative_risk_analysis",
+      "relation": "input_to"
+    },
+    {
+      "source": "organizational_process_assets",
+      "target": "plan_risk_responses",
+      "relation": "input_to"
+    },
+    {
+      "source": "organizational_process_assets",
+      "target": "implement_risk_responses",
+      "relation": "input_to"
+    },
+    {
+      "source": "organizational_process_assets",
+      "target": "control_procurements",
+      "relation": "input_to"
+    },
+    {
+      "source": "organizational_process_assets",
+      "target": "manage_stakeholder_engagement",
+      "relation": "input_to"
+    },
+    {
+      "source": "organizational_process_assets",
+      "target": "monitor_stakeholder_engagement",
+      "relation": "input_to"
     }
   ]
 }
