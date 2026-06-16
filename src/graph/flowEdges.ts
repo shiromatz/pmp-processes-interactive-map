@@ -39,6 +39,26 @@ export function filterVisibleEdges(nodes: BuiltView["nodes"], edges: IttoFlowEdg
 }
 
 function getRelationClassName(relation: RelationType): string {
+  if (relation === "supports") {
+    return "flow-edge--supports";
+  }
+
+  if (relation === "applies_to") {
+    return "flow-edge--applies";
+  }
+
+  if (relation === "maps_to") {
+    return "flow-edge--maps";
+  }
+
+  if (relation === "contains") {
+    return "flow-edge--contains";
+  }
+
+  if (relation === "references") {
+    return "flow-edge--references";
+  }
+
   if (relation === "outputs") {
     return "flow-edge--outputs";
   }

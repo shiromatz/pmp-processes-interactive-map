@@ -10,8 +10,10 @@ import {
 } from "@xyflow/react";
 import "@xyflow/react/dist/style.css";
 import { buildArtifactView } from "../graph/buildArtifactView";
+import { buildEditionMapView } from "../graph/buildEditionMapView";
 import { buildProcessView } from "../graph/buildProcessView";
 import { buildTechniqueView } from "../graph/buildTechniqueView";
+import type { EditionId } from "../data/editions";
 import type { GraphSource } from "../graph/graphIndex";
 import { getNodeById } from "../graph/selectors";
 import type { Messages } from "../i18n";
@@ -21,11 +23,12 @@ type GraphViewProps = {
   graph: GraphSource;
   selectedNodeId: string;
   filters: GraphFilters;
+  edition: EditionId;
   messages: Messages;
   onSelectNode: (nodeId: string) => void;
 };
 
-export function GraphView({ graph, selectedNodeId, filters, messages, onSelectNode }: GraphViewProps) {
+export function GraphView({ graph, selectedNodeId, filters, edition, messages, onSelectNode }: GraphViewProps) {
   const flowInstanceRef = useRef<ReactFlowInstance<IttoFlowNode, IttoFlowEdge> | null>(null);
   const canvasRef = useRef<HTMLDivElement | null>(null);
   const [isTransitioning, setIsTransitioning] = useState(false);
@@ -34,17 +37,13 @@ export function GraphView({ graph, selectedNodeId, filters, messages, onSelectNo
   const [selectedEdgeId, setSelectedEdgeId] = useState<string | null>(null);
   const draggedNodeRef = useRef(false);
   const selectedNode = getNodeById(graph, selectedNodeId);
-  const nodeTypes = useMemo(
-    () => ({
-      processNode: (props: NodeProps<IttoFlowNode>) => <IttoNode {...props} messages={messages} />,
-      artifactNode: (props: NodeProps<IttoFlowNode>) => <IttoNode {...props} messages={messages} />,
-      techniqueNode: (props: NodeProps<IttoFlowNode>) => <IttoNode {...props} messages={messages} />
-    }),
-    [messages]
-  );
   const view = useMemo(() => {
     if (!selectedNode) {
       return { nodes: [], edges: [] };
+    }
+
+    if (edition !== "sixth") {
+      return buildEditionMapView(graph, selectedNode.id);
     }
 
     if (selectedNode.type === "process") {
@@ -56,7 +55,7 @@ export function GraphView({ graph, selectedNodeId, filters, messages, onSelectNo
     }
 
     return buildTechniqueView(graph, selectedNode.id, filters);
-  }, [filters, graph, selectedNode]);
+  }, [edition, filters, graph, selectedNode]);
   const viewNodeIds = useMemo(() => view.nodes.map((node) => node.id).join("|"), [view.nodes]);
   const viewEdgeIds = useMemo(() => view.edges.map((edge) => edge.id).join("|"), [view.edges]);
   const displayNodes = useMemo<IttoFlowNode[]>(
@@ -68,6 +67,7 @@ export function GraphView({ graph, selectedNodeId, filters, messages, onSelectNo
           position: manualPositions[node.id] ?? node.position,
           data: {
             ...node.data,
+            nodeTypeLabel: messages.nodeTypes[node.data.nodeType],
             isDraggable: true
           }
         };
@@ -100,7 +100,10 @@ export function GraphView({ graph, selectedNodeId, filters, messages, onSelectNo
       }),
     [messages, selectedEdgeId, selectedNode?.type, selectedNodeId, view.edges]
   );
-  const legendItems = useMemo(() => getLegendItems(selectedNode?.type, messages), [messages, selectedNode?.type]);
+  const legendItems = useMemo(
+    () => getLegendItems(selectedNode?.type, edition, messages),
+    [edition, messages, selectedNode?.type]
+  );
 
   useEffect(() => {
     if (!canvasRef.current) {
@@ -194,7 +197,7 @@ export function GraphView({ graph, selectedNodeId, filters, messages, onSelectNo
         <ReactFlow
           nodes={displayNodes}
           edges={visibleEdges}
-          nodeTypes={nodeTypes}
+          nodeTypes={NODE_TYPES}
           onInit={(instance) => {
             flowInstanceRef.current = instance;
           }}
@@ -243,14 +246,17 @@ export function GraphView({ graph, selectedNodeId, filters, messages, onSelectNo
   );
 }
 
-function IttoNode({ data, messages }: NodeProps<IttoFlowNode> & { messages: Messages }) {
+const NODE_TYPES = {
+  processNode: IttoNode,
+  artifactNode: IttoNode,
+  techniqueNode: IttoNode,
+  genericNode: IttoNode
+};
+
+function IttoNode({ data }: NodeProps<IttoFlowNode>) {
   const className = [
     "itto-node",
-    data.nodeType === "process"
-      ? "itto-node--process"
-      : data.nodeType === "technique"
-        ? "itto-node--technique"
-        : "itto-node--artifact",
+    getNodeClassName(data.nodeType),
     data.isFocus ? "itto-node--focus" : "",
     data.isRecent ? "itto-node--recent" : "",
     data.isDraggable ? "itto-node--draggable" : "",
@@ -263,14 +269,14 @@ function IttoNode({ data, messages }: NodeProps<IttoFlowNode> & { messages: Mess
     <div className={className}>
       <Handle id="target-top" type="target" position={Position.Top} className="react-flow__handle--vertical" />
       <Handle id="target-left" type="target" position={Position.Left} />
-      <div className="itto-node__kind">{messages.nodeTypes[data.nodeType]}</div>
+      <div className="itto-node__kind">{data.nodeTypeLabel ?? data.nodeType}</div>
       <div className="itto-node__label">{data.label}</div>
       {data.nodeType === "process" ? (
         <div className="itto-node__meta">
           {data.processGroupShortLabel ?? data.processGroupLabel ?? data.processGroup} /{" "}
           {data.knowledgeAreaShortLabel ?? data.knowledgeAreaLabel ?? data.knowledgeArea}
         </div>
-      ) : data.nodeType === "technique" ? (
+      ) : data.category ? (
         <div className="itto-node__meta">{data.category}</div>
       ) : null}
       <Handle id="source-right" type="source" position={Position.Right} />
@@ -281,9 +287,20 @@ function IttoNode({ data, messages }: NodeProps<IttoFlowNode> & { messages: Mess
 
 type LegendEntry =
   | { type: "node"; nodeType: NodeType; label: string }
-  | { type: "line"; relation: "input" | "output" | "update" | "uses"; label: string };
+  | { type: "line"; relation: "input" | "output" | "update" | "uses" | "supports" | "applies" | "maps" | "contains" | "references"; label: string };
 
-function getLegendItems(selectedType: NodeType | undefined, messages: Messages): LegendEntry[] {
+function getLegendItems(selectedType: NodeType | undefined, edition: EditionId, messages: Messages): LegendEntry[] {
+  if (edition !== "sixth") {
+    return [
+      { type: "node", nodeType: "principle", label: messages.nodeTypes.principle },
+      { type: "node", nodeType: "performanceDomain", label: messages.nodeTypes.performanceDomain },
+      { type: "line", relation: "supports", label: messages.supports },
+      { type: "line", relation: "applies", label: messages.appliesTo },
+      { type: "line", relation: "contains", label: messages.contains },
+      { type: "line", relation: "references", label: messages.references }
+    ];
+  }
+
   if (selectedType === "artifact") {
     return [
       { type: "node", nodeType: "process", label: messages.nodeTypes.process },
@@ -342,5 +359,57 @@ function getRelationLabel(
     return messages.usedBy;
   }
 
+  if (relation === "supports") {
+    return messages.supports;
+  }
+
+  if (relation === "applies_to") {
+    return messages.appliesTo;
+  }
+
+  if (relation === "maps_to") {
+    return messages.mapsTo;
+  }
+
+  if (relation === "contains") {
+    return messages.contains;
+  }
+
+  if (relation === "references") {
+    return messages.references;
+  }
+
   return messages.inputs;
+}
+
+function getNodeClassName(nodeType: NodeType): string {
+  if (nodeType === "process") {
+    return "itto-node--process";
+  }
+
+  if (nodeType === "technique" || nodeType === "method") {
+    return "itto-node--technique";
+  }
+
+  if (nodeType === "artifact") {
+    return "itto-node--artifact";
+  }
+
+  if (nodeType === "principle") {
+    return "itto-node--principle";
+  }
+
+  if (nodeType === "performanceDomain") {
+    return "itto-node--domain";
+  }
+
+  if (nodeType === "focusArea") {
+    return "itto-node--focus-area";
+  }
+
+  if (nodeType === "processGuidance") {
+    return "itto-node--guidance";
+  }
+
+  return "itto-node--model";
 }

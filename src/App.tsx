@@ -1,10 +1,11 @@
 import { useEffect, useMemo, useState } from "react";
 import { DetailPanel } from "./components/DetailPanel";
+import { EditionMatrix } from "./components/EditionMatrix";
 import { FilterBar } from "./components/FilterBar";
 import { GraphView } from "./components/GraphView";
 import { ProcessMatrix } from "./components/ProcessMatrix";
 import { SearchBox } from "./components/SearchBox";
-import ittoData from "./data/itto.json";
+import { DEFAULT_EDITION, EDITION_CONFIGS, EDITION_OPTIONS, type EditionId, isEdition } from "./data/editions";
 import {
   getConsumersForArtifact,
   getNodeById,
@@ -13,13 +14,20 @@ import {
   getUpdatersForArtifact
 } from "./graph/selectors";
 import { createGraphIndex } from "./graph/graphIndex";
-import { DEFAULT_LOCALE, LOCALE_OPTIONS, getMessages, isLocale, localizeGraph, type Locale } from "./i18n";
+import {
+  DEFAULT_LOCALE,
+  LOCALE_OPTIONS,
+  getEditionLabel,
+  getEditionSummary,
+  getMessages,
+  isLocale,
+  localizeGraph,
+  type Locale
+} from "./i18n";
 import type { GraphFilters, IttoGraph, ProcessRelationHighlight } from "./types/graph";
 
-const baseGraph = ittoData as IttoGraph;
-const baseGraphIndex = createGraphIndex(baseGraph);
-const DEFAULT_NODE_ID = "develop_project_management_plan";
 const LOCALE_STORAGE_KEY = "pmp-itto-locale";
+const EDITION_STORAGE_KEY = "pmbok-edition";
 
 const defaultFilters: GraphFilters = {
   processGroup: "all",
@@ -28,10 +36,6 @@ const defaultFilters: GraphFilters = {
 };
 
 const FOOTER_LINKS = [
-  {
-    label: "Repository",
-    href: "https://github.com/shiromatz/pmp-processes-interactive-map"
-  },
   {
     label: "README",
     href: "https://github.com/shiromatz/pmp-processes-interactive-map#readme"
@@ -47,14 +51,17 @@ const FOOTER_LINKS = [
 ];
 
 export default function App() {
-  const [selectedNodeId, setSelectedNodeId] = useState(() => getInitialNodeId());
+  const [edition, setEdition] = useState<EditionId>(() => getInitialEdition());
+  const [selectedNodeId, setSelectedNodeId] = useState(() => getInitialNodeId(EDITION_CONFIGS[getInitialEdition()].graph));
   const [locale, setLocale] = useState<Locale>(() => getInitialLocale());
   const [filters, setFilters] = useState<GraphFilters>(defaultFilters);
   const [isMatrixCollapsed, setIsMatrixCollapsed] = useState(false);
   const [isDetailCollapsed, setIsDetailCollapsed] = useState(false);
-  const graph = useMemo(() => localizeGraph(baseGraph, locale), [locale]);
+  const editionConfig = EDITION_CONFIGS[edition];
+  const graph = useMemo(() => localizeGraph(editionConfig.graph, locale), [editionConfig.graph, locale]);
   const graphIndex = useMemo(() => createGraphIndex(graph), [graph]);
   const messages = useMemo(() => getMessages(locale), [locale]);
+  const editionSummary = useMemo(() => getEditionSummary(edition, locale), [edition, locale]);
   const selectedNode = useMemo(() => getNodeById(graphIndex, selectedNodeId), [graphIndex, selectedNodeId]);
   const processRelationHighlights = useMemo(() => {
     const highlights = new Map<string, Set<ProcessRelationHighlight>>();
@@ -83,7 +90,9 @@ export default function App() {
 
   useEffect(() => {
     const handlePopState = () => {
-      setSelectedNodeId(getInitialNodeId());
+      const nextEdition = getInitialEdition();
+      setEdition(nextEdition);
+      setSelectedNodeId(getInitialNodeId(EDITION_CONFIGS[nextEdition].graph));
     };
 
     window.addEventListener("popstate", handlePopState);
@@ -92,14 +101,18 @@ export default function App() {
 
   useEffect(() => {
     if (!selectedNode) {
-      setSelectedNodeId(DEFAULT_NODE_ID);
+      setSelectedNodeId(editionConfig.defaultNodeId);
     }
-  }, [selectedNode]);
+  }, [editionConfig.defaultNodeId, selectedNode]);
 
   useEffect(() => {
     document.documentElement.lang = locale;
     window.localStorage.setItem(LOCALE_STORAGE_KEY, locale);
   }, [locale]);
+
+  useEffect(() => {
+    window.localStorage.setItem(EDITION_STORAGE_KEY, edition);
+  }, [edition]);
 
   const selectNode = (nodeId: string) => {
     if (!getNodeById(graphIndex, nodeId)) {
@@ -110,6 +123,17 @@ export default function App() {
     const url = new URL(window.location.href);
     url.searchParams.set("node", nodeId);
     window.history.pushState({}, "", url);
+  };
+
+  const changeEdition = (nextEdition: EditionId) => {
+    const nextConfig = EDITION_CONFIGS[nextEdition];
+    setEdition(nextEdition);
+    setSelectedNodeId(nextConfig.defaultNodeId);
+    setFilters(defaultFilters);
+    const url = new URL(window.location.href);
+    url.searchParams.set("edition", nextEdition);
+    url.searchParams.set("node", nextConfig.defaultNodeId);
+    window.history.replaceState({}, "", url);
   };
 
   const changeLocale = (nextLocale: Locale) => {
@@ -124,25 +148,45 @@ export default function App() {
       <header className="app-header">
         <div>
           <h1>{messages.title}</h1>
+          <p className="app-header__subtitle">{messages.subtitle}</p>
         </div>
         <div className="app-header__side">
-          <label className="language-control">
-            <span>{messages.language}</span>
-            <select value={locale} onChange={(event) => changeLocale(event.target.value as Locale)}>
-              {LOCALE_OPTIONS.map((option) => (
-                <option key={option.value} value={option.value}>
-                  {option.label}
-                </option>
-              ))}
-            </select>
-          </label>
-          <p className="app-header__summary">{messages.summary}</p>
+          <div className="header-controls">
+            <label className="language-control">
+              <span>{messages.edition}</span>
+              <select value={edition} onChange={(event) => changeEdition(event.target.value as EditionId)}>
+                {EDITION_OPTIONS.map((option) => (
+                  <option key={option} value={option}>
+                    {getEditionLabel(option, locale)}
+                  </option>
+                ))}
+              </select>
+            </label>
+            <label className="language-control">
+              <span>{messages.language}</span>
+              <select value={locale} onChange={(event) => changeLocale(event.target.value as Locale)}>
+                {LOCALE_OPTIONS.map((option) => (
+                  <option key={option.value} value={option.value}>
+                    {option.label}
+                  </option>
+                ))}
+              </select>
+            </label>
+          </div>
+          <p className="app-header__summary">{editionSummary}</p>
         </div>
       </header>
 
-      <section className="top-panel" aria-label={messages.searchAndFilters}>
+      <section className={`top-panel${edition === "sixth" ? "" : " top-panel--overview"}`} aria-label={messages.searchAndFilters}>
         <SearchBox graph={graphIndex} filters={filters} messages={messages} locale={locale} onSelectNode={selectNode} />
-        <FilterBar filters={filters} messages={messages} locale={locale} onChange={setFilters} />
+        {edition === "sixth" ? (
+          <FilterBar filters={filters} messages={messages} locale={locale} onChange={setFilters} />
+        ) : (
+          <div className="edition-scope" aria-label={messages.relationshipOverview}>
+            <span>{getEditionLabel(edition, locale)}</span>
+            <strong>{editionSummary}</strong>
+          </div>
+        )}
       </section>
 
       <main
@@ -154,27 +198,42 @@ export default function App() {
           .filter(Boolean)
           .join(" ")}
       >
-        <ProcessMatrix
-          graph={graphIndex}
-          selectedNodeId={selectedNodeId}
-          filters={filters}
-          messages={messages}
-          locale={locale}
-          processRelationHighlights={processRelationHighlights}
-          isCollapsed={isMatrixCollapsed}
-          onToggleCollapsed={() => setIsMatrixCollapsed((collapsed) => !collapsed)}
-          onSelectNode={selectNode}
-        />
+        {edition === "sixth" ? (
+          <ProcessMatrix
+            graph={graphIndex}
+            selectedNodeId={selectedNodeId}
+            filters={filters}
+            messages={messages}
+            locale={locale}
+            processRelationHighlights={processRelationHighlights}
+            isCollapsed={isMatrixCollapsed}
+            onToggleCollapsed={() => setIsMatrixCollapsed((collapsed) => !collapsed)}
+            onSelectNode={selectNode}
+          />
+        ) : (
+          <EditionMatrix
+            graph={graphIndex}
+            selectedNodeId={selectedNodeId}
+            nodeTypes={editionConfig.matrixNodeTypes}
+            messages={messages}
+            locale={locale}
+            isCollapsed={isMatrixCollapsed}
+            onToggleCollapsed={() => setIsMatrixCollapsed((collapsed) => !collapsed)}
+            onSelectNode={selectNode}
+          />
+        )}
         <GraphView
           graph={graphIndex}
           selectedNodeId={selectedNodeId}
           filters={filters}
+          edition={edition}
           messages={messages}
           onSelectNode={selectNode}
         />
         <DetailPanel
           graph={graphIndex}
           selectedNodeId={selectedNodeId}
+          edition={edition}
           messages={messages}
           locale={locale}
           isCollapsed={isDetailCollapsed}
@@ -201,15 +260,32 @@ export default function App() {
   );
 }
 
-function getInitialNodeId(): string {
+function getInitialEdition(): EditionId {
+  const params = new URLSearchParams(window.location.search);
+  const editionParam = params.get("edition");
+
+  if (isEdition(editionParam)) {
+    return editionParam;
+  }
+
+  const storedEdition = window.localStorage.getItem(EDITION_STORAGE_KEY);
+  if (isEdition(storedEdition)) {
+    return storedEdition;
+  }
+
+  return DEFAULT_EDITION;
+}
+
+function getInitialNodeId(graph: IttoGraph): string {
   const params = new URLSearchParams(window.location.search);
   const nodeId = params.get("node");
+  const graphIndex = createGraphIndex(graph);
 
-  if (nodeId && getNodeById(baseGraphIndex, nodeId)) {
+  if (nodeId && getNodeById(graphIndex, nodeId)) {
     return nodeId;
   }
 
-  return DEFAULT_NODE_ID;
+  return EDITION_CONFIGS[getInitialEdition()].defaultNodeId;
 }
 
 function getInitialLocale(): Locale {
@@ -228,10 +304,6 @@ function getInitialLocale(): Locale {
   const browserLanguage = window.navigator.language;
   if (browserLanguage.startsWith("ja")) {
     return "ja";
-  }
-
-  if (browserLanguage.toLowerCase().startsWith("zh")) {
-    return "zh-CN";
   }
 
   return DEFAULT_LOCALE;
